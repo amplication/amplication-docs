@@ -1,0 +1,255 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Amplication",
+  "logo": {
+    "light": "/logo/amplication-logo.svg",
+    "dark": "/logo/amplication-logo-dark.svg",
+    "href": "https://amplication.com"
+  },
+  "favicon": "/favicon.svg",
+  "theme": "prism",
+  "colors": {
+    "primary": "#5D4CFE",
+    "light": "#8477FF",
+    "dark": "#5D4CFE"
+  },
+  "topbarLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/amplication"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Community",
+      "icon": "discord",
+      "url": "https://discord.com/invite/amplication-757179260417867879"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://amplication.com/blog"
+    },
+    {
+      "name": "Contact Us",
+      "icon": "headset",
+      "url": "https://meetings-eu1.hubspot.com/yuval-hazaz"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Start Now",
+    "url": "https://app.amplication.com/login"
+  },
+  "tabs": [
+    {
+      "name": "Day Zero: Plan & Design Standards",
+      "url": "/day-zero"
+    },
+    {
+      "name": "Day One: Create & Scaffold Resources",
+      "url": "/day-one"
+    },
+    {
+      "name": "Day Two: Maintain & Update Live Apps",
+      "url": "/day-two"
+    },
+    {
+      "name": "Plugin Development",
+      "url": "/plugin-development"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "what-is-amplication",
+        "quickstart",
+        "concepts",
+        "faqs"
+      ]
+    },
+    {
+      "group": "Design Your Architecture",
+      "pages": [
+        "day-zero/blueprints-quickstart",
+        "day-zero/blueprint-properties-relations",
+        "day-zero/catalog-graph"
+      ]
+    },
+    {
+      "group": "Define Organizational Standards",
+      "pages": [
+        "day-zero/catalog-properties"
+      ]
+    },
+    {
+      "group": "Codify Standards with Plugins",
+      "pages": [
+        "day-zero/custom-plugins",
+        "day-zero/custom-vs-community-plugins"
+      ]
+    },
+    {
+      "group": "Establish Golden Paths",
+      "pages": [
+        "day-zero/templates"
+      ]
+    },
+    {
+      "group": "Integrate with Git",
+      "pages": [
+        "day-zero/smart-git-sync",
+        "day-zero/sync-with-gitlab",
+        "day-zero/sync-with-github",
+        "day-zero/sync-with-bitbucket",
+        "day-zero/sync-with-azure-devops"
+      ]
+    },
+    {
+      "group": "Self-Serve Resource Creation",
+      "pages": [
+        "day-one/create-from-a-blueprint",
+        "day-one/create-from-a-template",
+        "day-one/create-from-a-service"
+      ]
+    },
+    {
+      "group": "Sync with Git",
+      "pages": [
+        "day-one/repo-level-setup",
+        "day-one/per-service-git-flows"
+      ]
+    },
+    {
+      "group": "Resource Configuration",
+      "pages": [
+        "day-one/refine-inherited-properties-metadata"
+      ]
+    },
+    {
+      "group": "Accelerate with Jovu (Amplication AI)",
+      "pages": [
+        "day-one/jovu-explained",
+        "day-one/jovu-examples"
+      ]
+    },
+    {
+      "group": "Install & Configure Plugins",
+      "pages": [
+        "day-one/use-community-plugins",
+        "day-one/activate-custom-plugins"
+      ]
+    },
+    {
+      "group": "Model Data",
+      "pages": [
+        "day-one/entities-fields",
+        "day-one/upload-schema"
+      ]
+    },
+    {
+      "group": "Define APIs & DTOs",
+      "pages": [
+        "day-one/custom-types-actions"
+      ]
+    },
+    {
+      "group": "Manage Authentication & Roles",
+      "pages": [
+        "day-one/authentication-explained",
+        "day-one/authentication-entity",
+        "day-one/roles-permissions"
+      ]
+    },
+    {
+      "group": "Generate Code",
+      "pages": [
+        "day-one/view-pending-changes",
+        "day-one/generate-code",
+        "day-one/code-view",
+        "day-one/commits"
+      ]
+    },
+    {
+      "group": "Maintain & Evolve Standards",
+      "pages": [
+        "day-two/updating-blueprints",
+        "day-two/updating-plugins",
+        "day-two/updating-templates"
+      ]
+    },
+    {
+      "group": "Discover & Govern Resources",
+      "pages": [
+        "day-two/software-catalog",
+        "day-two/ownership-domain-visibility"
+      ]
+    },
+    {
+      "group": "Proactive Technical Debt Management",
+      "pages": [
+        "day-two/automated-alerts",
+        "day-two/resolve-debt-across-multiple-resources"
+      ]
+    },
+    {
+      "group": "Live Updates for Your Resources",
+      "pages": [
+        "day-two/trigger-prs-for-updated-standards",
+        "day-two/review-merge-updates"
+      ]
+    },
+    {
+      "group": "Get Started",
+      "pages": [
+        "plugin-development/overview"
+      ]
+    },
+    {
+      "group": "Plugin Architecture",
+      "pages": [
+        "plugin-development/how-plugins-fit-into-amplication"
+      ]
+    },
+    {
+      "group": "Lifecycle & Coding Details",
+      "pages": [
+        "plugin-development/before-and-after-lifecycle-functions",
+        "plugin-development/context-and-skip-default-behavior"
+      ]
+    },
+    {
+      "group": "Developing a Plugin",
+      "pages": [
+        "plugin-development/project-setup-folder-structure",
+        "plugin-development/define-plugin-settings",
+        "plugin-development/test-a-plugin",
+        "plugin-development/publish-a-plugin"
+      ]
+    },
+    {
+      "group": "Blueprint Plugin Events",
+      "pages": [
+        "plugin-development/reference"
+      ]
+    },
+    {
+      "group": "Node.js Plugin Events",
+      "pages": [
+        "plugin-development/reference"
+      ]
+    },
+    {
+      "group": ".NET Plugin Events",
+      "pages": [
+        "plugin-development/reference"
+      ]
+    }
+  ],
+  "footer": {
+    "socials": {
+      "github": "https://github.com/amplication",
+      "x": "https://twitter.com/amplication"
+    }
+  }
+}

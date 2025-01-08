@@ -93,9 +93,10 @@
       "pages": [
         "day-zero/smart-git-sync",
         "day-zero/sync-with-gitlab",
-        "day-zero/sync-with-github",
+        "day-zero/sync-with-github",        
         "day-zero/sync-with-bitbucket",
-        "day-zero/sync-with-azure-devops"
+        "day-zero/sync-with-azure-devops",
+        "day-zero/sync-with-aws-codecommit"
       ]
     },
     {

@@ -56,9 +56,15 @@
       ]
     },
     {
+      "group": "Day Zero",
+      "pages": [
+        "day-zero/overview"
+      ]
+    },
+    {
       "group": "Design Your Architecture",
       "pages": [
-        "day-zero/blueprints-quickstart",
+        "day-zero/blueprints",
         "day-zero/blueprint-properties-relations",
         "day-zero/catalog-graph"
       ]
@@ -72,14 +78,14 @@
     {
       "group": "Codify Standards with Plugins",
       "pages": [
-        "day-zero/custom-plugins",
-        "day-zero/custom-vs-community-plugins"
+        "day-zero/private-plugins",
+        "day-zero/private-vs-public-plugins"
       ]
     },
     {
       "group": "Establish Golden Paths",
       "pages": [
-        "day-zero/templates"
+        "day-zero/live-templates"
       ]
     },
     {
@@ -93,11 +99,24 @@
       ]
     },
     {
+      "group": "Day One",
+      "pages": [
+        "day-one/overview"
+      ]
+    },
+    {
       "group": "Self-Serve Resource Creation",
       "pages": [
-        "day-one/create-from-a-blueprint",
-        "day-one/create-from-a-template",
-        "day-one/create-from-a-service"
+        "day-one/create-resource-from-blueprint",
+        "day-one/create-resource-from-template",
+        "day-one/create-resource-from-service"
+      ]
+    },
+    {
+      "group": "Accelerate with AI",
+      "pages": [
+        "day-one/jovu",
+        "day-one/jovu-examples"
       ]
     },
     {
@@ -114,17 +133,10 @@
       ]
     },
     {
-      "group": "Accelerate with Jovu (Amplication AI)",
-      "pages": [
-        "day-one/jovu-explained",
-        "day-one/jovu-examples"
-      ]
-    },
-    {
       "group": "Install & Configure Plugins",
       "pages": [
-        "day-one/use-community-plugins",
-        "day-one/activate-custom-plugins"
+        "day-one/activate-private-plugins",
+        "day-one/use-public-plugins"
       ]
     },
     {
@@ -158,11 +170,9 @@
       ]
     },
     {
-      "group": "Maintain & Evolve Standards",
+      "group": "Day Two",
       "pages": [
-        "day-two/updating-blueprints",
-        "day-two/updating-plugins",
-        "day-two/updating-templates"
+        "day-two/overview"
       ]
     },
     {
@@ -170,6 +180,14 @@
       "pages": [
         "day-two/software-catalog",
         "day-two/ownership-domain-visibility"
+      ]
+    },
+    {
+      "group": "Maintain & Evolve Standards",
+      "pages": [
+        "day-two/update-blueprints",
+        "day-two/update-templates",
+        "day-two/update-private-plugins"
       ]
     },
     {

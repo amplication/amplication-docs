@@ -6,6 +6,9 @@
     "dark": "/logo/amplication-logo-dark.svg",
     "href": "https://amplication.com"
   },
+  "metadata": {
+    "og:image": "/images/amplication-docs-social-card.png"
+  },
   "favicon": "/favicon.svg",
   "theme": "prism",
   "colors": {

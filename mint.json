@@ -15,25 +15,12 @@
   },
   "topbarLinks": [
     {
+      "name": "Contact Us",
+      "url": "https://meetings-eu1.hubspot.com/yuval-hazaz"
+    },
+    {
       "name": "GitHub",
       "url": "https://github.com/amplication"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Community",
-      "icon": "discord",
-      "url": "https://discord.com/invite/amplication-757179260417867879"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://amplication.com/blog"
-    },
-    {
-      "name": "Contact Us",
-      "icon": "headset",
-      "url": "https://meetings-eu1.hubspot.com/yuval-hazaz"
     }
   ],
   "topbarCtaButton": {
@@ -249,7 +236,8 @@
   "footer": {
     "socials": {
       "github": "https://github.com/amplication",
-      "x": "https://twitter.com/amplication"
+      "x": "https://x.com/amplication",
+      "linkedin": "https://www.linkedin.com/company/amplication"
     }
   }
 }

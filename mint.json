@@ -123,8 +123,7 @@
     {
       "group": "Sync with Git",
       "pages": [
-        "day-one/repo-level-setup",
-        "day-one/per-service-git-flows"
+        "day-one/resource-git-setup"
       ]
     },
     {

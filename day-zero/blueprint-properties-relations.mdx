@@ -1,5 +1,185 @@
 ---
 title: 'Blueprint Properties & Relations'
-description: 'Learn how platform leads can configure standardized fields and relationships within blueprints to enforce architectural consistency.'
+description: 'Configure standardized fields and relationships within Blueprints to enforce architectural consistency.'
 icon: 'diagram-project'
 ---
+
+<Frame>
+  <img src="/images/day-zero/blueprint-relations.png" />
+</Frame>
+
+Amplication **Blueprints** let you define more than just a resource's base configuration.
+By **adding properties** and **establishing relationships** between different Blueprints, you can enforce architectural standards and create dynamic, interconnected software systems.
+
+This approach lets organizations ensure that all resources, whether services, infrastructure definitions, or apps, conform to a unified architectural blueprint.
+
+## Why Properties & Relations Matter
+
+- **Enforce Standard Fields**  
+  Codify mandatory fields like compliance flags, observability settings, or region configurations so they're automatically included in every new resource.
+
+- **Create Meaningful Connections**  
+  Model interdependencies across microservices, databases, and infrastructure components.
+  This helps your team understand and navigate a complex ecosystem with clarity.
+
+- **Propagate Updates & Governance**  
+  Changing a property in a blueprint automatically notifies or updates the dependent resources, keeping everything in sync.
+
+## Blueprint Properties
+
+**Properties** are customizable fields or attributes that every instance of a Blueprint has access to.
+They let you capture metadata and configurations that need to remain uniform across your organization.
+
+<Steps>
+  <Step title="Define Your Property Structure" icon="gear">
+    Specify the name, type, and possible default values for each property. Examples: `environmentType` (Production, Staging), `region` (us-east, eu-west).
+  </Step>
+  <Step title="Set Default Values" icon="tags">
+    Predefine standard defaults. For instance, you might enforce a default region or logging format to ensure uniformity across all services.
+  </Step>
+  <Step title="Attach Properties to Your Blueprint" icon="link">
+    Once configured, these properties automatically appear whenever a resource is instantiated from the Blueprint.
+  </Step>
+</Steps>
+
+<Tip>
+Properties can be as granular or as broad as needed. You might include security flags, database connection parameters, or even labeling conventions like naming prefixes to maintain consistency.
+</Tip>
+
+## Blueprint Relations
+
+**Relations** define how two or more Blueprints link to each other.
+These relationships inform code generation via plugins so your team automatically get resource configurations that reflect real dependencies.
+For example:
+
+<CardGroup cols={2}>
+  <Card title="Microservice ↔ Database" icon="database">
+    Ensure each microservice references the correct DB configuration by linking "Service Blueprints" to "PostgreSQL" or "MongoDB" Blueprints.
+  </Card>
+  <Card title="Infrastructure ↔ Application" icon="cloud">
+    Connect Terraform or Helm configuration Blueprints to your microservice Blueprints, aligning deployment processes with each service.
+  </Card>
+</CardGroup>
+
+Let's explore how **relations** work in the Blueprint system.
+
+<AccordionGroup>
+  <Accordion icon="circle-1" title="Identify Dependencies">
+    Determine which Blueprints rely on or inform each other. Common examples: an API service depending on an authentication service, a front end linked to a particular back end.
+  </Accordion>
+
+  <Accordion icon="circle-2" title="Create Relationship Fields">
+    Within your Blueprint configuration, add a relation that references the target Blueprint. This can be one-to-one or one-to-many, depending on how many resources typically interact.
+  </Accordion>
+
+  <Accordion icon="circle-3" title="Generate Dynamic Code with Plugins">
+    Amplication uses these relationships during code generation via private plugins. For example, if a service has a "database" relation, the generated code includes connection strings, schema references, or environment variables automatically.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+If your architecture includes multiple layers, like an Angular front-end Blueprint, a Java back-end Blueprint, and a MongoDB database Blueprint, Amplication can chain these relationships to ensure consistent references at every layer.
+</Tip>
+
+## Example Use Cases
+
+<Steps>
+  <Step title="Security & Compliance by Default" icon="shield-halved">
+    Enforce compliance attributes (e.g., encryption modes, data residency) as required properties. Any new resource inherits these automatically.
+
+    ```mermaid
+classDiagram
+    direction LR
+    class SecurityComplianceBlueprint {
+        +encryptionMode: String
+        +dataResidency: String
+        +complianceFlags: Boolean[]
+        +auditLevel: String
+        +retentionPeriod: Number
+    }
+
+    class ResourceBlueprint {
+        +name: String
+        +type: String
+    }
+
+    ResourceBlueprint --|> SecurityComplianceBlueprint : inherits
+    ```
+  </Step>
+
+  <Step title="Auto-Connect Frontend & Backend" icon="object-group">
+    By relating your React Front-End Blueprint to a Node.js Service Blueprint, you can pre-generate API endpoints, environment variables, or stubs that make integration more efficient.
+
+    ```mermaid
+classDiagram
+    direction LR
+    class FrontendBlueprint {
+        +reactVersion: String
+        +apiEndpoints: String[]
+        +envVariables: Object
+        +routingConfig: Object
+        +authConfig: Object
+    }
+
+    class BackendBlueprint {
+        +nodeVersion: String
+        +apiSpec: Object
+        +dbConnections: String[]
+        +serviceStubs: Object[]
+        +middlewareConfig: Object
+    }
+
+    FrontendBlueprint <--> BackendBlueprint : connects
+    ```
+  </Step>
+
+  <Step title="Streamlined Infrastructure Setup" icon="server">
+    Use properties to specify environment (dev, staging, production) and link your Terraform or Helm Blueprints to relevant microservice resources. Developers don't have to guess the correct infrastructure or configuration—it's baked in.
+
+    ```mermaid
+classDiagram
+    direction LR
+    class MicroserviceBlueprint {
+        +serviceName: String
+        +serviceType: String
+        +dependencies: String[]
+    }
+
+    class InfrastructureBlueprint {
+        +environment: String
+        +terraformConfig: Object
+        +helmConfig: Object
+        +resourceLimits: Object
+        +scalingRules: Object
+        +networkPolicies: Object
+    }
+
+    MicroserviceBlueprint --> InfrastructureBlueprint : deploys-to
+    ```
+  </Step>
+</Steps>
+
+## Next Steps
+
+Now that you understand how to **configure Properties and establish Relations** in Blueprints, you're ready to create a more robust, standardized environment for your organization.
+
+<CardGroup cols={2}>
+  <Card 
+    title="Codify Standards with Private Plugins"
+    icon="plug-circle-check"
+    href="/day-zero/private-plugins"
+  >
+    Learn how to automate architectural standards and enforce best practices through private plugins.
+  </Card>
+
+  <Card 
+    title="Enforce Metadata with Catalog Properties"
+    icon="tag"
+    href="/day-zero/catalog-properties"
+  >
+    Learn how to enforce consistent metadata across all resources using Catalog Properties.
+  </Card>
+</CardGroup>
+
+With **Blueprint Properties & Relations**, your resources become first-class citizens of a unified, well-governed architecture.
+This ensures consistency, reduces repeated work, and gives you the centralized oversight needed to scale confidently.

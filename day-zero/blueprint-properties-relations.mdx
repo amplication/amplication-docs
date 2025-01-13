@@ -20,7 +20,7 @@ This approach lets organizations ensure that all resources, whether services, in
 
 - **Create Meaningful Connections**  
   Model interdependencies across microservices, databases, and infrastructure components.
-  This helps your team understand and navigate a complex ecosystem with clarity.
+  This helps your team understand and navigate a complex ecosystem with clarity and can be used to generate context-aware code and keep consistent settings across services.
 
 - **Propagate Updates & Governance**  
   Changing a property in a blueprint automatically notifies or updates the dependent resources, keeping everything in sync.
@@ -87,75 +87,26 @@ If your architecture includes multiple layers, like an Angular front-end Bluepri
   <Step title="Security & Compliance by Default" icon="shield-halved">
     Enforce compliance attributes (e.g., encryption modes, data residency) as required properties. Any new resource inherits these automatically.
 
-    ```mermaid
-classDiagram
-    direction LR
-    class SecurityComplianceBlueprint {
-        +encryptionMode: String
-        +dataResidency: String
-        +complianceFlags: Boolean[]
-        +auditLevel: String
-        +retentionPeriod: Number
-    }
-
-    class ResourceBlueprint {
-        +name: String
-        +type: String
-    }
-
-    ResourceBlueprint --|> SecurityComplianceBlueprint : inherits
-    ```
+    <Frame>
+      <img src="/images/day-zero/blueprint-relation-example-1.png" />
+    </Frame>
   </Step>
 
   <Step title="Auto-Connect Frontend & Backend" icon="object-group">
     By relating your React Front-End Blueprint to a Node.js Service Blueprint, you can pre-generate API endpoints, environment variables, or stubs that make integration more efficient.
 
-    ```mermaid
-classDiagram
-    direction LR
-    class FrontendBlueprint {
-        +reactVersion: String
-        +apiEndpoints: String[]
-        +envVariables: Object
-        +routingConfig: Object
-        +authConfig: Object
-    }
-
-    class BackendBlueprint {
-        +nodeVersion: String
-        +apiSpec: Object
-        +dbConnections: String[]
-        +serviceStubs: Object[]
-        +middlewareConfig: Object
-    }
-
-    FrontendBlueprint <--> BackendBlueprint : connects
-    ```
+    <Frame>
+      <img src="/images/day-zero/blueprint-relation-example-2.png" />
+    </Frame>
   </Step>
 
   <Step title="Streamlined Infrastructure Setup" icon="server">
-    Use properties to specify environment (dev, staging, production) and link your Terraform or Helm Blueprints to relevant microservice resources. Developers don't have to guess the correct infrastructure or configuration—it's baked in.
+    Use properties to specify environment (dev, staging, production) and link your Terraform or Helm Blueprints to relevant microservice resources. Developers don't have to guess the correct infrastructure or configuration because it's baked in.
 
-    ```mermaid
-classDiagram
-    direction LR
-    class MicroserviceBlueprint {
-        +serviceName: String
-        +serviceType: String
-        +dependencies: String[]
-    }
+   <Frame>
+      <img src="/images/day-zero/blueprint-relation-example-3.png" />
+    </Frame>
 
-    class InfrastructureBlueprint {
-        +environment: String
-        +terraformConfig: Object
-        +helmConfig: Object
-        +resourceLimits: Object
-        +scalingRules: Object
-        +networkPolicies: Object
-    }
-
-    MicroserviceBlueprint --> InfrastructureBlueprint : deploys-to
-    ```
   </Step>
 </Steps>
 

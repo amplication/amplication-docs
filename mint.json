@@ -68,8 +68,7 @@
       "group": "Design Your Architecture",
       "pages": [
         "day-zero/blueprints",
-        "day-zero/blueprint-properties-relations",
-        "day-zero/catalog-graph"
+        "day-zero/blueprint-properties-relations"
       ]
     },
     {
@@ -183,6 +182,12 @@
       "pages": [
         "day-two/software-catalog",
         "day-two/ownership-domain-visibility"
+      ]
+    },
+    {
+      "group": "Visualize Your Architecture",
+      "pages": [
+        "day-two/architecture-graph"
       ]
     },
     {

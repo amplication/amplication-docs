@@ -1,0 +1,120 @@
+---
+title: 'Architecture Graph'
+description: "Gain unparalleled visibility and control over your entire software ecosystem with Amplication's multi-dimensional Architecture Graph."
+icon: 'sitemap'
+---
+
+<Frame caption="Amplication's Architecture Graph provides a bird's-eye view of your entire software ecosystem">
+    <img src="/images/day-two/architecture-graph.png" />
+</Frame>
+
+The **Architecture Graph** provides a dynamic, visual representation of all the services, resources, and their relationships within your Amplication-managed ecosystem, across all your projects.
+
+It provides a **visual, bird's-eye perspective** of every resource, project, blueprint, and dependency.
+It's more than just a graph, it's a **powerful governance tool** that helps you manage you entire software ecosystem.
+
+<Tip>
+The Architecture Graph is **built for enterprise scale**. Use filters, groupings, and layout settings to keep the visualization clear and navigable, even for thousands of services.
+</Tip>
+
+## Enterprise-grade Visibility
+
+When your developers spin up new resources or iterate on existing ones, the Architecture Graph gives you real-time visibility to maintain control, compliance, and consistency across your software ecosystem.
+The Architecture Graph gives you:
+
+<CardGroup cols={2}>
+  <Card title="Complete Visibility" icon="eye">
+    Get a comprehensive view of all services, APIs, and resources across your organization's projects in one unified interface.
+  </Card>
+
+  <Card title="Standardization Control" icon="ruler">
+    Easily identify deviations from standards and track service relationships to maintain architectural consistency.
+  </Card>
+
+  <Card title="Dependency Management" icon="diagram-project">
+    Visualize and manage service dependencies to reduce risks and improve system reliability.
+  </Card>
+
+  <Card title="Resource Optimization" icon="gauge-high">
+    Identify redundancies and optimize resource allocation across your service ecosystem.
+  </Card>
+</CardGroup>
+
+## Powerful Grouping
+
+You can group your graph based on various criteria to understand your architecture from different perspectives. These grouping options can be combined in powerful ways, allowing you to create unique, multi-dimensional views of your architecture that suit your specific needs.
+
+    <AccordionGroup>
+      <Accordion title="Project" icon="folder">
+        View all services and resources grouped by their respective Amplication project. This helps in understanding the scope and ownership of different parts of your application.
+      </Accordion>
+      <Accordion title="Blueprint" icon="diagram-lean-canvas">
+        Group resources by the [blueprints](/day-zero/blueprints) they are instantiated from. This allows you to see all instances of a particular blueprint and ensures consistency in their configurations.
+      </Accordion>
+      <Accordion title="Git Organization" icon="github">
+        Organize your services based on the Git organization they are associated with. This is particularly useful for managing services across multiple organizations.
+      </Accordion>
+      <Accordion title="Git Repository" icon="book-bookmark">
+        Group services by their specific Git repository. This provides a clear view of where the code for each service resides.
+      </Accordion>
+      <Accordion title="Live Templates" icon="layer-group">
+        See which services are instantiated from specific [live templates](/day-zero/live-templates). This helps ensure adherence to your organization's standardized service patterns.
+      </Accordion>
+      <Accordion title="Catalog Properties" icon="tags">
+        Use your custom [catalog properties](/day-zero/catalog-properties) to group services based on specific attributes like domain, team, technology, or anything else you create. This allows for highly customized views tailored to your organization's structure.
+      </Accordion>
+      <Accordion title="Type" icon="list">
+        Group resources by their type (e.g., Service, API, Message Broker). This gives you a high-level overview of the different kinds of components in your ecosystem.
+      </Accordion>
+    </AccordionGroup>
+
+## Detailed Filtering
+
+By default, the Architecture Graph displays all services and resources across your workspace. You can then apply filters to focus on specific aspects of your architecture:
+
+* **Type:** Filter by resource types such as blueprints, message brokers, services, or templates
+* **Project:** Focus on resources within specific projects
+* **Owner/Team:** View resources by their assigned owners or teams
+* **Catalog Properties:** Filter based on custom [catalog properties](/catalog-properties)
+
+Like grouping, you can combine multiple filters to create highly specific views of your architecture. This powerful combination allows you to drill down to exactly the resources you need to see.
+
+## Dependency Visualization
+
+Get a complete picture of how your entire ecosystem fits together with the Architecture Graph's dependency visualization capabilities.
+
+Every connection between Blueprints is mapped out in an intuitive visual format, giving you unprecedented insight into your architecture's interconnections.
+This visualization builds upon the graph found in the [Blueprint Relations Graph](/day-zero/blueprint-properties-relations), but extends beyond a single blueprint to show all of your connections and how they're related to other resources.
+
+## Access the Architecture Graph
+
+Amplication's Architecture Graph is in a dedicated workspace-level tab.
+To access it:
+
+<Steps>
+  <Step title="Navigate to Your Amplication Workspace">
+    Access your workspace within the Amplication platform.
+  </Step>
+  <Step title="Select the 'Architecture' Tab">
+    Find and select the "Architecture" tab in the navigation bar.
+  </Step>
+  <Step title="Manage Your Architecture">
+    From this central location, you can use filters, groupings, and layout settings to visualize your software ecosystem exactly how you need to.
+  </Step>
+</Steps>
+
+This centralized view ensures your team has a single place to visualize all of your resources, simplifying governance and updates.
+
+## Next Steps
+
+Now that you understand the Architecture Graph, you can:
+
+<CardGroup cols={2}>
+  <Card title="Explore Blueprints" icon="diagram-lean-canvas" href="/day-zero/blueprints">
+    Learn how to create and manage [blueprints](/day-zero/blueprints) to standardize your service architecture and see their relationships in the graph.
+  </Card>
+
+  <Card title="Configure Catalog Properties" icon="tags" href="/day-zero/catalog-properties">
+    Set up catalog properties to enhance your graph organization and create custom views based on your team's needs.
+  </Card>
+</CardGroup>

@@ -1,5 +1,154 @@
 ---
 title: 'Catalog Properties'
-description: 'Platform leads can learn how to enforce consistent metadata across all resources using Catalog Properties in Amplication.'
+description: 'Establish a unified system for tagging and describing all your Amplication resources, enabling powerful filtering, grouping, and standardized code generation across your organization.'
 icon: 'tags'
 ---
+
+<Frame>
+    <img src="/images/day-zero/catalog-properties.png" />
+</Frame>
+
+Amplication's **Catalog Properties** empower you to **tag and describe all resources** in a centralized, standardized way.
+By applying these properties, you can filter, order, group, visualize, and even influence **generated code** to align with your organization’s standards.
+
+## Why Resource Management Matters
+
+As a platform team, you need to ensure that every new or existing resource in your software ecosystem follows your organization’s best practices, security requirements, and architecture standards.
+This presents several challenges:
+
+- **Lack of Centralized Visibility:** It's challenging to get a unified view of all your services and resources, making it difficult to enforce standards and track compliance.
+- **Difficulty in Understanding Resource Relationships:** Without consistent tagging, understanding the relationships and dependencies between various components can be complex and time-consuming.
+- **Inconsistent Resource Definitions:** Variations in how resources are described can lead to confusion, hindering effective management and updates.
+- **Limited Ability to Enforce Standards:** Without a structured way to categorize resources, enforcing architectural and security standards across the organization becomes difficult.
+
+## How Catalog Properties Help
+
+**Catalog Properties** directly address these challenges by letting you establish a **common language** for describing and managing all resources in your Amplication workspace.
+They let you:
+
+<CardGroup cols={2}>
+
+  <Card title="Establish Strategic Control" icon="gear">
+    Define & enforce organizational standards at scale. Tag each resource with properties that reflect your unique requirements, like domain, environment, or regulatory compliance tier.
+  </Card>
+
+  <Card title="Simplify Maintenance & Reduce Drift" icon="arrows-repeat">
+    Keep resources aligned by leveraging Catalog Properties in automated updates, so you can mitigate technical debt and ensure ongoing compliance.
+  </Card>
+
+  <Card title="Accelerate Developer Velocity" icon="rocket">
+    Free your dev teams from boilerplate and guesswork. Standardize logic and configurations in code generation, allowing developers to focus on critical business logic.
+  </Card>
+
+  <Card title="Enhance Visibility & Governance" icon="eye">
+    Quickly filter, group, and visualize resources in the Service Catalog or the Architecture Graph. Gain insights into how resources are deployed, owned, or integrated.
+  </Card>
+
+</CardGroup>
+
+<Note>
+**Catalog vs. [Blueprint Properties](/day-zero/blueprint-properties-relations)**
+
+Blueprint Properties define the configuration of a specific resource.
+Catalog properties, on the other hand, are **organizational metadata** that apply broadly across all resources for filtering, grouping, governance, and more.
+</Note>
+
+## Smart Code Generation with Catalog Properties
+
+Catalog Properties aren't just for organizing your resources. They also **connect into code generation via plugins**.
+When you generate code using Private Plugins, you have full access to:
+
+- **Catalog Properties** of the specific resource.  
+- **Blueprint Properties** of the resource.  
+- **Catalog & Blueprint Properties** of all related resources set through Blueprint relations.
+
+This means you can **adapt generation logic** based on any property.
+
+- **Compliance Level** triggers the inclusion of stricter security modules.  
+- **Deployment Environment** adjusts Dockerfiles, Helm charts, or serverless config.  
+- **Team Ownership** adds certain logging or monitoring integrations relevant for that team.
+
+<Tip>
+**Private Plugin Property Access**: Catalog Properties are always available in the plugin context for code generation so you can easily maintain enterprise-wide consistency, whether you're generating microservices, infrastructure as code, or messaging configurations.
+</Tip>
+
+## Example Use Cases
+
+<Steps>
+  <Step title="Domain Organization" icon="sitemap">
+    Keep services organized by business domain, enabling quick filtering and grouping in both the [Service Catalog](/day-two/software-catalog) and [Architecture Graph](/day-two/architecture-graph).
+
+    <Frame>
+        <img src="/images/day-zero/catalog-property-example-1.png" />
+    </Frame>
+
+  </Step>
+
+  <Step title="Deployment Environment Configuration" icon="server">
+    Clarify how each resource is hosted or run, and tailor code generation or CI/CD logic based on the environment selected.
+
+    <Frame>
+        <img src="/images/day-zero/catalog-property-example-2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Compliance Level Management" icon="shield-halved">
+    Enforce stricter security policies and auditing requirements for resources subject to specific compliance rules.
+
+    <Frame>
+            <img src="/images/day-zero/catalog-property-example-4.png" />
+        </Frame>
+  </Step>
+
+    <Step title="Deployment Stage Assignment" icon="code-branch">
+        Define the current stage of the resource to manage deployment rules, testing requirements, and access controls appropriately.
+
+        <Frame>
+            <img src="/images/day-zero/catalog-property-example-3.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+## Access & Manage Catalog Properties
+
+You can manage all your Catalog Properties from a single interface so that you have one source of truth for your organizational metadata.
+
+<Steps>
+  <Step title="Navigate to Your Amplication Workspace">
+    Access your workspace within the Amplication platform.
+  </Step>
+  <Step title="Select the 'Settings' Tab">
+    Find and select the "Settings" tab in the navigation bar.
+  </Step>
+  <Step title="Navigate to 'Catalog Propeties'">
+    In the settings sidebar, locate and click on "Catalog Properties".
+  </Step>
+  <Step title="Create and Manage Catalog Properties">
+    From this central location, you can create new properties, modify existing ones, and manage their configurations and default values.
+  </Step>
+</Steps>
+
+## Next Steps
+
+Now that you understand how Catalog Properties can optimize your software ecosystem, explore these additional topics to maximize your Amplication adoption:
+
+<CardGroup cols={2}>
+  <Card
+    title="Private Plugins"
+    icon="plug-circle-bolt"
+    href="/day-zero/private-plugins"
+  >
+    Dive deeper into how your Amplication plugins can leverage both Catalog & Blueprint Properties for automated code generation.
+  </Card>
+  <Card
+    title="Architecture Graph"
+    icon="sitemap"
+    href="/day-two/architecture-graph"
+  >
+    Visualize and manage all your resources and their properties in a dynamic, multi-dimensional view.
+  </Card>
+</CardGroup>
+
+Amplication Catalog Properties unlock the power to **standardize**, **govern**, and **automate** your enterprise architecture, without adding friction to your development process.
+By anchoring each resource to the properties that matter to your team, you ensure consistent compliance, reduce technical debt, and can confidently scale your software ecosystem.

@@ -1,6 +1,199 @@
 ---
-title: 'Create Resource from Service'
+title: 'Create a Pre-Configured ROpinionated Service'
 sidebarTitle: 'Create from a Service'
-description: 'Guidance for enterprise developers on creating services using Amplication, including .NET and Node.js options.'
+description: "Quickly generate a production-grade service using our opinionated, pre-configured Node.js or .NET code generation engines."
 icon: 'code-simple'
 ---
+
+<Frame>
+  <img src="/images/day-one/service.png" />
+</Frame>
+
+**Services** generate a complete codebase using Amplication's opinionated standards for Node.js or .NET development.
+You can customize every aspect of the generated code to fit your existing software ecosystem, or use it as a foundation if you haven't established your own standards yet.
+
+Service resources use Amplication's best-in-class Node.js and .NET code generation engine to produce human-readable, best-practice code.
+If you're comfortable with Node.js or .NET, or need to spin up a backend quickly, creating a service is a great fit.
+
+<Note>
+**Services vs Blueprints**: Amplication opinionated services are based on pre-configured templates and technologies in .NET or Node.js, configurable through our various plugins available out of the box.
+Blueprints, on the other hand, let you build your own standards and templates in any language or technology.
+</Note>
+
+## Tech Stack Options
+
+Amplication maintains production-ready code generation engines for both Node.js and .NET.
+Our plugin-based architecture ensures maximum flexibility, allowing you to customize every aspect of your service.
+With dozens of plugins available in our public catalog, you can easily adapt the generated code to match your preferences.
+
+<Tip>
+  Want to see an example of what an **Amplication Service** looks like?
+  - [Sample Node.js Service](https://github.com/amplication/sample-app)
+  - [Sample .NET Service](https://github.com/amplication/dotnet-8-sample-generated)
+</Tip>
+
+Each service type comes with a carefully curated stack of enterprise-grade technologies:
+
+<AccordionGroup>
+  <Accordion title="Node.js" icon="node">
+    - **Framework**: [NestJS](https://nestjs.com/) - Enterprise-ready framework with robust architecture patterns
+    - **ORM**: [Prisma](https://www.prisma.io/) - Next-generation database toolkit
+    - **Admin UI**: Optional [React Admin](https://marmelab.com/react-admin/) interface
+    - **API Documentation**: Swagger UI and OpenAPI specifications
+    - **Testing**: Jest for unit and E2E testing
+  </Accordion>
+  <Accordion title=".NET" icon="microsoft">
+    - **Framework**: [ASP.NET Core](https://dotnet.microsoft.com/en-us/apps/aspnet) - High-performance, cross-platform framework
+    - **ORM**: [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) - Modern object-database mapper
+    - **API Documentation**: Built-in Swagger/OpenAPI support
+    - **Authentication**: Identity framework integration
+    - **Testing**: xUnit for comprehensive testing
+  </Accordion>
+
+</AccordionGroup>
+
+## Service Features
+
+Beyond the core technology stack, Amplication services come with powerful built-in capabilities that accelerate your development process while maintaining enterprise-grade standards:
+
+<CardGroup cols={2}>
+  <Card title="Automatic API Generation" icon="bolt">
+    Generate REST and GraphQL APIs automatically from your data model, with
+    built-in Swagger/OpenAPI documentation. Create custom types and actions to
+    extend API functionality.
+  </Card>
+
+  <Card title="Entity Management" icon="database">
+    Design and manage your data model visually, with automatic CRUD operations, complex relationships support, and the ability to upload existing database schemas.
+  </Card>
+
+  <Card title="Plugin Ecosystem" icon="plug">
+    Access Amplication's extensive plugin catalog to customize authentication, logging, monitoring, and integrate with popular third-party services.
+  </Card>
+
+  <Card title="Technical Debt Management" icon="chart-line">
+    Track and manage breaking changes with [automated alerts](/day-two/automated-alerts).
+  </Card>
+</CardGroup>
+
+<Note>
+  All these features are fully customizable through our plugin system,
+  allowing you to adapt them to your specific needs while maintaining the
+  standards of our Node.js and .NET code generators.
+</Note>
+
+## Create Your Service
+
+<Steps>
+
+<Step title="Choose Technology Stack and Name">
+  Name your new service to clarify its primary purpose and select either Node.js
+  or .NET as your base technology stack.
+
+  <Frame>
+    <img src="/images/day-one/create-service-step-1.png" />
+  </Frame>
+
+</Step>
+
+<Step title="Configure Git Integration">
+Next, connect your new service to a Git repository.
+Select an existing repository or create a new one.
+
+<Frame>
+    <img src="/images/day-one/create-service-step-2.png" />
+  </Frame>
+
+<Info>
+You can modify these Git settings later through the service settings.
+For detailed configuration options, see [Git Integration](/git-integration).
+</Info>
+
+</Step>
+
+<Step title="Select Initial Features">
+Choose the core features for your service:
+
+- REST API with Swagger UI
+- GraphQL API
+- Admin UI interface
+
+<Frame>
+    <img src="/images/day-one/create-service-step-3.png" />
+</Frame>
+
+<Note>
+GraphQL API and Admin UI features are currently available for Node.js services only.
+</Note>
+</Step>
+
+<Step title="Configure Repository Structure">
+Choose between:
+
+- **Monorepo**: Services are generated into subfolders within a shared repository
+- **Polyrepo**: Each service gets its own dedicated repository
+
+<Frame>
+    <img src="/images/day-one/create-service-step-4.png" />
+</Frame>
+
+</Step>
+
+<Step title="Choose Database">
+Select your preferred database:
+
+- PostgreSQL
+- MySQL
+- MongoDB
+
+<Frame>
+    <img src="/images/day-one/create-service-step-5.png" />
+</Frame>
+
+<Tip>
+**You're not locked in**: Amplication uses a plugin-based approach, allowing you to switch databases later without major refactoring.
+</Tip>
+
+</Step>
+
+<Step title="Configure Authentication">
+
+Choose whether to include built-in authentication:
+
+- Enable for secure access management
+- Skip if you handle authentication elsewhere
+
+<Frame>
+    <img src="/images/day-one/create-service-step-6.png" />
+</Frame>
+
+<Note>
+Authentication providers can also be modified later through our plugin system.
+Learn more in our [Authentication guide](/day-one/authentication-explained).
+</Note>
+</Step>
+</Steps>
+
+## Next Steps
+
+Now that you've created your initial service, it's time to customize it to meet your specific needs. Here are the key steps to get started:
+
+<CardGroup cols={2}>
+  <Card title="Add Entities & Fields" icon="database" href="/day-one/entities">
+    Start building your data model by creating entities and defining their fields. This forms the foundation of your service's functionality.
+  </Card>
+
+  <Card title="Custom Types & Actions" icon="code" href="/day-one/custom-types-actions">
+    Extend your service by creating custom types and actions to implement specific business logic and API endpoints.
+  </Card>
+
+  <Card title="Use Jovu AI" icon="microchip-ai" href="/day-one/jovu">
+    Accelerate development by leveraging Jovu, our AI assistant, to help generate entities, fields, and relationships automatically.
+  </Card>
+
+  <Card title="Generate Code" icon="laptop-code" href="/day-one/generate-code">
+    Build and sync your service to generate production-ready code that implements all your defined configurations and customizations.
+  </Card>
+</CardGroup>
+
+By choosing Amplication's **opinionated Node.js or .NET service option**, you're using time-tested code patterns and focusing on real business logic while still having the freedom to edit every line of the service as you see fit.

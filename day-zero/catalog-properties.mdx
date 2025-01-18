@@ -5,7 +5,7 @@ icon: 'tags'
 ---
 
 <Frame>
-    <img src="/images/day-zero/catalog-properties.png" />
+    <img src="/images/day-zero/catalog-with-catalog-properties.png" />
 </Frame>
 
 Amplication's **Catalog Properties** empower you to **tag and describe all resources** in a centralized, standardized way.
@@ -13,7 +13,7 @@ By applying these properties, you can filter, order, group, visualize, and even 
 
 ## Why Resource Management Matters
 
-As a platform team, you need to ensure that every new or existing resource in your software ecosystem follows your organization’s best practices, security requirements, and architecture standards.
+As a platform team, you need to ensure that every new or existing resource in your software ecosystem follows your organization’s best practices, security requirements, and architectural standards.
 This presents several challenges:
 
 - **Lack of Centralized Visibility:** It's challenging to get a unified view of all your services and resources, making it difficult to enforce standards and track compliance.
@@ -58,19 +58,32 @@ Catalog properties, on the other hand, are **organizational metadata** that appl
 Catalog Properties aren't just for organizing your resources. They also **connect into code generation via plugins**.
 When you generate code using Private Plugins, you have full access to:
 
-- **Catalog Properties** of the specific resource.  
-- **Blueprint Properties** of the resource.  
-- **Catalog & Blueprint Properties** of all related resources set through Blueprint relations.
+- **Catalog Properties** of the specific resource
+- **Blueprint Properties** of the resource
+- **Catalog & Blueprint Properties** of all related resources set through Blueprint relations
 
 This means you can **adapt generation logic** based on any property.
 
-- **Compliance Level** triggers the inclusion of stricter security modules.  
-- **Deployment Environment** adjusts Dockerfiles, Helm charts, or serverless config.  
-- **Team Ownership** adds certain logging or monitoring integrations relevant for that team.
+- **Compliance Level** triggers the inclusion of stricter security modules
+- **Deployment Environment** adjusts Dockerfiles, Helm charts, or serverless config
+- **Team Ownership** adds certain logging or monitoring integrations relevant for that team
 
 <Tip>
 **Private Plugin Property Access**: Catalog Properties are always available in the plugin context for code generation so you can easily maintain enterprise-wide consistency, whether you're generating microservices, infrastructure as code, or messaging configurations.
 </Tip>
+
+## How Catalog Properties Work
+
+<Frame>
+    <img src="/images/day-zero/catalog-properties.png" />
+</Frame>
+
+Catalog Properties are available in the following types:
+
+*   **Select:**  Allows you to choose one option from a predefined list
+*   **Multi-Select:** Enables you to select multiple options from a predefined list
+*   **Text:**  Allows you to enter free-form text. You can also add a regular expression to validate the input and provide a custom validation message
+*   **Link:**  Allows you to enter a URL. Similar to the Text type, you can validate the URL format using a regular expression and provide a custom validation message
 
 ## Example Use Cases
 
@@ -84,28 +97,27 @@ This means you can **adapt generation logic** based on any property.
 
   </Step>
 
-  <Step title="Deployment Environment Configuration" icon="server">
-    Clarify how each resource is hosted or run, and tailor code generation or CI/CD logic based on the environment selected.
-
+  <Step title="Monitored Regions" icon="map-pin">
+     Specify the geographic regions where a service is actively monitored for performance and compliance, allowing for comprehensive oversight across your infrastructure.
     <Frame>
         <img src="/images/day-zero/catalog-property-example-2.png" />
     </Frame>
   </Step>
 
-  <Step title="Compliance Level Management" icon="shield-halved">
-    Enforce stricter security policies and auditing requirements for resources subject to specific compliance rules.
+  <Step title="Cron Schedule" icon="calendar">
+    Define and validate the cron expressions for scheduled jobs.
 
     <Frame>
-            <img src="/images/day-zero/catalog-property-example-4.png" />
-        </Frame>
+      <img src="/images/day-zero/catalog-property-example-4.png" />
+    </Frame>
   </Step>
 
-    <Step title="Deployment Stage Assignment" icon="code-branch">
-        Define the current stage of the resource to manage deployment rules, testing requirements, and access controls appropriately.
-
-        <Frame>
-            <img src="/images/day-zero/catalog-property-example-3.png" />
-        </Frame>
+    <Step title="Documentation Link" icon="book">
+      Define and validate a link to a specific documentation site.
+      
+      <Frame>
+        <img src="/images/day-zero/catalog-property-example-3.png" />
+      </Frame>
     </Step>
 
 </Steps>
@@ -121,7 +133,7 @@ You can manage all your Catalog Properties from a single interface so that you h
   <Step title="Select the 'Settings' Tab">
     Find and select the "Settings" tab in the navigation bar.
   </Step>
-  <Step title="Navigate to 'Catalog Propeties'">
+  <Step title="Navigate to 'Catalog Properties'">
     In the settings sidebar, locate and click on "Catalog Properties".
   </Step>
   <Step title="Create and Manage Catalog Properties">

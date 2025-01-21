@@ -1,6 +1,167 @@
 ---
 title: 'Create Resource from Live Template'
 sidebarTitle: 'Create from a Template'
-description: 'Empower enterprise developers to quickly create resources using fully configured golden paths with predefined settings.'
+description: "Quickly generate new services or blueprints based on pre-configured templates."
 icon: 'layer-group'
 ---
+
+<Frame>
+    <img src="/images/day-one/resource-from-template.png" />
+</Frame>
+
+Amplication's **Templates** let you efficiently create new services or blueprints that align with organizational standards and accelerate your development.
+By using pre-configured templates, you can quickly generate new resources.
+
+## How to Create a Resource from a Template
+
+There are a couple of convenient ways to start creating a new resource from a template:
+
+1. **From the Workspace Catalog:**
+    <Steps>
+        <Step title="Navigate to the Workspace Catalog">
+            Go to your Amplication workspace and select the **Workspace Catalog** tab.
+        </Step>
+        <Step title="Add Resource to Project">
+            <Frame>
+                <img src="/images/day-one/create-resource-from-blueprint-workspace.png" />
+            </Frame>
+            Click the **Add Resource to Project** button in the top right corner.
+        </Step>
+        <Step title="Select Your Project">
+            Choose the project where you want to create the new resource. This will take you to the "Create a new resource in the catalog" page.
+        </Step>
+    </Steps>
+
+2. **From Within a Specific Project:**
+    <Steps>
+        <Step title="Go to Your Projects">
+            Navigate to the **Projects** tab in your workspace.
+        </Step>
+        <Step title="Select Your Project">
+            Click on the specific project where you want to add the resource.
+        </Step>
+        <Step title="Open the Catalog">
+            Within the project view, select the **Catalog** tab.
+        </Step>
+        <Step title="Add Resource">
+            <Frame>
+                <img src="/images/day-one/create-resource-from-blueprint-projects.png" />
+            </Frame>
+            Click the **Add Resource** button in the top right corner.
+        </Step>
+        <Step title="Select From Template">
+            In the dropdown menu, choose **from blueprint / template**.
+        </Step>
+    </Steps>
+
+Both methods will lead you to the **Create a new resource in the catalog** page, where you can select your template.
+
+## Configuring Your New Resource
+
+Once you're on the **Create a new resource in the catalog** page, you'll configure the details for your new service:
+
+<Steps>
+    <Step title="Project and Template Selection">
+        <Frame>
+            <img src="/images/day-one/create-resource-from-template-part-1.png" />
+        </Frame>
+        <p>You'll see two dropdown menus: **template** and **blueprint**.</p>
+        <p>Select the new **template** from the dropdown. You can choose from templates created from either existing services or blueprints.</p>
+    </Step>
+    <Step title="Resource Details">
+        <Frame>
+            <img src="/images/day-one/create-resource-from-blueprint-part-2.png" />
+        </Frame>
+        <p>In the **Resource** section, provide the following information:</p>
+        <ul>
+            <li>**Name:** Give your new resource a descriptive name (e.g., "OrderProcessingService").</li>
+            <li>**Description:** Add a brief description for the resource.</li>
+            <li>**Catalog Properties:** Your platform team may have defined specific catalog properties to help organize and categorize resources. Fill in the required and any relevant optional properties. These might include things like "Tech," "Type," "Domain," and "Lifecycle."</li>
+        </ul>
+        <Note>
+            Learn more about how catalog properties help organize your resources in the [Catalog Properties](/day-zero/catalog-properties) page.
+        </Note>
+    </Step>
+    <Step title="Git Repository Settings">
+        <Frame>
+            <img src="/images/day-one/create-resource-from-blueprint-part-3.png" />
+        </Frame>
+        <p>By default, your new resource will be associated with the default Git repository configured for the project.</p>
+        <p>If you need to use a different repository:</p>
+        <ol>
+            <li>Click the **Override Default Settings** slider.</li>
+            <li>Select the desired Git organization.</li>
+            <li>Choose the specific repository you want to associate with this resource.</li>
+        </ol>
+
+        <Note>
+        When you create a new Amplication project you can choose to give it a default git repo.
+        That repo will be used for all new resources creating in that project, but it can you can override it.
+        </Note>
+
+    </Step>
+    <Step title="Create the Resource">
+        Once you've filled in all the necessary details, click the **Create Resource** button.
+    </Step>
+</Steps>
+
+## Exploring Your New Resource
+
+After creating your resource from a template, the functionality and content available will depend on the type of your specific resource.
+You may see some or all of the following tabs:
+
+<Info>
+Check out our detailed guide on [Live Templates](/day-zero/live-templates) to understand templates and how they help your organization.
+</Info>
+
+### Overview
+
+<Frame caption="Example of a resource Overview page created from a template.">
+    <img src="/images/day-one/resource-from-template.png" />
+</Frame>
+
+The **Overview** tab provides a summary of your new resource. You can see the name, description, catalog properties, the Git repository it's connected to, and key metrics like the number of entities, APIs, and installed plugins.
+
+### APIs
+
+The **APIs** tab allows you to define the APIs for your service by adding actions and DTOs. This tab is available when the template is based on a service.
+
+<Note>
+For a detailed understanding of how to define your service's API, visit the [Custom Types and Actions](/day-one/custom-types-and-actions/) page.
+</Note>
+
+### Entities
+
+In the **Entities** tab, you can [create and manage your data models](/day-one/entities-fields), including defining fields, relationships, and more. This tab is available when the template is based on a service.
+
+### Roles
+
+The **Roles** tab is where you'll [configure user roles and permissions](/day-one/roles-permissions) for your resource, controlling access to different parts of your application. This tab is available when the template is based on a service.
+
+### Plugins
+
+The **Plugins** tab provides access to a catalog of public and private plugins. You can install plugins to extend the functionality of your resource, with available plugins depending on the underlying technology (.NET or Node.js) if the template is service-based.
+
+<Info>
+Visit the [Activate Public Cataloag Plugins](/day-one/use-public-plugins) page to learn more about installing plugins in your resource.
+</Info>
+
+### Git Settings
+
+Use the **Git Settings** tab to review or override the default Git repository settings that were configured when the resource was created.
+
+### Tech Debt
+
+The **Tech Debt** tab displays alerts and updates related to your resource, including updates to plugins or the template it was created from.
+
+<Info>
+Learn more about how to manage technical debt in the [Technical Debt Management](/day-two/resolve-debt-across-multiple-resources) documentation.
+</Info>
+
+### Settings
+
+The **Settings** tab provides access to various configuration options for your resource. The available settings are dependent on whether the template is based on a service or a blueprint.
+
+<Tip>
+Within the **Settings** tab, you'll find sub-tabs such as **Resource Configuration**, **APIs & Admin UI**, **Base Directories**, **Authentication Entity**, and **Code Generator Version** (if the template is based on a service), allowing for granular control over your resource's behavior.
+</Tip>

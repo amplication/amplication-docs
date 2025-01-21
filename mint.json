@@ -137,8 +137,7 @@
       "group": "Install & Configure Plugins",
       "pages": [
         "day-one/activate-private-plugins",
-        "day-one/use-public-plugins",
-        "day-zero/private-vs-public-plugins"
+        "day-one/use-public-plugins"
       ]
     },
     {

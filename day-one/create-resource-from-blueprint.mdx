@@ -1,6 +1,136 @@
 ---
 title: 'Create Resource from Blueprint'
 sidebarTitle: 'Create from a Blueprint'
-description: 'Enterprise developers can learn how to self-serve resource creation by selecting and launching resources from predefined blueprints.'
+description: 'How to self-serve resource creation by selecting and launching resources from predefined Blueprints.'
 icon: 'diagram-lean-canvas'
 ---
+
+<Frame>
+    <img src="/images/day-one/resource-from-blueprint.png" />
+</Frame>
+
+Creating new resources is streamlined with Amplication's Blueprints. 
+By using pre-defined, standardized foundations with Blueprints, you can focus on writing the core business logic that matters.
+
+<Tip>
+Want to learn more about the power of Blueprints? See the [Blueprints](/day-zero/blueprints) page for a comprehensive overview of how your platform team can use them to establish organizational standards.
+</Tip>
+
+## How to Create a Resource from a Blueprint
+
+There are a couple of convenient ways to start creating a new resource from a blueprint:
+
+1. **From the Workspace Catalog:**
+    <Steps>
+        <Step title="Navigate to the Workspace Catalog">
+            Go to your Amplication workspace and select the **Workspace Catalog** tab.
+        </Step>
+        <Step title="Add Resource to Project">
+            <Frame>
+                <img src="/images/day-one/create-resource-from-blueprint-workspace.png" />
+            </Frame>
+            Click the **Add Resource to Project** button in the top right corner.
+        </Step>
+        <Step title="Select Your Project">
+            Choose the project where you want to create the new resource. This will take you to the "Create a new resource in the catalog" page.
+        </Step>
+    </Steps>
+
+2. **From Within a Specific Project:**
+    <Steps>
+        <Step title="Go to Your Projects">
+            Navigate to the **Projects** tab in your workspace.
+        </Step>
+        <Step title="Select Your Project">
+            Click on the specific project where you want to add the resource.
+        </Step>
+        <Step title="Open the Catalog">
+            Within the project view, select the **Catalog** tab.
+        </Step>
+        <Step title="Add Resource">
+            <Frame>
+                <img src="/images/day-one/create-resource-from-blueprint-projects.png" />
+            </Frame>
+            Click the **Add Resource** button in the top right corner.
+        </Step>
+        <Step title="Select From Blueprint">
+            In the dropdown menu, choose **from blueprint / template**.
+        </Step>
+    </Steps>
+
+Both methods will lead you to the **Create a new resource in the catalog** page, where you can select your blueprint.
+
+## Configuring Your New Resource
+
+Once you're on the **Create a new resource in the catalog** page, you'll configure the details for your new service:
+
+<Steps>
+    <Step title="Project and Blueprint Selection">
+
+        <Frame>
+            <img src="/images/day-one/create-resource-from-blueprint-part-1.png" />
+        </Frame>
+        
+        <p>You'll see two dropdown menus: **template** and **blueprint**.</p>
+        
+        <p>Select the desired **blueprint** from the dropdown. For example, you might select an "API" blueprint.</p>
+    </Step>
+    <Step title="Resource Details">
+
+        <Frame>
+            <img src="/images/day-one/create-resource-from-blueprint-part-2.png" />
+        </Frame>
+
+        <p>In the **Resource** section, provide the following information:</p>
+        <ul>
+            <li>**Name:** Give your new resource a descriptive name (e.g., "BillingService").</li>
+            <li>**Description:** Add a brief description for the resource.</li>
+            <li>**Catalog Properties:**  Your platform team may have defined specific catalog properties to help organize and categorize resources. Fill in the required and any relevant optional properties. These might include things like "Tech," "Type," "Domain," and "Lifecycle."</li>
+        </ul>
+        <Note>
+            Learn more about how catalog properties help organize your resources in the [Catalog Properties](/day-zero/catalog-properties) page.
+        </Note>
+    </Step>
+    <Step title="Git Repository Settings">
+
+    <Frame>
+            <img src="/images/day-one/create-resource-from-blueprint-part-3.png" />
+    </Frame>
+
+        <p>By default, your new resource will be associated with the default Git repository configured for the project.</p>
+        <p>If you need to use a different repository:</p>
+        <ol>
+            <li>Click the **Override Default Settings** slider.</li>
+            <li>Select the desired Git organization.</li>
+            <li>Choose the specific repository you want to associate with this resource.</li>
+        </ol>
+    </Step>
+    <Step title="Create the Resource">
+        Once you've filled in all the necessary details, click the **Create Resource** button.
+    </Step>
+</Steps>
+
+## Exploring Your New Resource
+
+After creating your resource, you'll be automatically taken to its **Overview** page.
+
+<Frame caption="Example of a newly created resource's Overview page.">
+    <img src="/images/day-one/resource-from-blueprint.png" />
+</Frame>
+
+Here, you can see:
+
+*   **Name and Description:** The name and description you provided.
+*   **Catalog Properties:** The catalog properties you set during creation.
+*   **Owner:** The team or individual responsible for the resource.
+
+From this overview page, you can further customize and manage your resource using the tabs across the top:
+
+*   **Plugins:**  Add functionality and integrations by installing plugins. If your platform team is using blueprints, you'll see any private plugins available to you.
+*   **Git Settings:** Review or override the Git repository settings if needed.
+*   **Tech Debt:** Monitor potential technical debt alerts related to your resource.
+*   **Settings:** Modify the resource's name, description, owner, and catalog properties.
+
+<Note>
+Remember to click the **Generate the Code** button in the **Pending Changes** section in the right sidebar to apply any modifications you make to your resource.
+</Note>

@@ -12,17 +12,6 @@ icon: 'layer-group'
 Amplication's **Templates** let you efficiently create new services or blueprints that align with organizational standards and accelerate your development.
 By using pre-configured templates, you can quickly generate new resources.
 
-## Types of Templates
-
-Amplication offers two distinct ways to create templates, giving you flexibility in how you standardize your resources:
-
-- **Templates from Services:** These templates capture the specific configurations and standards of an existing Amplication service. When you create a resource from a service-based template, you use Amplication's built-in opinionated approach, particularly when the original service uses the Node.js or .NET code generator.
-- **Templates from Blueprints:** Templates can also be created from Blueprints. This allows you to capture and reuse the broader organizational standards and configurations defined within a Blueprint for quicker instantiation of resources adhering to those guidelines.
-
-<Note>
-To learn about the specifics of templates and their various functionalities, explore the [Live Templates](/day-zero/live-templates) page.
-</Note>
-
 ## How to Create a Resource from a Template
 
 There are a couple of convenient ways to start creating a new resource from a template:
@@ -77,7 +66,7 @@ Once you're on the **Create a new resource in the catalog** page, you'll configu
             <img src="/images/day-one/create-resource-from-template-part-1.png" />
         </Frame>
         <p>You'll see two dropdown menus: **template** and **blueprint**.</p>
-        <p>Select the desired **template** from the dropdown. You can choose from templates created from either existing services or blueprints.</p>
+        <p>Select the new **template** from the dropdown. You can choose from templates created from either existing services or blueprints.</p>
     </Step>
     <Step title="Resource Details">
         <Frame>
@@ -118,7 +107,12 @@ Once you're on the **Create a new resource in the catalog** page, you'll configu
 
 ## Exploring Your New Resource
 
-After creating your resource from a template, you'll be automatically taken to its resource overview page. The available tabs and settings will depend on whether the template was based on a service or a blueprint.
+After creating your resource from a template, the functionality and content available will depend on the type of your specific resource.
+You may see some or all of the following tabs:
+
+<Info>
+Check out our detailed guide on [Live Templates](/day-zero/live-templates) to understand templates and how they help your organization.
+</Info>
 
 ### Overview
 
@@ -132,9 +126,9 @@ The **Overview** tab provides a summary of your new resource. You can see the na
 
 The **APIs** tab allows you to define the APIs for your service by adding actions and DTOs. This tab is available when the template is based on a service.
 
-<Info>
+<Note>
 For a detailed understanding of how to define your service's API, visit the [Custom Types and Actions](/day-one/custom-types-and-actions/) page.
-</Info>
+</Note>
 
 ### Entities
 
@@ -147,6 +141,10 @@ The **Roles** tab is where you'll [configure user roles and permissions](/day-on
 ### Plugins
 
 The **Plugins** tab provides access to a catalog of public and private plugins. You can install plugins to extend the functionality of your resource, with available plugins depending on the underlying technology (.NET or Node.js) if the template is service-based.
+
+<Info>
+Visit the [Activate Public Cataloag Plugins](/day-one/use-public-plugins) page to learn more about installing plugins in your resource.
+</Info>
 
 ### Git Settings
 
@@ -165,5 +163,5 @@ Learn more about how to manage technical debt in the [Technical Debt Management]
 The **Settings** tab provides access to various configuration options for your resource. The available settings are dependent on whether the template is based on a service or a blueprint.
 
 <Tip>
-Within the **Settings** tab, you'll find sub-tabs such as **Resource Configuration**, **APIs & Admin UI**, **Base Directories**, **Authentication Entity**, and **Code Generator Version** (if the template is based on a service), allowing for granular control over your resource's behavior. Refer to the specific documentation for each of these sub-tabs for more information.
+Within the **Settings** tab, you'll find sub-tabs such as **Resource Configuration**, **APIs & Admin UI**, **Base Directories**, **Authentication Entity**, and **Code Generator Version** (if the template is based on a service), allowing for granular control over your resource's behavior.
 </Tip>

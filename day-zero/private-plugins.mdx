@@ -11,7 +11,7 @@ icon: 'plug'
 **Plugins** are the driving force behind Amplication's code generation capabilities.
 They provide the flexibility and extensibility needed to adapt Amplication to a wide range of technologies, languages, and frameworks.
 
-When you create a new resource from a Blueprint, it looks at the associated private plugins to understand the concrete steps needed to generate the code and configurations.
+When you create a new resource from a Blueprint, it looks at the configured plugins to understand the concrete steps needed to generate the code and configurations.
 Without plugins, Blueprints would be just abstract descriptions.
 
 <Tip>
@@ -44,18 +44,18 @@ Together, they transform high-level specifications into production-ready code.
 They define the structure and relationships of your software ecosystem.
 For example, a blueprint might specify:
 
-- What entities and fields your service needs
-- How these entities relate to each other
-- What business rules should be enforced
-- Which authentication requirements apply
+- Which microservices and APIs your system needs
+- What message queues and event streams to use
+- Which storage solutions (databases, caches) to implement
+- What authentication and authorization patterns to follow
 
 **Plugins are imperative**.
 They contain the specific logic that transforms blueprint definitions into actual code.
 When a blueprint defines a customer data service, your plugin determines:
 
 - Which ORM library to use
-- How to implement email validation
-- What authentication mechanisms to apply
+- How to build API endpoints
+- How to do caching
 - How to structure the generated code
 
 <Note>
@@ -65,9 +65,15 @@ When a blueprint defines a customer data service, your plugin determines:
 ## How Private Plugins Solve Drift & Maintenance Challenges
 
 One of the biggest headaches for platform teams is **managing technical debt** across repositories, especially when managing multiple resources that share common plugins.
-Private Plugins, paired with Amplication's blueprint-driven code generation, help teams stay in sync through automated coordination.
+Plugins, paired with Amplication's blueprint-driven code generation, help teams stay in sync through automated coordination.
 
-When you update a plugin that's used across multiple blueprints, Amplication helps you maintain consistency by:
+Plugins support versioning, allowing our team to:
+
+- Release and maintain multiple versions of the same plugin
+- Gradually roll out plugin updates across different teams
+- Maintain backward compatibility when needed
+
+So, when you update and release a new version of a plugin that's used across multiple blueprints, Amplication helps you maintain consistency with:
 
 <CardGroup cols={2}>
   <Card title="Automated Update Notifications" icon="bell" href="/day-two/automated-alerts">
@@ -80,22 +86,22 @@ When you update a plugin that's used across multiple blueprints, Amplication hel
 
 ## A Private Plugin Example
 
-Let's say you have a Blueprint defining an `Order` entity.
+Let's say your organization needs to ensure consistent infrastructure provisioning across all new resources. 
 You can create a private plugin that:
 
 <Steps>
-  <Step title="Intercept Code Generation">
-    Intercepts the code generation process for `Order` entities
+  <Step title="Cloud Resources">
+    Generates Terraform configurations for required cloud resources
   </Step>
-  <Step title="Generate Order IDs">
-    Adds custom code to automatically generate unique order IDs based on your company's specific algorithm
+  <Step title="CI/CD Pipeline">
+    Sets up standardized GitHub Actions/Jenkins pipelines with security scanning
   </Step>
-  <Step title="Integrate Auditing">
-    Integrates with your internal auditing service to log all `Order` creation events
+  <Step title="Environment Configuration">
+    Creates environment-specific configurations for dev, staging, and production
   </Step>
 </Steps>
 
-This ensures that every time a developer creates a service with an `Order` entity, these crucial business rules are automatically applied without manual intervention.
+This ensures that every time a developer creates a new resource with this configured plugin, all the necessary infrastructure and deployment configurations are automatically generated following your organization's standards.
 
 ## Next Steps
 

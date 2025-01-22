@@ -80,8 +80,7 @@
     {
       "group": "Codify Standards with Plugins",
       "pages": [
-        "day-zero/private-plugins",
-        "day-zero/private-vs-public-plugins"
+        "day-zero/private-plugins"
       ]
     },
     {

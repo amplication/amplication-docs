@@ -1,5 +1,123 @@
 ---
 title: 'Private Plugins'
-description: 'Explore how platform leads can codify organizational standards using custom plugins in Amplication.'
+description: "Codify organizational standards using Amplication's Private Plugins"
 icon: 'plug'
 ---
+
+<Frame>
+    <img src="/images/day-zero/plugins.png" />
+</Frame>
+
+**Plugins** are the driving force behind Amplication's code generation capabilities.
+They provide the flexibility and extensibility needed to adapt Amplication to a wide range of technologies, languages, and frameworks.
+
+When you create a new resource from a Blueprint, it looks at the configured plugins to understand the concrete steps needed to generate the code and configurations.
+Without plugins, Blueprints would be just abstract descriptions.
+
+<Tip>
+Blueprints define *what* you want to build.
+Plugins define *how* to build it with code.
+</Tip>
+
+## What Are Private Plugins?
+
+Private plugins are **custom code** that hook directly into Amplication's code generation lifecycle events.
+This event system provides plugins with comprehensive access to:
+
+- **Catalog properties** for the specific resource being generated
+- **Blueprint properties** of the specific resource
+- Catalog and blueprint properties of all related resources (set through Blueprint relations)
+
+This deep level of access allows you to create highly customized plugins that can adapt the code generation logic based on your organization's specific needs.
+By combining the Blueprint Plugin events with various property access levels, you can precisely control how your software is generated.
+
+<Note>
+For detailed technical information about implementing plugins, visit our [Plugin Development Guide](/plugins/development).
+</Note>
+
+## How Plugins and Blueprints work together
+
+Blueprints and plugins each serve a distinct purpose.
+Together, they transform high-level specifications into production-ready code.
+
+**Blueprints are declarative**.
+They define the structure and relationships of your software ecosystem.
+For example, a blueprint might specify:
+
+- Which microservices and APIs your system needs
+- What message queues and event streams to use
+- Which storage solutions (databases, caches) to implement
+- What authentication and authorization patterns to follow
+
+**Plugins are imperative**.
+They contain the specific logic that transforms blueprint definitions into actual code.
+When a blueprint defines a customer data service, your plugin determines:
+
+- Which ORM library to use
+- How to build API endpoints
+- How to do caching
+- How to structure the generated code
+
+<Note>
+**Example**: A Blueprint might specify, "We need a standard Spring Boot resource with a user authentication module." A plugin knows *how* to scaffold the Java classes, set up Spring Security configurations, implement JWT authentication, configure Spring AOP for logging, and set up Maven/Gradle build pipelines.
+</Note>
+
+## How Private Plugins Solve Drift & Maintenance Challenges
+
+One of the biggest headaches for platform teams is **managing technical debt** across repositories, especially when managing multiple resources that share common plugins.
+Plugins, paired with Amplication's blueprint-driven code generation, help teams stay in sync through automated coordination.
+
+Plugins support versioning, allowing the platform team to:
+
+- Release and maintain multiple versions of the same plugin
+- Gradually roll out plugin updates across different teams
+- Maintain backward compatibility when needed
+
+So, when you update and release a new version of a plugin that's used across multiple blueprints, Amplication helps you maintain consistency with:
+
+<CardGroup cols={2}>
+  <Card title="Automated Update Notifications" icon="bell" href="/day-two/automated-alerts">
+    Resources using the modified plugin receive immediate alerts, helping teams track which services need attention.
+  </Card>
+  <Card title="Streamlined Updates via PRs" icon="code-pull-request" href="/day-two/trigger-prs-for-updated-standards">
+    Amplication automatically generates pull requests across all affected resources, making it easy to review and apply plugin changes at scale.
+  </Card>
+</CardGroup>
+
+## A Private Plugin Example
+
+Let's say your organization needs to ensure consistent infrastructure provisioning across all new resources. 
+You can create a private plugin that:
+
+<Steps>
+  <Step title="Cloud Resources">
+    Generates Terraform configurations for required cloud resources
+  </Step>
+  <Step title="CI/CD Pipeline">
+    Sets up standardized GitHub Actions/Jenkins pipelines with security scanning
+  </Step>
+  <Step title="Environment Configuration">
+    Creates environment-specific configurations for dev, staging, and production
+  </Step>
+</Steps>
+
+This ensures that every time a developer creates a new resource with this configured plugin, all the necessary infrastructure and deployment configurations are automatically generated following your organization's standards.
+
+## Next Steps
+
+Ready to create your own private plugins? Head over to our [Plugin Development Guide](/plugins/development) to learn about:
+
+<CardGroup cols={2}>
+  <Card title="Blueprint Plugin Events" icon="plug" href="/plugin-development/reference">
+    Learn how to interact with Amplication's event system to customize code generation
+  </Card>
+  <Card title="Plugin Folder Structure" icon="folder-tree" href="/plugin-development/project-setup-folder-structure">
+    Understand how to organize your plugin's code and resources effectively
+  </Card>
+  <Card title="Lifecycle Hooks" icon="circle-nodes" href="/plugin-development/before-and-after-lifecycle-functions">
+    Discover how to tap into various application events during the generation process
+  </Card>
+  <Card title="Testing Your Plugin" icon="vial" href="/plugin-development/test-a-plugin">
+    Best practices for testing and validating your plugin's functionality
+  </Card>
+</CardGroup>

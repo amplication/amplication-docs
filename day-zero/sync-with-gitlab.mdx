@@ -1,5 +1,99 @@
 ---
 title: 'Sync With GitLab'
-description: 'Guide for platform leads on integrating Amplication with GitLab for streamlined infrastructure management.'
+description: 'Integrate Amplication with GitLab for streamlined git management for all your resources.'
 icon: 'gitlab'
 ---
+
+Amplication provides seamless git integration with **GitLab**.
+With this integration, you can use GitLab's fully-featured version control to manage the generated code for all your resources.
+
+## Connect Your GitLab Organization
+
+To get started, you must connect your GitLab organization to Amplication.
+Follow these steps:
+
+<Steps>
+  <Step title="Navigate to Your Amplication Workspace">
+    Access your workspace within the Amplication platform.
+  </Step>
+  <Step title="Select the 'Projects' Tab">
+    Find and select the "Projects" tab in the navigation bar.
+  </Step>
+  <Step title="Select a specific project's 'Software Catalog'">
+    Click on your desired project to access its Software Catalog, where you can manage all services and resources.
+  </Step>
+  <Step title="Select the 'Git Settings' Tab">
+    Select the **Git Settings** tab. If a repository is already connected, click **Change Repository**
+  </Step>
+  <Step title="Select Git Organization">
+    After clicking "Change Repository", select "Select Git Organization" to choose a new GitLab organization for your repository.
+  </Step>
+</Steps>
+
+<Frame caption="Adding a GitLab organization">
+  <img src="/images/day-zero/add-git-org.png" />
+</Frame>
+
+## Authorization and Repository Setup
+
+<Steps>
+  <Step title="Authorize Access">
+    When selecting GitLab, you'll be redirected to GitLab's authorization page where you'll grant Amplication the necessary permissions.
+    
+    <Frame>
+      <img src="/images/day-zero/authorize-gitlab.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Repository">
+    After authorization, choose one of two options:
+
+    <CardGroup cols={2}>
+      <Card title="Use Existing Repository" icon="book">
+        Select from your available GitLab repositories in the repository selection modal
+      </Card>
+
+      <Card title="Create New Repository" icon="plus">
+        Click the "Create repository" button to set up a fresh GitLab repository
+      </Card>
+    </CardGroup>
+
+    <Frame caption="Select existing GitLab repo">
+      <img src="/images/day-zero/select-gitlab-repo.png" />
+    </Frame>
+
+  </Step>
+</Steps>
+
+## Working with Merge Requests
+
+<Steps>
+  <Step title="Make Changes">
+    Update your resource in Amplication like editing service settings, adding an entity, or updating an API endpoint.
+  </Step>
+  
+  <Step title="Generate Code">
+    1. Access the pending changes sidebar in your [Service Catalog](/day-two/service-catalog/).
+    2. Click "Generate the code" to initiate the build process
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/day-zero/gitlab-merge-request.png" />
+</Frame>
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card title="Git Configuration Settings" icon="gear" href="/git-configuration-settings">
+    Learn about project-level and resource-level Git settings and how to configure them for your resource.
+  </Card>
+
+  <Card title="Viewing Commits and Builds" icon="clock-rotate-left" href="/day-one/commits">
+    Understand how to track and monitor your changes, builds, and deployment history.
+  </Card>
+
+  <Card title="Smart Git Sync" icon="book" href="/day-zero/smart-git-sync">
+    Learn about Amplication's Smart Git Sync integration features, including branch management and merge request workflows.
+  </Card>
+</CardGroup>

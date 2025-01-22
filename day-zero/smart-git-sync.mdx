@@ -1,5 +1,83 @@
 ---
 title: 'Smart Git Sync'
-description: 'Platform leads can learn how Amplication facilitates seamless Git integration for managing infrastructure as code.'
+description: 'Learn how Amplication facilitates seamless Git integration for managing every resource in your organization'
 icon: 'git-alt'
 ---
+
+<Frame>
+    <img src="/images/day-zero/sync-with-github.svg" />
+</Frame>
+
+**Smart Git Sync** automatically synchronizes changes made between Amplication and your preferred Git repository.
+It automatically tracks and commits changes to a dedicated `amplication` branch.
+Whether you're adding a new resource or making a change to an existing one, Smart Git Sync ensures that all changes are systematically tracked, committed, and easy to review.
+
+<Tip>
+The `amplication` branch should be viewed as your streamlined pipeline for Amplication-driven updates. Let your developers focus on business logic and **Smart Git Sync** will handle the rest.
+</Tip>
+
+## How Smart Git Sync Works
+
+<Steps>
+  <Step title="1. Central Branch Creation" icon="diagram-project" iconType="solid">
+    Amplication establishes an `amplication` branch in each targeted repository. This branch becomes the **single source of truth** for automatically generated code updates, ensuring uniform standards across all services.
+  </Step>
+
+  <Step title="2. Automatic Commit Generation" icon="file-signature" iconType="solid">
+    Whenever changes are made in an Amplication project—such as adding a new entity, updating an API endpoint, or modifying configurations—**Smart Git Sync** collects these changes and commits them to the `amplication` branch.
+  </Step>
+
+  <Step title="3. Pull Request Creation" icon="code-pull-request" iconType="solid">
+    If there isn’t an open pull request from `amplication` to your default branch (e.g., `main`), Amplication automatically creates one. The title and message come from the commit description you provide in Amplication’s UI (or from a default template, if none is provided).
+  </Step>
+
+  <Step title="4. Review & Merge" icon="handshake" iconType="solid">
+    Your team merges the PR into the default branch.  
+    All organization-wide standards, best practices, or security patches you’ve defined in Amplication are consistently and seamlessly **infused into your codebase** with no manual overhead required.
+  </Step>
+</Steps>
+
+<Tip>
+Keep the `amplication` branch intact. Avoid deleting it. If conflicts arise, resolve them **on** the `amplication` branch. This preserves consistency and prevents errors.
+</Tip>
+
+## Supported Git Providers
+
+<CardGroup cols={3}>
+    <Card title="GitHub" icon="github" iconType="brands" href="/day-zero/sync-with-github"></Card>
+    <Card title="GitLab" icon="gitlab" iconType="brands" href="/day-zero/sync-with-gitlab"></Card>
+    <Card title="Bitbucket" icon="bitbucket" iconType="brands" href="/day-zero/sync-with-bitbucket"></Card>
+    <Card title="Azure DevOps" icon="microsoft" iconType="brands" href="/day-zero/sync-with-azure-devops"></Card>
+    <Card title="AWS CodeCommit" icon="aws" iconType="brands" href="/day-zero/sync-with-aws-codecommit"></Card>
+</CardGroup>
+
+## Commit Messages & Visibility
+
+Each commit that **Smart Git Sync** generates contains a clear build message. This message:
+
+- **Identifies** exactly what changed in Amplication.  
+- **Links back** to the Amplication build logs so your engineering managers or security auditors can see detailed records of how the code was produced or updated.  
+- **Initiates** or updates the associated pull request for easier peer review and consistent merging into the default branch.
+
+<Frame>
+    <img src="/images/day-zero/github-pull-request.png" />
+</Frame>
+
+<Info>
+If you don't provide a custom commit message in the pending changes section, Amplication will automatically generate a default message.
+</Info>
+
+## Next Steps
+
+<Steps>
+  <Step title="Choose Your Git Provider">
+    Amplication supports [GitHub](/sync-with-github), [GitLab](/sync-with-gitlab), [Bitbucket](/sync-with-bitbucket), [AWS CodeCommit](/sync-with-aws-codecommit), and others.
+    Pick your primary provider to start integrating Smart Git Sync.
+  </Step>
+  <Step title="Automate and Monitor">
+    Once Smart Git Sync is active, monitor pull requests and merges in the `amplication` branch. Over time, you’ll see significantly less fragmentation, manual rework, and wasted developer hours.
+  </Step>
+  <Step title="Scale Confidently">
+    Whether you have 5 services or 500, Amplication’s Git Sync approach scales. As your engineering organization grows, your foundational code remains **consistent**, **secure**, and **in sync**.
+  </Step>
+</Steps>

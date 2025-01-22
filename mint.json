@@ -10,7 +10,7 @@
     "og:image": "/images/amplication-docs-social-card.png"
   },
   "favicon": "/favicon.svg",
-  "theme": "prism",
+  "theme": "quill",
   "colors": {
     "primary": "#5D4CFE",
     "light": "#8477FF",

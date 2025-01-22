@@ -9,7 +9,9 @@ icon: 'git-alt'
 </Frame>
 
 **Smart Git Sync** automatically synchronizes changes made between Amplication and your preferred Git repository.
-It automatically tracks and commits changes to a dedicated `amplication` branch.
+It automatically tracks and commits changes to dedicated `amplication` branches.
+If multiple resources are connected to the same repository, Amplication manages the changes for each resource in a separate branch.
+
 Whether you're adding a new resource or making a change to an existing one, Smart Git Sync ensures that all changes are systematically tracked, committed, and easy to review.
 
 <Tip>
@@ -20,11 +22,11 @@ The `amplication` branch should be viewed as your streamlined pipeline for Ampli
 
 <Steps>
   <Step title="1. Central Branch Creation" icon="diagram-project" iconType="solid">
-    Amplication establishes an `amplication` branch in each targeted repository. This branch becomes the **single source of truth** for automatically generated code updates, ensuring uniform standards across all services.
+    Amplication establishes one branch per resource. This branch becomes the **single source of truth** for automatically generated code updates, ensuring uniform standards across all resources.
   </Step>
 
   <Step title="2. Automatic Commit Generation" icon="file-signature" iconType="solid">
-    Whenever changes are made in an Amplication project—such as adding a new entity, updating an API endpoint, or modifying configurations—**Smart Git Sync** collects these changes and commits them to the `amplication` branch.
+    Whenever changes are made in an Amplication resource—such as adding a new entity, updating an API endpoint, or modifying configurations—**Smart Git Sync** collects these changes and commits them to the `amplication` branch.
   </Step>
 
   <Step title="3. Pull Request Creation" icon="code-pull-request" iconType="solid">
@@ -32,14 +34,10 @@ The `amplication` branch should be viewed as your streamlined pipeline for Ampli
   </Step>
 
   <Step title="4. Review & Merge" icon="handshake" iconType="solid">
-    Your team merges the PR into the default branch.  
+    Your team merges the PR into the base branch.  
     All organization-wide standards, best practices, or security patches you’ve defined in Amplication are consistently and seamlessly **infused into your codebase** with no manual overhead required.
   </Step>
 </Steps>
-
-<Tip>
-Keep the `amplication` branch intact. Avoid deleting it. If conflicts arise, resolve them **on** the `amplication` branch. This preserves consistency and prevents errors.
-</Tip>
 
 ## Supported Git Providers
 
@@ -50,6 +48,10 @@ Keep the `amplication` branch intact. Avoid deleting it. If conflicts arise, res
     <Card title="Azure DevOps" icon="microsoft" iconType="brands" href="/day-zero/sync-with-azure-devops"></Card>
     <Card title="AWS CodeCommit" icon="aws" iconType="brands" href="/day-zero/sync-with-aws-codecommit"></Card>
 </CardGroup>
+
+<Note>
+Besides the above git providers, Amplication can work with any git provider whether it's online or on-premises.
+</Note>
 
 ## Commit Messages & Visibility
 
@@ -67,11 +69,22 @@ Each commit that **Smart Git Sync** generates contains a clear build message. Th
 If you don't provide a custom commit message in the pending changes section, Amplication will automatically generate a default message.
 </Info>
 
+## Update Base Branch
+
+By default Amplication uses the repository default branch as the base branch for the Pull Request.
+You can change this by settings the "Git Base Branch" in the **Git Settings** section.
+
+<Frame>
+    <img src="https://github.com/user-attachments/assets/833b117f-7996-4438-8923-f7f93f5f781a" />
+</Frame>
+
+For example, if you want to merge Amplication's changes into the `develop` branch instead of `main` you can update the value of the field to `develop`.
+
 ## Next Steps
 
 <Steps>
   <Step title="Choose Your Git Provider">
-    Amplication supports [GitHub](/sync-with-github), [GitLab](/sync-with-gitlab), [Bitbucket](/sync-with-bitbucket), [AWS CodeCommit](/sync-with-aws-codecommit), and others.
+    Amplication supports [GitHub](/sync-with-github), [GitLab](/sync-with-gitlab), [Bitbucket](/sync-with-bitbucket), [Azure DevOps](/sync-with-azure-devops), and [AWS CodeCommit](/sync-with-aws-codecommit).
     Pick your primary provider to start integrating Smart Git Sync.
   </Step>
   <Step title="Automate and Monitor">

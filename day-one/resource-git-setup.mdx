@@ -1,5 +1,53 @@
 ---
-title: 'Resource-Level Setup'
+title: 'Resource-Level Git Setup'
 description: 'Instructions for enterprise developers on connecting newly created resources to dedicated repositories within Amplication.'
 icon: 'code-branch'
 ---
+
+<Frame>
+    <img src="/images/day-one/resource-git-settings.png" />
+</Frame>
+
+When creating a new resource, Amplication automatically associates it with your workspace's default Git repository. However, you can customize this association both during resource creation and at any point afterward through the resource settings.
+
+This flexibility allows you to maintain different repositories for different resources, supporting various organizational structures and development workflows.
+
+<Note>
+    To learn more about how Amplication manages Git synchronization, visit our [Smart Git Sync](/day-zero/smart-git-sync) guide.
+</Note>
+
+## How to Update Git Settings
+
+<Steps>
+  <Step title="Navigate to Your Resource">
+    Locate your resource in the Workspace Catalog using the available filters and search functionality.
+  </Step>
+
+  <Step title="Access Git Settings">
+    Select the "Git Settings" tab in the resource's settings page.
+  </Step>
+
+  <Step title="Override Project Settings">
+    Click "Override Project Settings" to customize the Git configuration for this specific resource, independent of workspace-level defaults.
+  </Step>
+
+  <Step title="Select Git Repository">
+    Choose an existing repository or create a new one:
+    - To use an existing repository, select it from the dropdown list (navigate to the last page to see recently updated repositories)
+    - To create a new repository, click "Create New Repository" and configure its visibility and name
+  </Step>
+
+  <Step title="Configure Base Branch">
+    Optionally update the base branch (default is usually `main`) to specify where pull requests should be targeted.
+  </Step>
+</Steps>
+
+## Next Steps
+
+<Card
+  title="Explore Smart Git Sync"
+  icon="git-alt"
+  href="/day-zero/smart-git-sync"
+>
+  Learn about our supported Git providers and how Amplication's Smart Git Sync ensures consistent code management across your organization.
+</Card>

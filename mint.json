@@ -122,14 +122,10 @@
       ]
     },
     {
-      "group": "Sync with Git",
-      "pages": [
-        "day-one/resource-git-setup"
-      ]
-    },
-    {
       "group": "Resource Configuration",
       "pages": [
+        "day-one/resource-git-setup",
+        "day-one/refine-inherited-properties-metadata"
         "day-one/edit-catalog-properties"
       ]
     },

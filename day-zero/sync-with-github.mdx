@@ -1,5 +1,128 @@
 ---
 title: 'Sync With GitHub'
-description: 'Guide for platform leads on integrating Amplication with GitHub for streamlined infrastructure management.'
+description: 'Integrate Amplication with GitHub for centralized control and streamlined Git workflows across all your resources.'
 icon: 'github'
 ---
+
+<Frame caption="An Amplication-generated GitHub PR">
+  <img src="/images/day-zero/github-pull-request.png" />
+</Frame>
+
+Amplication seamlessly integrates with **GitHub**.
+This integration lets platform teams establish a single source of truth for all resources, ensuring consistency and governance across the entire organization.
+By connecting Amplication to your GitHub organization, you automate the synchronization of updates and minimize drift and technical debt.
+
+## Connect Your GitHub Organization
+
+To begin, link your GitHub account or organization within Amplication.
+This lets Amplication create repositories, branches, and pull requests (PRs) on your behalf.
+
+<Steps>
+  <Step title="Navigate to Your Amplication Workspace">
+    Access your workspace within the Amplication platform.
+  </Step>
+  <Step title="Select the 'Projects' Tab">
+    Find and select the "Projects" tab in the navigation bar.
+  </Step>
+  <Step title="Select a specific project's 'Software Catalog'">
+    Click on your desired project to access its Software Catalog, where you can manage all services and resources.
+  </Step>
+  <Step title="Select the 'Git Settings' Tab">
+    Select the **Git Settings** tab. If a repository is already connected, click **Change Repository**
+  </Step>
+  <Step title="Select Git Organization">
+    After clicking "Change Repository", select "Select Git Organization" to choose a new GitHub organization for your repository.
+  </Step>
+</Steps>
+
+<Frame caption="Adding a GitHub organization">
+  <img src="/images/day-zero/add-git-org.png" />
+</Frame>
+
+## Authorization and Repository Selection
+
+When you opt to connect GitHub, Amplication will request GitHub permissions to read and manage your repositories. This ensures consistent, automated synchronization across your entire organization’s codebase.
+
+<Steps>
+  <Step title="Install Amplication's GitHub App">
+    You’ll be redirected to GitHub to grant Amplication the necessary permissions for a specific organization or account.
+    <Frame caption="Install Amplication's GitHub bot into your organization">
+      <img src="/images/day-zero/github-amplication-app.png" />
+    </Frame>
+  </Step>
+  <Step title="Configure settings for Amplication's GitHub App">
+    After selecting your preferred account or organization, you'll be led to the configuration page.
+    You can configure the GitHub App to only allow access specific repositories in your account, or allow Amplication to access all of your repositories.
+    <Frame caption="Configure the GitHub Bot's access settings">
+      <img src="/images/day-zero/github-amplication-app-configure-settings.png" />
+    </Frame>
+  </Step>
+  <Step title="Choose or Create a Repository">
+    After authorization:
+    <CardGroup cols={2}>
+      <Card title="Use Existing Repository" icon="book" iconType="solid">
+        Pick an existing repo from your GitHub organization
+      </Card>
+      <Card title="Create a New Repository" icon="plus" iconType="solid">
+        Generate a fresh GitHub repository to house Amplication’s auto-generated code
+      </Card>
+    </CardGroup>
+    <Frame caption="Select your repository">
+      <img src="/images/day-zero/github-select-repositories.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<Tip>
+If your organization has multiple GitHub accounts or orgs, you can connect them all. Repeat the above steps for each account.
+</Tip>
+
+## Working with Pull Requests
+
+Any updates made to your Amplication resources, like adding an entity, adjusting settings, or altering roles are automatically compiled into commits on the dedicated `amplication` branch.
+If no open PR exists, Amplication will generate a new **pull request** to your specified base branch (.e.g. `main` or `develop`).
+
+<Steps>
+  <Step title="Make Changes">
+    Update your resource in Amplication like editing settings, adding an entity, or updating an API endpoint.
+  </Step>
+  
+  <Step title="Generate Code">
+    1. Access the pending changes sidebar in your [Service Catalog](/day-two/service-catalog/).
+    2. Click "Generate the code" to initiate the build process
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/day-zero/github-pull-request.png" />
+</Frame>
+
+## Next Steps
+
+Your GitHub integration is now live. For a broader overview of Amplication’s automated synchronization process, head to the [Smart Git Sync](/day-zero/smart-git-sync) page.
+
+<CardGroup cols={2}>
+  <Card 
+    title="Generate Code" 
+    icon="code" 
+    iconType="solid" 
+    href="/day-one/generate-code">
+    Learn how to generate and build your service code with Amplication
+  </Card>
+  
+  <Card 
+    title="Smart Git Sync" 
+    icon="code-branch" 
+    iconType="solid" 
+    href="/day-zero/smart-git-sync">
+    Understand how Amplication automatically syncs your changes with Git
+  </Card>
+  
+  <Card 
+    title="Resource-Level Git Setup" 
+    icon="gear" 
+    iconType="solid" 
+    href="/day-one/resource-git-setup">
+    Configure Git settings for individual resources in your project
+  </Card>
+</CardGroup>

@@ -1,5 +1,88 @@
 ---
 title: 'Sync With AWS CodeCommit'
-description: 'Guide for platform leads on integrating Amplication with Azure DevOps for streamlined infrastructure management.'
+description: 'Integrate Amplication with AWS CodeCommit for secure, compliant, and centralized Git management of your service foundations within AWS.'
 icon: 'aws'
 ---
+
+Amplication integrates with **AWS CodeCommit**, a secure, highly scalable, managed source control service that hosts private Git repositories within the AWS cloud.
+By connecting Amplication to AWS CodeCommit, you establish a robust, centralized system for managing your all your resources.
+
+## Pre-requisites
+
+To enable Amplication to interact with your AWS CodeCommit repositories, it's necessary to configure the appropriate AWS credentials.
+This involves providing Amplication with:
+
+- **AWS Region**: Specify the AWS region where your CodeCommit repositories are located.
+- **AWS HTTPS Git Credentials**: Configure HTTPS Git credentials for the `amplication[bot]` user, allowing secure interaction with your CodeCommit repositories. Refer to [AWS documentation on setting up Git credentials](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) for detailed instructions.
+- **AWS Access Keys**: Provide AWS Access Key ID and Secret Access Key for an IAM user with `AWSCodeCommitPowerUser` managed policy. This grants Amplication the necessary permissions to manage repositories, create commits, and open pull requests on your behalf.
+
+Once these prerequisites are configured and provided to Amplication, you will be able to select an existing CodeCommit repository or create a new one when setting up Git sync for your services.
+
+<Note>
+Please [contact Amplication](https://meetings-eu1.hubspot.com/yuval-hazaz) to provide your AWS credentials and region information before attempting to connect your AWS CodeCommit account.
+This ensures proper configuration and seamless integration with your AWS environment.
+</Note>
+
+## Connect Your AWS CodeCommit Account
+
+Connecting Amplication to your AWS account and CodeCommit is the foundational step for leveraging Amplication's standardization and automation within your AWS environment.
+
+<Steps>
+  <Step title="Access Your Amplication Workspace">
+    Log in to your Amplication account and navigate to your workspace.
+  </Step>
+  <Step title="Go to 'Projects' Tab">
+    Locate and select the 'Projects' tab from the main navigation menu.
+  </Step>
+  <Step title="Choose a Project and Access 'Software Catalog'">
+    Select the specific project you wish to configure and proceed to its 'Software Catalog' to manage your services and resources.
+  </Step>
+  <Step title="Open 'Git Settings' Tab">
+    Within the Software Catalog, find and click on the **Git Settings** tab. If a repository is already connected, you will see a **Change Repository** button.
+  </Step>
+  <Step title="Select Git Organization">
+    Click **Change Repository** (if necessary) and then select **Select Git Organization** to connect to your AWS account.
+  </Step>
+</Steps>
+
+<Frame caption="Adding a GitLab organization">
+  <img src="/images/day-zero/add-git-org.png" />
+</Frame>
+
+## Working with Pull Requests
+
+Amplication automates code updates to your AWS CodeCommit repositories through pull requests.
+When you generate code or make changes to your services in Amplication, the system automatically prepares and pushes these changes to your designated CodeCommit repository.
+
+If a pull request for the current changes does not exist, Amplication will create a new pull request from the `amplication` branch to your repository's default branch (e.g., `main`).
+This ensures a consistent and controlled process for reviewing and merging updates into your main codebase.
+
+## Next Steps
+
+Your AWS CodeCommit integration is now configured. To learn more about how Amplication manages your resources, explore the following resources:
+
+<CardGroup cols={2}>
+  <Card
+    title="Smart Git Sync"
+    icon="code-branch"
+    iconType="solid"
+    href="/day-zero/smart-git-sync">
+    Learn more about Amplication's Smart Git Sync feature and how it automates synchronization with your Git provider.
+  </Card>
+
+  <Card
+    title="Git Configuration Settings"
+    icon="cogs"
+    iconType="solid"
+    href="/git-configuration-settings">
+    Explore project-level and resource-level Git settings to customize your integration and manage repository configurations.
+  </Card>
+
+  <Card
+    title="Commits and Builds"
+    icon="history"
+    iconType="solid"
+    href="/day-one/commits">
+    Understand how to track and monitor changes, builds, and deployment history for your services integrated with AWS CodeCommit.
+  </Card>
+</CardGroup>

@@ -16,7 +16,7 @@ This page provides a high-level overview of the core concepts behind these featu
 
 ## Blueprints
 
-Blueprints are standardized templates that define the structure and configuration of your organization's resources, from microservices to infrastructure, acting as a single source of truth for your architectural standards. They also incorporate properties for customization and relations to define connections between resources, ensuring consistency and reducing technical drift across all your projects while enabling complex, interconnected systems.
+Blueprints are standardized templates that define the structure and configuration of your organization's resources, from microservices to infrastructure, acting as a single source of truth for your architectural standards. They also incorporate properties and relations to define connections between resources, ensuring consistency and reducing technical drift across all your projects while enabling complex, interconnected systems.
 
 <CardGroup cols={2}>
   <Card title="Learn more about Blueprints" href="/day-zero/blueprints" icon="diagram-lean-canvas">
@@ -27,9 +27,9 @@ Blueprints are standardized templates that define the structure and configuratio
   </Card>
 </CardGroup>
 
-## Private Plugins
+## Plugins
 
-Private Plugins are custom code extensions that hook into Amplication's code generation engine, allowing you to tailor the generated code to your organization's specific needs and technology choices. They enable you to codify your internal best practices and enforce architectural standards directly within the generated code, ensuring every resource adheres to your guidelines.
+Plugins are custom code extensions that hook into Amplication's code generation engine, allowing you to tailor the generated code to your organization's specific needs and technology choices. They enable you to codify your internal best practices and enforce architectural standards directly within the generated code, ensuring every resource adheres to your guidelines.
 
 <CardGroup cols={1}>
   <Card title="Learn more about Private Plugins" href="/day-zero/private-plugins" icon="plug">
@@ -37,13 +37,13 @@ Private Plugins are custom code extensions that hook into Amplication's code gen
   </Card>
 </CardGroup>
 
-## Catalog Properties
+## Software Catalog
 
-Catalog Properties are organizational metadata that you can apply to all your Amplication resources, providing a centralized and standardized way to tag, describe, and categorize them. These properties enable you to gain enhanced visibility, improve governance, and even influence code generation based on resource characteristics like domain, environment, or compliance level.
+The Software Catalog provides a centralized view of all your Amplication resources, offering comprehensive visibility and governance capabilities. It enables you to track, manage, and monitor your entire ecosystem through an intuitive interface, helping you maintain oversight of your architectural landscape and ensure compliance with organizational standards.
 
 <CardGroup cols={1}>
-  <Card title="Learn more about Catalog Properties" href="/day-zero/catalog-properties" icon="tags">
-    Explore how Catalog Properties help you establish a unified system for managing and governing all your Amplication resources.
+  <Card title="Learn more about the Software Catalog" href="/day-two/software-catalog" icon="book">
+    Discover how the Software Catalog helps you manage and govern all your Amplication resources effectively.
   </Card>
 </CardGroup>
 
@@ -54,5 +54,64 @@ Smart Git Sync automates the synchronization of changes between Amplication and 
 <CardGroup cols={1}>
   <Card title="Learn more about Smart Git Sync" href="/day-zero/smart-git-sync" icon="git-alt">
     Learn how Smart Git Sync automates Git integration and ensures seamless version control for all your Amplication resources.
+  </Card>
+</CardGroup>
+
+## Resources
+
+Resources are concrete implementations of blueprints within your ecosystem. Each resource is customizable while maintaining the standards defined by its blueprint, including properties, relations, and plugin configurations. Resources must be connected to a Git repository, either directly or inherited from their project.
+
+<CardGroup cols={2}>
+  <Card title="Create Resource from Blueprint" href="/day-one/create-resource-from-blueprint" icon="square-plus">
+    Learn how to create new resources using blueprints.
+  </Card>
+  <Card title="Create Resource from Template" href="/day-one/create-resource-from-template" icon="copy">
+    Discover how to quickly create resources using pre-configured templates.
+  </Card>
+</CardGroup>
+
+## Live Templates
+
+Live Templates are pre-configured blueprints with specific plugin sets and settings, enabling rapid and consistent resource creation. They serve as golden paths for your organization, ensuring standardization while accelerating development.
+
+<CardGroup cols={1}>
+  <Card title="Learn more about Live Templates" href="/day-zero/live-templates" icon="wand-magic-sparkles">
+    Explore how Live Templates streamline resource creation and maintain organizational standards.
+  </Card>
+</CardGroup>
+
+## Projects
+
+Projects organize your resources, templates, and plugins into logical groups. They provide a structured way to manage your ecosystem and control access to resources. Projects help you visualize relationships between resources and maintain clear ownership structures.
+
+<CardGroup cols={2}>
+  <Card title="Architecture Graph" href="/day-two/architecture-graph" icon="diagram-project">
+    Visualize relationships between resources in your projects.
+  </Card>
+  <Card title="Software Catalog" href="/day-two/software-catalog" icon="table-list">
+    Learn how to filter and manage resources across projects.
+  </Card>
+</CardGroup>
+
+## Entities
+
+Entities are data models that define the structure of your application's database tables. They include fields and relationships that map to database columns and connections. Entities automatically generate API endpoints for data operations, providing a foundation for your application's data layer.
+
+<CardGroup cols={2}>
+  <Card title="Learn about Entities" href="/day-one/entities-fields" icon="database">
+    Understand how to model your data using entities and fields.
+  </Card>
+  <Card title="Upload Schema" href="/day-one/upload-schema" icon="file-import">
+    Learn how to import existing database schemas.
+  </Card>
+</CardGroup>
+
+## APIs
+
+APIs are automatically generated endpoints that provide access to your entity data. They enable secure interaction with your application's database while following REST principles. APIs can be customized to meet specific business requirements.
+
+<CardGroup cols={1}>
+  <Card title="Custom Types & Actions" href="/day-one/custom-types-actions" icon="code">
+    Learn how to customize your API endpoints and data types.
   </Card>
 </CardGroup>

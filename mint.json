@@ -138,7 +138,14 @@
       "group": "Model Data",
       "pages": [
         "day-one/entities-fields",
-        "day-one/upload-schema"
+        {
+          "group": "Upload DB Schema",
+          "icon": "file-import",
+          "pages": [
+            "day-one/upload-schema",
+            "day-one/understanding-upload-schema"
+          ]
+        }
       ]
     },
     {

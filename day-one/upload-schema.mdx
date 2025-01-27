@@ -1,5 +1,213 @@
 ---
-title: 'Upload Schema'
-description: 'Learn how enterprise developers can upload existing schemas to define data models in Amplication.'
-icon: 'database'
+title: "Upload Schema"
+description: "Use your existing database to jumpstart a new resource and generate Amplication entities and relationships by uploading its Prisma schema."
+sidebarTitle: "How to Upload Schema"
 ---
+
+<Frame>
+    <img src="/images/day-one/upload-prisma-schema.png" />
+</Frame>
+
+If you have a database you'd like to use as the foundation for your new resource you can upload a `schema.prisma` file based on your database.
+Amplication will instantly create entities, fields, and relationships based on your schema, significantly accelerating your development process and letting you focus on business logic, not database setup.
+This feature quickly translates your existing database structure into Amplication's internal model, giving you a ready-to-go starting point.
+
+<Note>
+The **Upload Schema** feature is available when using the **.NET** or **Node.js** blueprints in Amplication.
+</Note>
+
+## Overview
+
+When you upload a Prisma schema, Amplication inspects your existing database structure and generates corresponding entities, fields, and relationships. By standardizing and automating the process, Amplication helps you maintain consistency and best practices across your organization, saving significant time and reducing technical debt.
+
+<Warning>
+Always back up your database before performing introspection or migrations.
+</Warning>
+
+## Run the Introspection Process
+
+To generate a Prisma schema from your existing database, you'll use Prisma’s introspection feature.
+
+<Steps>
+<Step title="Install Prisma CLI">
+If you haven't already, install the Prisma CLI globally:
+
+```bash
+npm install -g prisma
+```
+</Step>
+
+<Step title="Create a Prisma Schema File">
+Create a file named `schema.prisma` in your project. In this file, set the `url` in the `datasource` block to point to your existing database:
+```graphql schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://janedoe:mypassword@localhost:5432/mydb?schema=sample"
+}
+```
+Adjust the URL according to your database provider (e.g., PostgreSQL, MySQL, SQL Server).
+</Step>
+
+<Step title="Run Prisma Introspection">
+Navigate to the directory with your `schema.prisma` file, then run:
+```bash
+prisma db pull
+```
+This inspects your database and generates models within `schema.prisma`.
+</Step>
+
+<Step title="Validate Your Generated Schema">
+Open `schema.prisma` in a text editor to ensure it’s error-free and follows your organization's naming conventions or best practices. If you notice issues (e.g., missing relations or improperly named fields), make the necessary adjustments.
+</Step>
+</Steps>
+
+<Warning>
+If the introspection results in errors or incomplete models, refer to [Prisma’s Error Reference](https://www.prisma.io/docs/reference/api-reference/error-reference) for guidance.
+</Warning>
+
+## Create Your Initial Migration (Optional)
+
+If you plan to use Prisma Migrate on your newly introspected database, consider “baselining” your database to align existing data with future migrations.
+
+<Steps>
+<Step title="Initialize a Migrations Folder">
+Create a directory for your initial migration, for example:
+```bash
+mkdir -p prisma/migrations/init_after_introspection
+```
+</Step>
+
+<Step title="Generate a Baseline Migration Script">
+In the same directory as your `schema.prisma`, run:
+```bash
+prisma migrate diff \
+  --from-empty \
+  --to-schema-datamodel prisma/schema.prisma \
+  --script > prisma/migrations/init_after_introspection/migration.sql
+```
+Review the generated `migration.sql` to ensure accuracy.
+</Step>
+
+<Step title="Apply the Baseline Migration">
+Mark your newly created migration as already applied:
+```bash
+prisma migrate resolve --applied init_after_introspection
+```
+This step records the migration in the `_prisma_migrations` table without making changes.
+</Step>
+</Steps>
+
+## Upload Your Prisma Schema File to Amplication
+
+Once your `schema.prisma` file is ready, upload it to Amplication from the **Resources** section of your service.
+
+<Steps>
+<Step title="Open Your Resource in Amplication">
+Locate the service resource where you want to import your database schema.
+</Step>
+
+<Step title="Navigate to Entities">
+Click on the "Entities" tab in the navigation bar of your resource to access the entities page.
+</Step>
+
+<Step title="Click 'Upload Schema'">
+Select **Upload Schema** on the top-right corner of the page.
+
+<Frame>
+    <img src="/images/day-one/upload-prisma-schema-button.png" />
+</Frame>
+</Step>
+
+<Step title="Attach Your File">
+Upload your `schema.prisma` file using the provided form.
+<Frame>
+    <img src="/images/day-one/upload-prisma-schema.png" />
+</Frame>
+</Step>
+</Steps>
+
+<Warning>
+If the uploaded schema is invalid or lacks identifiable entities, Amplication will halt the process and display an error. Ensure your `schema.prisma` file is valid before proceeding.
+</Warning>
+
+## Check the Conversion Logs
+
+After uploading, Amplication displays a log detailing the conversion of your Prisma models into entities. Review these logs to confirm that:
+
+- All expected models are detected.
+- Fields and relationships match your existing database structure.
+- No warnings require further action.
+
+<Frame>
+    <img src="/images/day-one/import-prisma-schema-logs.png" />
+</Frame>
+
+<Warning>
+Schema uploads can’t be redone in the same project. Ensure your schema and logs are correct before proceeding.
+</Warning>
+
+## Review Your Newly Created Entities
+
+Once conversion completes successfully, Amplication creates entities and fields corresponding to your models. You can visualize these in the **ERD view** to confirm relationships align with your database design.
+
+<Frame caption="Example ERD view after a successful schema upload">
+  <img src="/images/day-one/amplication-erd-view.png" />
+</Frame>
+
+## Apply Your Migration to the New Amplication Service
+
+If you generated baseline migrations earlier or have an existing migration history, you can now merge that with your new Amplication resource:
+
+<Steps>
+<Step title="Commit Changes">
+Commit the newly generated entities and configuration to your preferred Git repository.
+</Step>
+
+<Step title="Update Environment Variables">
+In your `.env` file (or your deployment environment), set the `DB_URL` to your existing database’s connection string.
+</Step>
+
+<Step title="Copy Migrations Folder">
+Move or copy the previously created `migrations` folder into the `prisma` directory of your new Amplication service repository.
+</Step>
+
+<Step title="Run Database Commands">
+From within your service’s root directory, install dependencies and generate your Prisma client:
+```bash
+npm i
+npm run prisma:generate
+npm run db:migrate-save
+```
+This aligns your Amplication resource with your existing database.
+</Step>
+</Steps>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Learn More About Schema Upload"
+    icon="lightbulb"
+    href="/day-one/understanding-upload-schema"
+  >
+    Dive deeper into how the schema upload process works and learn best practices for managing your database structure.
+  </Card>
+  <Card
+    title="Create Custom Entities"
+    icon="database"
+    href="/day-one/entities"
+  >
+    Learn how to create and customize entities to extend your data model beyond the imported schema.
+  </Card>
+  <Card
+    title="Define Custom Fields"
+    icon="table-columns"
+    href="/day-one/entity-fields"
+  >
+    Discover how to add and configure custom fields to enhance your entities with additional data points.
+  </Card>
+</CardGroup>
+
+<Tip>
+By uploading your schema into Amplication, you jumpstart development with organization-wide standards and ensure your service remains aligned with evolving best practices, saving you time and reducing maintenance overhead.
+</Tip>

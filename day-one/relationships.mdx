@@ -1,0 +1,157 @@
+---
+title: "Define Relationships Between Entities"
+sidebarTitle: "Relationships"
+description: "Learn how to define and manage one-to-one, one-to-many, and self-relation relationships between entities in Amplication."
+icon: "diagram-project"
+---
+
+<Frame>
+    <img src="/images/day-one/relationships-erd-view.png" />
+</Frame>
+
+**Relationships** are the links that connect your entities, allowing you to model complex data structures and build sophisticated resources.
+This guide will walk you through creating and managing entity relationships, enabling you to establish clear connections between your data models.
+
+<Note>
+Amplication **Relationships** feature is available when using the **.NET** or **Node.js** blueprints.
+</Note>
+
+## What are Entity Relationships in Amplication?
+
+Entity relationships in Amplication represent how different data models interact and are connected within your resource.
+Think of them as the lines that connect tables in a database, but visualized and managed in Amplication.
+
+At the database level, relationships are often implemented using **Foreign Keys**.
+Amplication abstracts this complexity, allowing you to define relationships visually. This makes it straightforward to:
+
+* **Navigate between related data:** Easily access related entities in your application code and APIs.
+* **Simplify GraphQL queries:** Retrieve related data efficiently with automatically generated GraphQL resolvers.
+* **Enforce data integrity:** Maintain consistency and accuracy across your data model by clearly defining how entities are linked.
+
+## Types of Relationships
+
+Amplication supports the following core relationship types:
+
+<AccordionGroup>
+    <Accordion title="One-to-One" icon="arrow-right-arrow-left">
+        A relationship where each instance of one entity is related to at most one instance of another entity, and vice-versa.
+
+        **Example:** A `User` entity and a `UserProfile` entity. Each user has only one profile, and each profile belongs to only one user.
+    </Accordion>
+    <Accordion title="One-to-Many (Many-to-One)" icon="arrow-right-to-bracket">
+        A relationship where one instance of an entity can be related to multiple instances of another entity. From the perspective of the "many" side, it's a Many-to-One relationship.
+
+        **Example:** A `Project` entity and a `Task` entity. One project can have many tasks, but each task belongs to only one project.
+    </Accordion>
+    <Accordion title="Many-to-Many" icon="arrows-left-right">
+        A relationship where multiple instances of one entity can be related to multiple instances of another entity.
+
+        **Example:** A `Student` entity and a `Course` entity. Many students can enroll in many courses, and each course can have many students.
+
+        <Tip>
+        Currently, true Many-to-Many relationships are configured in Amplication by creating two One-to-Many relationships and an intermediary "join" entity. This provides flexibility and explicit control over the relationship.
+        </Tip>
+    </Accordion>
+    <Accordion title="Self-Relation" icon="rotate">
+        Sometimes, an entity needs to relate to itself. This is common for hierarchical data structures, such as organizational charts or comment threads. Amplication supports **self-relations**.
+        
+        When you create a "Relation to Entity" field and select the **same entity** as the "Related Entity", you are creating a self-relation. Amplication will automatically create **two** relationship fields on the same entity to represent both directions of the relationship.
+
+        **Example:** In a `User` entity, you could create a self-relation to represent managers and employees, where each user can have one manager and multiple employees.
+    </Accordion>
+</AccordionGroup>
+
+## How to Create a Relationship
+
+Creating relationships in Amplication is straightforward using the UI. You'll use the "Relation to Entity" data type to create these connections.
+
+<Steps>
+    <Step title="Navigate to Entity Fields">
+        Go to the **Entities** tab and select the entity you want to modify to create a relationship from. Then, navigate to the **Fields** tab of that entity.
+    </Step>
+
+    <Step title="Add a New Field and Select 'Relation to Entity'">
+        Click **Add Field**. In the "Data Type" dropdown for the new field, choose **Relation to Entity**.
+
+        <Frame caption="Selecting 'Relation to Entity' data type">
+            <img src="/images/day-one/relation-to-entity.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Choose the Related Entity">
+        In the **Related Entity** dropdown, select the entity you want to connect to. This is the entity that will be related to the current entity you are modifying.
+
+        <Frame caption="Selecting the related entity">
+            <img src="/images/day-one/related-entity.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Configure Relationship Details">
+        Configure the cardinality for both sides of the relationship. The options will dynamically adjust based on the relationship type you are creating.
+
+        For example, when creating a **One-to-Many** relationship from `Project` to `Task`:
+
+        1. On the `Project` entity's "Tasks" field, you would select: "**One 'Project' can be related to many 'Tasks'**".
+
+        2. Amplication automatically creates a corresponding relationship field on the `Task` entity (e.g., "Project"). On the `Task` entity's "Project" field, the cardinality would be pre-selected as: "**One 'Task' can be related to one 'Project'**".
+
+        <Frame caption="Configuring One-to-Many Relationship Cardinality">
+            <img src="/images/day-one/one-to-one-relation.png" />
+        </Frame>
+
+        <Note>
+        For **One-to-One** relationships, you need to specify which entity will hold the **Foreign Key**. The Foreign Key is how the database links the two entities.
+        
+        * **"This side"**: The current entity you are editing will hold the Foreign Key.
+        * **"Other side"**: The related entity will hold the Foreign Key.
+        
+        The placement of the Foreign Key impacts data dependencies. If Entity B holds the Foreign Key referencing Entity A, then Entity B cannot exist without Entity A. However, Entity A can exist independently.
+        </Note>
+    </Step>
+</Steps>
+
+<Tip>
+For complex data models, we recommend using Amplication's AI, [Jovu](/day-one/jovu), to help you establish entities and relationships efficiently.
+</Tip>
+
+## Visualize Relationships with the ERD View
+
+Amplication's **Entity Relationship Diagram (ERD)** view becomes even more valuable when working with relationships. It provides a visual map of how your entities are connected, making it easier to understand and manage complex data models.
+
+<Steps>
+    <Step title="Access ERD View">
+        Navigate to the **Entities** tab and switch to the ERD view using the toggle near the search bar.
+    </Step>
+    <Step title="Examine Relationships">
+        In the ERD view, you will see lines visually connecting related entities. The type of relationship (One-to-One, One-to-Many) is indicated by the line style or icons on the connector.
+
+        <Frame caption="ERD View showing relationships between entities">
+            <img src="/images/day-one/relationships-erd-view.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+The ERD view is crucial for:
+
+* **Validating your data model:** Quickly ensure relationships are set up as intended.
+* **Communicating data structure:** Easily explain the data model to team members and stakeholders.
+* **Identifying potential issues:** Spot circular dependencies or incorrect relationship types early in the development process.
+
+## Next Steps
+
+With a solid understanding of entity relationships, you can now build more sophisticated and interconnected data models in Amplication.
+
+<CardGroup cols={2}>
+    <Card title="Entities" icon="database" href="/day-one/entities">
+        Review the fundamentals of entity creation and management in Amplication.
+    </Card>
+    <Card title="Fields" icon="list-ul" href="/day-one/fields">
+        Explore all available field types and customization options for your entities.
+    </Card>
+    <Card title="Roles & Permissions" icon="shield-halved" href="/day-one/roles-permissions">
+        Learn how to control access and permissions for your entities and their relationships.
+    </Card>
+    <Card title="AI Jovu" icon="robot" href="/day-one/jovu">
+        Learn how to utilize Jovu to create your entities and their relationships using natural language.
+    </Card>
+</CardGroup>

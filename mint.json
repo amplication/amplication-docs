@@ -137,7 +137,9 @@
     {
       "group": "Model Data",
       "pages": [
-        "day-one/entities-fields",
+        "day-one/entities",
+        "day-one/fields",
+        "day-one/relationships",
         "day-one/upload-schema"
       ]
     },

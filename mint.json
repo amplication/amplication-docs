@@ -140,7 +140,14 @@
         "day-one/entities",
         "day-one/fields",
         "day-one/relationships",
-        "day-one/upload-schema"
+        {
+          "group": "Upload DB Schema",
+          "icon": "file-import",
+          "pages": [
+            "day-one/upload-schema",
+            "day-one/understanding-upload-schema"
+          ]
+        }
       ]
     },
     {

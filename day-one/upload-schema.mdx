@@ -13,16 +13,13 @@ Amplication will instantly create entities, fields, and relationships based on y
 This feature quickly translates your existing database structure into Amplication's internal model, giving you a ready-to-go starting point.
 
 <Note>
-The **Upload Schema** feature is available when using the **.NET** or **Node.js** blueprints in Amplication.
+The **Upload Schema** feature is powered by Prisma's Introspection CLI. Learn more about it on [Prisma's docs](https://www.prisma.io/docs/orm/prisma-schema/introspection).
+Also, this feature is only available when using the **.NET** or **Node.js** blueprints in Amplication.
 </Note>
 
 ## Overview
 
 When you upload a Prisma schema, Amplication inspects your existing database structure and generates corresponding entities, fields, and relationships. By standardizing and automating the process, Amplication helps you maintain consistency and best practices across your organization, saving significant time and reducing technical debt.
-
-<Warning>
-Always back up your database before performing introspection or migrations.
-</Warning>
 
 ## Run the Introspection Process
 

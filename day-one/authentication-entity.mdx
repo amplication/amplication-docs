@@ -3,3 +3,153 @@ title: 'Authentication Entity'
 description: 'Learn about managing authentication entities within the Amplication platform.'
 icon: 'person'
 ---
+
+<Frame>
+    <img src="/images/day-one/user-entity.png" />
+</Frame>
+
+Amplication's **Authentication Entity** provides a standardized, pre-configured foundation for user management and security in your resources.
+It's **required** if you want to add authentication to your resource.
+
+<Note>
+By default, Amplication uses a `User` entity as the Authentication entity.
+When you enable an authentication plugin, Amplication automatically creates this `User` entity (or prompts you to create it) with all the necessary fields.
+You can also use your own custom entity, as long as it includes the required fields.
+</Note>
+
+## Why is the Authentication Entity Required?
+
+Authentication plugins in Amplication, such as the NestJS Auth Module for Node.js Blueprints and ASP.NET Core Identity for .NET Blueprints, rely on a properly defined Authentication entity.
+The plugins use this entity to manage user logins, permissions, and overall security.
+**Without a correctly configured Authentication entity, authentication plugins won't work.**
+
+Essentially, the Authentication entity provides a:
+
+<CardGroup cols={3}>
+  <Card title="Standardized User Model" icon="table">
+    You get a consistent structure for user data across all your Amplication services.
+  </Card>
+  <Card title="Simplified Setup" icon="gears">
+    Amplication handles the core plumbing, so you don't have to write authentication boilerplate from scratch.
+  </Card>
+  <Card title="Plugin Compatibility" icon="puzzle-piece">
+    It's the bedrock for Amplication's authentication plugins, guaranteeing seamless integration.
+  </Card>
+</CardGroup>
+
+## Change the Default Authentication Entity
+
+You have the flexibility to designate a different entity as your Authentication entity if the default `User` entity doesn't perfectly fit your data model.
+
+<Steps>
+<Step title="Go to Resource Settings">
+Navigate to your resource's **Settings** tab.
+</Step>
+
+<Step title="Access Authentication Entity Settings">
+Find and click on the **Authentication Entity** settings in the left side bar.
+</Step>
+
+<Step title="Select New Entity">
+Use the **Entity List** dropdown to choose the entity you want to use as your new Authentication entity.
+
+<Frame>
+  <img src="/images/day-one/change-authentication-entity.png" />
+</Frame>
+</Step>
+</Steps>
+
+You've now successfully changed the default Authentication entity for your service.
+
+<Note>
+If the required fields are missing, your authentication plugins will not function correctly.
+</Note>
+
+## Add Default User Entity
+
+<Steps>
+<Step title="Navigate to Entities">
+Go to **Entities** tab in your Amplication resource.
+</Step>
+
+<Step title="Create New Entity">
+Click **Add Entity** ➔ Name it `User` ➔ Click **Create Entity**
+</Step>
+
+<Step title="Restore Default Fields">
+Confirm restoration of default fields when prompted
+
+<Frame>
+  <img src="/images/day-one/restore-user-entity.png" />
+</Frame>
+
+<Note>
+For Node.js resources: Add this _before_ enabling NestJS Auth Module.
+For .NET: Create before ASP.NET Core Identity setup.
+</Note>
+
+</Step>
+</Steps>
+
+## Required Fields
+
+To work smoothly with authentication plugins, your Authentication entity needs specific fields.
+
+| Field         | Required | Unique | Description                          |
+|---------------|----------|--------|--------------------------------------|
+| `id`          | Yes      | Yes    | Auto-generated unique identifier     |
+| `createdAt`   | Yes      | No     | Automatic timestamp on creation      |
+| `updatedAt`   | Yes      | No     | Automatic timestamp on modification  |
+| `username`    | Yes      | Yes    | Login identifier (searchable)        |
+| `email`       | Yes      | Yes    | User's email address (searchable)    |
+| `password`    | Yes      | No     | Securely hashed credentials          |
+| `roles`       | Yes      | No     | Permission group assignments         |
+| `firstName`   | No       | No     | User's first name (searchable)       |
+| `lastName`    | No       | No     | User's last name (searchable)        |
+
+These default fields are designed to cover the most common authentication scenarios.
+They give you a robust starting point for user management and security.
+
+<Note>
+If you use the default `User` entity, Amplication automatically sets these up for you.
+</Note>
+
+## Delete the Authentication Entity
+
+While you can typically delete any entity you create in Amplication, the Authentication entity is a bit different because of its central role in security.
+**To delete the Authentication entity, you must first disable all authentication plugins in your service.**
+
+This means disabling:
+
+* **NestJS Auth Module** (and any other authentication plugins) for resources based on the Node.js blueprint.
+* **ASP.NET Core Identity** plugin for resources based on the .NET blueprint.
+
+<Steps>
+<Step title="Disable Authentication Plugin">
+Go to your service's **Plugins** page. Disable the authentication plugin(s) for your service type.
+
+   *   **Node.js:** Toggle the **NestJS Auth Module** to the "off" position. Disable any other authentication plugins you may have installed.
+   *   **.NET:** Disable the **ASP.NET Core Identity** plugin.
+
+<Frame>
+  <img src="/images/day-one/disable-auth-plugin.png" alt="Disable the Authentication Plugin" />
+</Frame>
+</Step>
+
+<Step title="Navigate to Entities">
+Go to your service's **Entities** page.
+</Step>
+
+<Step title="Delete Entity">
+You'll now see that the delete button for the Authentication entity is enabled. Click the **delete button** next to the Authentication entity. A confirmation popup will appear.
+
+<Frame>
+  <img src="/images/day-one/confirm-delete-user-entity.png" alt="Delete the Authentication entity popup" />
+</Frame>
+</Step>
+</Steps>
+
+<Check>
+**The Authentication entity is now removed from your resource.**
+You'll have to re-enable your authentication plugin and potentially recreate the Authentication entity if you need authentication again in the future.
+</Check>

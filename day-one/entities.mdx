@@ -1,0 +1,121 @@
+---
+title: "Working with Entities"
+sidebarTitle: "Entities"
+description: "Learn how to create, manage, and visualize entities in Amplication to build robust resources rapidly."
+icon: "database"
+---
+
+<Frame>
+    <img src="/images/day-one/amplication-erd-view.png" />
+</Frame>
+
+**Entities** represent the data models that power your resource and serve as the foundation for your APIs and database interactions.
+This guide will walk you through everything you need to know about creating and managing entities in Amplication to accelerate your development process.
+
+<Note>
+Amplication **Entities** feature is available when using the **.NET** or **Node.js** blueprints in Amplication.
+</Note>
+
+## What Are Amplication Entities?
+
+In Amplication, an **entity** represents a data model or domain object in your application. For example, you might define entities like `User`, `Order`, or `Product`.
+Each has its own fields, default values, and relationships.
+With Amplication, defining and managing entities becomes streamlined and intuitive, allowing you to:
+
+<CardGroup cols={2}>
+  <Card title="Quickly Model Your Domain" icon="cube">
+    Define your data structures visually and efficiently, without writing complex schema code from scratch.
+  </Card>
+  
+  <Card title="Visualize Relationships" icon="diagram-project">
+    Understand your data model at a glance with the built-in Entity Relationship Diagram (ERD) view.
+  </Card>
+  
+  <Card title="Reduce Boilerplate" icon="gears">
+    Amplication automatically generates the necessary code for your entities, freeing you from repetitive tasks and allowing you to focus on your application's unique logic.
+  </Card>
+  
+  <Card title="Ensure Data Consistency" icon="shield-check">
+    Easily set default values for entity fields to maintain data integrity and streamline data creation.
+  </Card>
+</CardGroup>
+
+## How to Create an Entity
+
+Creating a new entity in Amplication is simple and intuitive using Amplication's UI.
+Each entity automatically gets an **ID**, **Created At**, and **Updated At** field so you can start building right away without repetitive setup.
+
+<Tip>
+You can also upload an existing database schema to quickly create multiple entities. Learn more about [uploading schemas](/day-one/upload-schema).
+</Tip>
+
+<Steps>
+<Step title="Open the Entities Page">
+First, locate your resource in Amplication. Then, open the **Entities** tab. You will see a list of existing entities for your resource.
+</Step>
+
+<Step title="Create a New Entity">
+Click **Create New**. In the dialog that appears, enter the name of your entity and confirm by clicking **Create Entity**.
+
+<Frame caption="Create a new Amplication entity">
+    <img src="/images/day-one/create-new-entity.png" />
+</Frame>
+
+<Tip>
+You can also create entities using [Jovu](/day-one/jovu), Amplication's AI assistant. Simply ask Jovu to create an entity, and it will generate appropriate fields based on the entity's name.
+</Tip>
+</Step>
+
+<Step title="Review Auto-Generated Fields">
+After creating an entity, Amplication automatically provides the `ID`, `Created At`, and `Updated At` fields to get you started quickly. You can add or modify additional fields later based on your requirements.
+
+<Frame>
+    <img src="/images/day-one/amplication-entity-default-fields.png" />
+</Frame>
+
+</Step>
+</Steps>
+
+<Warning>
+**Avoid Reserved Names**  
+For a list of reserved entity and field names, check out our [reserved names reference](https://github.com/amplication/amplication/blob/master/packages/amplication-server/src/core/entity/reservedNames.ts). Using a reserved name can cause issues in the generated code.
+</Warning>
+
+## Visualize Entities with ERD View
+
+Amplication provides an **Entity Relationship Diagram (ERD)** view to give you a clear, graphical representation of your entities and their fields.
+
+<Steps>
+<Step title="Access the ERD View">
+Navigate to the **Entities** page for your resource. Look for the toggle switch near the search bar and flip it to switch from the list view to the ERD view.
+</Step>
+
+<Step title="Explore Your Diagram">
+Use pinch-to-zoom or your trackpad's scroll to zoom in and out. You can also click and drag to rearrange entities for better visibility.
+</Step>
+</Steps>
+
+<Frame caption="Amplication's ERD view helps you see and manage relationships across multiple entities.">
+    <img src="/images/day-one/amplication-erd-view.png" />
+</Frame>
+
+<Note>
+**Why It Matters:**  
+Seeing a visual layout of your entities helps you quickly identify potential gaps or inconsistencies. This high-level view also makes it easier to communicate changes across multiple teams.
+</Note>
+
+## Next Steps
+
+By automating repetitive tasks around entity creation and maintenance, Amplication enables you to focus on what really matters like building robust business logic.
+
+<CardGroup cols={2}>
+
+<Card title="Learn About Fields" icon="list-ul" href="/day-one/fields">
+Dive deeper into how to configure fields, set default values, and manage validations.
+</Card>
+
+<Card title="Upload Database Schema" icon="upload" href="/day-one/upload-schema">
+Learn how to quickly create entities by importing your existing database schema.
+</Card>
+
+</CardGroup>

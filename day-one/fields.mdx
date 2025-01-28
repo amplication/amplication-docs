@@ -1,0 +1,155 @@
+---
+title: "Entity Fields"
+sidebarTitle: "Fields"
+description: 'Learn how to create and configure entity fields, their data types, and advanced customization options in Amplication.'
+icon: 'database'
+---
+
+<Frame>
+    <img src="/images/day-one/fields.png" />
+</Frame>
+
+Each entity is composed of fields which define the attributes of that entity, such as `name`, `email`, or `price`. This page will guide you through creating and configuring entity fields within Amplication.
+
+<Note>
+The Entities, Fields, and Relationships features are currently available for projects using **Node.js** and **.NET** blueprints.
+</Note>
+
+## Create New Fields
+
+<Steps>
+<Step title="Navigate to the Entity Screen">
+Click the **Entities** icon in the main menu (left toolbar). This will display a list of all entities in your application.
+</Step>
+<Step title="Select an Entity">
+Click on the entity you want to modify. This will open the Entity's page, displaying its existing fields.
+</Step>
+<Step title="Add a New Field">
+Type the name of your field.
+</Step>
+<Step title="Configure Field Details">
+* **Display Name:** The user-friendly name shown in the Amplication UI (e.g., "Customer Email")
+* **Name:** The camelCase name used in code and APIs (e.g., `customerEmail`)
+* **Description:** Optional context about the field's purpose (e.g., "Primary email address for customer communications")
+</Step>
+</Steps>
+
+<Tip>
+You can use Amplication's AI, [Jovu](/day-one/jovu), to simplify field creation for your entities using natural language.
+</Tip>
+
+## Field Settings
+
+Each field offers optional settings to control its behavior and constraints:
+
+<AccordionGroup>
+  <Accordion title="Unique Field" icon="fingerprint">
+    <p>Toggle **Unique Field** to ensure that each value in this field is unique across all instances of the entity. This is crucial for fields like email addresses or usernames where duplication isn't allowed.</p>
+  </Accordion>
+  <Accordion title="Required Field" icon="asterisk">
+    <p>Activate **Required Field** to make sure that this field must have a value when creating a new entity instance. This prevents incomplete data entries and enforces data integrity for critical attributes.</p>
+  </Accordion>
+  <Accordion title="Searchable" icon="magnifying-glass">
+    <p>Enable **Searchable** to allow users to search for entity instances based on the values in this field. Note that field visibility for search results is still controlled by permissions settings.</p>
+    <Info>Even if a field is not set as **Searchable**, if permissions allow, the field's data will still be included in search results when searching by other searchable fields.</Info>
+  </Accordion>
+</AccordionGroup>
+
+## Available Data Types
+
+Select the appropriate data type to define what kind of information your field will store. Each data type is optimized for specific use cases and provides built-in validation and handling.
+
+<CardGroup cols={2}>
+    <Card title="Single Line Text" icon="font">
+        For short text strings like names or titles. You can set a maximum length to enforce data constraints.
+    </Card>
+    <Card title="Multi-Line Text" icon="align-left">
+        For longer text content like descriptions or notes. You can configure a maximum length.
+    </Card>
+    <Card title="Email" icon="envelope">
+        Specifically for email addresses, ensuring data is in a valid email format.
+    </Card>
+    <Card title="Username" icon="user">
+        Optimized for usernames, with a configurable maximum length.
+    </Card>
+    <Card title="Password" icon="lock">
+        Designed for storing passwords securely. You can set a maximum length.
+    </Card>
+    <Card title="Whole Number" icon="hashtag">
+        For integer values. You can select the database field type (Integer or Big Integer) and set minimum and maximum allowed values.
+    </Card>
+    <Card title="Decimal Number" icon="calculator">
+        For numbers with decimal places. You can choose the database field type (Decimal or Float), define minimum and maximum values, and set the precision level.
+    </Card>
+    <Card title="Date Time" icon="calendar">
+        For storing date and time information. You can choose between Local Time and Server Time and specify if it should include both date and time or just the date.
+    </Card>
+    <Card title="Boolean" icon="toggle-on">
+        For true/false values.
+    </Card>
+    <Card title="JSON" icon="brackets-curly">
+        For storing flexible, schema-less data in JSON format. Excellent for custom fields and adapting to evolving data needs.
+    </Card>
+    <Card title="Option Set" icon="list">
+        For fields that can only take one value from a predefined list of options (single-select dropdown).
+    </Card>
+    <Card title="Multi-Select Option Set" icon="list-check">
+        Similar to Option Set but allows selecting multiple options from the list (multi-select dropdown).
+    </Card>
+    <Card title="Geographic Location" icon="location-dot">
+        For storing geographic coordinates.
+    </Card>
+    <Card title="File" icon="file">
+        For storing file metadata. Configure maximum file size, allowed MIME types, and container path for file storage.
+    </Card>
+    <Card title="Roles" icon="user-shield">
+        For managing user roles and permissions within your application.
+    </Card>
+    <Card title="Relation to Entity" icon="link">
+        Used to establish connections between different entities.
+    </Card>
+</CardGroup>
+
+## Default Fields
+
+Amplication automatically creates essential fields for every entity:
+
+* **`id`**: A unique identifier for each entity instance. By default, it's a CUID, but you can customize it to UUID, auto-increment integer, or auto-increment big integer.
+* **`createdAt`**: Automatically tracks the creation timestamp of each entity instance.
+* **`updatedAt`**: Automatically updates with the timestamp whenever an entity instance is modified.
+
+## Advanced Customization
+
+For developers who need fine-grained control over their fields, Amplication provides Custom Attributes. These attributes allow you to directly leverage Prisma's powerful schema customization features within the Amplication UI.
+
+<Note>
+Advanced Customization is only available for **Node.js** blueprints.
+</Note>
+
+You can add field-level attributes (prefixed with `@`) to customize individual field properties. These are accessible in the **Custom Attributes** text field within each field's settings page.
+
+Common field-level attributes include:
+* **`@unique`**: Enforce uniqueness for a field
+* **`@default(...)`**: Set a default value
+* **`@map("column_name")`**: Map to a different column name
+* **Native database types**: Specify database-specific data types (e.g., `@db.VarChar(200)`)
+
+<Note>
+Refer to <a href="https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#attributes">Prisma's documentation on field attributes</a> for a comprehensive list of available attributes and functions.
+</Note>
+
+## Next Steps
+
+Now that you understand how to work with fields, explore these related topics to build more sophisticated data models:
+
+<CardGroup cols={2}>
+    <Card title="Entity Relationships" icon="diagram-project" href="/day-one/relationships">
+        Learn how to create and manage relationships between entities, including one-to-one, one-to-many, and many-to-many connections.
+    </Card>
+    <Card title="Entities" icon="database" href="/day-one/entities">
+        Dive deeper into entity management, including creating, configuring, and organizing your data models.
+    </Card>
+    <Card title="Roles & Permissions" icon="shield-halved" href="/day-one/roles-permissions">
+        Understand how to set up role-based access control and manage permissions for your entity fields.
+    </Card>
+</CardGroup>

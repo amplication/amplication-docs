@@ -139,6 +139,7 @@
       "pages": [
         "day-one/entities",
         "day-one/fields",
+        "day-one/relationships",
         {
           "group": "Upload DB Schema",
           "icon": "file-import",

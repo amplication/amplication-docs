@@ -1,5 +1,62 @@
 ---
 title: 'Authentication Explained'
-description: 'Understand the authentication mechanisms supported by Amplication, crucial for securing enterprise applications.'
+description: "Learn how Amplication's plugin-based authentication system simplifies secure user authentication for platform teams with flexible provider options."
 icon: 'users-rectangle'
 ---
+
+<Frame>
+    <img src="/images/day-one/authentication-plugins.png" />
+</Frame>
+
+Amplication simplifies this critical aspect of development by providing a **plugin-based authentication system** with a variety of providers. This allows you to easily add and manage robust authentication to your services without getting bogged down in intricate configurations.
+
+## Amplication's Approach: Plugin-Based Authentication
+
+We have designed our authentication system around plugins. This approach offers several advantages for platform teams:
+
+<CardGroup>
+  <Card title="Flexibility to Choose" icon="shuffle">
+    Select the authentication method that best fits your organization's security policies and application requirements. Whether it's industry-standard JWT, or integration with enterprise providers like Auth0 or Keycloak, Amplication has you covered.
+  </Card>
+  <Card title="Standardization and Best Practices" icon="shield-check">
+    Plugins are pre-configured with security best practices in mind, ensuring your services are secure from the outset. This aligns with your goal of working with established, well-maintained standards.
+  </Card>
+  <Card title="Reduced Boilerplate" icon="code">
+    Amplication generates the necessary authentication code, eliminating the tedious and repetitive setup work. You can focus on your business logic, not wrestling with authentication libraries.
+  </Card>
+  <Card title="Consistent Implementation" icon="arrows-repeat">
+    By using Amplication's plugin system across your services, you ensure a consistent authentication approach throughout your organization. This addresses the pain point of inconsistent standards and "drift" between services.
+  </Card>
+  <Card title="Simplified Updates" icon="arrows-rotate">
+    As authentication best practices evolve, Amplication's plugin system can be updated, and these updates can be seamlessly applied to your services, reducing maintenance burden and technical debt.
+  </Card>
+</CardGroup>
+
+## How it Works
+
+<Note>
+To enable authentication, you'll first need to have an **Authentication Entity** defined in your Amplication service. This entity represents the users who will be authenticated against your service. If you haven't already, learn how to create an Authentication Entity in our [Authentication Entity Guide](/day-one/authentication-entity).
+</Note>
+
+<Steps>
+  <Step title="Choose Your Provider">
+    Amplication offers a range of authentication provider plugins (like JWT, Basic Auth, Auth0, Supertokens, and more) for both **Node.js** and **.NET** services.
+  </Step>
+  <Step title="Install and Configure">
+    With just a few clicks in the Amplication UI, you can install the necessary plugins and configure them to match your chosen provider and specific needs.
+  </Step>
+  <Step title="Amplication Generates the Code">
+    When you build your service, Amplication automatically generates all the authentication logic, including middleware, endpoints, and necessary configurations, based on the plugins you've selected.
+  </Step>
+  <Step title="Focus on Your Application">
+    You can then concentrate on developing the core features of your application, knowing that authentication is handled securely and consistently by Amplication.
+  </Step>
+</Steps>
+
+## Next Steps
+
+Ready to dive into the specifics and choose the right authentication provider for your service? 
+
+<Card title="Authentication Provider Plugins" icon="plug-circle-check" href="/day-one/authentication-provider-plugins">
+  Explore available authentication options and learn how to configure them for your service.
+</Card>

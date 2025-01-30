@@ -1,5 +1,118 @@
 ---
-title: 'Roles & Permissions'
-description: 'Guide for enterprise developers on setting user access levels and permissions within Amplication.'
+title: "Configure Roles & Permissions"
+sidebarTitle: "Roles & Permissions"
+description: Learn how to configure roles and permissions on your Amplication resource to control access to entities and fields, ensuring security and standardization.
 icon: 'person-circle-check'
 ---
+
+Amplication simplifies security by allowing you to define granular roles and permissions directly within your resource. This means you can easily control who can access and modify your data, right down to the field level, without writing complex, repetitive security code.
+
+In this guide, you'll learn how to configure roles and permissions for your entities, ensuring your resource is secure and adheres to your organization's standards.
+
+## Define Roles
+
+Roles represent different user types within your application, each with specific access levels. Amplication provides a default `User` role, and you can easily create new roles to match your organization's structure and access requirements.
+
+<Steps>
+  <Step title="Navigate to Roles">
+    Navigate to your resource and click **Roles** in the main navigation bar. This will take you to the Roles page, where you can view and manage all roles in your resource.
+
+    <Frame>
+      <img src="/images/day-one/roles.png" />
+    </Frame>
+
+  </Step>
+  <Step title="Add New Roles">
+    1. In the **Type role name** text box, enter the name of your new role (e.g., "Admin", "Manager", "Editor").
+    2. Click **Add Role** (or press Enter). The new role will be added to the list.
+    3. Repeat this process to create all the roles you need for your application.
+
+    <Tip>
+      Start by defining roles that broadly align with your user groups and their responsibilities within the application. You can always refine permissions further at the entity and field levels.
+    </Tip>
+  </Step>
+</Steps>
+
+In this example, we've added "Admin" and "Manager" roles in addition to the default "User" role.
+
+## Access Permission Levels
+
+With roles defined, you can now configure permissions for your entities. Amplication offers flexible permission settings for each action that can be performed on an entity: **View**, **Create**, **Update**, **Delete**, and **Search**.
+
+There are three levels of access you can grant:
+
+- **Public**: No authentication is required. Anyone, even users without defined roles, can perform the action. Use this cautiously, typically for publicly accessible data.
+- **All Roles**: All defined roles in your Service can perform the action. This is a broad permission level suitable when all authenticated users should have access.
+- **Granular**: This provides fine-grained control. You can specify exactly which roles are allowed to perform the action. This is ideal for enforcing specific access policies and the principle of least privilege.
+
+## Configure Entity Permissions
+
+Entity permissions control who can perform actions on entire entities. Let's configure permissions for the "Project" entity as an example.
+
+<Steps>
+  <Step title="Navigate to Entity Permissions">
+    1. Click the **Entities** icon in the main menu (left sidebar).
+    2. Select the **Project** entity from the list.
+    3. Click the **Permissions** tab within the Project entity page.
+  </Step>
+  <Step title="Set Entity Action Permissions">
+    For each action (**View**, **Create**, **Update**, **Delete**, **Search**):
+    1. Choose the desired permission level from the dropdown: **Public**, **All Roles**, or **Granular**.
+    2. If you select **Granular**, a list of roles will appear. Select the checkboxes next to the roles you want to grant permission to for that specific action.
+
+    <Frame caption="Setting entity permissions">
+      <img src="/images/day-one/granular-permissions.png"/>
+    </Frame>
+
+    In this example:
+    - **View** and **Search** are set to **All Roles**, allowing any authenticated user to view and search projects.
+    - **Create** and **Update** are also set to **All Roles** for broader access in this example, but you might restrict these to specific roles like "Manager" in a real-world scenario using **Granular** permissions.
+    - **Delete** is set to **Granular** and restricted to the **Admin** role only, ensuring only administrators can delete projects.
+
+    <Tip>
+      Think about the typical workflows in your application and who needs to perform each action. Use **Granular** permissions to enforce stricter control where needed, especially for actions like **Delete** and **Update**.
+    </Tip>
+  </Step>
+</Steps>
+
+## Configure Field Permissions
+
+For even more precise control, you can set permissions at the field level. This allows you to restrict access to specific fields within an entity based on roles.
+
+<Steps>
+  <Step title="Access Field Permissions">
+    Within the **Permissions** tab of your entity (e.g., "Project"), locate the action you want to configure field permissions for (e.g., **Update**).
+  </Step>
+  <Step title="Add Fields and Set Permissions">
+    1. For the selected action (e.g., **Update**), click **+ Add Field**.
+    2. Choose the field you want to configure permissions for from the dropdown list (e.g., "Start Date", "ID").
+    3. Select the roles that should have access to this field for the chosen action. You must first ensure the desired roles are selected at the action level (e.g., "Admin" and "Manager" roles are selected for the "Update" action in the example below).
+
+    <Frame caption="Setting Field Permissions">
+      <img src="/images/day-one/specific-permissions-fields.png" />
+    </Frame>
+
+    In this example, for the **Update** action on the "Project" entity:
+    -  **Admin** role is granted permission to update the **startDate** field.
+    - Both **Admin** and **Manager** roles are granted permission to update the **id** field.
+    
+    <Tip>
+      Field-level permissions are powerful for sensitive data. Use them to ensure that users only see and modify the information they absolutely need, further enhancing security and data privacy.
+    </Tip>
+  </Step>
+</Steps>
+
+## Next Steps
+
+By using Amplication’s role-based access control, you can confidently build robust and secure enterprise apps, focusing on delivering business value while Amplication handles the complexities of permission management.
+
+Next, you'll want to:
+
+<CardGroup>
+  <Card title="Commit Your Changes" icon="code-commit" href="/day-one/commits">
+    Learn how to commit your configuration changes to your Git repository and maintain version control of your application.
+  </Card>
+  <Card title="Generate Code" icon="code" href="/day-one/generate-code">
+    Build and deploy your resource to apply the permission settings and make your changes live in your application.
+  </Card>
+</CardGroup>

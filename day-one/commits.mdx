@@ -1,5 +1,69 @@
 ---
-title: 'Commits'
-description: 'Understand how Amplication manages commits and version control for generated code.'
-icon: 'laptop-code'
+title: Commits
+description: "Monitor code generation, inspect build logs, and access Git pull requests directly from Amplication's Commits tab."
+icon: "code-commit"
 ---
+
+<Frame>
+    <img src="/images/day-one/commits-tab-commits-list.png" />
+</Frame>
+
+Amplication's **Commits** tab provides a comprehensive build log of every code generation event ensuring transparency.
+This feature empowers you to monitor code generation, debug issues quickly, and maintain full control over the evolution of your resource.
+
+<Note> **The Commits tab is your central hub for understanding and managing your Amplication code generation process.** Regularly reviewing commit statuses and examining build logs, especially after configuration changes or encountering unexpected behavior, will ensure a smooth and transparent development workflow.</Note>
+
+## Overview
+
+The Commits tabs presents a chronological list of commits, each representing a distinct code generation event.
+The main panel displays detailed information about the selected commit, including build status, resource details, and comprehensive build logs.
+
+## Commit Details
+
+When working with commits in Amplication, you'll encounter several key pieces of information that help track and manage your code generation process:
+
+**Commit Identification and Status**
+
+Each commit features a unique identifier (Commit UID), precise timestamps for code generation events, and visual status indicators where green checkmarks represent successful builds and red "X" marks indicate build failures.
+
+**Build Details**
+
+The build information displays the total resource count, unique Build ID, and per-resource details including build status, resource specifications, blueprint type, change count, and quick access to Git pull requests via the "View Code" button.
+
+<Frame caption="List of commits with status indicators">
+    <img src="/images/day-one/commits-tab-commits-list.png" />
+</Frame>
+
+## Build Logs
+
+Build logs in Amplication provide a detailed, chronological record of the code generation process. These logs are structured into three main phases:
+
+1. **Adding Task to Queue:** Initial setup phase, including worker initialization and Git provider configuration
+2. **Generating Application:** The main code generation phase, detailing each step of the process
+3. **Push Changes to Git Provider:** Final phase tracking the creation or update of pull requests
+
+<Frame caption="Successful Build Log">
+    <img src="/images/day-one/build-log-success.png" />
+</Frame>
+
+When encountering build failures, the logs become an essential debugging tool. Common issues that can be identified through the logs include plugin execution errors, configuration problems with your Amplication project, and dependency-related issues. The logs provide specific error messages and details about the failure point, making it easier to identify and resolve problems quickly.
+
+<Frame caption="Build Log with errors">
+    <img src="/images/day-one/build-log-errors.png" />
+</Frame>
+
+## Access the Commits Tab
+
+The Commits tab is easily accessible at the project level within Amplication:
+
+<Steps>
+    <Step title="Navigate to Your Project">
+        In your Amplication workspace, go to the **Projects** tab and select the specific project you want to examine.
+    </Step>
+    <Step title="Access the Project Catalog">
+        Within your chosen project, click on the **Catalog** button.
+    </Step>
+    <Step title="Open the Commits Tab">
+        In the project's top navigation bar, click on the **Commits** tab. This will take you to the Commits overview page.
+    </Step>
+</Steps>

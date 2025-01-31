@@ -160,6 +160,7 @@
       "group": "Manage Authentication & Roles",
       "pages": [
         "day-one/authentication-explained",
+        "day-one/authentication-provider-plugins",
         "day-one/authentication-entity",
         "day-one/roles-permissions"
       ]

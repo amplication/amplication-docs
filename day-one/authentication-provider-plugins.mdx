@@ -1,0 +1,213 @@
+---
+title: Authentication Provider Plugins
+sidebarTitle: Authentication Providers
+description: Learn how to secure your Amplication resources with authentication plugins. Supports JWT, Basic Auth, Auth0, Supertokens, SAML, Keycloak for Node.js and ASP.NET Core Identity for .NET applications.
+icon: 'plug-circle-check'
+---
+
+<Frame>
+    <img src="/images/day-one/authentication-plugins.png" />
+</Frame>
+
+Amplication offers a variety of authentication provider plugins to secure your services and authenticate users. This guide helps you understand the available options and how to configure them.
+
+<Note>
+Authentication plugins are available for **Node.js** and **.NET** blueprint options. If you're using a custom blueprint, you can implement your own authentication solution using our custom plugins.
+</Note>
+
+## Add Authentication
+
+To add authentication to your service:
+
+<Steps>
+<Step title="Navigate to Plugins">
+Go to your service in the Amplication UI and click on the **Plugins** tab in the navigation bar.
+</Step>
+<Step title="Select Authentication Category">
+In the Plugins page, locate the **Authentication** category in the left sidebar menu.
+</Step>
+<Step title="Choose Auth Provider">
+Select an Auth Provider plugin that suits your needs from the available options listed below. Click "Install" to add the plugin to your service.
+
+<Note>
+For **Node.js** services, ensure you install the **"NestJS Auth Module"** plugin first, as it provides the core authentication framework.
+</Note>
+</Step>
+<Step title="Configure Settings">
+After installing a plugin, you will see a **Settings** button. Click it to access the configuration page where you can adjust various settings in JSON format, such as default credentials or API keys.
+</Step>
+<Step title="Build Your Service">
+Finally, [generate the code](/day-one/generate-code) for your resource to apply the authentication plugin.
+</Step>
+</Steps>
+
+## Available Authentications Providers
+
+Each authentication provider has specific configuration options and requirements. Expand each provider below to learn more about its settings and usage.
+
+<AccordionGroup>
+  <Accordion
+    icon="node-js"
+    iconType="brands"
+    title="JWT Auth Provider"
+  >
+    <Note>
+    [View JWT Auth Provider on GitHub](https://github.com/amplication/plugins/tree/master/plugins/auth-jwt) to learn more.
+    </Note>
+    Adds JSON Web Token (JWT) based authentication and authorization. Ideal for stateless APIs and applications.
+
+    **Platform:** Node.js  
+    **Requires:** NestJS Auth Module
+
+    **Settings:**
+
+    <CodeGroup>
+    ```json JWT Configuration
+    {
+      "settings": {
+        "tokenExpiresIn": 3600, // Access token expiration in seconds (default: 1 hour)
+        "refreshTokenExpiresIn": 604800, // Refresh token expiration in seconds (default: 7 days)
+        "grantType": "PASSWORD", // Grant type for token generation (default: PASSWORD)
+        "jwtSecretKey": "YOUR_SECRET_KEY" // **Important:** Change this to a strong, unique secret key!
+      }
+    }
+    ```
+    </CodeGroup>
+
+    <Warning>
+    **Security Alert:** Always replace the default `jwtSecretKey` with a strong, randomly generated secret key. This key is crucial for the security of your JWTs.
+    </Warning>
+  </Accordion>
+
+  <Accordion
+    icon="node-js"
+    title="Basic Auth Provider"
+  >
+    <Note>
+    [View Basic Auth Provider on GitHub →](https://github.com/amplication/plugins/tree/master/plugins/auth-basic)
+    </Note>
+
+    Enables simple HTTP Basic Authentication. Suitable for development, testing, or internal services with less stringent security requirements.
+
+    **Platform:** Node.js, .NET
+
+    **Settings:**
+
+    <CodeGroup>
+    ```json Basic Auth Configuration
+    {
+      "username": "admin", // Default username
+      "password": "admin"  // Default password
+    }
+    ```
+    </CodeGroup>
+
+    <Note>
+    By default, Basic Auth Provider comes with `username: admin` and `password: admin`. **Change these default credentials immediately** in a production environment.
+    </Note>
+  </Accordion>
+
+  <Accordion
+    icon="node-js"
+    iconType="brands"
+    title="Auth0 Auth Provider"
+  >
+    <Note>
+    [View Auth0 Auth Provider on GitHub →](https://github.com/amplication/plugins/tree/master/plugins/auth-auth0)
+    </Note>
+
+    Integrates with Auth0, a leading Identity-as-a-Service (IDaaS) platform, offering advanced authentication and authorization features.
+
+    **Platform:** Node.js  
+    **Requires:** NestJS Auth Module, Auth0 Account
+  </Accordion>
+
+  <Accordion
+    icon="node-js"
+    iconType="brands"
+    title="Supertokens Auth Provider"
+  >
+    <Note>
+    [View Supertokens Auth Provider on GitHub →](https://github.com/amplication/plugins/tree/master/plugins/auth-supertokens)
+    </Note>
+
+    Adds Supertokens authentication, providing a flexible and customizable authentication solution with various "recipes" (email/password, social login, etc.).
+
+    **Platform:** Node.js  
+    **Requires:** NestJS Auth Module, Supertokens Core setup
+  </Accordion>
+
+  <Accordion
+    icon="node-js"
+    iconType="brands"
+    title="SAML Auth Provider"
+  >
+    <Note>
+    [View SAML Auth Provider on GitHub →](https://github.com/amplication/plugins/tree/master/plugins/auth-saml)
+    </Note>
+
+    Enables Security Assertion Markup Language (SAML) based Single Sign-On (SSO). Ideal for enterprise environments using SAML for identity federation.
+
+    **Platform:** Node.js  
+    **Requires:** NestJS Auth Module, SAML Identity Provider
+  </Accordion>
+
+  <Accordion
+    icon="node-js"
+    iconType="brands"
+    title="Keycloak Auth Provider"
+  >
+    <Note>
+    [View Keycloak Auth Provider on GitHub →](https://github.com/amplication/plugins/tree/master/plugins/auth-keycloak)
+    </Note>
+
+    Integrates with Keycloak, an open-source Identity and Access Management solution, offering advanced features and protocols.
+
+    **Platform:** Node.js  
+    **Requires:** NestJS Auth Module, Keycloak Server setup
+  </Accordion>
+
+  <Accordion
+    icon="microsoft"
+    iconType="brands"
+    title="ASP.NET Core Identity"
+  >
+    <Note>
+    [View .NET Auth Core Identity on GitHub →](https://github.com/amplication/plugins/tree/master/plugins/dotnet-auth-core-identity)
+    </Note>
+
+    Leverages ASP.NET Core Identity, the built-in authentication framework for .NET applications.
+
+    **Platform:** .NET
+
+    **Settings:**
+
+    <CodeGroup>
+    ```json .NET Core Identity Configuration
+    {
+      "seedUserEmail": "test@email.com", // Email for the default seed user
+      "seedUserPassword": "P@ssw0rd!" // Password for the default seed user
+    }
+    ```
+    </CodeGroup>
+  </Accordion>
+</AccordionGroup>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+<Card 
+  title="Plugin Repos" 
+  icon="github"
+  href="https://github.com/amplication/plugins/tree/master/plugins"
+>
+  Explore detailed documentation for each authentication provider plugin in our GitHub.
+</Card>
+<Card
+  title="Community Support"
+  icon="discord"
+  href="https://discord.gg/amplication"
+>
+  Join our Discord community to get help and connect with other Amplication developers.
+</Card>
+</CardGroup>

@@ -1,5 +1,246 @@
 ---
-title: 'Custom Types Actions'
-description: 'Explore how enterprise developers can add specialized logic and custom endpoints to their services.'
-icon: 'code'
+title: Custom Types & Actions
+description: Define custom data structures (DTOs) and API endpoints (Actions) in Amplication to build robust and standardized services, faster.
+icon: "code"
 ---
+
+<Frame>
+    <img src="/images/day-one/custom-types-and-actions-image.png" />
+</Frame>
+
+Amplication's **Custom Types & Actions** feature lets you define your API's data structures and endpoints visually, automatically generating production-ready code.
+
+<Note>
+The Custom Types & Actions feature is only available when using the **.NET** or **Node.js Blueprints**.
+</Note>
+
+## What Are Types and Actions?
+
+Types in Amplication primarily refer to Data Transfer Objects (DTOs). They are custom data structures that define the shape of data moving in and out of your APIs. DTOs specify the fields and their types for your API's input and output, creating clear contracts for data exchange.
+
+You'll work with two categories of types:
+- **DTOs:** Custom data structures composed of fields
+- **Primitives:** Basic data types like `String`, `Integer`, `Boolean`, `Date`, and `JSON`
+
+Actions represent your API endpoints and come in two forms:
+1. **Default CRUD Actions:** Amplication automatically creates standard Create, Read, Update, and Delete operations for your data entities
+2. **Custom Actions:** Your custom-defined endpoints for specific business logic beyond CRUD operations
+
+<Tip>Think of Actions as the verbs of your API and DTOs as the nouns. Actions *do* things with your *data* (DTOs).</Tip>
+
+## Access Custom Types & Actions
+
+<Steps>
+<Step title="Navigate to APIs Tab">
+  Locate and click on the **APIs** tab in your Amplication resource's top navigation bar.
+</Step>
+<Step title="Explore the APIs Tab">
+  The APIs tab provides a centralized view of your project's API definitions, organized by **Modules**.  You'll see a sidebar for navigating Modules, DTOs, and Actions.
+
+  <Frame caption="The APIs tab where you can access Custom Types & Actions">
+    <img src="/images/day-one/custom-types-and-actions.png" />
+  </Frame>
+
+</Step>
+</Steps>
+
+## Modules
+
+Modules help you organize your DTOs and Actions into logical units. While Amplication creates default Modules for each database entity, you can also create custom Modules to group related functionality.
+
+<AccordionGroup>
+    <Accordion title="Create Module" icon="plus">
+        <Steps>
+            <Step title="Go to All Modules">
+                In the APIs tab sidebar, click on **"All Modules"**.
+            </Step>
+            <Step title="Add New Module">
+                Click the **"Add Module"** button.
+            </Step>
+            <Step title="Name Your Module">
+                Enter a descriptive **Name** for your new Module.
+            </Step>
+            <Step title="Finalize Creation">
+                Click the **"Create Module"** button.
+            </Step>
+        </Steps>
+        <Frame caption="Creating a new module in Amplication">
+            <img src="/images/day-one/create-module.png" />
+        </Frame>
+    </Accordion>
+
+    <Accordion title="Edit Module" icon="pen">
+        <Steps>
+            <Step title="Select Module to Edit">
+                In the APIs tab, click on the **name** of the Module you wish to edit.
+            </Step>
+            <Step title="Open Edit Mode">
+                On the Module details page, click the **"Edit Module"** button.
+            </Step>
+            <Step title="Modify Module Details">
+                Change the Module's **Name** or **Description** as needed. Your changes are saved automatically.
+            </Step>
+        </Steps>
+        <Frame caption="Editing an existing module">
+            <img src="/images/day-one/edit-module.png" />
+        </Frame>
+    </Accordion>
+
+    <Accordion title="Delete Module" icon="trash">
+        <Steps>
+            <Step title="Select Module to Delete">
+                In the APIs tab, click on the **name** of the Module you wish to delete.
+            </Step>
+            <Step title="Open Edit Mode">
+                On the Module details page, click the **"Edit Module"** button.
+            </Step>
+            <Step title="Initiate Deletion">
+                Click the **delete icon** next to the Module name.
+            </Step>
+            <Step title="Confirm Deletion">
+                Confirm the deletion when prompted.
+            </Step>
+        </Steps>
+
+        <Frame caption="Deleting a module">
+            <img src="/images/day-one/delete-module.png" />
+        </Frame>
+
+        <Warning>
+            You can only delete **Custom Modules** that you have created. Amplication-generated Modules (based on entities) cannot be deleted. Deleting a Module will also delete all associated DTOs and Actions.
+        </Warning>
+
+    </Accordion>
+</AccordionGroup>
+
+## DTOs and Enums
+
+DTOs (Data Transfer Objects) and Enums are essential building blocks for creating type-safe APIs. DTOs encapsulate data structures that flow between your service layers, ensuring consistent data validation and transformation, while Enums define a fixed set of named constants that represent discrete values.
+
+<AccordionGroup>
+    <Accordion title="Create DTO" icon="square-plus">
+        <Steps>
+            <Step title="Start DTO Creation">
+                Click the **"Add DTO"** button in the top right of the APIs tab and select **"Add DTO"**.
+            </Step>
+            <Step title="Name and Describe DTO">
+                Enter a **Name** and optional **Description** for your DTO.
+
+                <Frame caption="Setting up DTO name and description">
+                    <img src="/images/day-one/create-dto-name-and-description.png" />
+                </Frame>
+
+            </Step>
+            <Step title="Add Properties">
+                In the "Properties" section, click **"Add property"** to define each property of your DTO.
+            </Step>
+            <Step title="Configure Properties">
+                For each property:
+                *   Specify the **Name**.
+                *   Choose the **Type** (Primitive, DTO, or Enum).
+                *   Toggle **"Array"** if it's an array.
+                *   Check **"Optional"** if it's optional.
+
+                <Frame caption="Adding properties to a DTO">
+                    <img src="/images/day-one/create-dto-add-properties.png" />
+                </Frame>
+
+            </Step>
+        </Steps>
+    </Accordion>
+
+    <Accordion title="Create Enum" icon="list">
+        <Steps>
+            <Step title="Start Enum Creation">
+                Click the **"Add DTO"** button and select **"Add Enum"**.
+            </Step>
+            <Step title="Name and Describe Enum">
+                Enter a **Name** and optional **Description** for your Enum.
+            </Step>
+            <Step title="Add Members">
+                In the "Members" section, click **"Add member"** to define each member of your Enum.
+            </Step>
+            <Step title="Configure Members">
+                For each member:
+                *   Specify the **Name**.
+                *   Provide the **Value**.
+            </Step>
+        </Steps>
+    </Accordion>
+
+    <Accordion title="Edit DTO or Enum" icon="pen-to-square">
+        <p>To edit an existing DTO or Enum, simply click on its name within its associated Module in the APIs tab. You can then modify its properties, members, name, or description as needed.</p>
+    </Accordion>
+</AccordionGroup>
+
+## Actions
+
+Actions define the API contract between your service and its consumers, specifying how data flows in and out of your system. Each Action maps to a specific endpoint (REST) or operation (GraphQL), with clear input/output types, enabling strong typing throughout your service stack while automatically generating the necessary routing, validation, and controller code.
+
+<AccordionGroup>
+    <Accordion title="Create Action" icon="plus">
+        <Steps>
+            <Step title="Start Action Creation">
+                Click the **"Add Action"** button in the top right of the APIs tab.
+            </Step>
+            <Step title="Name and Describe Action">
+                Provide a **Display Name** and optional **Description** for your Action.
+
+                <Frame caption="Creating a new action">
+                    <img src="/images/day-one/create-action-name-and-description.png" />
+                </Frame>
+
+            </Step>
+            <Step title="Choose Types">
+                In the "Types" section:
+                *   Select an **Input Type** (DTO or Primitive) for the request.
+                *   Select an **Output Type** (DTO or Primitive) for the response.
+
+                <Frame caption="Configuring action input and output types">
+                    <img src="/images/day-one/create-action-types.png" />
+                </Frame>
+
+            </Step>
+            <Step title="Configure REST API Settings (If Applicable)">
+                If using REST APIs:
+                *   Choose the **HTTP Verb**.
+                *   Specify the **Route**.
+                *   Select the **Input Source**.
+
+                <Frame caption="Setting up REST API configuration">
+                    <img src="/images/day-one/create-action-rest-api-settings.png" />
+                </Frame>
+
+            </Step>
+            <Step title="Configure GraphQL API Settings (If Applicable)">
+                If using GraphQL APIs:
+                *   Choose the **Operation Type**.
+
+                <Frame caption="Configuring GraphQL settings">
+                    <img src="/images/day-one/create-action-graphql-settings.png" />
+                </Frame>
+
+            </Step>
+        </Steps>
+
+    </Accordion>
+
+    <Accordion title="Enable and Disable Actions" icon="toggle-on">
+        <p>Amplication provides a clear overview of all Actions within each Module. You can easily enable or disable Actions using the toggle switch next to their names.</p>
+        <Warning>
+            Disabling an Action prevents Amplication from generating code for that specific endpoint.
+        </Warning>
+        <Frame caption="Managing action visibility">
+            <img src="/images/day-one/all-actions.png" />
+        </Frame>
+    </Accordion>
+
+    <Accordion title="Edit and Delete Action" icon="pen-to-square">
+        <p>
+            To **edit** an Action, click on its name to modify its properties and settings. To **delete** a Custom Action, click the delete button next to its name.
+        </p>
+        <Note>
+            Actions generated by Amplication as default CRUD operations **cannot be deleted**.
+        </Note>
+    </Accordion>
+</AccordionGroup>

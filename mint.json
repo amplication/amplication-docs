@@ -230,8 +230,7 @@
     {
       "group": "Lifecycle & Coding Details",
       "pages": [
-        "plugin-development/before-and-after-lifecycle-functions",
-        "plugin-development/context-and-skip-default-behavior"
+        "plugin-development/before-and-after-lifecycle-functions"
       ]
     },
     {

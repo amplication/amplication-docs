@@ -1,0 +1,38 @@
+---
+title: Create Server Docker Compose
+description: Creates or updates the Docker Compose file for the .NET server.
+---
+
+## Event Name
+
+`CreateServerDockerCompose`
+
+## Event Parameters
+
+<ResponseField name="fileContent" type="string">
+  The current content of the Docker Compose file.
+</ResponseField>
+
+<ResponseField name="updateProperties" type="Array">
+  An array of properties to update or add to the Docker Compose file. Each item is expected to be compatible with the structure of the Docker Compose YAML.
+</ResponseField>
+
+<ResponseField name="outputFileName" type="string">
+  The name of the Docker Compose output file.
+</ResponseField>
+
+<RequestExample>
+```ts Example
+beforeCreateServerDockerCompose(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateServerDockerComposeParams
+) {
+  const settings = getPluginSettings(context.pluginInstallations);
+
+  eventParams.updateProperties.push(
+    ...updateDockerComposeProperties(settings)
+  );
+  return eventParams;
+}
+```
+</RequestExample>

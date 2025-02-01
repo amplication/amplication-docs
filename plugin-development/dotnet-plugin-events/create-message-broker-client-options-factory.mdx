@@ -1,0 +1,35 @@
+---
+title: Create Message Broker Client Options Factory
+description: Creates the client options factory for the message broker.
+---
+
+## Event Name
+
+`CreateMessageBrokerClientOptionsFactory`
+
+## Event Parameters
+
+This event does not use any additional parameters.
+
+<RequestExample>
+```ts Example
+afterCreateMessageBrokerClientOptionsFactory(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateMessageBrokerClientOptionsFactoryParams,
+  files: FileMap<Class>
+): Promise<FileMap<Class>> {
+  const optionsFactoryFile = files.get("MessageBroker/MessageBrokerClientOptionsFactory.cs");
+  if (optionsFactoryFile) {
+    optionsFactoryFile.code.addMethod(
+      CsharpSupport.method({
+        name: "CreateConsumerConfig",
+        access: "public",
+        returnType: CsharpSupport.Types.reference("ConsumerConfig"),
+        body: `return new ConsumerConfig { GroupId = "my-consumer-group" };`,
+      })
+    );
+  }
+  return files;
+}
+```
+</RequestExample>

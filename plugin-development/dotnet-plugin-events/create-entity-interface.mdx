@@ -1,0 +1,56 @@
+---
+title: Create Entity Interface
+description: Creates an interface for entities in the .NET application.
+---
+
+## Event Name
+
+`CreateEntityInterface`
+
+## Event Parameters
+
+<ResponseField name="entity" type="Entity">
+  The entity object for which the interface is being created.
+</ResponseField>
+
+<ResponseField name="resourceName" type="string">
+  The name of the resource (typically the entity name).
+</ResponseField>
+
+<ResponseField name="apisDir" type="string">
+  The directory where the API related files are being generated.
+</ResponseField>
+
+<ResponseField name="moduleContainers" type="ModuleContainer[]">
+  An array of module containers in the application.
+</ResponseField>
+
+<ResponseField name="moduleActions" type="ModuleAction[]">
+  An array of module actions available in the application.
+</ResponseField>
+
+<ResponseField name="entities" type="Entity[]">
+  An array of all entities in the application.
+</ResponseField>
+
+<RequestExample>
+```ts Example
+afterCreateEntityInterface(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateEntityInterfaceParams,
+  files: FileMap<Interface>
+): Promise<FileMap<Interface>> {
+  const { entity } = eventParams;
+  const interfaceFile = files.get(`Interfaces/I${entity.name}.cs`);
+  if (interfaceFile) {
+    interfaceFile.code.addMethod(
+      CsharpSupport.method({
+        name: "Validate",
+        returnType: CsharpSupport.Types.boolean(),
+      })
+    );
+  }
+  return files;
+}
+```
+</RequestExample>

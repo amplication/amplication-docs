@@ -1,0 +1,31 @@
+---
+title: Create Server Git Ignore
+description: Creates the .gitignore file for the server.
+---
+
+## Event Name
+
+`CreateServerGitIgnore`
+
+## Event Parameters
+
+<ResponseField name="gitignorePaths" type="string[]">
+  An array of paths to be added to the `.gitignore` file.
+</ResponseField>
+
+<RequestExample>
+```ts Example
+beforeCreateServerGitIgnore(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateServerGitIgnoreParams
+): Promise<dotnet.CreateServerGitIgnoreParams> {
+  eventParams.gitignorePaths.push(
+    "*.user",
+    "*.userosscache",
+    "*.sln.docstates",
+    "[Tt]est[Rr]esult*"
+  );
+  return eventParams;
+}
+```
+</RequestExample>

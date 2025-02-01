@@ -1,0 +1,47 @@
+---
+title: Create Program File
+description: Creates the main Program.cs file for the .NET application.
+---
+
+## Event Name
+
+`CreateProgramFile`
+
+## Event Parameters
+
+<ResponseField name="builderServicesBlocks" type="CodeBlock[]">
+  An array of code blocks to be added to the `builder.Services` section in `Program.cs`.
+</ResponseField>
+
+<ResponseField name="appBlocks" type="CodeBlock[]">
+  An array of code blocks to be added to the application configuration section in `Program.cs`.
+</ResponseField>
+
+<RequestExample>
+```ts Example
+beforeCreateProgramFile(
+  { resourceInfo }: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateProgramFileParams
+) {
+  const serviceNamespace = pascalCase(resourceInfo?.name ?? "");
+  const serviceDbContext = `${pascalCase(resourceInfo?.name ?? "")}DbContext`;
+  eventParams.builderServicesBlocks.push(
+    new CodeBlock({
+      code: `builder.Services.AddDbContext<${serviceDbContext}>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("${CONNECTION_STRING}")));`,
+      references: [
+        new ClassReference({
+          name: "AddDbContext",
+          namespace: "Microsoft.EntityFrameworkCore",
+        }),
+        new ClassReference({
+          name: serviceDbContext,
+          namespace: `${serviceNamespace}.Infrastructure`,
+        }),
+      ],
+    })
+  );
+
+  return eventParams;
+}
+```
+</RequestExample>

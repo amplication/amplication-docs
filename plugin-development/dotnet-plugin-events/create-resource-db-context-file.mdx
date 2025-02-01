@@ -1,0 +1,55 @@
+---
+title: Create Resource Db Context File
+description: Creates the database context file for the .NET application.
+---
+
+## Event Name
+
+`CreateResourceDbContextFile`
+
+## Event Parameters
+
+<ResponseField name="entities" type="Entity[]">
+  An array of all entities in the application.
+</ResponseField>
+
+<ResponseField name="resourceName" type="string">
+  The name of the resource (typically the entity name).
+</ResponseField>
+
+<ResponseField name="resourceDbContextPath" type="string">
+  The path where the database context file will be created.
+</ResponseField>
+
+<RequestExample>
+```ts Example
+afterCreateResourceDbContextFile(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateResourceDbContextFileParams,
+  files: FileMap<Class>
+): FileMap<Class> {
+  const { resourceDbContextPath, resourceName } = eventParams;
+
+  const modelFile = files.get(
+    `${resourceDbContextPath}${resourceName}DbContext.cs`
+  );
+
+  if (!modelFile) return files;
+
+  modelFile.code.parentClassReference = CsharpSupport.genericClassReference({
+    reference: CsharpSupport.classReference({
+      name: `IdentityDbContext`,
+      namespace: "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+    }),
+    innerType: CsharpSupport.Types.reference(
+      CsharpSupport.classReference({
+        name: `IdentityUser`,
+        namespace: "Microsoft.AspNetCore.Identity",
+      })
+    ),
+  });
+
+  return files;
+}
+```
+</RequestExample>

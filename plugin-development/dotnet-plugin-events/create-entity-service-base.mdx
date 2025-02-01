@@ -1,0 +1,60 @@
+---
+title: Create Entity Service Base
+description: Creates a base service for entities in the .NET application.
+---
+
+## Event Name
+
+`CreateEntityServiceBase`
+
+## Event Parameters
+
+<ResponseField name="entity" type="Entity">
+  The entity object for which the base service is being created.
+</ResponseField>
+
+<ResponseField name="resourceName" type="string">
+  The name of the resource (typically the entity name).
+</ResponseField>
+
+<ResponseField name="apisDir" type="string">
+  The directory where the API services are being generated.
+</ResponseField>
+
+<ResponseField name="moduleActions" type="ModuleAction[]">
+  An array of module actions available for the entity.
+</ResponseField>
+
+<ResponseField name="entities" type="Entity[]">
+  An array of all entities in the application.
+</ResponseField>
+
+<RequestExample>
+```ts Example
+afterCreateEntityServiceBase(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateEntityServiceBaseParams,
+  files: FileMap<Class>
+): Promise<FileMap<Class>> {
+  const { entity } = eventParams;
+  const serviceBaseFile = files.get(`Services/Base/${entity.name}ServiceBase.cs`);
+  if (serviceBaseFile) {
+    serviceBaseFile.code.addMethod(
+      CsharpSupport.method({
+        name: "SoftDelete",
+        access: "protected",
+        returnType: CsharpSupport.Types.task(CsharpSupport.Types.void()),
+        parameters: [
+          CsharpSupport.parameter({
+            name: "id",
+            type: CsharpSupport.Types.string(),
+          }),
+        ],
+        body: "// Implement soft delete logic here",
+      })
+    );
+  }
+  return files;
+}
+```
+</RequestExample>

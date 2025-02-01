@@ -1,5 +1,79 @@
 ---
-title: 'View Pending Changes'
-description: 'Learn how enterprise developers can view and manage pending code changes within Amplication.'
-icon: 'laptop-code'
+title: View Pending Changes
+sidebarTitle: Pending Changes
+description: Review all modifications before code generation, ensuring complete control over your resource's code.
+icon: "list-check"
 ---
+
+<Frame>
+    <img src="/images/day-one/pending-changes.png" />
+</Frame>
+
+Amplication's **Pending Changes** feature provides a critical review step in your workflow, allowing you to meticulously check every modification *before* code generation.
+Gain complete visibility into all updates, ensure adherence to your standards, and maintain full control over your resource's code with this powerful feature.
+
+<Check>The Pending Changes feature gives you a **comprehensive pre-generation review**, guaranteeing you're always in command of your resource's generated code.</Check>
+
+## Pending Changes Sidebar
+
+The Pending Changes sidebar provides a concise summary of all modifications awaiting code generation.
+
+<Frame caption="Pending Changes Sidebar in the Project Catalog">
+    <img src="/images/day-one/pending-changes-sidebar.png" />
+</Frame>
+
+* **Quick Navigation to Changes:** Click on any listed change to navigate directly to its corresponding section in the Amplication UI.
+* **Flexible Code Generation:** Generate code for specific services, all services, or only services with pending changes (default behavior).
+* **Commit Message Management:** Enter custom commit messages or let Amplication auto-generate descriptive messages for your code generation commits.
+
+## Pending Changes Tab
+
+For a granular examination of modifications, the dedicated **Pending Changes Tab** provides a code-level diff view.
+
+<Frame caption="Dedicated Pending Changes Tab with Code Diff View">
+    <img src="/images/day-one/pending-changes-tab.png" />
+</Frame>
+
+* **Browse Changes by Service and Resource:** Navigate through the list of services and expanded resource types (Entities, APIs, etc.) to pinpoint specific modifications.
+* **Examine Code Diffs:** For each change, a clear and readable diff view highlights the exact lines of code or configuration that have been added, removed, or modified.
+
+## Access Pending Changes
+
+You can access the Pending Changes view from two locations within Amplication:
+
+<Steps>
+    <Step title="From the Project Catalog Sidebar">
+        When viewing your Project Catalog, the **Pending Changes** sidebar is always visible on the right-hand side, offering an at-a-glance summary of current modifications.
+    </Step>
+    <Step title="Dedicated Pending Changes Tab">
+         For a detailed, code-level comparison of changes, navigate to the **Pending Changes** tab in the main project navigation.
+    </Step>
+</Steps>
+
+## Next Steps
+
+After reviewing your pending changes, explore these features to enhance your development workflow:
+
+<CardGroup cols={2}>
+    <Card
+        title="Smart Git Sync"
+        icon="code-branch"
+        href="/day-zero/smart-git-sync"
+    >
+        Configure Git synchronization to automatically push generated code to your repository and manage code changes effectively.
+    </Card>
+    <Card
+        title="Automated Alerts"
+        icon="bell"
+        href="/day-two/automated-alerts"
+    >
+        Stay informed about important changes and updates across your resources with automated notifications and alerts.
+    </Card>
+    <Card
+        title="Proactive Technical Debt Management"
+        icon="screwdriver-wrench"
+        href="/day-two/resolve-debt-across-multiple-resources"
+    >
+        Learn how to identify and resolve technical debt across multiple resources efficiently.
+    </Card>
+</CardGroup>

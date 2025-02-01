@@ -1,0 +1,35 @@
+---
+title: Create Server Appsettings
+description: Creates or updates the appsettings.json file for the .NET server
+---
+
+## Event Name
+
+`CreateServerAppsettings`
+
+## Event Parameters
+
+<ResponseField name="updateProperties" type="Record<string, any>">
+  Key-value pairs of properties to update in the server's appsettings.json file
+</ResponseField>
+
+<RequestExample>
+```ts Example
+beforeCreateServerAppsettings(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateServerAppsettingsParams
+) {
+  const { port, password, user, host, dbName } = getPluginSettings(
+    context.pluginInstallations
+  );
+
+  eventParams.updateProperties = {
+    ...eventParams.updateProperties,
+    ConnectionStrings: {
+      [CONNECTION_STRING]: `Host=${host}:${port};Username=${user};Password=${password};Database=${dbName}`,
+    },
+  };
+  return eventParams;
+}
+```
+</RequestExample>

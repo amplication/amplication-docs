@@ -1,0 +1,26 @@
+---
+title: Create Message Broker Service
+description: Creates the service for the message broker.
+---
+
+## Event Name
+
+`CreateMessageBrokerService`
+
+## Event Parameters
+
+This event does not use any additional parameters.
+
+<RequestExample>
+```ts Example
+async afterCreateMessageBrokerService(
+  dsgContext: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateMessageBrokerServiceParams,
+  files: FileMap<Class>
+): Promise<FileMap<Class>> {
+  const messageBrokerFiles = await createMessageBroker(dsgContext);
+  await files.merge(messageBrokerFiles);
+  return files;
+}
+```
+</RequestExample>

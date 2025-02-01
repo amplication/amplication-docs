@@ -1,0 +1,49 @@
+---
+title: Create Server Csproj
+description: Creates or updates the .csproj file for the .NET server.
+---
+
+## Event Name
+
+`CreateServerCsproj`
+
+## Event Parameters
+
+<ResponseField name="propertyGroup" type="Record<string, string>">
+  Key-value pairs of properties to update within the `<PropertyGroup>` section of the .csproj file.
+</ResponseField>
+
+<ResponseField name="packageReferences" type="Array">
+  An array of package references to add or update in the `<ItemGroup>` section of the .csproj file. Each item is an object with the following structure:
+
+  <Expandable title="properties">
+    <ResponseField name="include" type="string">
+      The package name to include.
+    </ResponseField>
+    <ResponseField name="version" type="string">
+      The version of the package.
+    </ResponseField>
+    <ResponseField name="includeAssets" type="string">
+      Optional. Specifies assets to include.
+    </ResponseField>
+    <ResponseField name="privateAssets" type="string">
+      Optional. Specifies private assets.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+```ts Example
+beforeCreateServerCsproj(
+  _: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateServerCsprojParams
+) {
+  eventParams.packageReferences.push({
+    include: "Npgsql.EntityFrameworkCore.PostgreSQL",
+    version: "8.0.4",
+  });
+
+  return eventParams;
+}
+```
+</RequestExample>

@@ -255,9 +255,35 @@
       ]
     },
     {
-      "group": ".NET Plugin Events",
+      "group": "Plugin Events",
       "pages": [
-        "plugin-development/reference"
+        {
+          "group": ".NET Plugin Event Reference",
+          "icon": "microsoft",
+          "pages": [
+            "plugin-development/dotnet-plugin-events/create-server",
+            "plugin-development/dotnet-plugin-events/create-server-appsettings",
+            "plugin-development/dotnet-plugin-events/create-server-auth",
+            "plugin-development/dotnet-plugin-events/create-program-file",
+            "plugin-development/dotnet-plugin-events/create-server-csproj",
+            "plugin-development/dotnet-plugin-events/create-server-docker-compose",
+            "plugin-development/dotnet-plugin-events/create-server-git-ignore",
+            "plugin-development/dotnet-plugin-events/create-entity-model",
+            "plugin-development/dotnet-plugin-events/create-resource-db-context-file",
+            "plugin-development/dotnet-plugin-events/create-message-broker",
+            "plugin-development/dotnet-plugin-events/create-message-broker-client-options-factory",
+            "plugin-development/dotnet-plugin-events/create-message-broker-service",
+            "plugin-development/dotnet-plugin-events/create-entity-controller",
+            "plugin-development/dotnet-plugin-events/create-entity-controller-base",
+            "plugin-development/dotnet-plugin-events/create-dtos",
+            "plugin-development/dotnet-plugin-events/create-entity-extensions",
+            "plugin-development/dotnet-plugin-events/create-entity-interface",
+            "plugin-development/dotnet-plugin-events/create-entity-service",
+            "plugin-development/dotnet-plugin-events/create-entity-service-base",
+            "plugin-development/dotnet-plugin-events/create-seed-development-data-file",
+            "plugin-development/dotnet-plugin-events/load-static-files"
+          ]
+        }
       ]
     }
   ],

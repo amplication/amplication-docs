@@ -1,0 +1,48 @@
+---
+title: Create Entity Model
+description: Creates a model class for a specific entity in the .NET application.
+---
+
+## Event Name
+
+`CreateEntityModel`
+
+## Event Parameters
+
+<ResponseField name="entity" type="Entity">
+  The entity object for which the model class is being created.
+</ResponseField>
+
+<ResponseField name="entities" type="Entity[]">
+  An array of all entities in the application.
+</ResponseField>
+
+<ResponseField name="resourceName" type="string">
+  The name of the resource (typically the entity name).
+</ResponseField>
+
+<ResponseField name="apisDir" type="string">
+  The directory where the API related files are being generated.
+</ResponseField>
+
+<RequestExample>
+```ts Example
+afterCreateEntityModel(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateEntityModelParams,
+  files: FileMap<Class>
+): Promise<FileMap<Class>> {
+  const { entity, resourceName } = eventParams;
+  const modelFile = files.get(`${resourceName}/Models/${entity.name}.cs`);
+  if (modelFile) {
+    modelFile.code.addAttribute(
+      CsharpSupport.attribute({
+        name: "Table",
+        arguments: [`"${entity.name}s"`],
+      })
+    );
+  }
+  return files;
+}
+```
+</RequestExample>

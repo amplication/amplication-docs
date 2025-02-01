@@ -1,0 +1,66 @@
+---
+title: Create Seed Development Data File
+description: Creates a file for seeding development data in the .NET application.
+---
+
+## Event Name
+
+`CreateSeedDevelopmentDataFile`
+
+## Event Parameters
+
+<ResponseField name="seedFilePath" type="string">
+  The full path to the seed development data file being created.
+</ResponseField>
+
+<ResponseField name="resourceName" type="string">
+  The name of the resource (typically the application name).
+</ResponseField>
+
+<RequestExample>
+```ts Example
+afterCreateSeedDevelopmentDataFile(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateSeedDevelopmentDataFileParams,
+  files: FileMap<Class>
+): FileMap<Class> {
+  const { seedFilePath, resourceName } = eventParams;
+  const { entities } = context;
+
+  if (!entities) return files;
+
+  const seedFile = files.get(seedFilePath);
+  seedFile?.code.addMethod(
+    CsharpSupport.method({
+      name: "SeedDevUser",
+      access: "public",
+      isAsync: true,
+      body: CreateSeedDevelopmentDataBody(resourceName, context),
+      type: MethodType.STATIC,
+      parameters: [
+        CsharpSupport.parameter({
+          name: "serviceProvider",
+          type: CsharpSupport.Types.reference(
+            CsharpSupport.classReference({
+              name: "IServiceProvider",
+              namespace: `${resourceName}.Infrastructure.Models`,
+            })
+          ),
+        }),
+        CsharpSupport.parameter({
+          name: "configuration",
+          type: CsharpSupport.Types.reference(
+            CsharpSupport.classReference({
+              name: "IConfiguration",
+              namespace: "",
+            })
+          ),
+        }),
+      ],
+    })
+  );
+
+  return files;
+}
+```
+</RequestExample>

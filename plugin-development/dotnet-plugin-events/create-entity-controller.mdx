@@ -1,0 +1,69 @@
+---
+title: Create Entity Controller
+description: Creates a controller for a specific entity in the .NET application.
+---
+
+## Event Name
+
+`CreateEntityController`
+
+## Event Parameters
+
+<ResponseField name="entity" type="Entity">
+  The entity object for which the controller is being created.
+</ResponseField>
+
+<ResponseField name="resourceName" type="string">
+  The name of the resource (typically the entity name).
+</ResponseField>
+
+<ResponseField name="apisDir" type="string">
+  The directory where the API controllers are being generated.
+</ResponseField>
+
+<ResponseField name="entityActions" type="object">
+  An object containing the CRUD actions available for the entity.
+</ResponseField>
+
+<RequestExample>
+```ts Example
+afterCreateEntityController(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateEntityControllerParams,
+  files: FileMap<Class>
+): Promise<FileMap<Class>> {
+  const { entity, resourceName, apisDir } = eventParams;
+  const controllerPath = `${apisDir}/${entity.name}/${pascalCase(entity.name)}Controller.cs`;
+  const controllerFile = files.get(controllerPath);
+
+  if (controllerFile) {
+    // Add a custom action to the controller
+    controllerFile.code.addMethod(
+      CsharpSupport.method({
+        name: "ExportToCsv",
+        access: "public",
+        isAsync: true,
+        returnType: CsharpSupport.Types.task(CsharpSupport.Types.reference("IActionResult")),
+        decorators: [
+          CsharpSupport.decorator({
+            name: "HttpGet",
+            arguments: ["export-csv"],
+          }),
+        ],
+        body: `
+          var allItems = await _service.List();
+          var csv = ConvertToCsv(allItems);
+          return File(Encoding.UTF8.GetBytes(csv), "text/csv", "${entity.name}Export.csv");
+        `,
+      })
+    );
+
+    // Add necessary imports
+    controllerFile.code.addImport("System.Text");
+    controllerFile.code.addImport("Microsoft.AspNetCore.Mvc");
+  }
+
+  return files;
+}
+```
+</RequestExample>

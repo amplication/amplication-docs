@@ -1,0 +1,53 @@
+---
+title: Load Static Files
+description: Loads static files into the project.
+---
+
+## Event Name
+
+`LoadStaticFiles`
+
+## Event Parameters
+
+<ResponseField name="source" type="string">
+  The source directory containing the static files to load.
+</ResponseField>
+
+<ResponseField name="basePath" type="string">
+  The base path in the project where static files should be loaded into.
+</ResponseField>
+
+<RequestExample>
+```ts Example
+async afterLoadStaticFiles(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.LoadStaticFilesParams,
+  files: FileMap<CodeBlock>
+): Promise<FileMap<CodeBlock>> {
+  const { resourceInfo } = context;
+  if (!resourceInfo) return files;
+
+  const resourceName = pascalCase(resourceInfo.name);
+
+  const destPath = `${eventParams.basePath}/src/APIs/Common/Auth/ProgramAuthExtensions.cs`;
+  const filePath = resolve(
+    __dirname,
+    "./static/common/auth/ProgramAuthExtensions.cs"
+  );
+
+  const programAuthExtensionsFileMap = await createStaticFileFileMap(
+    destPath,
+    filePath,
+    context,
+    [
+      CsharpSupport.classReference({
+        name: `${resourceName}DbContext`,
+        namespace: `${resourceName}.Infrastructure`,
+      }),
+    ]
+  );
+
+  return files;
+}
+```
+</RequestExample>

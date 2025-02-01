@@ -1,0 +1,83 @@
+---
+title: Create Entity Extensions
+description: Creates extension methods for entities in the .NET application.
+---
+
+## Event Name
+
+`CreateEntityExtensions`
+
+## Event Parameters
+
+<ResponseField name="entity" type="Entity">
+  The entity object for which extension methods are being created.
+</ResponseField>
+
+<ResponseField name="resourceName" type="string">
+  The name of the resource (typically the entity name).
+</ResponseField>
+
+<ResponseField name="apisDir" type="string">
+  The directory where the API related files are being generated.
+</ResponseField>
+
+<RequestExample>
+```ts Example
+afterCreateEntityExtensions(
+  context: dotnetTypes.DsgContext,
+  eventParams: dotnet.CreateEntityExtensionsParams,
+  files: FileMap<Class>
+): Promise<FileMap<Class>> {
+  const { entity, resourceName, apisDir } = eventParams;
+  const extensionsPath = `${apisDir}/${entity.name}/${pascalCase(entity.name)}Extensions.cs`;
+  const extensionsFile = files.get(extensionsPath);
+
+  if (extensionsFile) {
+    // Add a custom extension method
+    extensionsFile.code.addMethod(
+      CsharpSupport.method({
+        name: "ToAuditString",
+        isStatic: true,
+        returnType: CsharpSupport.Types.string(),
+        parameters: [
+          CsharpSupport.parameter({
+            name: "this",
+            type: CsharpSupport.Types.reference(entity.name),
+            isThis: true,
+          }),
+        ],
+        body: `
+          return "${entity.Id}|${entity.CreatedAt}|${entity.UpdatedAt}";
+        `,
+      })
+    );
+
+    // Add a custom mapper extension
+    extensionsFile.code.addMethod(
+      CsharpSupport.method({
+        name: "ToDto",
+        isStatic: true,
+        returnType: CsharpSupport.Types.reference(`${entity.name}Dto`),
+        parameters: [
+          CsharpSupport.parameter({
+            name: "this",
+            type: CsharpSupport.Types.reference(entity.name),
+            isThis: true,
+          }),
+        ],
+        body: `
+          return new ${entity.name}Dto
+          {
+            Id = entity.Id,
+            // Map other properties here
+            AuditString = entity.ToAuditString()
+          };
+        `,
+      })
+    );
+  }
+
+  return files;
+}
+```
+</RequestExample>

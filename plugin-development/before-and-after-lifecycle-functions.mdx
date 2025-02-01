@@ -1,5 +1,5 @@
 ---
-title: 'Before And After Lifecycle Functions'
+title: 'Before and After Lifecycle Functions'
 sidebarTitle: Lifecycle Functions
 description: "Customize and extend Amplication's code generation process using Before and After lifecycle functions in plugins."
 icon: 'code'
@@ -114,6 +114,47 @@ export type PluginAfterEvent<T extends EventParams, F> = (
 </Tab>
 </Tabs>
 
+## The Context Object
+
+Both `before` and `after` lifecycle functions have access to a global `context` object that provides essential data and utilities. This context is shared between events and contains crucial information about your application.
+
+Here are the key properties available in the context object:
+
+| Name | Type | Description |
+|------|------|-------------|
+| resourceType | `keyOf typeOf EnumResourceType` | The type of resource: `MessageBroker`, `ProjectConfiguration`, `Service` |
+| resourceInfo | `AppInfo` | General application data including name, description, version, ID, URL, and settings |
+| entities | `Entity[]` | List of entities in the service |
+| roles | `Roles` | List of roles in the service |
+| pluginInstallations | `PluginInstallations` | List of installed plugins |
+| topics | `Topic[]` | List of topics connected to the service |
+| modules | `ModuleMap` | Map of generated modules (files) |
+| DTOs | `DTOs` | List of generated DTOs |
+| plugins | `PluginMap` | Map of event names with their before/after functions and event parameters |
+| logger | `BuildLogger` | Logger for creating user-facing build logs |
+| utils | `ContextUtil` | Utility functions including `skipDefaultBehavior` and `importStaticModules` |
+| clientDirectories | `ClientDirectories` | Paths for admin UI generation (base, src, auth, public, api directories) |
+| serverDirectories | `ServerDirectories` | Paths for server generation (base, src, auth, scripts, messageBroker directories) |
+
+<Note>
+For detailed information about these types and their definitions, check out the [code-gen-types.ts](https://github.com/amplication/amplication/blob/master/libs/util/code-gen-types/src/code-gen-types.ts) file in the Amplication GitHub repository.
+</Note>
+
+## Skipping Default Behavior
+
+The `before` function provides a powerful capability to skip Amplication's default behavior through the context object. This allows you to completely override the default functionality with your own implementation:
+
+```tsx
+// In your before function
+context.utils.skipDefaultBehavior = true;
+```
+
+By default, `skipDefaultBehavior` is set to `false`. When set to `true`, Amplication will skip its default implementation, and you must provide alternative logic either in the `before` function or in the corresponding `after` function.
+
+<Note>
+Use `skipDefaultBehavior` with caution. Skipping default behavior without providing proper alternative functionality can lead to unexpected results, especially if other generated files depend on the skipped output.
+</Note>
+
 ## Practical Use: Modifying Generated Files in `after` Functions
 
 A common use case for `after` functions is to restructure the generated files. Imagine you need to enforce a specific folder structure for all your organization's services. The `after` function is the perfect place to achieve this.
@@ -175,4 +216,9 @@ In `after` functions, focus on making **specific, targeted changes** to the gene
 <Accordion title="Careful Template Adjustments in `before` Functions" icon="exclamation-triangle" iconType="solid">
 When modifying templates within `before` functions, exercise caution. Changes to templates can have a broad impact on code generation. Ensure you thoroughly test any template modifications to prevent unintended consequences or breakages in the generated code.
 </Accordion>
+
+<Accordion title="Strategic Use of `skipDefaultBehavior`" icon="sign-ban" iconType="solid">
+The `skipDefaultBehavior` option (available in some events) should be used judiciously within `before` functions. Only utilize it if you intend to completely **override** Amplication's default code generation for that specific event. In most cases, you'll want to *extend* or *modify* the default behavior, not replace it entirely.
+</Accordion>
+
 </AccordionGroup>

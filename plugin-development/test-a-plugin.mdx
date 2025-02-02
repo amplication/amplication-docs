@@ -1,5 +1,94 @@
 ---
-title: 'Test A Plugin'
-description: 'Recommended approaches for testing Amplication plugins to ensure smooth code generation.'
-icon: 'vial'
+title: 'Test Your Private Plugin'
+description: "Learn how to efficiently test your private Amplication plugins during development using Dev Versions, ensuring a smooth integration"
+sidebarTitle: 'Test a Plugin'
+icon: 'flask-vial'
 ---
+
+<Frame>
+<img src="/images/plugin-development/enable-plugin-dev-versions.png" />
+</Frame>
+
+Amplication provides **Dev Versions** to streamline your testing process, allowing you to rapidly iterate and validate your plugin changes directly within your development environment before publishing.
+
+## Why Use Dev Versions for Plugin Testing?
+
+Dev Versions are designed to minimize friction and accelerate your plugin development workflow by:
+
+<CardGroup cols={2}>
+<Card title="Eliminate Publish Cycles" icon="rotate">
+Instead of needing to publish a new plugin version every time you make a code change, Dev Versions automatically use the latest code directly from your plugin's Git repository.
+</Card>
+<Card title="Seamless Integration" icon="code-merge">
+Dev Versions integrate directly with your existing Git-based development workflow, making testing a natural part of your plugin creation process.
+</Card>
+</CardGroup>
+
+<Note>
+Want to learn more about publishing your plugin? Check out our [plugin publishing guide](/docs/publish-plugin).
+</Note>
+
+## Step 1: Enable Dev Versions for Your Plugin
+
+Before you can start testing with Dev Versions, you need to enable them for your private plugin in the Amplication Platform Console.
+
+<Steps>
+<Step title="Navigate to Private Plugins">
+Go to your project's **Platform Console** from the top header and click on the **Private Plugins** tab.
+</Step>
+<Step title="Select Your Plugin">
+Choose the private plugin you want to test from the list.
+</Step>
+<Step title="Enable Dev Version Toggle">
+In your plugin's settings, locate the **Enable Dev Version** toggle and switch it to the **on** state.
+
+<Frame caption="Enable Dev Versions Toggle">
+<img src="/images/plugin-development/dev-versions-toggle.png" />
+</Frame>
+
+</Step>
+</Steps>
+
+<Note>
+When Dev Versions are enabled, Amplication will automatically pull the latest plugin code from the base branch specified in your [Git Settings](/docs/private-plugins#configure-git-settings-in-platform-console) whenever you use this plugin in a service or template.
+</Note>
+
+## Step 2: Install Your Plugin with the Dev Version
+
+To actually use the dev version for testing, you **must** specifically select it when installing the plugin in a service or template.
+
+<Steps>
+<Step title="Navigate to Services or Templates">
+Go to either the **Service Catalog** and select a service, or navigate to the **Templates** tab and choose a template.
+</Step>
+<Step title="Go to the Plugins Tab">
+In your service or template, click on the **Plugins** tab.
+</Step>
+<Step title="Install Your Private Plugin">
+Find your private plugin in the **Private Plugins** section and click **Install**.
+
+If the plugin is already installed, you may need to uninstall and reinstall it to ensure you're selecting the Dev Version.
+</Step>
+<Step title="Select the 'Dev Version' in Plugin Settings">
+After clicking "Install", a settings panel will appear for your plugin.  **Crucially, ensure that the version dropdown is set to "Dev Version"**.
+
+<Frame>
+<img src="./assets/private-plugins/add-private-plugin-to-service.png" alt="Select Dev Version when installing plugin" caption="Select 'Dev Version' when installing your plugin to use the latest code."/>
+</Frame>
+
+</Step>
+</Steps>
+
+<Warning>
+For Dev Versions to be active, you **must** both enable the "Dev Version" toggle in the plugin settings **and** select "Dev Version" during plugin installation in your service or template. If you skip the version selection during install, you might be using a published version instead of your latest development code.
+</Warning>
+
+## Next Steps
+
+Once you are satisfied with your testing and ready to share your plugin more broadly, you can proceed to the [publish your plugin](/docs/publish-plugin) guide.
+
+<CardGroup cols={1}>
+<Card title="Publish Your Plugin" icon="upload" href="/plugin-development/publish-a-plugin">
+Learn how to publish your plugin and make it available to your organization or the wider Amplication community.
+</Card>
+</CardGroup>

@@ -258,6 +258,30 @@
       "group": "Plugin Events",
       "pages": [
         {
+         "group": "Node.js Plugin Event Reference",
+          "icon": "node-js",
+          "pages": [
+            "plugin-development/node-plugin-events/create-server",
+            "plugin-development/node-plugin-events/create-server-docker-compose",
+            "plugin-development/node-plugin-events/create-server-docker-compose-dev",
+            "plugin-development/node-plugin-events/create-server-dot-env",
+            "plugin-development/node-plugin-events/create-server-auth",
+            "plugin-development/node-plugin-events/create-package-json",
+            "plugin-development/node-plugin-events/create-entity-service",
+            "plugin-development/node-plugin-events/create-entity-service-base",
+            "plugin-development/node-plugin-events/create-entity-controller",
+            "plugin-development/node-plugin-events/create-entity-controller-base",
+            "plugin-development/node-plugin-events/create-entity-resolver",
+            "plugin-development/node-plugin-events/create-entity-resolver-base",
+            "plugin-development/node-plugin-events/create-message-broker-service",
+            "plugin-development/node-plugin-events/create-message-broker-service-base",
+            "plugin-development/node-plugin-events/create-message-broker-nestjs-module",
+            "plugin-development/node-plugin-events/create-message-broker-client-options-factory",
+            "plugin-development/node-plugin-events/create-message-broker-topics-enum",
+            "plugin-development/node-plugin-events/create-prisma-schema"
+          ]
+        },
+        {
           "group": ".NET Plugin Event Reference",
           "icon": "microsoft",
           "pages": [

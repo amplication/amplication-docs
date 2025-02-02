@@ -1,0 +1,50 @@
+---
+title: Create Server Auth
+description: Creates the Authorization directory with the selected strategy
+---
+
+## Event Name
+
+` CreateServerAuth`
+
+## Event Parameters
+
+<ParamField body="srcDir" type="string">
+  The target directory the auth folder will be generated in.
+</ParamField>
+
+<Note>
+In order to set the auth strategy, we should use the `before` lifecycle event and call the `skipDefaultBehavior` util. As a result, the default event won't run, but we would have to provide our logic in the `after` lifecycle event:
+
+*   the path to our static auth folder
+*   the path in which we want the auth folder to be generated in
+</Note>
+
+<RequestExample>
+
+```ts example
+beforeCreateServerAuth(
+    context: DsgContext,
+    eventParams: CreateAuthModulesParams
+  ) {
+    context.utils.skipDefaultBehavior = true;
+    return eventParams;
+  }
+
+ async afterCreateServerAuth(
+    context: DsgContext,
+    eventParams: CreateAuthModulesParams,
+    modules: ModuleMap
+  ) {
+    const staticPath = resolve(__dirname, "../static");
+    const staticsFiles = await context.utils.importStaticModules(
+      staticPath,
+      context.serverDirectories.srcDirectory
+    );
+
+    modules.merge(staticsFiles)
+    return modules;
+  }
+```
+
+</RequestExample>

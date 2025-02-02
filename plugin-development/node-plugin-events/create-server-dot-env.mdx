@@ -1,0 +1,48 @@
+---
+title: Create Server Dot Env
+description: Creates the server's .env file
+---
+
+## Event Name
+
+`CreateServerDotEnv`
+
+## Event Parameters
+
+<ParamField body="envVariables" type="VariableDictionary">
+  An Array of objects represents the key-value pairs the user wants to add to the generated `.env` file.
+
+  <Expandable title="VariableDictionary Type Definition">
+
+  ```ts
+  export type VariableDictionary = {
+    [variable: string]: string;
+  }[];
+  ```
+
+  </Expandable>
+</ParamField>
+
+<RequestExample>
+
+```ts example
+export const envVariables: VariableDictionary = [
+  { DB_USER: "${dbUser}" },
+  { DB_PASSWORD: "${dbPassword}" },
+  { DB_PORT: "${dbPort}" },
+  {
+    DB_URL: "mysql://${dbUser}:${dbPassword}@${dbHost}:${dbPort}${dbName}",
+  },
+];
+
+beforeCreateServerDotEnv(
+    context: DsgContext,
+    eventParams: CreateServerDotEnvParams
+  ) {
+    eventParams.envVariables = [...eventParams.envVariables, ...envVariables];
+
+    return eventParams;
+  }
+```
+
+</RequestExample>

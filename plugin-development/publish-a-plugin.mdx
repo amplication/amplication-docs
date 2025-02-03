@@ -1,5 +1,138 @@
 ---
-title: 'Publish A Plugin'
-description: 'How to version and distribute Amplication plugins for internal or public use.'
-icon: 'upload'
+title: Publish Your Private Plugin
+description: Learn how to publish private Amplication plugins, including versioning, tagging your Git repository, and making your plugins available for organizational use.
+sidebarTitle: Publish Plugin
+icon: upload
 ---
+
+<Frame>
+<img src="/images/plugin-development/publish-changes-for-new-plugin-version.png" />
+</Frame>
+
+After you've thoroughly developed and tested your private plugin using [Dev Versions](/plugin-development/test-a-plugin), it's time to **publish** it.
+Publishing makes your plugin version officially available for use across your organization's Amplication resources and templates.
+
+## Why Publish Plugin Versions?
+
+Publishing plugin versions is crucial for maintaining control and stability in your Amplication environment. It allows you to:
+
+<CardGroup cols={2}>
+  <Card title="Establish Stable Releases">
+    Publishing creates distinct, versioned releases of your plugin. This ensures that when teams use your plugin, they are leveraging a known, tested, and stable version.
+  </Card>
+  <Card title="Control Updates and Changes">
+    By publishing specific versions, you prevent unintended breaking changes from your ongoing development from immediately impacting services using your plugin. Teams can choose when to update to newer published versions.
+  </Card>
+</CardGroup>
+
+<Tip>
+Think of publishing plugin versions as creating official releases of your plugin functionality.
+</Tip>
+
+## Step 1: Add a New Plugin Version in Amplication
+
+Next, you'll add a new version entry for your plugin within the Amplication Platform Console. This version will correspond to a specific tag in your Git repository in the next step.
+
+<Steps>
+<Step title="Navigate to Private Plugins">
+Ensure you are in the **Private Plugins** tab in your Platform Console and have selected your plugin.
+</Step>
+<Step title="Scroll to 'Add New Version'">
+Scroll down to the **Add New Version** section.
+</Step>
+<Step title="Click 'Add Version'">
+Click the **Add Version** button.
+</Step>
+<Step title="Note the Version Number">
+Amplication will prompt you to select a version type ("major", "minor", or "patch"). Based on your selection, Amplication will automatically generate the appropriate semantic version number. **Make sure to note down this version number**, as you'll need it for the next step.
+
+<Frame caption="Add a new version for your plugin in the Platform Console.">
+    <img src="/images/plugin-development/add-plugin-version.png" />
+</Frame>
+
+</Step>
+</Steps>
+
+## Step 2: Tag Your Git Repository with the Version
+
+Now, you need to tag your plugin's Git repository to associate a specific commit with the version you just added in Amplication. Amplication uses these tags to identify plugin versions during code generation.
+
+<Steps>
+<Step title="Navigate to Your Plugin's Local Repository">
+Open your terminal and navigate to the root directory of your private plugin's Git repository.
+</Step>
+<Step title="Create a Git Tag">
+Use the `git tag` command to create a tag. The tag format **must** be: `your-plugin-id@version-number`. Replace `your-plugin-id` with your actual Plugin ID (the folder name of your plugin) and `version-number` with the version you noted in the previous step (e.g., `0.1.0`).
+
+```bash
+git tag "your-plugin-id@0.1.0"
+```
+</Step>
+<Step title="Push the Tag to Your Remote Repository">
+Push the newly created tag to your remote Git repository using the `git push` command, specifying the tag name.
+
+```bash
+git push origin "your-plugin-id@0.1.0"
+```
+</Step>
+</Steps>
+
+<Warning>
+**Tagging is crucial.**  Ensure you use the correct tag format (`your-plugin-id@version-number`) and push the tag to your remote repository. Amplication relies on these tags to correctly identify and fetch the plugin code for each version.
+</Warning>
+
+## Step 3: Publish the Plugin Version in Amplication
+
+Finally, you need to publish the version through the Amplication Platform Console to make it officially available.
+
+<Steps>
+<Step title="Go to Platform Console Changes">
+Navigate to your project's **Platform Console**.
+</Step>
+<Step title="Click 'Publish New Version'">
+In the Platform Changes sidebar (usually on the left), click on **Publish New Version**.
+</Step>
+<Step title="Add an Optional Version Message">
+You can add a message describing the changes in this version for clarity (optional but recommended).
+</Step>
+<Step title="Click 'Publish'">
+Click the **Publish** button to finalize the publishing process.
+
+<Frame caption="Publish your changes to make the new plugin version live.">
+<img src="/images/plugin-development/publish-changes-for-new-plugin-version.png" />
+</Frame>
+
+</Step>
+</Steps>
+
+## Step 4: Disable Dev Versions (Optional)
+
+To absolutely make sure you are publishing a stable version of your plugin, you can optionally disable Dev Versions, so that resources can't select the @dev version.
+This ensures that you are publishing a stable version based on a specific point in your codebase, not the potentially changing code in your development branch.
+
+<Steps>
+<Step title="Navigate to Private Plugins">
+Go to your project's **Platform Console** from the top header and click on the **Private Plugins** tab.
+</Step>
+<Step title="Select Your Plugin">
+Choose the private plugin you intend to publish from the list.
+</Step>
+<Step title="Disable Dev Version Toggle">
+In your plugin's settings, locate the **Enable Dev Version** toggle and switch it to the **off** state.
+
+<Frame caption="Disable Dev Versions before publishing.">
+    <img src="/images/plugin-development/disable-dev-versions.png" />
+</Frame>
+
+</Step>
+</Steps>
+
+Congratulations! You have successfully published a new version of your private plugin. This version is now available for selection when installing your plugin in Amplication services and templates.
+
+<Frame caption="Add your newly published private plugin to a resource or template.">
+    <img src="/images/plugin-development/add-private-plugin-to-resource.png" />
+</Frame>
+
+<Note>
+When using your plugin in services or templates, you will now see your newly published version listed in the version dropdown.
+</Note>

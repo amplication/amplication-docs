@@ -1,0 +1,59 @@
+---
+title: Create Server Docker Compose
+description: Creates the docker-compose.yml file of the service
+---
+
+## Event Name
+
+`CreateServerDockerCompose`
+
+## Event Parameters
+
+<ParamField body="fileContent" type="string">
+  The default content of the file is a string. If needed, the value can be parsed as an object using a YAML utility. In most cases, there is no need to manipulate this property directly. Instead, use the `updateProperties` parameter.
+</ParamField>
+<ParamField body="updateProperties" type="{ [key: string]: any }[]">
+  An array that accepts any object that will be merged into the docker-compose file. The object will be deeply merged into the previous state of the file. Multiple plugins can add objects into this array, and they will be merged by the order of execution of the plugins.
+</ParamField>
+<ParamField body="outputFileName" type="string">
+  The file name of the docker-compose file, the default value is `docker-compose.yml`. It is recommended not to change the file name unless specifically needed and the impact is understood.
+</ParamField>
+
+<RequestExample>
+
+```javascript example
+const mergeProperties: CreateServerDockerComposeParams["updateProperties"] =
+  [
+    {
+      services: {
+        server: {
+          environment: {
+            DB_URL: "postgres://${DB_USER}:${DB_PASSWORD}@db:5433",
+          },
+        },
+        db: {
+          image: "postgres:12",
+          ports: ["${DB_PORT}:5432"],
+          environment: {
+            POSTGRES_USER: "${DB_USER}",
+            POSTGRES_PASSWORD: "${DB_PASSWORD}",
+          },
+          volumes: ["postgres:/var/lib/postgresql/data"],
+        },
+      },
+      volumes: {
+        postgres: null,
+      },
+    },
+  ];
+
+beforeCreateServerDockerCompose(
+    context: DsgContext,
+    eventParams: CreateServerDockerComposeParams
+  ) {
+    eventParams.updateProperties.push(...mergeProperties);
+    return eventParams;
+  }
+```
+
+</RequestExample>

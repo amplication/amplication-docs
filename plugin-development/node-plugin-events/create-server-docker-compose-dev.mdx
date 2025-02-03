@@ -1,0 +1,52 @@
+---
+title: Create Server Docker Compose Dev
+description: Creates the docker-compose.dev.yml file of the service
+---
+
+## Event Name
+
+`CreateServerDockerComposeDev`
+
+## Event Parameters
+
+<ParamField body="fileContent" type="string">
+  The default content of the file is a string. If needed, the value can be parsed as an object using a YAML utility. In most cases, there is no need to manipulate this property directly. Instead, use the `updateProperties` parameter.
+</ParamField>
+<ParamField body="updateProperties" type="{ [key: string]: any }[]">
+  An array that accepts any object that will be merged into the docker-compose file. The object will be deeply merged into the previous state of the file. Multiple plugins can add objects into this array, and they will be merged by the order of execution of the plugins.
+</ParamField>
+<ParamField body="outputFileName" type="string">
+  The file name of the docker-compose file, the default value is `docker-compose.dev.yml`. Our recommendation is not to change the file name unless it's specifically required and you understand the impact.
+</ParamField>
+
+<Note>
+Unlike the [`CreateServerDockerCompose`](/plugins/plugin-events/create-server-docker-compose) event, it makes more sense to replace the whole file with `CreateServerDockerComposeDev`. The reason for that is that in a `docker-compose.dev.yml` file, you usually take the DB image from Docker Hub and you want to replace the whole file's content.
+</Note>
+
+<RequestExample>
+
+```ts example
+beforeCreateServerDockerComposeDev(
+    context: DsgContext,
+    eventParams: CreateServerDockerComposeDevParams
+  ) {
+    context.utils.skipDefaultBehavior = true;
+    return eventParams;
+  }
+
+  async afterCreateServerDockerComposeDev(
+    context: DsgContext,
+    eventParams: CreateServerDockerComposeDevParams,
+    modules: ModuleMap) {
+    const staticPath = resolve(__dirname, "../static");
+    const staticsFiles = await context.utils.importStaticModules(
+      staticPath,
+      context.serverDirectories.baseDirectory
+    );
+
+    modules.merge(staticsFiles)
+    return modules;
+  }
+```
+
+</RequestExample>

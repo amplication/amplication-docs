@@ -1,0 +1,39 @@
+---
+title: Create Message Broker Service Base
+description: Creates the base service of the Kafka message broker.
+---
+
+## Event Name
+
+`CreateMessageBrokerServiceBase`
+
+## Event Parameters
+
+This event does not use additional parameters.
+
+<RequestExample>
+
+```ts example
+  async afterCreateMessageBrokerServiceBase(
+    context: DsgContext,
+    eventParams: CreateMessageBrokerServiceBaseParams,
+    modules: ModuleMap
+  ): Promise<ModuleMap> {
+    const { serverDirectories } = context;
+    const { messageBrokerDirectory } = serverDirectories;
+    const filePath = resolve(staticDirectory, `kafka.service.base.ts`);
+
+    const file = await readFile(filePath, "utf8");
+    const generateFileName = `kafka.service.base.ts`;
+
+    const path = join(messageBrokerDirectory, "base", generateFileName);
+    modules.set({ code: file, path });
+    return modules;
+  }
+```
+
+</RequestExample>
+
+<Note>
+This event does NOTHING by default. All of the logic is handled by the [broker-kafka plugin](https://github.com/amplication/plugins/tree/master/plugins/broker-kafka).
+</Note>

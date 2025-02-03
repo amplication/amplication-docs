@@ -1,7 +1,7 @@
 ---
 title: Publish Your Private Plugin
 description: Learn how to publish private Amplication plugins, including versioning, tagging your Git repository, and making your plugins available for organizational use.
-sidebarTitle: Publish a Plugin
+sidebarTitle: Publish Plugin
 icon: upload
 ---
 
@@ -29,28 +29,7 @@ Publishing plugin versions is crucial for maintaining control and stability in y
 Think of publishing plugin versions as creating official releases of your plugin functionality.
 </Tip>
 
-## Step 1: Disable Dev Versions
-
-Before you can publish a version, you need to disable Dev Versions for your plugin. This ensures that you are publishing a stable version based on a specific point in your codebase, not the potentially changing code in your development branch.
-
-<Steps>
-<Step title="Navigate to Private Plugins">
-Go to your project's **Platform Console** from the top header and click on the **Private Plugins** tab.
-</Step>
-<Step title="Select Your Plugin">
-Choose the private plugin you intend to publish from the list.
-</Step>
-<Step title="Disable Dev Version Toggle">
-In your plugin's settings, locate the **Enable Dev Version** toggle and switch it to the **off** state.
-
-<Frame caption="Disable Dev Versions before publishing.">
-    <img src="/images/plugin-development/disable-dev-versions.png" />
-</Frame>
-
-</Step>
-</Steps>
-
-## Step 2: Add a New Plugin Version in Amplication
+## Step 1: Add a New Plugin Version in Amplication
 
 Next, you'll add a new version entry for your plugin within the Amplication Platform Console. This version will correspond to a specific tag in your Git repository in the next step.
 
@@ -65,7 +44,7 @@ Scroll down to the **Add New Version** section.
 Click the **Add Version** button.
 </Step>
 <Step title="Note the Version Number">
-Amplication will prompt you to enter a version number (e.g., `0.1.0`). Choose a semantic version that accurately reflects the changes in this release. **Make sure to note down this version number**, as you'll need it for the next step.
+Amplication will prompt you to select a version type ("major", "minor", or "patch"). Based on your selection, Amplication will automatically generate the appropriate semantic version number. **Make sure to note down this version number**, as you'll need it for the next step.
 
 <Frame caption="Add a new version for your plugin in the Platform Console.">
     <img src="/images/plugin-development/add-plugin-version.png" />
@@ -74,7 +53,7 @@ Amplication will prompt you to enter a version number (e.g., `0.1.0`). Choose a 
 </Step>
 </Steps>
 
-## Step 3: Tag Your Git Repository with the Version
+## Step 2: Tag Your Git Repository with the Version
 
 Now, you need to tag your plugin's Git repository to associate a specific commit with the version you just added in Amplication. Amplication uses these tags to identify plugin versions during code generation.
 
@@ -102,7 +81,7 @@ git push origin "your-plugin-id@0.1.0"
 **Tagging is crucial.**  Ensure you use the correct tag format (`your-plugin-id@version-number`) and push the tag to your remote repository. Amplication relies on these tags to correctly identify and fetch the plugin code for each version.
 </Warning>
 
-## Step 4: Publish the Plugin Version in Amplication
+## Step 3: Publish the Plugin Version in Amplication
 
 Finally, you need to publish the version through the Amplication Platform Console to make it officially available.
 
@@ -121,6 +100,28 @@ Click the **Publish** button to finalize the publishing process.
 
 <Frame caption="Publish your changes to make the new plugin version live.">
 <img src="/images/plugin-development/publish-changes-for-new-plugin-version.png" />
+</Frame>
+
+</Step>
+</Steps>
+
+## Step 4: Disable Dev Versions (Optional)
+
+To absolutely make sure you are publishing a stable version of your plugin, you can optionally disable Dev Versions, so that resources can't select the @dev version.
+This ensures that you are publishing a stable version based on a specific point in your codebase, not the potentially changing code in your development branch.
+
+<Steps>
+<Step title="Navigate to Private Plugins">
+Go to your project's **Platform Console** from the top header and click on the **Private Plugins** tab.
+</Step>
+<Step title="Select Your Plugin">
+Choose the private plugin you intend to publish from the list.
+</Step>
+<Step title="Disable Dev Version Toggle">
+In your plugin's settings, locate the **Enable Dev Version** toggle and switch it to the **off** state.
+
+<Frame caption="Disable Dev Versions before publishing.">
+    <img src="/images/plugin-development/disable-dev-versions.png" />
 </Frame>
 
 </Step>

@@ -196,7 +196,6 @@
     {
       "group": "Maintain & Evolve Standards",
       "pages": [
-        "day-two/update-blueprints",
         "day-two/update-templates",
         "day-two/update-private-plugins"
       ]
@@ -240,18 +239,6 @@
         "plugin-development/define-plugin-settings",
         "plugin-development/test-a-plugin",
         "plugin-development/publish-a-plugin"
-      ]
-    },
-    {
-      "group": "Blueprint Plugin Events",
-      "pages": [
-        "plugin-development/reference"
-      ]
-    },
-    {
-      "group": "Node.js Plugin Events",
-      "pages": [
-        "plugin-development/reference"
       ]
     },
     {

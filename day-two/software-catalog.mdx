@@ -1,5 +1,125 @@
 ---
 title: 'Software Catalog'
-description: 'Discover how platform leads can use the Software Catalog to maintain a consolidated view of all resources.'
+description: "Gain unparalleled visibility and control over your entire service ecosystem with Amplication's Software Catalog."
 icon: 'chart-bar'
 ---
+
+<Frame>
+    <img src="/images/day-two/service-catalog.png" />
+</Frame>
+
+Amplication's **Software Catalog** provides the strategic control and governance you need to manage your entire service and resource landscape effectively. Think of the Software Catalog as your organization's single source of truth for all resources built with Amplication.
+
+## Why It Matters for Platform Teams
+
+The Software Catalog provides a centralized view of your entire service ecosystem through a powerful and customizable grid interface. This gives you comprehensive visibility and control over all your resources.
+
+<CardGroup cols={2}>
+  <Card title="Complete Service Overview" icon="eye">
+    Get a birds-eye view of your entire service landscape through customizable dashboards showing ownership, dependencies, and compliance status at a glance.
+  </Card>
+  <Card title="Proactive Maintenance" icon="code-branch">
+    Track code generator versions, pending changes, and build statuses to identify which services need updates or attention before issues arise.
+  </Card>
+  <Card title="Clear Ownership & Accountability" icon="users">
+    See exactly who owns each service, making it easy to coordinate updates, manage permissions, and streamline communication across teams.
+  </Card>
+  <Card title="Standardization Control" icon="shield-check">
+    Monitor blueprint adherence, enforce consistent configurations, and ensure all services follow organizational best practices and security standards.
+  </Card>
+</CardGroup>
+
+## Grid Columns
+
+The grid interface provides detailed information about each resource through carefully designed columns.
+Each column serves a specific purpose in helping you understand, manage, and maintain your resources effectively.
+Here's what each column represents:
+
+<AccordionGroup>
+  <Accordion title="Project" icon="folder">
+    The project column helps you identify which project each service belongs to within your organization. This is particularly useful in the workspace catalog view where you're managing services across multiple projects. It helps maintain clear organizational boundaries and simplifies resource management across your enterprise.
+  </Accordion>
+  <Accordion title="Blueprint" icon="sitemap">
+    Blueprints define the foundational structure and configuration of your services. This column shows which blueprint each service is based on, helping you track standardization across your services and ensure consistent implementation of architectural patterns and best practices.
+  </Accordion>
+  <Accordion title="Owner" icon="user">
+    The owner column displays the team or individual responsible for each service, establishing clear lines of accountability and facilitating efficient communication. This information is crucial for large organizations managing multiple services across different teams.
+    
+    <Note>
+    Learn more about team management and ownership settings in our [Ownership and Domain Visibility](/day-two/ownership-domain-visibility) guide.
+    </Note>
+  </Accordion>
+  <Accordion title="Code Generator" icon="code">
+    This column shows the technology stack and generation settings for each service. It helps platform teams ensure standardization across services and maintain consistency in your technology choices. You can quickly identify which services are using specific frameworks or runtime environments.
+  </Accordion>
+  <Accordion title="Code Gen Version" icon="code-merge">
+    Track and manage the version of the code generator being used by each service. This information is vital for maintaining consistency and planning upgrades across your service ecosystem. You can choose to automatically update versions or lock them to specific versions based on your needs.
+  </Accordion>
+  <Accordion title="Git Repo" icon="github">
+    Monitor the connected Git repository for each service, providing crucial information for version control and deployment tracking. This column helps you maintain clear connections between your services and their source code, simplifying development workflows and audit processes.
+  </Accordion>
+  <Accordion title="Pending Changes" icon="clock-rotate-left">
+    Track modifications that haven't been committed or built yet for each service. This feature helps you maintain awareness of ongoing development work and ensures no changes are overlooked during your development process.
+    
+    <Note>
+    Learn more about managing changes in our [View Pending Changes](/day-one/view-pending-changes) documentation.
+    </Note>
+  </Accordion>
+  <Accordion title="Last Build" icon="hammer">
+    Monitor the most recent build status and timing for each service. This information helps you track deployment health and identify services that might need attention. The column includes build status indicators and timestamps for quick reference.
+  </Accordion>
+  <Accordion title="Template" icon="copy">
+    View which service template each resource is based on, helping you maintain consistency across similar services. Templates ensure standardized configurations and help you quickly identify services that share common characteristics or requirements.
+  </Accordion>
+  <Accordion title="Catalog Properties" icon="table-list">
+    Custom metadata fields that provide additional context and classification for your services. These properties can be used to filter, sort, and organize your services based on your organization's specific needs.
+    
+    <Note>
+    Discover how to extend service metadata in our [Catalog Properties](/day-zero-catalog-properties) documentation.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+## Customize Your View
+
+The Software Catalog grid is highly customizable to focus on what matters most:
+
+- Reorder and resize columns to prioritize relevant data
+- Sort by any column to identify trends and outliers
+- Create complex filters using the "Add filter" functionality to target specific services
+
+<Frame caption="Add a filter to the Service Catalog grid">
+    <img src="/images/day-two/service-catalog-filter.png" />
+</Frame>
+
+## How to Access the Software Catalog
+
+Amplication offers two levels of Software Catalogs, each serving distinct organizational needs:
+
+<Steps>
+  <Step title="Workspace Catalog" icon="building">
+    Access your organization-wide catalog by clicking the "Workspace Catalog" option in the main navigation menu of your workspace dashboard. This view provides a comprehensive overview of all resources across every project in your organization, making it ideal for platform teams managing multiple projects or enforcing organization-wide standards.
+  </Step>
+  <Step title="Project Catalog" icon="folder-tree">
+    Navigate to any individual project and select the "Service Catalog" tab to access project-specific resources. This focused view is perfect for project teams who need to manage and monitor resources within their specific domain.
+  </Step>
+</Steps>
+
+## Next Steps
+
+With the Software Catalog as your central management hub, you're empowered to build a standardized, maintainable, and future-proof resources. Explore these additional features to enhance your platform capabilities:
+
+<CardGroup cols={2}>
+  <Card title="Live Templates" icon="layer-group" href="/day-zero/live-templates">
+    Create and enforce standardized service configurations across your organization.
+  </Card>
+  <Card title="Private Plugins" icon="plug" href="/day-zero/private-plugins">
+    Extend Amplication's functionality with custom organizational requirements.
+  </Card>
+  <Card title="Ownership & Visibility" icon="users" href="/day-two/ownership-domain-visibility">
+    Manage teams and establish clear ownership across your services.
+  </Card>
+  <Card title="Architecture Graph" icon="sitemap" href="/day-two/architecture-graph">
+    Visualize and understand your service relationships and dependencies.
+  </Card>
+</CardGroup>

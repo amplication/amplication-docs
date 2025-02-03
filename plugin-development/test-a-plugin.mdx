@@ -1,7 +1,7 @@
 ---
 title: 'Test Your Private Plugin'
 description: "Learn how to efficiently test your private Amplication plugins during development using Dev Versions, ensuring a smooth integration"
-sidebarTitle: 'Test a Plugin'
+sidebarTitle: 'Test Plugin'
 icon: 'flask-vial'
 ---
 
@@ -43,7 +43,7 @@ Choose the private plugin you want to test from the list.
 In your plugin's settings, locate the **Enable Dev Version** toggle and switch it to the **on** state.
 
 <Frame caption="Enable Dev Versions Toggle">
-<img src="/images/plugin-development/dev-versions-toggle.png" />
+<img src="/images/plugin-development/dev-versions-box.png" />
 </Frame>
 
 </Step>
@@ -55,32 +55,30 @@ When Dev Versions are enabled, Amplication will automatically pull the latest pl
 
 ## Step 2: Install Your Plugin with the Dev Version
 
-To actually use the dev version for testing, you **must** specifically select it when installing the plugin in a service or template.
+To actually use the dev version for testing, you **must** specifically select it when installing the plugin in a resource.
 
 <Steps>
 <Step title="Navigate to Services or Templates">
-Go to either the **Service Catalog** and select a service, or navigate to the **Templates** tab and choose a template.
+Go to the **Service Catalog** and select a resource. Usually, this will be a test resource that is not used in production for testing purposes.
 </Step>
 <Step title="Go to the Plugins Tab">
-In your service or template, click on the **Plugins** tab.
+In your resource, click on the **Plugins** tab.
 </Step>
 <Step title="Install Your Private Plugin">
 Find your private plugin in the **Private Plugins** section and click **Install**.
-
-If the plugin is already installed, you may need to uninstall and reinstall it to ensure you're selecting the Dev Version.
 </Step>
 <Step title="Select the 'Dev Version' in Plugin Settings">
-After clicking "Install", a settings panel will appear for your plugin.  **Crucially, ensure that the version dropdown is set to "Dev Version"**.
+After clicking "Install", or in case the plugin is already installed, click on the settings button to view the plugin settings page and crucially ensure that the version dropdown is set to "@dev".
 
-<Frame>
-<img src="./assets/private-plugins/add-private-plugin-to-service.png" alt="Select Dev Version when installing plugin" caption="Select 'Dev Version' when installing your plugin to use the latest code."/>
+<Frame caption="Select @dev when installing your plugin to use the latest code">
+<img src="/images/plugin-development/select-dev-version.png" alt="Select Dev Version when installing plugin"/>
 </Frame>
 
 </Step>
 </Steps>
 
 <Warning>
-For Dev Versions to be active, you **must** both enable the "Dev Version" toggle in the plugin settings **and** select "Dev Version" during plugin installation in your service or template. If you skip the version selection during install, you might be using a published version instead of your latest development code.
+For Dev Versions to be active, you **must** both enable the "Dev Version" toggle in the plugin settings **and** select @dev during plugin installation in your resource. If you skip the version selection during install, you will be using a published version instead of your latest development code.
 </Warning>
 
 ## Next Steps

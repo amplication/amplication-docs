@@ -1,5 +1,90 @@
 ---
-title: 'Define Plugin Settings'
-description: 'Learn how to define and expose configurable settings for your Amplication plugins.'
+title: 'Configure Your Plugin'
+sidebarTitle: 'Configure Plugin'
+description: "Customize your plugins to align with team standards and enhance developer experience. Tailor display, code generators, and versions for optimal use within your organization."
 icon: 'gear'
 ---
+
+<Frame>
+    <img src="/images/plugin-development/private-plugin-settings.png" />
+</Frame>
+
+After you've added your plugin to the plugin repository in Amplication, you have access to a few configuration options.
+They are key to making your plugin easily discoverable in the UI, relevant to your projects, and smoothly integrated into your existing workflows.
+
+## Configuration Options
+
+The following options allow you to configure how your plugin appears and functions within Amplication:
+
+<AccordionGroup>
+  <Accordion title="Display Name" icon="pen-fancy">
+    <p>
+      By default, the display name of your plugin is the same as its Plugin ID. However, you can customize this to make it more user-friendly and descriptive within the Amplication UI.
+    </p>
+    <p>
+      A clear and concise display name helps your teammates quickly understand the plugin's purpose and functionality when browsing available plugins.
+    </p>
+    <Tip>
+      Choose a display name that is intuitive and easily understood by your team. For example, instead of a generic ID like <code>my-auth-plugin</code>, consider a display name like "Organization Standard Authentication".
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Custom Icon & Color" icon="palette">
+    <p>
+      Amplication provides a library of icons and color palettes to visually represent your plugins. Choosing a custom icon and color makes your plugins stand out in the UI and enhances visual recognition.
+    </p>
+    <p>
+      This visual distinction is especially helpful when you have multiple plugins in your organization's repository. A recognizable icon can significantly speed up plugin discovery and selection.
+    </p>
+  </Accordion>
+
+<Accordion title="Code Generator" icon="code">
+    <p>
+      The Code Generator option determines which code generator the plugin is built for (e.g., .NET, Node.js, Blueprints). This option dictates:
+    </p>
+    <ul>
+      <li><strong>Plugin Compatibility:</strong> A plugin built for Node.js will only be available for Node.js based resources.</li>
+      <li><strong>Plugin Events:</strong> Each code generator exposes a specific set of <Tooltip tip="Plugin events are lifecycle hooks within Amplication that allow plugins to modify the code generation process at various stages.">plugin events</Tooltip>.</li>
+    </ul>
+    <Note>
+      To learn more about available plugin events, see the Plugin Events reference documentation for your selected code generator.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Description" icon="info">
+    <p>
+      The description appears in the Amplication UI and provides valuable context to your developers. A well-written description should clearly explain:
+    </p>
+    <ul>
+      <li>The plugin's purpose and functionality</li>
+      <li>The problems it solves or the enhancements it provides</li>
+      <li>Any specific use cases or requirements</li>
+    </ul>
+  </Accordion>
+
+  <Accordion title="Versions" icon="code-branch">
+    <p>
+      The Versions section allows you to manage different iterations of your plugin. This is crucial for:
+    </p>
+    <ul>
+      <li>Publishing new versions as you improve your plugin</li>
+      <li>Controlled updates via Pull Requests when new versions are available</li>
+      <li>Maintaining consistency across all services in your organization</li>
+    </ul>
+    <Note>
+      To learn more about plugin versioning, see the [Publish a Plugin](/plugin-development/publish-a-plugin) guide.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Dev Version" icon="wrench">
+    <p>
+      When enabled, Dev Version allows Amplication to pull the plugin code directly from the base branch (e.g., <code>main</code>, <code>develop</code>) defined in your Git settings.
+    </p>
+    <p>
+      This option streamlines plugin testing during development by avoiding the formal plugin publishing process, allowing for quicker iterations and experimentation.
+    </p>
+    <Note>
+      To learn more about testing plugins during development, see the [Test a Plugin](/plugin-development/test-a-plugin) guide.
+    </Note>
+  </Accordion>
+</AccordionGroup>

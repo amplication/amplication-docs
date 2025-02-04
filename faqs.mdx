@@ -8,7 +8,7 @@ Here are some of the most common questions we receive about Amplication. If you 
 
 <AccordionGroup>
 <Accordion title="What's the difference between Blueprints and Plugins?">
-Blueprints are like architectural drawings that define what you want to build - they specify the type of resource, its properties, and relationships with other blueprints. Think of them as templates that standardize what you build across your organization.
+Blueprints are like architectural drawings that define what you want to build - they specify the type of resource, its properties, and relationships with other blueprints. Think of them as basic models that standardize what you build across your organization.
 
 Plugins, on the other hand, contain the actual code that determines how those specifications are implemented. They handle the concrete details like code generation, infrastructure setup, and deployment processes. You need both: Blueprints for standardization and Plugins for implementation.
 
@@ -19,12 +19,13 @@ Plugins, on the other hand, contain the actual code that determines how those sp
 Amplication offers their own standards through Node.js and .NET. They are ideal if you quickly want to adopt industry best practices and leverage Amplication's public plugin ecosystem. They offer faster onboarding and immediate access to proven patterns.
 
 Custom Blueprints are better when you have specific organizational requirements, technology mandates, or unique compliance needs. They offer you complete control of your service architecture but require more initial setup.
+They ensure you can generate the code based on your organization's own standards and requirements.
 
 <Note>Explore Blueprint creation in our [Blueprint Development guide](day-zero/blueprints).</Note>
 </Accordion>
 
 <Accordion title="What happens to existing resources when I update a Blueprint?">
-Blueprint updates are not automatically propagated to existing resources - this is intentional to prevent unexpected disruptions. When you update a Blueprint, you'll need to manually apply these changes to each affected resource through Amplication's interface.
+Blueprint updates are not automatically propagated to existing resources - this is intentional to prevent unexpected disruptions. After you update a Blueprint (e.g. add a property, or a relation), you'll need to manually set the values for these changes per each resource.
 
 The update process involves reviewing changes, updating configurations, and regenerating code, which creates Pull Requests for your review.
 

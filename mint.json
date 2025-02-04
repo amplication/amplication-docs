@@ -201,20 +201,6 @@
       ]
     },
     {
-      "group": "Proactive Technical Debt Management",
-      "pages": [
-        "day-two/automated-alerts",
-        "day-two/resolve-debt-across-multiple-resources"
-      ]
-    },
-    {
-      "group": "Live Updates for Your Resources",
-      "pages": [
-        "day-two/trigger-prs-for-updated-standards",
-        "day-two/review-merge-updates"
-      ]
-    },
-    {
       "group": "Get Started",
       "pages": [
         "plugin-development/overview"

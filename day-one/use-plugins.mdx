@@ -1,0 +1,106 @@
+---
+title: How to Use Private & Public Plugins
+description: Learn how to install and manage both public and private plugins in your Amplication resources to extend functionality and maintain organizational standards.
+---
+
+<Frame>
+    <img src="/images/day-one/public-catalog-plugins.png" />
+</Frame>
+
+Amplication offers a growing catalog of public plugins built by Amplication and the community, ready to install in a few clicks. Plus, your platform team can create [private plugins](#private-plugins) tailored to your organization's specific needs and internal standards.
+
+## Public vs Private Plugins
+
+Amplication supports two types of plugins, giving you flexibility and control:
+
+**Public Plugins** are community-developed and Amplication-maintained plugins, available to all users. They cover a wide range of common backend functionalities and are a great way to quickly extend your service. Think of them as the "app store" for your backend. They are open-source, so you can always inspect the code and understand exactly what they do.
+
+With public plugins, you can effortlessly add features like:
+* Database Integrations (PostgreSQL, MongoDB, MySQL)
+* Authentication & Authorization
+* API Enhancements (GraphQL, Swagger/OpenAPI, rate limiting)
+* Observability (logging, monitoring, tracing)
+* CI/CD Pipelines
+* Code Quality Tools (Prettier, ESLint)
+
+<Note>
+Public catalog plugins are only available when using Amplication standards with the Node.js or .NET blueprints. For a full list of publicly available plugins, see [Amplication's Plugin repo on GitHub](https://github.com/amplication/plugins).
+</Note>
+
+**Private Plugins** let your platform team can develop custom plugins to encapsulate your organization's unique requirements, enforce internal standards, and provide custom functionality. This lets platform teams "pave the golden path" for developers, providing standardized building blocks.
+
+<Note>
+Learn more about creating and managing private plugins in our [Private Plugins Guide](/day-zero/private-plugins).
+</Note>
+
+## Add a Plugin to Your Resource
+
+<Steps>
+<Step title="Navigate to Plugins">
+Go to the **Plugins** tab in the ain navigation bar of your resource or template.
+</Step>
+
+<Step title="Choose Plugin Type">
+Select either:
+- **All Plugins** tab to browse the public plugin catalog or choose specific categories.
+- **Private Plugins** tab to access your organization's custom plugins
+</Step>
+
+<Step title="Install Plugin">
+Find your desired plugin and click the **Install** button. Once installed, the button will change to **Settings**.
+
+<Frame>
+  <img src="/images/day-one/installed-plugin.png" alt="Install Plugin" />
+</Frame>
+</Step>
+</Steps>
+
+## Manage Installed Plugins
+
+Amplication executes plugins and generates code according to their order on the Installed Plugins page. From this page, you can view all your currently installed plugins and manage their configuration.
+
+<Frame>
+  <img src="/images/day-one/all-installed-plugins.png" alt="Installed Plugins Tab" />
+</Frame>
+
+You can:
+* Enable or disable plugins using the toggle switch
+* Click the arrows on the right-hand corner of each plugin to change their execution order
+* View basic plugin information like version and last build time
+
+## Change Plugin Settings
+
+Each plugin can be configured through its settings page, accessed by clicking the **Settings** button next to the plugin.
+
+<Frame>
+  <img src="/images/day-one/plugin-settings.png" alt="Plugin Settings Page" />
+</Frame>
+
+When modifying plugin settings:
+* Each plugin version can have its own specific settings
+* Settings are configured using JSON
+* Changing versions will reset settings to that version's defaults
+* Visit the plugin's GitHub repository (linked from the Installed Plugins tab) for detailed configuration documentation
+
+<Note>
+For more information about plugin configuration and publishing, see our [Plugin Publishing Guide](/plugin-development/publish-a-plugin).
+</Note>
+
+## Next Steps
+
+Plugins are a fundamental part of Amplication's code generation capabilities, available for Node.js, .NET blueprints, and custom blueprints. They can either be public catalog plugins for your specific code generation engine or private plugins specific to your organization.
+
+<CardGroup cols={2}>
+  <Card title="Plugin Development Overview" icon="puzzle-piece" link="/plugins/plugin-development/overview">
+    Learn how to build your own custom plugins
+  </Card>
+  <Card title="Private Plugins Guide" icon="plug" link="/private-plugins">
+    Understand how to leverage private plugins effectively
+  </Card>
+  <Card title="Browse Available Public Plugins" icon="network-wired" link="https://github.com/amplication/plugins">
+    View the full catalog of Node.js and .NET plugins
+  </Card>
+  <Card title="How Plugins Fit Into Amplication" icon="network-wired" link="/plugins/development/how-plugins-fit">
+    Understand the role of plugins in the Amplication ecosystem
+  </Card>
+</CardGroup>

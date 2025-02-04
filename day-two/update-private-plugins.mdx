@@ -1,5 +1,62 @@
 ---
 title: 'Update Private Plugins'
-description: 'Guide for platform leads on managing plugin version updates for security and new features.'
+description: 'Keep your Private Plugins current in Amplication to ensure consistent standards and access the latest features and fixes.'
 icon: 'plug'
 ---
+
+<Frame>
+    <img src="/images/day-two/update-private-plugin.png" />
+</Frame>
+
+After publishing Private Plugins and using them to create capabilities for your blueprints, you may need to update them. To ensure your plugins remain effective, secure, and aligned with evolving best practices, keeping them updated is essential.
+
+**Updating Private Plugins** in Amplication is a streamlined process that ensures you can easily roll out new features, bug fixes, and improvements to all resources utilizing your plugins. This process also notifies existing resources using the plugin, and incorporating updates is as simple as merging a PR.
+
+## How to Update Your Private Plugin
+
+Updating a Private Plugin involves publishing a new version of your plugin.
+
+<Steps>
+  <Step title="Modify Your Plugin Code">
+    Begin by making the necessary changes to your plugin's code in your Git repository. This could involve:
+
+    <ul>
+      <li><strong>Adding new features</strong>: Implement new functionalities or extend existing ones.</li>
+      <li><strong>Fixing bugs</strong>: Resolve any issues or defects in your plugin's logic.</li>
+      <li><strong>Improving performance</strong>: Optimize your plugin for better efficiency and speed.</li>
+      <li><strong>Updating dependencies</strong>: Ensure compatibility and security by updating underlying libraries or dependencies.</li>
+    </ul>
+  </Step>
+
+  <Step title="Add a New Plugin Version in Amplication">
+    Navigate to the **Private Plugins** section in your Platform Console and select the plugin you want to update. Then, add a new version for your plugin.
+  </Step>
+
+  <Step title="Tag Your Git Repository with the New Version">
+    Associate your code changes with the new plugin version by tagging your plugin's Git repository.
+
+    <Tip>
+  For detailed instructions on the publishing process, refer to the <a href="/plugin-development/publish-a-plugin">Publish Your Private Plugin</a> guide in the Plugin Development section.
+</Tip>
+
+  </Step>
+
+  <Step title="Publish the Plugin Version in Amplication">
+    Publish the new plugin version through the Amplication Platform Console, making it officially available for use.
+
+    <Note>
+      Publishing Private Plugin updates and Live Template updates are conducted through the same interface in the Platform Console. For more information, see the <a href="/templates/update-live-templates">Update Live Templates</a> page.
+    </Note>
+  </Step>
+</Steps>
+
+## Resource Notifications of Plugin Updates
+
+Once you've published a new version of your Private Plugin, Amplication helps you ensure that your resources are aware of and can adopt the updates:
+
+- **Automatic Notifications**: Amplication sends in-product notifications and emails to relevant teams, informing them about the availability of a new plugin version.
+- **Technical Debt Alerts**: The Technical Debt tab for services and templates using your plugin will highlight that a new plugin version is available. This provides a clear prompt to upgrade to the latest version.
+
+<Tip>
+   By updating your Private Plugins, you are proactively managing the technical health of your Amplication-powered ecosystem and ensuring everyone benefits from the latest improvements and standards you've implemented.
+</Tip>

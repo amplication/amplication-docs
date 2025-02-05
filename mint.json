@@ -221,6 +221,7 @@
       "group": "Developing a Plugin",
       "pages": [
         "plugin-development/plugin-folder-structure",
+        "plugin-development/configure-plugin",
         "plugin-development/define-plugin-settings",
         "plugin-development/test-a-plugin",
         "plugin-development/publish-a-plugin"

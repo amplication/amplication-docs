@@ -1,0 +1,124 @@
+---
+title: Amplication's Standards vs Custom Standards
+sidebarTitle: Built-in vs Custom Standards
+icon: "down-left-and-up-right-to-center"
+---
+
+Amplication provides **both opinionated and agnostic approaches** to backend software development.
+You can use Amplication's built-in standards for rapid development or define your own standards using [Custom Blueprints](/day-zero/blueprints) and [Private Plugins](/day-zero/private-plugins).
+This flexibility lets your team optimize their development workflow while maintaining completely control over their software ecosystem.
+
+## Choosing the Right Approach
+
+When using Amplication, you can decide to use our built-in standards or create your own custom standards.
+
+<CardGroup cols={2}>
+  <Card
+    title="Built-in Standards"
+    icon="gear"
+  >
+  Amplication's pre-configured, opinionated engines for Node.js and .NET
+  </Card>
+  <Card
+    title="Custom Standards"
+    icon="code"
+  >
+  A fully agnostic engine that allows organizations to define their own architecture, conventions, and best practices
+  </Card>
+</CardGroup>
+
+<Tip>
+It's possible to mix standards within the same project. You can have resources that use your own custom resources and also resources that use Amplictation's built-in standards.
+</Tip>
+
+## Amplication's Built-in Standards
+
+Use Amplication's pre-configured standards for .NET and Node.js. They include automatic management of data models, API endpoints, and DTOs. Amplication also provides a catalog of public plugins that generate code for common functionalities, such as authentication, identity management, and database integrations.
+
+<CardGroup cols={2}>
+  <Card
+    title="Plugin Library"
+    icon="plug"
+    href="/day-one/use-plugins"
+  >
+    Access a rich catalog of plugins for authentication, logging, and other common functionalities
+  </Card>
+  <Card
+    title="API Management"
+    icon="code"
+    href="/day-one/custom-types-actions"
+  >
+    Built-in generation of REST and GraphQL endpoints with automatic DTO handling
+  </Card>
+  <Card
+    title="Data Modeling"
+    icon="database"
+    href="/day-one/entities"
+  >
+    Automatically generate and manage database schemas, models, and relationships
+  </Card>
+  <Card
+    title="Authentication"
+    icon="shield-check"
+    href="/day-one/authentication-explained"
+  >
+    Built-in support for identity management and multiple auth providers
+  </Card>
+  <Card
+    title="Roles & Permissions"
+    icon="person"
+    href="/day-one/roles-permissions"
+  >
+    Pre-configured role-based access control for secure service management
+  </Card>
+</CardGroup>
+
+## Custom Standards
+
+You can define your own standards and structure by building Private Plugins that generate code based on specific configurations and requirements that you need.
+This approach lets you:
+
+<CardGroup cols={2}>
+  <Card
+    title="Custom Blueprints"
+    icon='diagram-lean-canvas'
+    href="/day-zero/blueprints"
+  >
+    Define your own architecture patterns and resource templates with custom configurations
+  </Card>
+  <Card
+    title="Private Plugins"
+    icon="plug"
+    href="/day-zero/private-plugins"
+  >
+    Build custom plugins to generate code for custom authentication, data models, and integrations that matches your organization's standards
+  </Card>
+  <Card
+    title="Live Templates"
+    icon="layer-group"
+    href="/day-zero/live-templates"
+  >
+    Establish golden paths for your development teams with pre-configured templates
+  </Card>
+  <Card
+    title="Catalog Properties"
+    icon="tag"
+    href="/day-zero/catalog-properties"
+  >
+    Define organizational standards and metadata for your resources
+  </Card>
+</CardGroup>
+
+## Feature Differences
+
+Some features that are currently available in built-in standards are in development for custom standards:
+
+* **Data Models** - Available in built-in standards. Coming soon for custom standards (will require custom plugins for code generation).
+* **API Endpoints (Actions) & DTOs** - Available in built-in standards. Coming soon for custom standards (will require custom plugins for code generation).
+* **Roles and Permissions** - Currently available in built-in standards. For custom standards, requires custom implementation.
+* **Public Plugin Catalog** - Available in built-in standards. Custom standards use internally developed and managed custom plugins.
+* **Authentication Entity** - Available in built-in standards. For custom standards, requires custom implementation.
+
+<Note>
+Regardless of which standards you choose, you'll benefit from Amplication's core platform capabilities like **code generation & standardization**, **technical debt management**, **smart git sync**, **plugins**, **AI acceleration with Jovu**, and more.
+</Note>

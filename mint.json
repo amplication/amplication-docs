@@ -67,7 +67,8 @@
       "group": "Design Your Architecture",
       "pages": [
         "day-zero/blueprints",
-        "day-zero/blueprint-properties-relations"
+        "day-zero/blueprint-properties-relations",
+        "day-zero/amplication-standards-vs-custom-standards"
       ]
     },
     {

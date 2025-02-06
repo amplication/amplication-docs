@@ -299,7 +299,7 @@
      },
      {
         "source":"/first-service",
-        "destination":"/day-one/create-resource-from-service"
+        "destination":"/day-one/create-resource-from-blueprint"
      },
      {
         "source":"/private-plugins",

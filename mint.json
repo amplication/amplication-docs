@@ -207,12 +207,6 @@
          ]
       },
       {
-         "group":"Plugin Architecture",
-         "pages":[
-            "plugin-development/how-plugins-fit-into-amplication"
-         ]
-      },
-      {
          "group":"Lifecycle & Coding Details",
          "pages":[
             "plugin-development/before-and-after-lifecycle-functions"

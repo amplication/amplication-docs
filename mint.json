@@ -1,295 +1,777 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Amplication",
-  "logo": {
-    "light": "/logo/amplication-logo.svg",
-    "dark": "/logo/amplication-logo-dark.svg",
-    "href": "https://amplication.com"
-  },
-  "metadata": {
-    "og:image": "/images/amplication-docs-social-card.png"
-  },
-  "favicon": "/favicon.svg",
-  "theme": "prism",
-  "colors": {
-    "primary": "#5D4CFE",
-    "light": "#8477FF",
-    "dark": "#5D4CFE"
-  },
-  "topbarLinks": [
-    {
-      "name": "Contact Us",
-      "url": "https://meetings-eu1.hubspot.com/yuval-hazaz"
-    },
-    {
-      "name": "GitHub",
-      "url": "https://github.com/amplication"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Start Now",
-    "url": "https://app.amplication.com/login"
-  },
-  "tabs": [
-    {
-      "name": "Day Zero: Plan & Design Standards",
-      "url": "/day-zero"
-    },
-    {
-      "name": "Day One: Create & Scaffold Resources",
-      "url": "/day-one"
-    },
-    {
-      "name": "Day Two: Maintain & Update Live Apps",
-      "url": "/day-two"
-    },
-    {
-      "name": "Plugin Development",
-      "url": "/plugin-development"
-    }
-  ],
-  "navigation": [
-    {
-      "group": "Get Started",
-      "pages": [
-        "what-is-amplication",
-        "concepts",
-        "faqs"
-      ]
-    },
-    {
-      "group": "Day Zero",
-      "pages": [
-        "day-zero/overview"
-      ]
-    },
-    {
-      "group": "Design Your Architecture",
-      "pages": [
-        "day-zero/blueprints",
-        "day-zero/blueprint-properties-relations",
-        "day-zero/amplication-standards-vs-custom-standards"
-      ]
-    },
-    {
-      "group": "Define Organizational Standards",
-      "pages": [
-        "day-zero/catalog-properties"
-      ]
-    },
-    {
-      "group": "Codify Standards with Plugins",
-      "pages": [
-        "day-zero/private-plugins"
-      ]
-    },
-    {
-      "group": "Establish Golden Paths",
-      "pages": [
-        "day-zero/live-templates"
-      ]
-    },
-    {
-      "group": "Integrate with Git",
-      "pages": [
-        "day-zero/smart-git-sync",
-        "day-zero/sync-with-gitlab",
-        "day-zero/sync-with-github",        
-        "day-zero/sync-with-bitbucket",
-        "day-zero/sync-with-azure-devops",
-        "day-zero/sync-with-aws-codecommit"
-      ]
-    },
-    {
-      "group": "Day One",
-      "pages": [
-        "day-one/overview"
-      ]
-    },
-    {
-      "group": "Self-Serve Resource Creation",
-      "pages": [
-        "day-one/create-resource-from-blueprint",
-        "day-one/create-resource-from-template",
-        "day-one/create-resource-from-service"
-      ]
-    },
-    {
-      "group": "Accelerate with AI",
-      "pages": [
-        "day-one/jovu",
-        "day-one/jovu-examples"
-      ]
-    },
-    {
-      "group": "Resource Configuration",
-      "pages": [
-        "day-one/resource-git-setup",
-        "day-one/edit-catalog-properties"
-      ]
-    },
-    {
-      "group": "Install & Configure Plugins",
-      "pages": [
-        "day-one/use-plugins"
-      ]
-    },
-    {
-      "group": "Model Data",
-      "pages": [
-        "day-one/entities",
-        "day-one/fields",
-        "day-one/relationships",
-        {
-          "group": "Upload DB Schema",
-          "icon": "file-import",
-          "pages": [
-            "day-one/upload-schema",
-            "day-one/understanding-upload-schema"
-          ]
-        }
-      ]
-    },
-    {
-      "group": "Define APIs & DTOs",
-      "pages": [
-        "day-one/custom-types-actions"
-      ]
-    },
-    {
-      "group": "Manage Authentication & Roles",
-      "pages": [
-        "day-one/authentication-explained",
-        "day-one/authentication-provider-plugins",
-        "day-one/authentication-entity",
-        "day-one/roles-permissions"
-      ]
-    },
-    {
-      "group": "Generate Code",
-      "pages": [
-        "day-one/view-pending-changes",
-        "day-one/generate-code",
-        "day-one/code-view",
-        "day-one/commits"
-      ]
-    },
-    {
-      "group": "Day Two",
-      "pages": [
-        "day-two/overview"
-      ]
-    },
-    {
-      "group": "Discover & Govern Resources",
-      "pages": [
-        "day-two/software-catalog",
-        "day-two/ownership-visibility"
-      ]
-    },
-    {
-      "group": "Visualize Your Architecture",
-      "pages": [
-        "day-two/architecture-graph"
-      ]
-    },
-    {
-      "group": "Maintain & Evolve Standards",
-      "pages": [
-        "day-two/update-templates",
-        "day-two/update-private-plugins"
-      ]
-    },
-    {
-      "group": "Get Started",
-      "pages": [
-        "plugin-development/overview"
-      ]
-    },
-    {
-      "group": "Plugin Architecture",
-      "pages": [
-        "plugin-development/how-plugins-fit-into-amplication"
-      ]
-    },
-    {
-      "group": "Lifecycle & Coding Details",
-      "pages": [
-        "plugin-development/before-and-after-lifecycle-functions"
-      ]
-    },
-    {
-      "group": "Developing a Plugin",
-      "pages": [
-        "plugin-development/plugin-folder-structure",
-        "plugin-development/configure-plugin",
-        "plugin-development/define-plugin-settings",
-        "plugin-development/test-a-plugin",
-        "plugin-development/publish-a-plugin"
-      ]
-    },
-    {
-      "group": "Plugin Events",
-      "pages": [
-        {
-         "group": "Node.js Plugin Event Reference",
-          "icon": "node-js",
-          "pages": [
-            "plugin-development/node-plugin-events/create-server",
-            "plugin-development/node-plugin-events/create-server-docker-compose",
-            "plugin-development/node-plugin-events/create-server-docker-compose-dev",
-            "plugin-development/node-plugin-events/create-server-dot-env",
-            "plugin-development/node-plugin-events/create-server-auth",
-            "plugin-development/node-plugin-events/create-package-json",
-            "plugin-development/node-plugin-events/create-entity-service",
-            "plugin-development/node-plugin-events/create-entity-service-base",
-            "plugin-development/node-plugin-events/create-entity-controller",
-            "plugin-development/node-plugin-events/create-entity-controller-base",
-            "plugin-development/node-plugin-events/create-entity-resolver",
-            "plugin-development/node-plugin-events/create-entity-resolver-base",
-            "plugin-development/node-plugin-events/create-message-broker-service",
-            "plugin-development/node-plugin-events/create-message-broker-service-base",
-            "plugin-development/node-plugin-events/create-message-broker-nestjs-module",
-            "plugin-development/node-plugin-events/create-message-broker-client-options-factory",
-            "plugin-development/node-plugin-events/create-message-broker-topics-enum",
-            "plugin-development/node-plugin-events/create-prisma-schema"
-          ]
-        },
-        {
-          "group": ".NET Plugin Event Reference",
-          "icon": "microsoft",
-          "pages": [
-            "plugin-development/dotnet-plugin-events/create-server",
-            "plugin-development/dotnet-plugin-events/create-server-appsettings",
-            "plugin-development/dotnet-plugin-events/create-server-auth",
-            "plugin-development/dotnet-plugin-events/create-program-file",
-            "plugin-development/dotnet-plugin-events/create-server-csproj",
-            "plugin-development/dotnet-plugin-events/create-server-docker-compose",
-            "plugin-development/dotnet-plugin-events/create-server-git-ignore",
-            "plugin-development/dotnet-plugin-events/create-entity-model",
-            "plugin-development/dotnet-plugin-events/create-resource-db-context-file",
-            "plugin-development/dotnet-plugin-events/create-message-broker",
-            "plugin-development/dotnet-plugin-events/create-message-broker-client-options-factory",
-            "plugin-development/dotnet-plugin-events/create-message-broker-service",
-            "plugin-development/dotnet-plugin-events/create-entity-controller",
-            "plugin-development/dotnet-plugin-events/create-entity-controller-base",
-            "plugin-development/dotnet-plugin-events/create-dtos",
-            "plugin-development/dotnet-plugin-events/create-entity-extensions",
-            "plugin-development/dotnet-plugin-events/create-entity-interface",
-            "plugin-development/dotnet-plugin-events/create-entity-service",
-            "plugin-development/dotnet-plugin-events/create-entity-service-base",
-            "plugin-development/dotnet-plugin-events/create-seed-development-data-file",
-            "plugin-development/dotnet-plugin-events/load-static-files"
-          ]
-        }
-      ]
-    }
-  ],
-  "footer": {
-    "socials": {
-      "github": "https://github.com/amplication",
-      "x": "https://x.com/amplication",
-      "linkedin": "https://www.linkedin.com/company/amplication"
-    }
-  }
+   "$schema":"https://mintlify.com/schema.json",
+   "name":"Amplication",
+   "logo":{
+      "light":"/logo/amplication-logo.svg",
+      "dark":"/logo/amplication-logo-dark.svg",
+      "href":"https://amplication.com"
+   },
+   "metadata":{
+      "og:image":"/images/amplication-docs-social-card.png"
+   },
+   "favicon":"/favicon.svg",
+   "theme":"prism",
+   "colors":{
+      "primary":"#5D4CFE",
+      "light":"#8477FF",
+      "dark":"#5D4CFE"
+   },
+   "topbarLinks":[
+      {
+         "name":"Contact Us",
+         "url":"https://meetings-eu1.hubspot.com/yuval-hazaz"
+      },
+      {
+         "name":"GitHub",
+         "url":"https://github.com/amplication"
+      }
+   ],
+   "topbarCtaButton":{
+      "name":"Start Now",
+      "url":"https://app.amplication.com/login"
+   },
+   "tabs":[
+      {
+         "name":"Day Zero: Plan & Design Standards",
+         "url":"/day-zero"
+      },
+      {
+         "name":"Day One: Create & Scaffold Resources",
+         "url":"/day-one"
+      },
+      {
+         "name":"Day Two: Maintain & Update Live Apps",
+         "url":"/day-two"
+      },
+      {
+         "name":"Plugin Development",
+         "url":"/plugin-development"
+      }
+   ],
+   "navigation":[
+      {
+         "group":"Get Started",
+         "pages":[
+            "what-is-amplication",
+            "concepts",
+            "faqs"
+         ]
+      },
+      {
+         "group":"Day Zero",
+         "pages":[
+            "day-zero/overview"
+         ]
+      },
+      {
+         "group":"Design Your Architecture",
+         "pages":[
+            "day-zero/blueprints",
+            "day-zero/blueprint-properties-relations",
+            "day-zero/amplication-standards-vs-custom-standards"
+         ]
+      },
+      {
+         "group":"Define Organizational Standards",
+         "pages":[
+            "day-zero/catalog-properties"
+         ]
+      },
+      {
+         "group":"Codify Standards with Plugins",
+         "pages":[
+            "day-zero/private-plugins"
+         ]
+      },
+      {
+         "group":"Establish Golden Paths",
+         "pages":[
+            "day-zero/live-templates"
+         ]
+      },
+      {
+         "group":"Integrate with Git",
+         "pages":[
+            "day-zero/smart-git-sync",
+            "day-zero/sync-with-gitlab",
+            "day-zero/sync-with-github",
+            "day-zero/sync-with-bitbucket",
+            "day-zero/sync-with-azure-devops",
+            "day-zero/sync-with-aws-codecommit"
+         ]
+      },
+      {
+         "group":"Day One",
+         "pages":[
+            "day-one/overview"
+         ]
+      },
+      {
+         "group":"Self-Serve Resource Creation",
+         "pages":[
+            "day-one/create-resource-from-blueprint",
+            "day-one/create-resource-from-template",
+            "day-one/create-resource-from-service"
+         ]
+      },
+      {
+         "group":"Accelerate with AI",
+         "pages":[
+            "day-one/jovu",
+            "day-one/jovu-examples"
+         ]
+      },
+      {
+         "group":"Resource Configuration",
+         "pages":[
+            "day-one/resource-git-setup",
+            "day-one/edit-catalog-properties"
+         ]
+      },
+      {
+         "group":"Install & Configure Plugins",
+         "pages":[
+            "day-one/use-plugins"
+         ]
+      },
+      {
+         "group":"Model Data",
+         "pages":[
+            "day-one/entities",
+            "day-one/fields",
+            "day-one/relationships",
+            {
+               "group":"Upload DB Schema",
+               "icon":"file-import",
+               "pages":[
+                  "day-one/upload-schema",
+                  "day-one/understanding-upload-schema"
+               ]
+            }
+         ]
+      },
+      {
+         "group":"Define APIs & DTOs",
+         "pages":[
+            "day-one/custom-types-actions"
+         ]
+      },
+      {
+         "group":"Manage Authentication & Roles",
+         "pages":[
+            "day-one/authentication-explained",
+            "day-one/authentication-provider-plugins",
+            "day-one/authentication-entity",
+            "day-one/roles-permissions"
+         ]
+      },
+      {
+         "group":"Generate Code",
+         "pages":[
+            "day-one/view-pending-changes",
+            "day-one/generate-code",
+            "day-one/code-view",
+            "day-one/commits"
+         ]
+      },
+      {
+         "group":"Day Two",
+         "pages":[
+            "day-two/overview"
+         ]
+      },
+      {
+         "group":"Discover & Govern Resources",
+         "pages":[
+            "day-two/software-catalog",
+            "day-two/ownership-visibility"
+         ]
+      },
+      {
+         "group":"Visualize Your Architecture",
+         "pages":[
+            "day-two/architecture-graph"
+         ]
+      },
+      {
+         "group":"Maintain & Evolve Standards",
+         "pages":[
+            "day-two/update-templates",
+            "day-two/update-private-plugins"
+         ]
+      },
+      {
+         "group":"Get Started",
+         "pages":[
+            "plugin-development/overview"
+         ]
+      },
+      {
+         "group":"Plugin Architecture",
+         "pages":[
+            "plugin-development/how-plugins-fit-into-amplication"
+         ]
+      },
+      {
+         "group":"Lifecycle & Coding Details",
+         "pages":[
+            "plugin-development/before-and-after-lifecycle-functions"
+         ]
+      },
+      {
+         "group":"Developing a Plugin",
+         "pages":[
+            "plugin-development/plugin-folder-structure",
+            "plugin-development/configure-plugin",
+            "plugin-development/define-plugin-settings",
+            "plugin-development/test-a-plugin",
+            "plugin-development/publish-a-plugin"
+         ]
+      },
+      {
+         "group":"Plugin Events",
+         "pages":[
+            {
+               "group":"Node.js Plugin Event Reference",
+               "icon":"node-js",
+               "pages":[
+                  "plugin-development/node-plugin-events/create-server",
+                  "plugin-development/node-plugin-events/create-server-docker-compose",
+                  "plugin-development/node-plugin-events/create-server-docker-compose-dev",
+                  "plugin-development/node-plugin-events/create-server-dot-env",
+                  "plugin-development/node-plugin-events/create-server-auth",
+                  "plugin-development/node-plugin-events/create-package-json",
+                  "plugin-development/node-plugin-events/create-entity-service",
+                  "plugin-development/node-plugin-events/create-entity-service-base",
+                  "plugin-development/node-plugin-events/create-entity-controller",
+                  "plugin-development/node-plugin-events/create-entity-controller-base",
+                  "plugin-development/node-plugin-events/create-entity-resolver",
+                  "plugin-development/node-plugin-events/create-entity-resolver-base",
+                  "plugin-development/node-plugin-events/create-message-broker-service",
+                  "plugin-development/node-plugin-events/create-message-broker-service-base",
+                  "plugin-development/node-plugin-events/create-message-broker-nestjs-module",
+                  "plugin-development/node-plugin-events/create-message-broker-client-options-factory",
+                  "plugin-development/node-plugin-events/create-message-broker-topics-enum",
+                  "plugin-development/node-plugin-events/create-prisma-schema"
+               ]
+            },
+            {
+               "group":".NET Plugin Event Reference",
+               "icon":"microsoft",
+               "pages":[
+                  "plugin-development/dotnet-plugin-events/create-server",
+                  "plugin-development/dotnet-plugin-events/create-server-appsettings",
+                  "plugin-development/dotnet-plugin-events/create-server-auth",
+                  "plugin-development/dotnet-plugin-events/create-program-file",
+                  "plugin-development/dotnet-plugin-events/create-server-csproj",
+                  "plugin-development/dotnet-plugin-events/create-server-docker-compose",
+                  "plugin-development/dotnet-plugin-events/create-server-git-ignore",
+                  "plugin-development/dotnet-plugin-events/create-entity-model",
+                  "plugin-development/dotnet-plugin-events/create-resource-db-context-file",
+                  "plugin-development/dotnet-plugin-events/create-message-broker",
+                  "plugin-development/dotnet-plugin-events/create-message-broker-client-options-factory",
+                  "plugin-development/dotnet-plugin-events/create-message-broker-service",
+                  "plugin-development/dotnet-plugin-events/create-entity-controller",
+                  "plugin-development/dotnet-plugin-events/create-entity-controller-base",
+                  "plugin-development/dotnet-plugin-events/create-dtos",
+                  "plugin-development/dotnet-plugin-events/create-entity-extensions",
+                  "plugin-development/dotnet-plugin-events/create-entity-interface",
+                  "plugin-development/dotnet-plugin-events/create-entity-service",
+                  "plugin-development/dotnet-plugin-events/create-entity-service-base",
+                  "plugin-development/dotnet-plugin-events/create-seed-development-data-file",
+                  "plugin-development/dotnet-plugin-events/load-static-files"
+               ]
+            }
+         ]
+      }
+   ],
+   "footer":{
+      "socials":{
+         "github":"https://github.com/amplication",
+         "x":"https://x.com/amplication",
+         "linkedin":"https://www.linkedin.com/company/amplication"
+      }
+   },
+   "redirects":[
+      {
+         "source":"/",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/first-service",
+         "destination":"/day-one/create-resource-from-blueprint"
+      },
+      {
+         "source":"/private-plugins",
+         "destination":"/day-zero/private-plugins"
+      },
+      {
+         "source":"/getting-started",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/getting-started/view-generated-code",
+         "destination":"/day-one/generate-code"
+      },
+      {
+         "source":"/custom-code",
+         "destination":"/plugin-development/overview"
+      },
+      {
+         "source":"/how-to/custom-code",
+         "destination":"/plugin-development/overview"
+      },
+      {
+         "source":"/authentication",
+         "destination":"/day-one/authentication-explained"
+      },
+      {
+         "source":"/concepts/event-driven-architecture",
+         "destination":"/concepts"
+      },
+      {
+         "source":"/api/index",
+         "destination":"/day-one/custom-types-actions"
+      },
+      {
+         "source":"/api",
+         "destination":"/day-one/custom-types-actions"
+      },
+      {
+         "source":"/api/generated-api-sorting",
+         "destination":"/day-one/custom-types-actions"
+      },
+      {
+         "source":"/api/generated-api-filtering",
+         "destination":"/day-one/custom-types-actions"
+      },
+      {
+         "source":"/api/generated-api-pagination",
+         "destination":"/day-one/custom-types-actions"
+      },
+      {
+         "source":"/amplication-ai",
+         "destination":"/day-one/jovu"
+      },
+      {
+         "source":"/amplication-ai-examples",
+         "destination":"/day-one/jovu-examples"
+      },
+      {
+         "source":"/smart-git-sync",
+         "destination":"/day-zero/smart-git-sync"
+      },
+      {
+         "source":"/sync-with-github",
+         "destination":"/day-zero/sync-with-github"
+      },
+      {
+         "source":"/sync-with-gitlab",
+         "destination":"/day-zero/sync-with-gitlab"
+      },
+      {
+         "source":"/sync-with-bitbucket",
+         "destination":"/day-zero/sync-with-bitbucket"
+      },
+      {
+         "source":"/sync-with-aws-codecommit",
+         "destination":"/day-zero/sync-with-aws-codecommit"
+      },
+      {
+         "source":"/how-to/base-directories",
+         "destination":"/day-zero/smart-git-sync"
+      },
+      {
+         "source":"/how-to/set-default-value-entity-field",
+         "destination":"/day-one/fields"
+      },
+      {
+         "source":"/deploy",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/deploy/docker-desktop",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/deploy/kubernetes",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/deploy/aws/ecs",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/how-to/enterprise-sso",
+         "destination":"/day-zero/overview"
+      },
+      {
+         "source":"/one-git-branch-per-service",
+         "destination":"/day-zero/smart-git-sync"
+      },
+      {
+         "source":"/code-generator-version-control",
+         "destination":"/day-one/resource-git-setup"
+      },
+      {
+         "source":"/enterprise-git-providers",
+         "destination":"/day-zero/smart-git-sync"
+      },
+      {
+         "source":"/enterprise-git-custom-base-branch",
+         "destination":"/day-zero/smart-git-sync"
+      },
+      {
+         "source":"/how-to/import-prisma-schema",
+         "destination":"/day-one/upload-schema"
+      },
+      {
+         "source":"/how-to/understanding-break-the-monolith",
+         "destination":"/day-one/understanding-upload-schema"
+      },
+      {
+         "source":"/break-the-monolith",
+         "destination":"/day-one/upload-schema"
+      },
+      {
+         "source":"/how-to/index",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/custom-code/business-logic",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/custom-code/controller-action",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/prisma-custom-attributes",
+         "destination":"/day-one/fields"
+      },
+      {
+         "source":"/custom-code/graphql-query",
+         "destination":"/day-one/custom-types-actions"
+      },
+      {
+         "source":"/custom-code/add-custom-dto",
+         "destination":"/day-one/custom-types-actions"
+      },
+      {
+         "source":"/getting-started/dev-env",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/running-amplication-platform/view-generated-code",
+         "destination":"/day-zero/sync-with-github"
+      },
+      {
+         "source":"/running-amplication-platform/configure-github-auth",
+         "destination":"/day-zero/sync-with-github"
+      },
+      {
+         "source":"/running-amplication-platform/connect-server-to-bitbucket",
+         "destination":"/day-zero/sync-with-bitbucket"
+      },
+      {
+         "source":"/cli",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/analytics-dashboard",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/plugins-list",
+         "destination":"/day-one/use-plugins"
+      },
+      {
+         "source":"/dotnet-plugins",
+         "destination":"/day-one/use-plugins"
+      },
+      {
+         "source":"/tutorials/index",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/tutorials/community-tutorials",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/tutorials/react-todos",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/tutorials/angular-todos",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/how-to/choose-configure-update-database",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/how-to/create-message-broker",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/errors/index",
+         "destination":"/plugin-development/overview"
+      },
+      {
+         "source":"/errors/could-not-authorize-user",
+         "destination":"/day-two/ownership-visibility"
+      },
+      {
+         "source":"/errors/invalid-code-generation-version",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/errors/missing-code-generation-version",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/errors/merge-conflict",
+         "destination":"/day-zero/smart-git-sync"
+      },
+      {
+         "source":"/errors/github-different-app-id",
+         "destination":"/day-zero/smart-git-sync"
+      },
+      {
+         "source":"/errors/prisma-denied-access-on-postgres",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/contributing",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/community/handling-a-new-issue",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/plugins/guides/database",
+         "destination":"/day-one/use-plugins"
+      },
+      {
+         "source":"/authentication-plugin-examples",
+         "destination":"/day-one/authentication-explained"
+      },
+      {
+         "source":"/how-to/add-delete-user-entity",
+         "destination":"/day-one/authentication-entity"
+      },
+      {
+         "source":"/guides/getting-started",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/docs/how-to/dev-env",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/faqs/faqs/faqs",
+         "destination":"/faqs"
+      },
+      {
+         "source":"/faqs/faqs",
+         "destination":"/faqs"
+      },
+      {
+         "source":"/getting-started/plugins",
+         "destination":"/day-one/use-plugins"
+      },
+      {
+         "source":"/getting-started/getting-started/plugins",
+         "destination":"/day-one/use-plugins"
+      },
+      {
+         "source":"/about/about/licensing",
+         "destination":"/what-is-amplication"
+      },
+      {
+         "source":"/api/api/generated-api-pagination",
+         "destination":"/day-one/custom-types-actions"
+      },
+      {
+         "source":"/api/api/generated-api-filtering",
+         "destination":"/day-one/custom-types-actions"
+      },
+      {
+         "source":"/api/api/generated-api-sorting",
+         "destination":"/day-one/custom-types-actions"
+      },
+      {
+         "source":"/getting-started/getting-started/phone-home",
+         "destination":"/day-one/overview"
+      },
+      {
+         "source":"/how-to/create-app",
+         "destination":"/day-one/create-resource-from-blueprint"
+      },
+      {
+         "source":"/first-app",
+         "destination":"/day-one/create-resource-from-blueprint"
+      },
+      {
+         "source":"/custom-actions",
+         "destination":"/day-one/custom-types-actions"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-server",
+         "destination":"/plugin-development/dotnet-plugin-events/create-server"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-server-appsettings",
+         "destination":"/plugin-development/dotnet-plugin-events/create-server-appsettings"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-server-auth",
+         "destination":"/plugin-development/dotnet-plugin-events/create-server-auth"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-program-file",
+         "destination":"/plugin-development/dotnet-plugin-events/create-program-file"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-server-csproj",
+         "destination":"/plugin-development/dotnet-plugin-events/create-server-csproj"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-server-docker-compose",
+         "destination":"/plugin-development/dotnet-plugin-events/create-server-docker-compose"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-server-git-ignore",
+         "destination":"/plugin-development/dotnet-plugin-events/create-server-git-ignore"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-entity-model",
+         "destination":"/plugin-development/dotnet-plugin-events/create-entity-model"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-resource-db-context-file",
+         "destination":"/plugin-development/dotnet-plugin-events/create-resource-db-context-file"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-message-broker",
+         "destination":"/plugin-development/dotnet-plugin-events/create-message-broker"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-message-broker-client-options-factory",
+         "destination":"/plugin-development/dotnet-plugin-events/create-message-broker-client-options-factory"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-message-broker-service",
+         "destination":"/plugin-development/dotnet-plugin-events/create-message-broker-service"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-entity-controller",
+         "destination":"/plugin-development/dotnet-plugin-events/create-entity-controller"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-entity-controller-base",
+         "destination":"/plugin-development/dotnet-plugin-events/create-entity-controller-base"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-dtos",
+         "destination":"/plugin-development/dotnet-plugin-events/create-dtos"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-entity-extensions",
+         "destination":"/plugin-development/dotnet-plugin-events/create-entity-extensions"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-entity-interface",
+         "destination":"/plugin-development/dotnet-plugin-events/create-entity-interface"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-entity-service",
+         "destination":"/plugin-development/dotnet-plugin-events/create-entity-service"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-entity-service-base",
+         "destination":"/plugin-development/dotnet-plugin-events/create-entity-service-base"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/create-seed-development-data-file",
+         "destination":"/plugin-development/dotnet-plugin-events/create-seed-development-data-file"
+      },
+      {
+         "source":"/plugins/dotnet-plugin-events/load-static-files",
+         "destination":"/plugin-development/dotnet-plugin-events/load-static-files"
+      },
+      {
+         "source":"/plugins/plugin-events/create-server",
+         "destination":"/plugin-development/node-plugin-events/create-server"
+      },
+      {
+         "source":"/plugins/plugin-events/create-server-docker-compose",
+         "destination":"/plugin-development/node-plugin-events/create-server-docker-compose"
+      },
+      {
+         "source":"/plugins/plugin-events/create-server-docker-compose-dev",
+         "destination":"/plugin-development/node-plugin-events/create-server-docker-compose-dev"
+      },
+      {
+         "source":"/plugins/plugin-events/create-server-dot-env",
+         "destination":"/plugin-development/node-plugin-events/create-server-dot-env"
+      },
+      {
+         "source":"/plugins/plugin-events/create-server-auth",
+         "destination":"/plugin-development/node-plugin-events/create-server-auth"
+      },
+      {
+         "source":"/plugins/plugin-events/create-package-json",
+         "destination":"/plugin-development/node-plugin-events/create-package-json"
+      },
+      {
+         "source":"/plugins/plugin-events/create-entity-service",
+         "destination":"/plugin-development/node-plugin-events/create-entity-service"
+      },
+      {
+         "source":"/plugins/plugin-events/create-entity-service-base",
+         "destination":"/plugin-development/node-plugin-events/create-entity-service-base"
+      },
+      {
+         "source":"/plugins/plugin-events/create-entity-controller",
+         "destination":"/plugin-development/node-plugin-events/create-entity-controller"
+      },
+      {
+         "source":"/plugins/plugin-events/create-entity-controller-base",
+         "destination":"/plugin-development/node-plugin-events/create-entity-controller-base"
+      },
+      {
+         "source":"/plugins/plugin-events/create-entity-resolver",
+         "destination":"/plugin-development/node-plugin-events/create-entity-resolver"
+      },
+      {
+         "source":"/plugins/plugin-events/create-entity-resolver-base",
+         "destination":"/plugin-development/node-plugin-events/create-entity-resolver-base"
+      },
+      {
+         "source":"/plugins/plugin-events/create-message-broker-service",
+         "destination":"/plugin-development/node-plugin-events/create-message-broker-service"
+      },
+      {
+         "source":"/plugins/plugin-events/create-message-broker-service-base",
+         "destination":"/plugin-development/node-plugin-events/create-message-broker-service-base"
+      },
+      {
+         "source":"/plugins/plugin-events/create-message-broker-nestjs-module",
+         "destination":"/plugin-development/node-plugin-events/create-message-broker-nestjs-module"
+      },
+      {
+         "source":"/plugins/plugin-events/create-message-broker-client-options-factory",
+         "destination":"/plugin-development/node-plugin-events/create-message-broker-client-options-factory"
+      },
+      {
+         "source":"/plugins/plugin-events/create-message-broker-topics-enum",
+         "destination":"/plugin-development/node-plugin-events/create-message-broker-topics-enum"
+      },
+      {
+         "source":"/plugins/plugin-events/create-prisma-schema",
+         "destination":"/plugin-development/node-plugin-events/create-prisma-schema"
+      }
+   ]
 }

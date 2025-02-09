@@ -69,9 +69,10 @@ For example, suppose you have a Terraform blueprint or a React front-end bluepri
 </Steps>
 
 <Tip>
-To learn how to create a new resource **from** this blueprint-based template and customize it before publishing, check out our [Create a Resource from a Template](/day-one/create-resource-from-template) guide.
+  To learn how to create a new resource **from** this blueprint-based template
+  and customize it before publishing, check out our [Create a Resource from a
+  Template](/day-one/create-resource-from-template) guide.
 </Tip>
-
 
 ## Create a Template from a Service
 
@@ -88,8 +89,9 @@ This ensures new services across the organization all start with your proven fou
     </Frame>
 
     <Note>
-      Refer to our [Services page](/day-one/create-resource-from-service/) for insight on Amplication's opinionated Node.js and .NET stacks.
+      Refer to our [Services page](/day-zero/use-amplication-standards) for insight on Amplication's opinionated Node.js and .NET stacks.
     </Note>
+
   </Step>
 
    <Step title="Configure Initial Technologies">
@@ -151,6 +153,7 @@ This ensures new services across the organization all start with your proven fou
     <Note>
       After publishing, you can view version history and detailed changes in the **Versions tab**. When your dependencies or standards change, update the template and republish. Amplication will automatically notify all services that inherit from it.
     </Note>
+
   </Step>
 </Steps>
 
@@ -163,9 +166,10 @@ To see which resources were created from a specific template:
     Go to **Platform** in your Amplication workspace.
   </Step>
 
-  <Step title="Select the Template">
-    From the **Templates** list, click on the template you want to inspect.
-  </Step>
+{" "}
+<Step title="Select the Template">
+  From the **Templates** list, click on the template you want to inspect.
+</Step>
 
   <Step title="Open the Resources Tab">
     You'll see a list of all resources that originated from this template, along with each resource's template version.
@@ -183,27 +187,38 @@ To see which resources were created from a specific template:
 One of the most powerful benefits of Live Templates is **auto-updating** derived resources:
 
 1. **Update the Template**
-      When you revise a template (upgrade a plugin, fix a security gap, add new environment settings), Amplication captures these changes in your "Platform Changes."
+   When you revise a template (upgrade a plugin, fix a security gap, add new environment settings), Amplication captures these changes in your "Platform Changes."
+
    <Note>
-     To learn more, visit the [Update Live Template](/day-two/update-templates) page.
+     To learn more, visit the [Update Live Template](/day-two/update-templates)
+     page.
    </Note>
 
 2. **Publish a New Version**
    Amplication bumps your template version, prompting all dependent resources that inherit from it.
 
-    <Note>
-     Learn about how derived resources receive alerts in our [Automated Alerts](/day-two/automated-alerts) guide.
+   {" "}
+   <Note>
+     Learn about how derived resources receive alerts in our [Automated
+     Alerts](/day-two/automated-alerts) guide.
    </Note>
 
 3. **Merge or Review the Update**
    Each derived resource receives an automated pull request (or "pending change"). The owning team can review, merge, or further customize these updates without losing their existing custom code.
 
-    <Info>
-     See how to handle updates across multiple resources in our [resolve debt across multiple resources](/day-two/resolve-debt-across-multiple-resources) guide.
-    </Info>
+   {" "}
+   <Info>
+     See how to handle updates across multiple resources in our [resolve debt
+     across multiple resources](/day-two/resolve-debt-across-multiple-resources)
+     guide.
+   </Info>
 
 This dynamic ensures minimal drift across your organization’s resources while still respecting local modifications.
 
 <Check>
-By creating **blueprint-based** or **service-based** Live Templates, you establish **golden paths** that unify your technology stack, protect against drift, and empower teams to build swiftly on top of proven patterns. Amplication handles updates and visibility so you can scale with confidence and keep your entire software ecosystem aligned with evolving best practices.
+  By creating **blueprint-based** or **service-based** Live Templates, you
+  establish **golden paths** that unify your technology stack, protect against
+  drift, and empower teams to build swiftly on top of proven patterns.
+  Amplication handles updates and visibility so you can scale with confidence
+  and keep your entire software ecosystem aligned with evolving best practices.
 </Check>

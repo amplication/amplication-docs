@@ -1,8 +1,8 @@
 ---
-title: 'Before and After Lifecycle Functions'
+title: "Before and After Lifecycle Functions"
 sidebarTitle: Lifecycle Functions
 description: "Customize and extend Amplication's code generation process using Before and After lifecycle functions in plugins."
-icon: 'code'
+icon: "code"
 ---
 
 Amplication plugins offer powerful **lifecycle functions** that allow you to customize and extend the code generation process precisely where you need it.
@@ -19,8 +19,8 @@ export interface PluginEventType<T extends EventParams> {
 }
 ```
 
-* **`before`**:  This function executes **before** Amplication emits the main event logic. Use it to modify event parameters and tailor the default behavior *before* it happens.
-* **`after`**: This function executes **after** Amplication's core event logic. It provides access to the generated modules or files, allowing you to apply transformations, add custom logic, or restructure outputs.
+- **`before`**: This function executes **before** Amplication emits the main event logic. Use it to modify event parameters and tailor the default behavior _before_ it happens.
+- **`after`**: This function executes **after** Amplication's core event logic. It provides access to the generated modules or files, allowing you to apply transformations, add custom logic, or restructure outputs.
 
 Each event defines its specific `EventParams` interface (`T extends EventParams`), providing you with type-safe access to the relevant data for that particular stage of the generation process.
 
@@ -33,7 +33,27 @@ export interface EventParams {}
 Let's examine the signatures of the `before` and `after` functions to understand how you can interact with Amplication's code generation:
 
 <Tabs>
+<Tab title="Blueprint Plugins">
+
+This is the signature of all events of the Blueprint Engine.
+
+```tsx
+export type PluginBeforeEvent<T extends EventParams> = (
+  dsgContext: DsgContext,
+  eventParams: T
+) => Promisable<T>;
+
+export type PluginAfterEvent<T extends EventParams, F> = (
+  dsgContext: DsgContext,
+  eventParams: T,
+  files: FileMap<F>
+) => Promisable<FileMap<F>>;
+```
+
+</Tab>
 <Tab title="Node.js Plugins">
+
+This is the signature of all events of the built-in Node.js engine based on [Amplication Standards](/day-zero/use-amplication-standards)
 
 ```tsx
 export type PluginBeforeEvent<T extends EventParams> = (
@@ -50,6 +70,8 @@ export type PluginAfterEvent<T extends EventParams> = (
 
 </Tab>
 <Tab title=".NET Plugins">
+
+This is the signature of all events of the built-in .NET engine based on [Amplication Standards](/day-zero/use-amplication-standards)
 
 ```tsx
 export type PluginBeforeEvent<T extends EventParams> = (
@@ -70,35 +92,56 @@ export type PluginAfterEvent<T extends EventParams, F> = (
 **Parameters:**
 
 <ResponseField name="dsgContext" type="DsgContext">
-  The Design Context provides access to shared information and utilities across all events within a plugin execution. Use it to retrieve configuration, access the service schema, and more.
+  The Design Context provides access to shared information and utilities across
+  all events within a plugin execution. Use it to retrieve configuration, access
+  the service schema, and more.
 </ResponseField>
 
 <ResponseField name="eventParams" type="T extends EventParams">
-  These are the parameters specific to the event being handled. The type `T` is defined by the specific event interface, giving you access to relevant data points to influence the generation.
+  These are the parameters specific to the event being handled. The type `T` is
+  defined by the specific event interface, giving you access to relevant data
+  points to influence the generation.
 </ResponseField>
 
 <Tabs>
-<Tab title="Node.js Plugins">
-<ResponseField name="modules" type="ModuleMap">
-  A `ModuleMap` is a structure containing the generated code modules as key-value pairs, where keys are module paths and values are the code content. This is your entry point to modify the generated code in Node.js plugins.
-</ResponseField>
-</Tab>
-<Tab title=".NET Plugins">
-<ResponseField name="files" type="FileMap<F>">
-  Similar to `ModuleMap`, `FileMap` is used in .NET plugins to represent generated files. It provides a way to access and modify the generated files before they are written to disk.
-</ResponseField>
-</Tab>
+  <Tab title="Blueprint Plugins">
+    <ResponseField name="files" type="FileMap<F>">
+      `FileMap` is used in blueprint plugins to represent generated files. It
+      provides a way to access and modify the generated files before they are
+      written to disk.
+    </ResponseField>
+  </Tab>
+  <Tab title="Node.js Plugins">
+    <ResponseField name="modules" type="ModuleMap">
+      A `ModuleMap` is a structure containing the generated code modules as
+      key-value pairs, where keys are module paths and values are the code
+      content. This is your entry point to modify the generated code in Node.js
+      plugins.
+    </ResponseField>
+  </Tab>
+  <Tab title=".NET Plugins">
+    <ResponseField name="files" type="FileMap<F>">
+      Similar to `ModuleMap`, `FileMap` is used in .NET plugins to represent
+      generated files. It provides a way to access and modify the generated
+      files before they are written to disk.
+    </ResponseField>
+  </Tab>
 </Tabs>
 
 <Note>
-**Node.js plugins**, the `after` function works with a [`ModuleMap`](https://github.com/amplication/amplication/blob/master/libs/util/code-gen-types/src/code-gen-types.ts#L149), representing code as modules.
-**.NET plugins**, the `after` function uses a [`FileMap`](https://github.com/amplication/amplication/blob/master/libs/util/code-gen-types/src/files/file-map.ts), which is designed for file-based manipulations.
+  **Node.js plugins**, the `after` function works with a
+  [`ModuleMap`](https://github.com/amplication/amplication/blob/master/libs/util/code-gen-types/src/code-gen-types.ts#L149),
+  representing code as modules. **.NET plugins**, the `after` function uses a
+  [`FileMap`](https://github.com/amplication/amplication/blob/master/libs/util/code-gen-types/src/files/file-map.ts),
+  which is designed for file-based manipulations.
 </Note>
 
 **Return Values:**
 
 <ResponseField name="before function" type="Promisable<T>">
-  The `before` function should return a `Promise` that resolves to the (potentially modified) `eventParams`. Returning the modified `eventParams` allows you to influence the subsequent default behavior of the event.
+  The `before` function should return a `Promise` that resolves to the
+  (potentially modified) `eventParams`. Returning the modified `eventParams`
+  allows you to influence the subsequent default behavior of the event.
 </ResponseField>
 
 <Tabs>
@@ -120,24 +163,27 @@ Both `before` and `after` lifecycle functions have access to a global `context` 
 
 Here are the key properties available in the context object:
 
-| Name | Type | Description |
-|------|------|-------------|
-| resourceType | `keyOf typeOf EnumResourceType` | The type of resource: `MessageBroker`, `ProjectConfiguration`, `Service` |
-| resourceInfo | `AppInfo` | General application data including name, description, version, ID, URL, and settings |
-| entities | `Entity[]` | List of entities in the service |
-| roles | `Roles` | List of roles in the service |
-| pluginInstallations | `PluginInstallations` | List of installed plugins |
-| topics | `Topic[]` | List of topics connected to the service |
-| modules | `ModuleMap` | Map of generated modules (files) |
-| DTOs | `DTOs` | List of generated DTOs |
-| plugins | `PluginMap` | Map of event names with their before/after functions and event parameters |
-| logger | `BuildLogger` | Logger for creating user-facing build logs |
-| utils | `ContextUtil` | Utility functions including `skipDefaultBehavior` and `importStaticModules` |
-| clientDirectories | `ClientDirectories` | Paths for admin UI generation (base, src, auth, public, api directories) |
-| serverDirectories | `ServerDirectories` | Paths for server generation (base, src, auth, scripts, messageBroker directories) |
+| Name                | Type                            | Description                                                                          |
+| ------------------- | ------------------------------- | ------------------------------------------------------------------------------------ |
+| resourceType        | `keyOf typeOf EnumResourceType` | The type of resource: `MessageBroker`, `ProjectConfiguration`, `Service`             |
+| resourceInfo        | `AppInfo`                       | General application data including name, description, version, ID, URL, and settings |
+| entities            | `Entity[]`                      | List of entities in the service                                                      |
+| roles               | `Roles`                         | List of roles in the service                                                         |
+| pluginInstallations | `PluginInstallations`           | List of installed plugins                                                            |
+| topics              | `Topic[]`                       | List of topics connected to the service                                              |
+| modules             | `ModuleMap`                     | Map of generated modules (files)                                                     |
+| DTOs                | `DTOs`                          | List of generated DTOs                                                               |
+| plugins             | `PluginMap`                     | Map of event names with their before/after functions and event parameters            |
+| logger              | `BuildLogger`                   | Logger for creating user-facing build logs                                           |
+| utils               | `ContextUtil`                   | Utility functions including `skipDefaultBehavior` and `importStaticModules`          |
+| clientDirectories   | `ClientDirectories`             | Paths for admin UI generation (base, src, auth, public, api directories)             |
+| serverDirectories   | `ServerDirectories`             | Paths for server generation (base, src, auth, scripts, messageBroker directories)    |
 
 <Note>
-For detailed information about these types and their definitions, check out the [code-gen-types.ts](https://github.com/amplication/amplication/blob/master/libs/util/code-gen-types/src/code-gen-types.ts) file in the Amplication GitHub repository.
+  For detailed information about these types and their definitions, check out
+  the
+  [code-gen-types.ts](https://github.com/amplication/amplication/blob/master/libs/util/code-gen-types/src/code-gen-types.ts)
+  file in the Amplication GitHub repository.
 </Note>
 
 ## Skipping Default Behavior
@@ -152,7 +198,9 @@ context.utils.skipDefaultBehavior = true;
 By default, `skipDefaultBehavior` is set to `false`. When set to `true`, Amplication will skip its default implementation, and you must provide alternative logic either in the `before` function or in the corresponding `after` function.
 
 <Note>
-Use `skipDefaultBehavior` with caution. Skipping default behavior without providing proper alternative functionality can lead to unexpected results, especially if other generated files depend on the skipped output.
+  Use `skipDefaultBehavior` with caution. Skipping default behavior without
+  providing proper alternative functionality can lead to unexpected results,
+  especially if other generated files depend on the skipped output.
 </Note>
 
 ## Practical Use: Modifying Generated Files in `after` Functions
@@ -161,9 +209,9 @@ A common use case for `after` functions is to restructure the generated files. I
 
 For example, you might want to:
 
-*   Move all generated GraphQL resolvers into a dedicated `resolvers` directory.
-*   Organize entity-related files into entity-specific subfolders.
-*   Add custom documentation or README files to specific directories.
+- Move all generated GraphQL resolvers into a dedicated `resolvers` directory.
+- Organize entity-related files into entity-specific subfolders.
+- Add custom documentation or README files to specific directories.
 
 The `after` function gives you the flexibility to manipulate the generated `ModuleMap` or `FileMap` and reorganize files as needed to meet your project's architectural requirements.
 
@@ -175,30 +223,50 @@ We encourage you to dive into the [code of Amplication's official plugins](https
 
 By exploring these examples, you can gain insights into:
 
-*   Modifying code templates to inject custom logic.
-*   Adding new files and modules to the generated output.
-*   Integrating with external services and APIs during generation.
-*   Enforcing coding standards and best practices through automated modifications.
+- Modifying code templates to inject custom logic.
+- Adding new files and modules to the generated output.
+- Integrating with external services and APIs during generation.
+- Enforcing coding standards and best practices through automated modifications.
 
 <Note>
-Browse our complete collection of official plugins in the [Amplication Plugins Repository](https://github.com/amplication/plugins/tree/master/plugins) for more examples and inspiration.
+  Browse our complete collection of official plugins in the [Amplication Plugins
+  Repository](https://github.com/amplication/plugins/tree/master/plugins) for
+  more examples and inspiration.
 </Note>
 
 <CardGroup>
 
-<Card title=".NET Core Authentication Identity" icon="microsoft" href="https://github.com/amplication/plugins/tree/master/plugins/dotnet-auth-core-identity">
-  Implement authentication and identity management in .NET applications using Microsoft Identity.
+<Card
+  title=".NET Core Authentication Identity"
+  icon="microsoft"
+  href="https://github.com/amplication/plugins/tree/master/plugins/dotnet-auth-core-identity"
+>
+  Implement authentication and identity management in .NET applications using
+  Microsoft Identity.
 </Card>
 
-<Card title="Redis Cache" icon="node-js" href="https://github.com/amplication/plugins/tree/master/plugins/cache-redis">
-  Add Redis caching capabilities to your Node.js applications for improved performance.
+<Card
+  title="Redis Cache"
+  icon="node-js"
+  href="https://github.com/amplication/plugins/tree/master/plugins/cache-redis"
+>
+  Add Redis caching capabilities to your Node.js applications for improved
+  performance.
 </Card>
 
-<Card title=".NET PostgreSQL Database" icon="microsoft" href="https://github.com/amplication/plugins/tree/master/plugins/dotnet-db-postgres">
+<Card
+  title=".NET PostgreSQL Database"
+  icon="microsoft"
+  href="https://github.com/amplication/plugins/tree/master/plugins/dotnet-db-postgres"
+>
   Configure PostgreSQL database integration for .NET applications.
 </Card>
 
-<Card title="Helm Chart Deployment" icon="node-js" href="https://github.com/amplication/plugins/tree/master/plugins/deployment-helm-chart">
+<Card
+  title="Helm Chart Deployment"
+  icon="node-js"
+  href="https://github.com/amplication/plugins/tree/master/plugins/deployment-helm-chart"
+>
   Generate Helm charts for Kubernetes deployment of your applications.
 </Card>
 
@@ -213,12 +281,27 @@ To ensure your plugins are robust and maintainable, keep these best practices in
 In `after` functions, focus on making **specific, targeted changes** to the generated files. Avoid wholesale replacement of entire files unless absolutely necessary. Smaller, incremental modifications are easier to understand, maintain, and less likely to introduce unintended side effects.
 </Accordion>
 
-<Accordion title="Careful Template Adjustments in `before` Functions" icon="exclamation-triangle" iconType="solid">
-When modifying templates within `before` functions, exercise caution. Changes to templates can have a broad impact on code generation. Ensure you thoroughly test any template modifications to prevent unintended consequences or breakages in the generated code.
+<Accordion
+  title="Careful Template Adjustments in `before` Functions"
+  icon="exclamation-triangle"
+  iconType="solid"
+>
+  When modifying templates within `before` functions, exercise caution. Changes
+  to templates can have a broad impact on code generation. Ensure you thoroughly
+  test any template modifications to prevent unintended consequences or
+  breakages in the generated code.
 </Accordion>
 
-<Accordion title="Strategic Use of `skipDefaultBehavior`" icon="sign-ban" iconType="solid">
-The `skipDefaultBehavior` option (available in some events) should be used judiciously within `before` functions. Only utilize it if you intend to completely **override** Amplication's default code generation for that specific event. In most cases, you'll want to *extend* or *modify* the default behavior, not replace it entirely.
+<Accordion
+  title="Strategic Use of `skipDefaultBehavior`"
+  icon="sign-ban"
+  iconType="solid"
+>
+  The `skipDefaultBehavior` option (available in some events) should be used
+  judiciously within `before` functions. Only utilize it if you intend to
+  completely **override** Amplication's default code generation for that
+  specific event. In most cases, you'll want to *extend* or *modify* the default
+  behavior, not replace it entirely.
 </Accordion>
 
 </AccordionGroup>

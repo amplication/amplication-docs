@@ -1,0 +1,45 @@
+---
+title: Create Module
+description: This event run for each module in the list of modules of the blueprint
+---
+
+## Event Name
+
+`createModule`
+
+## Event Parameters
+
+<ResponseField name="moduleName" type="string">
+  The name of the current module
+</ResponseField>
+
+<ResponseField name="moduleActionsAndDto" type="ModuleActionsAndDtos">
+  The list of Actions and DTOs for the current module
+</ResponseField>
+
+<RequestExample>
+```ts Example
+  async beforeCreateModule(
+    context: blueprintTypes.DsgContext,
+    eventParams: blueprint.CreateModuleParams,
+  ): Promise<blueprint.CreateModuleParams> {
+    const { logger } = context;
+
+    logger.info(`Creating module ${eventParams.moduleName}`);
+
+    const serviceName = pascalCase(
+      context.resourceInfo?.name || "Service Name",
+    );
+
+    const modulesFiles = await createModulesFiles(context, serviceName);
+
+    for (const file of modulesFiles.getAll()) {
+      context.files.set(file);
+    }
+    return eventParams;
+
+}
+
+```
+</RequestExample>
+```

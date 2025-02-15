@@ -185,10 +185,19 @@
       ]
     },
     {
-      "group": "Plugin Events",
+      "group": "Plugin Event Reference",
       "pages": [
         {
-          "group": "Node.js Plugin Event Reference",
+          "group": "Blueprint Plugin Events",
+          "icon": "code",
+          "pages": [
+            "plugin-development/blueprint-plugin-events/create-blueprint",
+            "plugin-development/blueprint-plugin-events/create-modules",
+            "plugin-development/blueprint-plugin-events/create-module"
+          ]
+        },
+        {
+          "group": "Node.js Plugin Events",
           "icon": "node-js",
           "pages": [
             "plugin-development/node-plugin-events/create-server",
@@ -212,7 +221,7 @@
           ]
         },
         {
-          "group": ".NET Plugin Event Reference",
+          "group": ".NET Plugin Events",
           "icon": "microsoft",
           "pages": [
             "plugin-development/dotnet-plugin-events/create-server",

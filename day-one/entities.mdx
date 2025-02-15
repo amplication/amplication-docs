@@ -6,14 +6,15 @@ icon: "database"
 ---
 
 <Frame>
-    <img src="/images/day-one/amplication-erd-view.png" />
+  <img src="/images/day-one/amplication-erd-view.png" />
 </Frame>
 
 **Entities** represent the data models that power your resource and serve as the foundation for your APIs and database interactions.
 This guide will walk you through everything you need to know about creating and managing entities in Amplication to accelerate your development process.
 
 <Note>
-Amplication **Entities** feature is available when using the **.NET** or **Node.js** blueprints in Amplication.
+  Amplication **Entities** feature is available when using the **.NET** or
+  **Node.js** blueprints in Amplication.
 </Note>
 
 ## What Are Amplication Entities?
@@ -24,19 +25,24 @@ With Amplication, defining and managing entities becomes streamlined and intuiti
 
 <CardGroup cols={2}>
   <Card title="Quickly Model Your Domain" icon="cube">
-    Define your data structures visually and efficiently, without writing complex schema code from scratch.
+    Define your data structures visually and efficiently, without writing
+    complex schema code from scratch.
   </Card>
-  
+
   <Card title="Visualize Relationships" icon="diagram-project">
-    Understand your data model at a glance with the built-in Entity Relationship Diagram (ERD) view.
+    Understand your data model at a glance with the built-in Entity Relationship
+    Diagram (ERD) view.
   </Card>
-  
+
   <Card title="Reduce Boilerplate" icon="gears">
-    Amplication automatically generates the necessary code for your entities, freeing you from repetitive tasks and allowing you to focus on your application's unique logic.
+    Amplication automatically generates the necessary code for your entities,
+    freeing you from repetitive tasks and allowing you to focus on your
+    application's unique logic.
   </Card>
-  
+
   <Card title="Ensure Data Consistency" icon="shield-check">
-    Easily set default values for entity fields to maintain data integrity and streamline data creation.
+    Easily set default values for entity fields to maintain data integrity and
+    streamline data creation.
   </Card>
 </CardGroup>
 
@@ -46,7 +52,8 @@ Creating a new entity in Amplication is simple and intuitive using Amplication's
 Each entity automatically gets an **ID**, **Created At**, and **Updated At** field so you can start building right away without repetitive setup.
 
 <Tip>
-You can also upload an existing database schema to quickly create multiple entities. Learn more about [uploading schemas](/day-one/upload-schema).
+  You can also upload an existing database schema to quickly create multiple
+  entities. Learn more about [uploading schemas](/day-one/upload-schema).
 </Tip>
 
 <Steps>
@@ -58,7 +65,7 @@ First, locate your resource in Amplication. Then, open the **Entities** tab. You
 Click **Create New**. In the dialog that appears, enter the name of your entity and confirm by clicking **Create Entity**.
 
 <Frame caption="Create a new Amplication entity">
-    <img src="/images/day-one/create-new-entity.png" />
+  <img src="/images/day-one/create-new-entity.png" />
 </Frame>
 
 <Tip>
@@ -70,15 +77,17 @@ You can also create entities using [Jovu](/day-one/jovu), Amplication's AI assis
 After creating an entity, Amplication automatically provides the `ID`, `Created At`, and `Updated At` fields to get you started quickly. You can add or modify additional fields later based on your requirements.
 
 <Frame>
-    <img src="/images/day-one/amplication-entity-default-fields.png" />
+  <img src="/images/day-one/amplication-entity-default-fields.png" />
 </Frame>
 
 </Step>
 </Steps>
 
 <Warning>
-**Avoid Reserved Names**  
-For a list of reserved entity and field names, check out our [reserved names reference](https://github.com/amplication/amplication/blob/master/packages/amplication-server/src/core/entity/reservedNames.ts). Using a reserved name can cause issues in the generated code.
+  **Avoid Reserved Names** For a list of reserved entity and field names, check
+  out our [reserved names
+  reference](https://github.com/amplication/amplication/blob/master/packages/amplication-server/src/core/entity/reservedNames.ts).
+  Using a reserved name can cause issues in the generated code.
 </Warning>
 
 ## Visualize Entities with ERD View
@@ -96,12 +105,13 @@ Use pinch-to-zoom or your trackpad's scroll to zoom in and out. You can also cli
 </Steps>
 
 <Frame caption="Amplication's ERD view helps you see and manage relationships across multiple entities.">
-    <img src="/images/day-one/amplication-erd-view.png" />
+  <img src="/images/day-one/amplication-erd-view.png" />
 </Frame>
 
 <Note>
-**Why It Matters:**  
-Seeing a visual layout of your entities helps you quickly identify potential gaps or inconsistencies. This high-level view also makes it easier to communicate changes across multiple teams.
+  **Why It Matters:** Seeing a visual layout of your entities helps you quickly
+  identify potential gaps or inconsistencies. This high-level view also makes it
+  easier to communicate changes across multiple teams.
 </Note>
 
 ## Next Steps
@@ -111,11 +121,17 @@ By automating repetitive tasks around entity creation and maintenance, Amplicati
 <CardGroup cols={2}>
 
 <Card title="Learn About Fields" icon="list-ul" href="/day-one/fields">
-Dive deeper into how to configure fields, set default values, and manage validations.
+  Dive deeper into how to configure fields, set default values, and manage
+  validations.
 </Card>
 
-<Card title="Upload Database Schema" icon="upload" href="/day-one/upload-schema">
-Learn how to quickly create entities by importing your existing database schema.
+<Card
+  title="Upload Database Schema"
+  icon="upload"
+  href="/day-one/upload-schema"
+>
+  Learn how to quickly create entities by importing your existing database
+  schema.
 </Card>
 
 </CardGroup>

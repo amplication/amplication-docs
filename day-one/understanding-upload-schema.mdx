@@ -5,11 +5,13 @@ sidebarTitle: "Understanding Schema Upload"
 ---
 
 <Frame>
-    <img src="/images/day-one/import-prisma-schema-log.png" />
+  <img src="/images/day-one/import-prisma-schema-log.png" />
 </Frame>
 
 <Note>
-This page explains the technical details of Prisma schema conversion within Amplication. For a practical guide on uploading your schema, see [How to Upload Schema](/day-one/upload-schema).
+  This page explains the technical details of Prisma schema conversion within
+  Amplication. For a practical guide on uploading your schema, see [How to
+  Upload Schema](/day-one/upload-schema).
 </Note>
 
 When you upload your DB Schema into Amplication, you are initiating a process that transforms your schema into Amplication's internal entity model. This page dives deep into how Amplication converts your Prisma database schema into Amplication's internal structure.
@@ -23,7 +25,8 @@ During the schema upload, you'll see logs detailing a three-phase conversion pro
 The first step validates the syntax and structure of your `schema.prisma` file against Prisma's conventions. This ensures your schema is well-formed and ready for conversion.  Crucially, it also checks for the presence of models – the building blocks of your services.  Without models, the conversion process cannot proceed, ensuring a valid starting point.
 
 <Tip>
-This validation step is your first line of defense against schema errors, preventing issues down the line and ensuring a smooth import process.
+  This validation step is your first line of defense against schema errors,
+  preventing issues down the line and ensuring a smooth import process.
 </Tip>
 
 </Step>
@@ -34,24 +37,25 @@ The preparation phase standardizes your schema, applying five key transformation
 These transformations include:
 
 - **Model Names:** Standardizing to PascalCase, singular, and no underscores.
-- **Field Names:**  Standardizing to camelCase and no underscores.
+- **Field Names:** Standardizing to camelCase and no underscores.
 - **Field Types:** Ensuring consistent type references between models.
-- **Model IDs:**  Simplifying primary key definitions for clarity and consistency.
-- **Model ID Field:**  Guaranteeing a standardized `id` field for each entity.
-</Step>
+- **Model IDs:** Simplifying primary key definitions for clarity and consistency.
+- **Model ID Field:** Guaranteeing a standardized `id` field for each entity.
+  </Step>
 
 <Step title="Convert: Optimizing Data Types for Amplication">
 In the final conversion step, Prisma's data types are mapped to Amplication's internal data types. This ensures optimal performance and functionality within Amplication's service generation framework. This mapping includes handling specific DateTime attributes for `CreatedAt` and `UpdatedAt` fields, and translating Prisma's type system to Amplication's more abstract types like `Lookup` for relations and `OptionSet` for Enums.
 
 This step ensures that your database schema is not just imported, but intelligently adapted to Amplication's architecture, maximizing efficiency and developer experience.
+
 </Step>
 </Steps>
 
-## Step 1: Validate -  First Pass Schema Check
+## Step 1: Validate - First Pass Schema Check
 
-This step acts as an initial quality gate, confirming that your `schema.prisma` is syntactically correct and contains the essential elements – models – necessary for Amplication to build upon.  This quick check prevents wasted time and ensures the conversion process begins with a valid schema.
+This step acts as an initial quality gate, confirming that your `schema.prisma` is syntactically correct and contains the essential elements – models – necessary for Amplication to build upon. This quick check prevents wasted time and ensures the conversion process begins with a valid schema.
 
-## Step 2: Prepare -  Standardizing for Consistency and Maintainability
+## Step 2: Prepare - Standardizing for Consistency and Maintainability
 
 This phase is where Amplication's conversion happens. By applying these five operations, Amplication ensures that all generated services adhere to consistent naming conventions and structural patterns.
 
@@ -64,7 +68,8 @@ To maintain database compatibility and prevent data loss, Amplication intelligen
 If your original model name deviates from Amplication's conventions, `@@map` is automatically added, preserving the original database table name while using the standardized name within Amplication.
 
 <Note>
-If you have already used `@@map` attributes in your schema, Amplication respects your existing mappings and does not overwrite them.
+  If you have already used `@@map` attributes in your schema, Amplication
+  respects your existing mappings and does not overwrite them.
 </Note>
 
 **Example:**
@@ -80,6 +85,7 @@ If you have already used `@@map` attributes in your schema, Amplication respects
 +@@map("course_rating")
 }
 ```
+
 This ensures that while your Amplication service code uses `CourseRating`, the underlying database table remains `course_rating`, preventing any disruption to existing data or systems.
 
 </Accordion>
@@ -88,10 +94,11 @@ This ensures that while your Amplication service code uses `CourseRating`, the u
 
 Similar to model names, field names are standardized to **camelCase** and must be **underscore-free**. This consistency improves code readability and reduces cognitive load for developers working across different services.
 
-Just like with model names, Amplication uses Prisma's `@map` attribute to preserve your original database column names when necessary.  This ensures seamless integration with existing databases and prevents unexpected data mapping issues.
+Just like with model names, Amplication uses Prisma's `@map` attribute to preserve your original database column names when necessary. This ensures seamless integration with existing databases and prevents unexpected data mapping issues.
 
 <Note>
-Existing `@map` attributes on fields are also respected and not overwritten during this process.
+  Existing `@map` attributes on fields are also respected and not overwritten
+  during this process.
 </Note>
 
 **Example:**
@@ -115,7 +122,7 @@ Here, `item_price` is converted to `itemPrice` in your Amplication service, whil
 
 <Accordion title="Field Types: Ensuring Model Relationships" icon="link">
 
-This operation focuses on ensuring that field types accurately reflect relationships between models.  When you import a schema, especially from an introspected database, Prisma might use generic model names in relation fields. Amplication refines these to use the standardized, PascalCase model names established in the previous step.
+This operation focuses on ensuring that field types accurately reflect relationships between models. When you import a schema, especially from an introspected database, Prisma might use generic model names in relation fields. Amplication refines these to use the standardized, PascalCase model names established in the previous step.
 
 **Example:**
 
@@ -153,16 +160,17 @@ Here, `products` and `orders` are corrected to `Product` and `Order` respectivel
 Amplication standardizes the way primary keys are defined in your schema. It simplifies the `@@id` attribute, which in Prisma can define composite IDs, to focus on single-field primary keys, which aligns with Amplication's entity structure.
 
 <Note>
-Composite IDs (`@@id([field1, field2])`) are currently not fully supported in Amplication.
+  Composite IDs (`@@id([field1, field2])`) are currently not fully supported in
+  Amplication.
 </Note>
 
 This operation performs several key transformations:
 
--   `@@id([field])` is converted to `@@unique([field])`. The original `@@id` is replaced with a `@@unique` constraint to maintain uniqueness in the database.
--   The field originally designated as the primary key via `@@id` now becomes the *actual* ID field within Amplication.  The `@id` attribute is added to this field.
--   If the field lacks a `@default()` attribute (like `cuid()` for String IDs or `autoincrement()` for Int IDs), Amplication adds one based on the field's type. This ensures every entity has a properly configured default ID generation strategy.
--   If the primary key field isn't named "id", it's renamed to "id", and a `@map` attribute is added to preserve the original field name in the database.
--   Finally, the `@@unique` attribute is updated to reference the new "id" field: `@@unique([originalFieldName])` becomes `@@unique([id])`.
+- `@@id([field])` is converted to `@@unique([field])`. The original `@@id` is replaced with a `@@unique` constraint to maintain uniqueness in the database.
+- The field originally designated as the primary key via `@@id` now becomes the _actual_ ID field within Amplication. The `@id` attribute is added to this field.
+- If the field lacks a `@default()` attribute (like `cuid()` for String IDs or `autoincrement()` for Int IDs), Amplication adds one based on the field's type. This ensures every entity has a properly configured default ID generation strategy.
+- If the primary key field isn't named "id", it's renamed to "id", and a `@map` attribute is added to preserve the original field name in the database.
+- Finally, the `@@unique` attribute is updated to reference the new "id" field: `@@unique([originalFieldName])` becomes `@@unique([id])`.
 
 **Example:**
 
@@ -183,12 +191,12 @@ This ensures a consistent and predictable ID structure across all entities in Am
 
 <Accordion title="Model ID Field: Ensuring a Standard 'id' Field" icon="fingerprint">
 
-The final preparation step guarantees that every model has a standardized `id` field.  This is a fundamental principle in Amplication, ensuring consistent entity identification across your services.
+The final preparation step guarantees that every model has a standardized `id` field. This is a fundamental principle in Amplication, ensuring consistent entity identification across your services.
 
 This operation handles two main scenarios:
 
--   **Non-ID fields named 'id':** If a field is named `id` but *isn't* an ID field (doesn't have the `@id` attribute), it's renamed to `${modelName}Id` to avoid naming conflicts with the actual ID field that Amplication will ensure exists.  A `@map` attribute is added to preserve the original name in the database.
--   **ID fields with different names:** If an ID field (with the `@id` attribute) has a name other than `id`, it's renamed to `id`. Again, a `@map` attribute is used to maintain the original field name in the database.
+- **Non-ID fields named 'id':** If a field is named `id` but _isn't_ an ID field (doesn't have the `@id` attribute), it's renamed to `${modelName}Id` to avoid naming conflicts with the actual ID field that Amplication will ensure exists. A `@map` attribute is added to preserve the original name in the database.
+- **ID fields with different names:** If an ID field (with the `@id` attribute) has a name other than `id`, it's renamed to `id`. Again, a `@map` attribute is used to maintain the original field name in the database.
 
 **Example:**
 
@@ -203,9 +211,9 @@ model RandomName {
 ```
 
 This operation ensures that every Amplication entity has a clearly defined and consistently named `id` field, simplifying data access and relationships within your services.
+
 </Accordion>
 </AccordionGroup>
-
 
 ## Step 3: Convert - Mapping Prisma Types to Amplication Data Types
 
@@ -214,21 +222,21 @@ This step ensures that your data is represented in a way that best leverages Amp
 
 Here's a table summarizing the Prisma to Amplication data type conversions:
 
-| Prisma                      | Amplication             | Description                                                                                                  |
-| :-------------------------- | :---------------------- | :----------------------------------------------------------------------------------------------------------- |
-| `String` (ID)               | `Id`                    | Converts ID fields with `String` type to Amplication `Id` type, defaulting to `cuid()` for ID generation.  |
-| `Int` (ID)                  | `Id (autoincrement)`    | Converts ID fields with `Int` type to Amplication `Id` type, using `autoincrement()` for ID generation.     |
-| `Boolean`                   | `Boolean`               | Direct mapping for Boolean types.                                                                              |
-| `DateTime` (`@default(now())`) | `CreatedAt`             | `DateTime` fields with `@default(now())` are converted to Amplication's specialized `CreatedAt` type.        |
-| `DateTime` (`@updatedAt`)   | `UpdatedAt`             | `DateTime` fields with `@updatedAt` are converted to Amplication's specialized `UpdatedAt` type.            |
-| `DateTime`                  | `DateTime`              | Plain `DateTime` fields remain as `DateTime` in Amplication.                                                   |
-| `Float`, `Decimal`          | `Decimal Number`        | Prisma's `Float` and `Decimal` types are converted to Amplication's `Decimal Number` type.                    |
-| `Int`, `BigInt`             | `WholeNumber`           | Prisma's `Int` and `BigInt` types are converted to Amplication's `WholeNumber` type.                          |
-| `String`                    | `SingleLineText`        | Standard `String` fields are converted to Amplication's `SingleLineText` type, suitable for short text inputs. |
-| `Json`                      | `Json`                  | `Json` types are directly equivalent.                                                                        |
-| `Enum`                      | `OptionSet`             | Prisma `Enum` types are converted to Amplication's `OptionSet`, providing structured choice options.         |
-| `Enum[]`                    | `MultiSelectOptionSet`  | Prisma `Enum[]` arrays are converted to `MultiSelectOptionSet`, allowing multiple selections from options.   |
-| Model relation              | `Lookup`                | Relations to other models are converted to Amplication's `Lookup` type, establishing entity relationships.    |
+| Prisma                         | Amplication            | Description                                                                                                    |
+| :----------------------------- | :--------------------- | :------------------------------------------------------------------------------------------------------------- |
+| `String` (ID)                  | `Id`                   | Converts ID fields with `String` type to Amplication `Id` type, defaulting to `cuid()` for ID generation.      |
+| `Int` (ID)                     | `Id (autoincrement)`   | Converts ID fields with `Int` type to Amplication `Id` type, using `autoincrement()` for ID generation.        |
+| `Boolean`                      | `Boolean`              | Direct mapping for Boolean types.                                                                              |
+| `DateTime` (`@default(now())`) | `CreatedAt`            | `DateTime` fields with `@default(now())` are converted to Amplication's specialized `CreatedAt` type.          |
+| `DateTime` (`@updatedAt`)      | `UpdatedAt`            | `DateTime` fields with `@updatedAt` are converted to Amplication's specialized `UpdatedAt` type.               |
+| `DateTime`                     | `DateTime`             | Plain `DateTime` fields remain as `DateTime` in Amplication.                                                   |
+| `Float`, `Decimal`             | `Decimal Number`       | Prisma's `Float` and `Decimal` types are converted to Amplication's `Decimal Number` type.                     |
+| `Int`, `BigInt`                | `WholeNumber`          | Prisma's `Int` and `BigInt` types are converted to Amplication's `WholeNumber` type.                           |
+| `String`                       | `SingleLineText`       | Standard `String` fields are converted to Amplication's `SingleLineText` type, suitable for short text inputs. |
+| `Json`                         | `Json`                 | `Json` types are directly equivalent.                                                                          |
+| `Enum`                         | `OptionSet`            | Prisma `Enum` types are converted to Amplication's `OptionSet`, providing structured choice options.           |
+| `Enum[]`                       | `MultiSelectOptionSet` | Prisma `Enum[]` arrays are converted to `MultiSelectOptionSet`, allowing multiple selections from options.     |
+| Model relation                 | `Lookup`               | Relations to other models are converted to Amplication's `Lookup` type, establishing entity relationships.     |
 
 ## Common `Id` Field Conversion Scenarios
 
@@ -254,6 +262,7 @@ model User {
   name String
 }
 ```
+
 </Accordion>
 
 <Accordion title="Scenario 2: Model Without a Suitable 'id' Field" icon="circle-plus">
@@ -275,6 +284,7 @@ model Product {
   name String
 }
 ```
+
 </Accordion>
 
 <Accordion title="Scenario 3: Multiple Unique Fields, One Named 'id'" icon="list-ol">
@@ -297,6 +307,7 @@ model User {
   id Int @unique @id @default(autoincrement())
 }
 ```
+
 </Accordion>
 
 <Accordion title="Scenario 4: No Unique Field Named 'id'" icon="i-cursor">
@@ -319,6 +330,7 @@ model User {
   username Int @unique
 }
 ```
+
 </Accordion>
 </AccordionGroup>
 
@@ -327,29 +339,31 @@ model User {
 During schema processing, Amplication provides logs, including `(Info)` and `(Warning)` messages. While the schema will still process with warnings, it's crucial to review them. Warnings indicate potential discrepancies or areas where the conversion might not perfectly align with your original schema's intent. Addressing warnings proactively can prevent unexpected behavior in your generated services.
 
 <Frame>
-    <img src="/images/day-one/import-prisma-schema-log.png" />
+  <img src="/images/day-one/import-prisma-schema-log.png" />
 </Frame>
 
 Here are the most common warning scenarios you might encounter and how to address them:
 
 <AccordionGroup>
 <Accordion title="Custom Attributes on Enum Keys" icon="list">
-Amplication's `OptionSet` and `MultiSelectOptionSet` types handle enums effectively. However, Amplication currently does not fully support custom attributes like `@map` or `@@map` directly on enum keys or enums themselves.
+Amplication's `OptionSet` and `MultiSelectOptionSet` types handle Enums effectively. However, Amplication currently does not fully support custom attributes like `@map` or `@@map` directly on Enum keys or Enums themselves.
 
-If your Prisma schema uses these attributes on enums, they will **not** be preserved in the converted schema.
+If your Prisma schema uses these attributes on Enums, they will **not** be preserved in the converted schema.
 
-**Impact:** If your application logic relies heavily on these custom mapping attributes for enums, you'll need to manually adjust the generated `schema.prisma` or your application code to ensure correct behavior after importing into Amplication.
+**Impact:** If your application logic relies heavily on these custom mapping attributes for Enums, you'll need to manually adjust the generated `schema.prisma` or your application code to ensure correct behavior after importing into Amplication.
+
 </Accordion>
 
 <Accordion title="Composite IDs on Models" icon="key">
 As mentioned earlier, Amplication's entity model primarily works with single-field IDs. If your Prisma schema uses composite IDs defined with `@@id([field1, field2, ...])`, Amplication adapts this by:
 
--   Converting `@@id` to `@@unique` to maintain database-level uniqueness constraints.
--   Adding a new, singular `id` field (String type, `cuid()` default) to the model to serve as Amplication's primary identifier.
+- Converting `@@id` to `@@unique` to maintain database-level uniqueness constraints.
+- Adding a new, singular `id` field (String type, `cuid()` default) to the model to serve as Amplication's primary identifier.
 
 **Impact:** While data integrity is maintained through the `@@unique` constraint, the shift from a composite ID to a singular `id` might require adjustments in how you design relationships and queries within Amplication. Be mindful of this change when working with entities that originally used composite IDs.
 
 Amplication logs warnings when it encounters models with `@@id` attributes and no existing `id` field, alerting you to this conversion.
+
 </Accordion>
 </AccordionGroup>
 
@@ -359,18 +373,12 @@ By understanding how Amplication converts your Prisma schema, you gain valuable 
 Review the conversion logs after uploading your schema and explore your newly created entities in Amplication's ERD view.
 
 <CardGroup cols={2}>
-  <Card
-    title="Upload Your Schema"
-    icon="upload"
-    href="/day-one/upload-schema"
-  >
-    Learn how to upload your Prisma schema to Amplication and jumpstart your service development.
+  <Card title="Upload Your Schema" icon="upload" href="/day-one/upload-schema">
+    Learn how to upload your Prisma schema to Amplication and jumpstart your
+    service development.
   </Card>
-  <Card
-    title="Customize Your Entities"
-    icon="sliders"
-    href="/day-one/entities"
-  >
-    Discover how to further customize your entities and fields within Amplication after schema import.
+  <Card title="Customize Your Entities" icon="sliders" href="/day-one/entities">
+    Discover how to further customize your entities and fields within
+    Amplication after schema import.
   </Card>
 </CardGroup>

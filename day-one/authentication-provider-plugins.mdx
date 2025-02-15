@@ -2,17 +2,19 @@
 title: Authentication Provider Plugins
 sidebarTitle: Authentication Providers
 description: Learn how to secure your Amplication resources with authentication plugins. Supports JWT, Basic Auth, Auth0, Supertokens, SAML, Keycloak for Node.js and ASP.NET Core Identity for .NET applications.
-icon: 'plug-circle-check'
+icon: "plug-circle-check"
 ---
 
 <Frame>
-    <img src="/images/day-one/authentication-plugins.png" />
+  <img src="/images/day-one/authentication-plugins.png" />
 </Frame>
 
 Amplication offers a variety of authentication provider plugins to secure your services and authenticate users. This guide helps you understand the available options and how to configure them.
 
 <Note>
-Authentication plugins are available for **Node.js** and **.NET** blueprint options. If you're using a custom blueprint, you can implement your own authentication solution using our custom plugins.
+  Authentication plugins are available for **Node.js** and **.NET** blueprint
+  options. If you're using a custom blueprint, you can implement your own
+  authentication solution using our custom plugins.
 </Note>
 
 ## Add Authentication
@@ -56,7 +58,7 @@ Each authentication provider has specific configuration options and requirements
     </Note>
     Adds JSON Web Token (JWT) based authentication and authorization. Ideal for stateless APIs and applications.
 
-    **Platform:** Node.js  
+    **Platform:** Node.js
     **Requires:** NestJS Auth Module
 
     **Settings:**
@@ -75,8 +77,9 @@ Each authentication provider has specific configuration options and requirements
     </CodeGroup>
 
     <Warning>
-    **Security Alert:** Always replace the default `jwtSecretKey` with a strong, randomly generated secret key. This key is crucial for the security of your JWTs.
+    **Security Alert:** Always replace the default `jwtSecretKey` with a strong, randomly generated secret key. This key is crucial for the security of your tokens.
     </Warning>
+
   </Accordion>
 
   <Accordion
@@ -105,6 +108,7 @@ Each authentication provider has specific configuration options and requirements
     <Note>
     By default, Basic Auth Provider comes with `username: admin` and `password: admin`. **Change these default credentials immediately** in a production environment.
     </Note>
+
   </Accordion>
 
   <Accordion
@@ -118,8 +122,9 @@ Each authentication provider has specific configuration options and requirements
 
     Integrates with Auth0, a leading Identity-as-a-Service (IDaaS) platform, offering advanced authentication and authorization features.
 
-    **Platform:** Node.js  
+    **Platform:** Node.js
     **Requires:** NestJS Auth Module, Auth0 Account
+
   </Accordion>
 
   <Accordion
@@ -133,8 +138,9 @@ Each authentication provider has specific configuration options and requirements
 
     Adds Supertokens authentication, providing a flexible and customizable authentication solution with various "recipes" (email/password, social login, etc.).
 
-    **Platform:** Node.js  
+    **Platform:** Node.js
     **Requires:** NestJS Auth Module, Supertokens Core setup
+
   </Accordion>
 
   <Accordion
@@ -148,8 +154,9 @@ Each authentication provider has specific configuration options and requirements
 
     Enables Security Assertion Markup Language (SAML) based Single Sign-On (SSO). Ideal for enterprise environments using SAML for identity federation.
 
-    **Platform:** Node.js  
+    **Platform:** Node.js
     **Requires:** NestJS Auth Module, SAML Identity Provider
+
   </Accordion>
 
   <Accordion
@@ -163,8 +170,9 @@ Each authentication provider has specific configuration options and requirements
 
     Integrates with Keycloak, an open-source Identity and Access Management solution, offering advanced features and protocols.
 
-    **Platform:** Node.js  
+    **Platform:** Node.js
     **Requires:** NestJS Auth Module, Keycloak Server setup
+
   </Accordion>
 
   <Accordion
@@ -190,24 +198,27 @@ Each authentication provider has specific configuration options and requirements
     }
     ```
     </CodeGroup>
+
   </Accordion>
 </AccordionGroup>
 
 ## Additional Resources
 
 <CardGroup cols={2}>
-<Card 
-  title="Plugin Repos" 
-  icon="github"
-  href="https://github.com/amplication/plugins/tree/master/plugins"
->
-  Explore detailed documentation for each authentication provider plugin in our GitHub.
-</Card>
-<Card
-  title="Community Support"
-  icon="discord"
-  href="https://discord.gg/amplication"
->
-  Join our Discord community to get help and connect with other Amplication developers.
-</Card>
+  <Card
+    title="Plugin Repo"
+    icon="github"
+    href="https://github.com/amplication/plugins/tree/master/plugins"
+  >
+    Explore detailed documentation for each authentication provider plugin in
+    our GitHub.
+  </Card>
+  <Card
+    title="Community Support"
+    icon="discord"
+    href="https://discord.gg/amplication"
+  >
+    Join our Discord community to get help and connect with other Amplication
+    developers.
+  </Card>
 </CardGroup>

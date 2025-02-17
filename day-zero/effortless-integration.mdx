@@ -1,0 +1,54 @@
+---
+title: 'Effortless Integration'
+description: 'Discover how you could see your Amplication templates and resources in your favorite Internal Developer Portals (IDP)'
+icon: 'sitemap'
+---
+
+<Frame>
+    <img src="/images/day-zero/idp-integration-tokens-screen.png" />
+</Frame>
+
+Amplication’s integrations allow you to view your templates, resources and in some cases even your [Outdated Version Alerts](/day-one/create-resource-from-template#tech-debt) in an IDP which you already use, where you can link between Amplication’s resources to your various servers or environments.
+
+## Token
+
+In order for you to use an integration, you need to obtain your Amplication token. The token can easily be generated in your workspace’s settings page.
+
+<Steps>
+  <Step title="Access User Management">
+    Navigate to the "Settings" section in your workspace and select "API Tokens" in the lower part of the right sidebar.
+  </Step>
+  <Step title="Create a Token">
+	  Click on the "Create API Token" button in the top right part of the page. Give your token a discriptive name and click the "Create Token" button.
+  </Step>
+  <Step title="Copy the Token">
+	  Copy the generated token either by selecting it clicking `Ctrl/Cmd+C` or right-click and "Copy" or by clicking the "Copy Token" button. Paste the code before leaving the page since the code **won't be visible again**.
+  </Step>
+</Steps>
+
+<Note>
+  Tokens are valid for 30 days following creation or last use. The 30 day expiration period automatically refreshes with each API.
+</Note>
+
+<Info>
+  Tokens are created with the permissions of the user who creates them, and each user can only see their own tokens.
+</Info>
+
+## IDP Integrations
+
+<CardGroup cols={2}>
+  <Card
+    title="Port"
+    icon="sitemap"
+    href="/day-zero/integrate-with-port"
+  >
+    Read more about how to integrate Amplication within Port
+  </Card>
+  <Card
+    title="Backstage"
+    icon="sitemap"
+    href="/day-zero/integrate-with-backstage"
+  >
+    Read more about how to integrate Amplication within Backstage
+  </Card>
+</CardGroup>

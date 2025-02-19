@@ -1,0 +1,79 @@
+---
+title: "Integrate with Backstage"
+description: "Backstage is an open platform for building developer portals. Here's how to integrate Amplication with Backstage."
+icon: "sitemap"
+---
+
+Amplication provides an easy integration option with **Backstage**. With this integration, you can use Backstage’s catalog alongside with Amplication ability to scaffold a resource with a few clicks. Amplication currently has two Backstage plugins, with one relying on the other:
+
+<AccordionGroup>
+    <Accordion title="Catalog Backend Module Plugin">
+        This plugin fetchs templates data from your Amplication account into your Backstage Catalog, and emits them as Backstage components with spec type **ServiceTemplate**. It uses a [custom processor](https://backstage.io/docs/features/software-catalog/external-integrations/#custom-processors) to do so, running in fixed intervals.
+    </Accordion>
+    <Accordion title="Scaffoledr Backend Module Plugin">
+        This plugin provides Backstage template [action](https://backstage.io/docs/features/software-templates/builtin-actions) for Amplication. The action is called `amplication:scaffold-service` and it enables you to call Amplication's API in order to scaffold a service with the givven name, description (optional) and template.
+        This plugin comes with an example template, which we reccomend to register within Backstage, outlining the process easily.
+        
+      <Info>
+				The plugin relies on a list of templated (i.e. components with a spec type **ServiceTemplate**) so you will want to install both plugins.
+			</Info>
+    </Accordion>
+</AccordionGroup>
+
+## Installation
+
+In order for you to install these plugins, you first need an API token from Amplication app. Instructions can be found [here](/day-zero/effortless-integration).
+
+<Steps>
+<Step title="Update app-config.yaml">
+Add the following to your app-config file:
+```yaml title="app-config.yaml"
+catalog:
+  locations:
+    - type: amplication
+      target: https://server.amplication.com/graphql
+
+amplication:
+  appUrl: https://app.amplication.com
+  apiUrl: https://server.amplication.com/graphql
+  token: ${AMPLICATION_TOKEN}
+```
+</Step>
+<Step title="Add plugins">
+Run the following commands in your Backstage project:
+```bash
+yarn workspace backend add @backstage-community/plugin-catalog-backend-module-amplication
+yarn workspace backend add @backstage-community/plugin-scaffolder-backend-module-amplication
+```
+</Step>
+<Step title="Install the plugins">
+Add the following to your `packages/backend/src/index.ts` file:
+
+```ts title="packages/backend/src/index.ts"
+const backend = createBackend();
+
+// Add the following line
+backend.add(
+  import('@backstage-community/plugin-scaffolder-backend-module-amplication'),
+);
+backend.add(
+  import('@backstage-community/plugin-catalog-backend-module-amplication'),
+);
+
+backend.start();
+```
+</Step>
+<Step title="Add the action template file">
+Add the provided template in the `/src/templates` folder of the scaffolder plugin to your Backstage catalog.
+</Step>
+</Steps>
+
+<Tip>
+For detailed installation information, see plugin page (link TBD).
+</Tip>
+
+## Usage
+
+You can see your templates when browsing to to your Home tab, and searching for components. You can narrow the search using `Type=ServiceTemplate` or `Tags=amplication` or `Tags=servicetemplate` .
+
+When browsing to **Create…**, you can see the **Scaffold a New Service** service, and it will allow you to scaffold an Amplication service using your templates.

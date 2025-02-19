@@ -4,29 +4,28 @@ description: "Backstage is an open platform for building developer portals. Here
 icon: "sitemap"
 ---
 
-Amplication provides an easy integration option with **Backstage**. With this integration, you can use Backstage’s catalog alongside with Amplication ability to scaffold a resource with a few clicks. Amplication currently has two Backstage plugins, with one relying on the other:
+Amplication offers seamless integration with **Backstage**, an open platform for building developer portals. This integration allows you to combine Backstage's catalog capabilities with Amplication's resource scaffolding features.
+
+## Available Plugins
+
+Amplication provides two complementary Backstage plugins:
 
 <AccordionGroup>
     <Accordion title="Catalog Backend Module Plugin">
-        This plugin fetchs templates data from your Amplication account into your Backstage Catalog, and emits them as Backstage components with spec type **ServiceTemplate**. It uses a [custom processor](https://backstage.io/docs/features/software-catalog/external-integrations/#custom-processors) to do so, running in fixed intervals.
+		    Catalog Backend Module Plugin: Fetches template data from your Amplication account into your Backstage Catalog, presenting them as **ServiceTemplate** components.
     </Accordion>
     <Accordion title="Scaffoledr Backend Module Plugin">
-        This plugin provides Backstage template [action](https://backstage.io/docs/features/software-templates/builtin-actions) for Amplication. The action is called `amplication:scaffold-service` and it enables you to call Amplication's API in order to scaffold a service with the givven name, description (optional) and template.
-        This plugin comes with an example template, which we reccomend to register within Backstage, outlining the process easily.
-        
-      <Info>
-				The plugin relies on a list of templated (i.e. components with a spec type **ServiceTemplate**) so you will want to install both plugins.
-			</Info>
+        Scaffolder Backend Module Plugin: Provides the `amplication:scaffold-service` action for creating new services through Amplication's API        
     </Accordion>
 </AccordionGroup>
 
-## Installation
+## Installation Process
 
-In order for you to install these plugins, you first need an API token from Amplication app. Instructions can be found [here](/day-zero/effortless-integration).
+Before starting, you'll need an Amplication (API token)(/day-zero/effortless-integration). Here's how to set up the integration:
 
 <Steps>
 <Step title="Update app-config.yaml">
-Add the following to your app-config file:
+Configure your app-config.yaml with Amplication settings:
 ```yaml app-config.yaml
 catalog:
   locations:
@@ -40,14 +39,14 @@ amplication:
 ```
 </Step>
 <Step title="Add plugins">
-Run the following commands in your Backstage project:
+Install the required plugins using yarn:
 ```bash
 yarn workspace backend add @backstage-community/plugin-catalog-backend-module-amplication
 yarn workspace backend add @backstage-community/plugin-scaffolder-backend-module-amplication
 ```
 </Step>
 <Step title="Install the plugins">
-Add the following to your `packages/backend/src/index.ts` file:
+Update your backend configuration file, `packages/backend/src/index.ts`:
 
 ```ts packages/backend/src/index.ts
 const backend = createBackend();
@@ -64,7 +63,7 @@ backend.start();
 ```
 </Step>
 <Step title="Add the action template file">
-Add the provided template in the `/src/templates` folder of the scaffolder plugin to your Backstage catalog.
+Add the template file to your Backstage catalog
 </Step>
 </Steps>
 
@@ -72,8 +71,9 @@ Add the provided template in the `/src/templates` folder of the scaffolder plugi
 For detailed installation information, see plugin page (link TBD).
 </Tip>
 
-## Usage
+## Using the Integration
 
-You can see your templates when browsing to to your Home tab, and searching for components. You can narrow the search using `Type=ServiceTemplate` or `Tags=amplication` or `Tags=servicetemplate` .
+Once installed, you can:
 
-When browsing to **Create…**, you can see the **Scaffold a New Service** service, and it will allow you to scaffold an Amplication service using your templates.
+- Find templates in the Home tab by filtering for `Type=ServiceTemplate` or using `Tags=amplication` / `Tags=servicetemplate`
+- Access the "Scaffold a New Service" option in the Create page to build new services using your templates

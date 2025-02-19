@@ -51,6 +51,16 @@ Replace `your-plugin-id` with your chosen plugin identifier (e.g., `company-auth
 This command clones our [official Node.js plugin template](https://github.com/amplication/plugin-template), which is the recommended starting point for creating Node.js plugins.
 </Note>
 
+Before commiting & pushing your new plugin to git, you need to build the plugin's assets:
+
+```bash
+cd `your-plugin-id`
+npm install & npm run build
+git add .
+git commit -m "Here we go! 🚀"
+git push
+```
+
 </Tab>
 
 <Tab title=".NET Plugin">

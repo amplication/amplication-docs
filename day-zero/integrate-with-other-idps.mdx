@@ -34,59 +34,61 @@ Since we're working with GraphQL, we'll need to make requests to the GraphQL end
 The following request will return all the templates available in the Amplication server:
 
 <RequestExample>
-```ts Example
-  //Read all the content of 'static' folder, replace placeholders, and add the files to the context
-  async beforeCreateBlueprint(
-    context: blueprintTypes.DsgContext,
-    eventParams: blueprint.CreateBlueprintParams,
-  ): Promise<blueprint.CreateBlueprintParams> {
-    context.logger.info("Generating Files from core plugin...");
-
-    const params = {} as Record<string, string>;
-
-    params.SERVICE_DISPLAY_NAME = context.resourceInfo?.name || "Service Name";
-    params.SERVICE_NAME = pascalCase(params.SERVICE_DISPLAY_NAME);
-
-    //resource catalog properties
-    const resourceCatalogProperties = (context.resourceInfo?.properties ||
-      {}) as Record<string, string>;
-    const resourceSetting = (context.resourceSettings?.properties ||
-      ({} as Record<string, string>)) as Record<string, string>;
-
-    //all catalog and resource settings are available for use in the template
-    const placeholders = {
-      ...params,
-      ...resourceCatalogProperties,
-      ...resourceSetting,
-    };
-
-    const stringReplacements = {
-      OrdersMicroservice: params.SERVICE_NAME,
-    };
-
-    // set the path to the static files and fetch them for manipulation
-    const staticPath = resolve(__dirname, "./static");
-    const files = await context.utils.importStaticFilesWithReplacements(
-      staticPath,
-      ".",
-      placeholders,
-      stringReplacements,
-    );
-
-    for (const file of files.getAll()) {
-      const codeBlock: IFile<CodeBlock> = {
-        path: file.path,
-        code: new CodeBlock({
-          code: file.code,
-        }),
-      };
-      context.files.set(codeBlock);
+```json Request
+query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, $skip: Int) {
+    catalog(where: $where, take: $take, skip: $skip) {
+        totalCount
+        data {
+            id
+            name
+            description
+            resourceType
+            project {
+                id
+                name
+            }
+            blueprint {
+                id
+                name
+            }
+        }
+        __typename
     }
-
-    return eventParams;
-
 }
+```
+```json Variables
+{
+  "take": 100,
+  "skip": 0,
+  "where": { "resourceType": { "in": ["ServiceTemplate"] } }
+}
+```
 
+```json Response
+{
+  "data": {
+    "catalog": {
+      "totalCount": 1,
+      "data": [
+        {
+          "id": "1",
+          "name": "Service Template 1",
+          "description": "Service Template 1 Description",
+          "resourceType": "ServiceTemplate",
+          "project": {
+            "id": "1",
+            "name": "Project 1"
+          },
+          "blueprint": {
+            "id": "1",
+            "name": "Blueprint 1"
+          }
+        }
+      ],
+      "__typename": "ResourceConnection"
+    }
+  }
+}
 ```
 </RequestExample>
 
@@ -105,9 +107,62 @@ query GetTemplates {
 
 <AccordionGroup>
   <Accordion title="Templates">
-    ```http
-    POST https://server.amplication.com/graphql
-    ```
+    ```json Request
+query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, $skip: Int) {
+    catalog(where: $where, take: $take, skip: $skip) {
+        totalCount
+        data {
+            id
+            name
+            description
+            resourceType
+            project {
+                id
+                name
+            }
+            blueprint {
+                id
+                name
+            }
+        }
+        __typename
+    }
+}
+```
+```json Variables
+{
+  "take": 100,
+  "skip": 0,
+  "where": { "resourceType": { "in": ["ServiceTemplate"] } }
+}
+```
+
+```json Response
+{
+  "data": {
+    "catalog": {
+      "totalCount": 1,
+      "data": [
+        {
+          "id": "1",
+          "name": "Service Template 1",
+          "description": "Service Template 1 Description",
+          "resourceType": "ServiceTemplate",
+          "project": {
+            "id": "1",
+            "name": "Project 1"
+          },
+          "blueprint": {
+            "id": "1",
+            "name": "Blueprint 1"
+          }
+        }
+      ],
+      "__typename": "ResourceConnection"
+    }
+  }
+}
+```
   </Accordion>
   <Accordion title="Resources">
     ```http

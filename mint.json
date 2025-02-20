@@ -81,7 +81,7 @@
     {
       "group": "Integrate with IDPs",
       "pages": [
-        "day-zero/effortless-integration",
+        "day-zero/integrate-with-idp",
         "day-zero/integrate-with-port",
         "day-zero/integrate-with-backstage",
         "day-zero/api-token-generation"

@@ -1,5 +1,6 @@
 ---
 title: "Generating API Tokens for Amplication Integrations"
+sidebarTitle: "API Token Generation"
 description: "Learn how to generate an API token to use with Amplication integrations"
 icon: "key"
 ---
@@ -10,30 +11,36 @@ icon: "key"
 
 Amplication's integrations enable you to access your templates, resources, and [version alerts](https://www.notion.so/day-one/create-resource-from-template#tech-debt) through your existing Internal Developer Platform (IDP). These integrations can help you link Amplication resources to your various environments and servers.
 
-## ## **Token Generation Process**
+## **Token Generation Process**
 
 You can easily generate an API token through your workspace settings. Here's how:
 
 <Steps>
   <Step title="Got to Settings">
-    Go to "Settings" in your workspace and find "API Tokens" in the right sidebar.
+    Go to **Settings** in your workspace and find **API Tokens** in the right sidebar.
   </Step>
   <Step title="Create API Token">
-    Click "Create API Token" and provide a descriptive name.
+    Click **Create API Token** and provide a descriptive name.
+    <Frame>
+      <img src="/images/day-zero/idp-integration-new-token.png" alt="Create API Token" />
+    </Frame>
   </Step>
   <Step title="Copy the Token">
     Copy your token immediately - it won't be shown again after leaving the page.
+    <Frame>
+      <img src="/images/day-zero/idp-integration-generated-token.png" alt="Copy your token immediately" />
+    </Frame>
   </Step>
 </Steps>
 
-<Info>
+<Warning>
 **Important Token Information:**
 - Tokens automatically refresh their 30-day expiration period with each API use
 - Each token inherits the permissions of the creating user
 - Users can only view their own tokens
-</Info>
+</Warning>
 
-## ## **Available IDP Integrations**
+## **Available IDP Integrations**
 
 You can use your API token with the following platforms:
 

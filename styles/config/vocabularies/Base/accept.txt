@@ -12,6 +12,7 @@ ESLint
 (?i)url
 sidebarTitle
 (?i)postgresql
+[pP]ostgres
 jumpstart
 init_after_introspection
 [rR]epo
@@ -40,3 +41,4 @@ Onboarding
 trackpad's
 _before_
 middleware
+mv

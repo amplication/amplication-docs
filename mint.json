@@ -84,6 +84,7 @@
         "day-zero/integrate-with-idp",
         "day-zero/integrate-with-port",
         "day-zero/integrate-with-backstage",
+        "day-zero/integrate-with-other-idps",
         "day-zero/api-token-generation"
       ]
     },

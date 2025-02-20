@@ -1,0 +1,122 @@
+---
+title: "Integrating Amplication with Other IDPs"
+sidebarTitle: "Integrate with Other IDPs"
+description: "Learn how to integrate Amplication with other Internal Developer Platforms (IDPs)"
+icon: "key"
+---
+
+Amplication can be integrated with any [Internal Developer Platform (IDP)](/day-zero/integrate-with-idp).
+
+## Prerequisites
+
+- A workspace in Amplication
+- An API token for the workspace
+
+## Amplication + GraphQL
+
+Amplication is built with GraphQL in mind. This means that you can easily integrate Amplication with any IDP using by calling the GraphQL API.
+
+## Authentication
+
+Your calls to the Amplication GraphQL API will need to be authenticated. You should use the [API token](/day-zero/api-token-generation) to authenticate your calls. This is done by sending the token in the `Authorization` header of your request:
+
+```http
+Authorization: "Bearer <token>"
+Content-Type: "application/json"
+```
+
+## Requests
+
+Since we're working with GraphQL, we'll need to make requests to the GraphQL endpoint. The endpoint is `https://server.amplication.com/graphql` and it will accept POST requests for queries and mutations:
+
+### Templates
+
+The following request will return all the templates available in the Amplication server:
+
+<RequestExample>
+```ts Example
+  //Read all the content of 'static' folder, replace placeholders, and add the files to the context
+  async beforeCreateBlueprint(
+    context: blueprintTypes.DsgContext,
+    eventParams: blueprint.CreateBlueprintParams,
+  ): Promise<blueprint.CreateBlueprintParams> {
+    context.logger.info("Generating Files from core plugin...");
+
+    const params = {} as Record<string, string>;
+
+    params.SERVICE_DISPLAY_NAME = context.resourceInfo?.name || "Service Name";
+    params.SERVICE_NAME = pascalCase(params.SERVICE_DISPLAY_NAME);
+
+    //resource catalog properties
+    const resourceCatalogProperties = (context.resourceInfo?.properties ||
+      {}) as Record<string, string>;
+    const resourceSetting = (context.resourceSettings?.properties ||
+      ({} as Record<string, string>)) as Record<string, string>;
+
+    //all catalog and resource settings are available for use in the template
+    const placeholders = {
+      ...params,
+      ...resourceCatalogProperties,
+      ...resourceSetting,
+    };
+
+    const stringReplacements = {
+      OrdersMicroservice: params.SERVICE_NAME,
+    };
+
+    // set the path to the static files and fetch them for manipulation
+    const staticPath = resolve(__dirname, "./static");
+    const files = await context.utils.importStaticFilesWithReplacements(
+      staticPath,
+      ".",
+      placeholders,
+      stringReplacements,
+    );
+
+    for (const file of files.getAll()) {
+      const codeBlock: IFile<CodeBlock> = {
+        path: file.path,
+        code: new CodeBlock({
+          code: file.code,
+        }),
+      };
+      context.files.set(codeBlock);
+    }
+
+    return eventParams;
+
+}
+
+```
+</RequestExample>
+
+### Let's see
+
+```graphql
+query GetTemplates {
+  templates {
+    id
+    name
+  }
+}
+```
+
+### Let's see 2
+
+<AccordionGroup>
+  <Accordion title="Templates">
+    ```http
+    POST https://server.amplication.com/graphql
+    ```
+  </Accordion>
+  <Accordion title="Resources">
+    ```http
+    POST https://server.amplication.com/graphql
+    ```
+  </Accordion>
+  <Accordion title="Alerts">
+    ```http
+    POST https://server.amplication.com/graphql
+    ```
+  </Accordion>
+</AccordionGroup>

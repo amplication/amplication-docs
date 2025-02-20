@@ -1,0 +1,177 @@
+---
+title: "Integrating Amplication with Other IDPs"
+sidebarTitle: "Integrate with Other IDPs"
+description: "Learn how to integrate Amplication with other Internal Developer Platforms (IDPs)"
+icon: "key"
+---
+
+Amplication can be integrated with any [Internal Developer Platform (IDP)](/day-zero/integrate-with-idp).
+
+## Prerequisites
+
+- A workspace in Amplication
+- An API token for the workspace
+
+## Amplication + GraphQL
+
+Amplication is built with GraphQL in mind. This means that you can easily integrate Amplication with any IDP using by calling the GraphQL API.
+
+## Authentication
+
+Your calls to the Amplication GraphQL API will need to be authenticated. You should use the [API token](/day-zero/api-token-generation) to authenticate your calls. This is done by sending the token in the `Authorization` header of your request:
+
+```http
+Authorization: "Bearer <token>"
+Content-Type: "application/json"
+```
+
+## Requests
+
+Since we're working with GraphQL, we'll need to make requests to the GraphQL endpoint. The endpoint is `https://server.amplication.com/graphql` and it will accept POST requests for queries and mutations:
+
+### Templates
+
+The following request will return all the templates available in the Amplication server:
+
+<RequestExample>
+```json Request
+query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, $skip: Int) {
+    catalog(where: $where, take: $take, skip: $skip) {
+        totalCount
+        data {
+            id
+            name
+            description
+            resourceType
+            project {
+                id
+                name
+            }
+            blueprint {
+                id
+                name
+            }
+        }
+        __typename
+    }
+}
+```
+```json Variables
+{
+  "take": 100,
+  "skip": 0,
+  "where": { "resourceType": { "in": ["ServiceTemplate"] } }
+}
+```
+
+```json Response
+{
+  "data": {
+    "catalog": {
+      "totalCount": 1,
+      "data": [
+        {
+          "id": "1",
+          "name": "Service Template 1",
+          "description": "Service Template 1 Description",
+          "resourceType": "ServiceTemplate",
+          "project": {
+            "id": "1",
+            "name": "Project 1"
+          },
+          "blueprint": {
+            "id": "1",
+            "name": "Blueprint 1"
+          }
+        }
+      ],
+      "__typename": "ResourceConnection"
+    }
+  }
+}
+```
+</RequestExample>
+
+### Let's see
+
+```graphql
+query GetTemplates {
+  templates {
+    id
+    name
+  }
+}
+```
+
+### Let's see 2
+
+<AccordionGroup>
+  <Accordion title="Templates">
+    ```json Request
+query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, $skip: Int) {
+    catalog(where: $where, take: $take, skip: $skip) {
+        totalCount
+        data {
+            id
+            name
+            description
+            resourceType
+            project {
+                id
+                name
+            }
+            blueprint {
+                id
+                name
+            }
+        }
+        __typename
+    }
+}
+```
+```json Variables
+{
+  "take": 100,
+  "skip": 0,
+  "where": { "resourceType": { "in": ["ServiceTemplate"] } }
+}
+```
+
+```json Response
+{
+  "data": {
+    "catalog": {
+      "totalCount": 1,
+      "data": [
+        {
+          "id": "1",
+          "name": "Service Template 1",
+          "description": "Service Template 1 Description",
+          "resourceType": "ServiceTemplate",
+          "project": {
+            "id": "1",
+            "name": "Project 1"
+          },
+          "blueprint": {
+            "id": "1",
+            "name": "Blueprint 1"
+          }
+        }
+      ],
+      "__typename": "ResourceConnection"
+    }
+  }
+}
+```
+  </Accordion>
+  <Accordion title="Resources">
+    ```http
+    POST https://server.amplication.com/graphql
+    ```
+  </Accordion>
+  <Accordion title="Alerts">
+    ```http
+    POST https://server.amplication.com/graphql
+    ```
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,58 @@
+---
+title: 'Integrating Amplication with Internal Developer Platforms (IDP)'
+sidebarTitle: "Integrating with IDP"
+description: 'Unlocking Standardized and Scalable Development with Internal Developer Platforms + Amplication'
+icon: 'sitemap'
+---
+
+Organizations looking to scale their development workflows while maintaining consistency and compliance often adopt Internal Developer Platforms (IDPs) like Backstage or Port. These platforms serve as centralized hubs for developer self-service, providing service catalogs, documentation, and operational tooling.
+
+While IDPs improve visibility and governance, they do not directly handle the creation and evolution of the actual codebase. This is where Amplication comes in.
+
+Amplication serves as the **scaffolding engine** that ensures all generated code adheres to **organizational standards**, best practices, and **compliance requirements**. By integrating Amplication with an IDP, teams can combine the best of both worlds:
+
+- **Amplication**: Provides standardized, maintainable, and production-ready backend services through live templates and plugins.
+- **IDP** (e.g., **Backstage** or **Port**): Manages the service catalog, developer self-service, and operational workflows.
+
+Together, they enable **end-to-end standardization**, ensuring that new services are created, cataloged, and managed in a seamless and scalable manner.
+
+## Benefits of Integrating Amplication with an IDP
+
+1. **Consistent and Maintainable Codebase**
+Amplication enforces organizational best practices and standardizes backend service creation, reducing technical debt and inconsistencies across teams.
+2. **Seamless Onboarding and Self-Service**
+Developers can use an IDP to quickly discover, create, and manage services while Amplication ensures the generated code follows architectural and compliance guidelines.
+3. **End-to-End Visibility**
+With IDPs acting as the central source of truth for all services, teams get full visibility into service dependencies, ownership, and lifecycle, while Amplication ensures every service starts from a standardized foundation.
+4. **Faster Development and Deployment**
+Amplication eliminates the need for repetitive boilerplate coding, allowing teams to focus on business logic while leveraging the automation capabilities of IDPs to accelerate deployment.
+5. **Built-in Governance and Compliance**
+Using Amplication’s live templates and plugin system, organizations can enforce security, observability, and compliance standards, while IDPs provide governance over service management and operations.
+
+## How It Works
+
+1. **Define Standards with Amplication**: Platform teams create [live templates](/day-zero/live-templates) and [plugins](/plugin-development/overview) in Amplication to enforce best practices.
+2. **Create Services via IDP**: Developers initiate new services through the IDP’s self-service interface.
+3. **Generate Code with Amplication**: The backend service is scaffolded using Amplication, ensuring it aligns with predefined standards.
+4. **Manage and Operate via IDP**: The newly created service is automatically cataloged in the IDP, providing visibility, documentation, and operational capabilities.
+
+## Getting Started
+
+To learn more about specific integrations, check out our dedicated guides for:
+
+<CardGroup cols={2}>
+  <Card
+    title="Port"
+    icon="sitemap"
+    href="/day-zero/integrate-with-port"
+  >
+    Read more about how to integrate Amplication within Port
+  </Card>
+  <Card
+    title="Backstage"
+    icon="sitemap"
+    href="/day-zero/integrate-with-backstage"
+  >
+    Read more about how to integrate Amplication within Backstage
+  </Card>
+</CardGroup>

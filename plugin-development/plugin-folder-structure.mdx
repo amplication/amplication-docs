@@ -6,7 +6,7 @@ icon: "folder-tree"
 ---
 
 <Frame>
-    <img src="/images/plugin-development/private-plugins-repo.png" />
+  <img src="/images/plugin-development/private-plugins-repo.png" />
 </Frame>
 
 Private plugins in Amplication live in your own Git repository with a specific folder structure.
@@ -27,11 +27,16 @@ This folder will contain all your individual private plugin folders.
 your-plugins-repo/
 └── plugins/
 ```
+
 </Step>
 </Steps>
 
 <Note>
-Amplication detects available plugins by searching for individual folders within the `plugins` directory. Each plugin folder name serves as the plugin's unique identifier and must use kebab-case (e.g., `company-auth-plugin`). This folder structure is required for Amplication to recognize and add your plugins to the UI.
+  Amplication detects available plugins by searching for individual folders
+  within the `plugins` directory. Each plugin folder name serves as the plugin's
+  unique identifier and must use kebab-case (e.g., `company-auth-plugin`). This
+  folder structure is required for Amplication to recognize and add your plugins
+  to the UI.
 </Note>
 
 ## Step 2: Set Up Your Plugin Folder
@@ -48,10 +53,12 @@ git clone https://github.com/amplication/plugin-template your-plugin-id
 Replace `your-plugin-id` with your chosen plugin identifier (e.g., `company-auth-plugin`).
 
 <Note>
-This command clones our [official Node.js plugin template](https://github.com/amplication/plugin-template), which is the recommended starting point for creating Node.js plugins.
+  This command clones our [official Node.js plugin
+  template](https://github.com/amplication/plugin-template), which is the
+  recommended starting point for creating Node.js plugins.
 </Note>
 
-Before commiting & pushing your new plugin to git, you need to build the plugin's assets:
+Before committing & pushing your new plugin to git, you need to build the plugin's assets:
 
 ```bash
 cd `your-plugin-id`
@@ -98,11 +105,13 @@ Navigate to your project and click on **Plugin Repository** in the Platform Cons
 </Steps>
 
 <Frame>
-    <img src="/images/plugin-development/plugin-repository-git-repo.png" />
+  <img src="/images/plugin-development/plugin-repository-git-repo.png" />
 </Frame>
 
 <Warning>
-Don't use the same Git repository for your private plugins and your generated services. This can lead to conflicts and unexpected issues during the build process.
+  Don't use the same Git repository for your private plugins and your generated
+  services. This can lead to conflicts and unexpected issues during the build
+  process.
 </Warning>
 
 ## Step 4: Add Your Plugin in Amplication
@@ -112,7 +121,7 @@ When you click the **Add Plugin** button in the Plugin Repository tab, Amplicati
 If no new plugins are found, you'll see a "No new plugins found in the repository" message. Ensure your plugin folder is properly created and named before attempting to add it.
 
 <Frame>
-    <img src="/images/plugin-development/add-plugin.png" />
+  <img src="/images/plugin-development/add-plugin.png" />
 </Frame>
 
 ## Next Steps
@@ -120,13 +129,21 @@ If no new plugins are found, you'll see a "No new plugins found in the repositor
 With your repository and folder structure in place, you're ready to continue setting up your private plugin:
 
 <CardGroup cols={2}>
-  <Card title="Define Plugin Settings" icon="gear" href="/plugin-development/define-plugin-settings">
+  <Card
+    title="Define Plugin Settings"
+    icon="gear"
+    href="/plugin-development/define-plugin-settings"
+  >
     Configure your plugin's basic settings and parameters
   </Card>
   <Card title="Plugin Events" icon="plug" href="/plugin-development/reference">
     Learn about available plugin events and hooks
   </Card>
-  <Card title="Lifecycle Functions" icon="code" href="/plugin-development/before-and-after-lifecycle-functions">
+  <Card
+    title="Lifecycle Functions"
+    icon="code"
+    href="/plugin-development/before-and-after-lifecycle-functions"
+  >
     Understand plugin lifecycle and execution flow
   </Card>
 </CardGroup>

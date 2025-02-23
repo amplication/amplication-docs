@@ -1,5 +1,98 @@
 ---
-title: 'Resolve Debt Across Multiple Resources'
-description: 'Best practices for platform leads to address technical debt across microservices managed by Amplication.'
-icon: 'shield-check'
+title: "Resolve Technical Debt Across Multiple Resources"
+sidebarTitle: "Resolve Technical Debt"
+description: "Learn how to track, manage, and resolve technical debt across multiple resources in Amplication using Live Templates, Private Plugins, and automated updates."
+icon: "chart-bar"
 ---
+
+Technical debt accumulates when services deviate from best practices, use outdated plugins, or lack proper governance. Amplication’s **Platform Console** provides tools to track, manage, and resolve technical debt efficiently across multiple resources. The **Tech Debt Alerts** page offers a centralized view of outdated plugins, versions, and necessary updates, ensuring all services stay aligned with organizational standards.
+
+<Note>
+  The **Tech Debt Alerts Page** provides a structured list of all detected
+  issues, allowing platform teams and developers to monitor and address
+  technical debt effectively.
+</Note>
+
+## Tech Debt Alerts Page
+
+The **Tech Debt Alerts Page** provides a clear view of outdated dependencies, outdated plugins, and required updates across multiple services.
+
+### Key Components:
+
+- **Filters & Status Selection**
+
+  - **Status Filter**: View only **Active** tech debt alerts or include resolved ones.
+  - **Type Filter**: Narrow results based on the type of issue, such as **Plugin-related debt**.
+
+- **Alert List Details**
+  - **Type & Name**: Identifies the affected service.
+  - **Created Date**: Shows when the issue was detected.
+  - **Alert Type**: Indicates the nature of the issue (e.g., **Plugin updates required**).
+  - **Plugin Name**: Specifies which plugin is outdated.
+  - **Outdated Version vs. Latest Version**: Highlights discrepancies between the current and required versions.
+  - **Status**: Displays whether the issue is still **Active** or has been addressed.
+  - **Action Button**: Provides a **View Details** option for further investigation and resolution steps.
+
+## Resolving Technical Debt
+
+Amplication provides multiple strategies to resolve technical debt across services, ensuring all resources follow best practices and stay up to date.
+
+<CardGroup cols={2}>
+  <Card title="Centralized Governance with Live Templates" icon="eye">
+    Enforce **Live Templates** to standardize service configurations, ensuring
+    all resources follow best practices and **Golden Paths**. Updates applied to
+    templates automatically propagate across associated services, maintaining
+    consistency and reducing technical debt.
+  </Card>
+  <Card title="Private Plugins for Best Practices" icon="code-branch">
+    Use **Private Plugins** to enforce architectural guidelines, distribute
+    updates efficiently, and embed best practices across multiple services.
+    Managed in your own Git repository, private plugins provide full control
+    over service customization and governance.
+  </Card>
+  <Card title="Automated Updates and Notifications" icon="users">
+    Keep services up to date with the latest frameworks, security patches, and
+    configurations. The **Tech Debt Alerts Page** notifies teams when updates
+    are available, while the **Platform Console** automates update requests,
+    ensuring a streamlined resolution process.
+  </Card>
+  <Card title="Change Management Across Multiple Resources" icon="shield-check">
+    Maintain visibility and control over updates by tracking changes applied to
+    templates and plugins. Preview modifications before applying them, ensuring
+    a smooth change management process.
+  </Card>
+</CardGroup>
+
+## How to Resolve Tech Debt from the Alerts Page
+
+<Steps>
+  <Step title="Step 1">
+    **Identify Services with Outdated Configurations** - Open the **Tech Debt
+    Alerts Page** to view all detected issues. - Use filters to focus on
+    specific services or alert types.
+  </Step>
+  <Step title="Step 2">
+    **Review Alert Details** - Click **View Details** to examine the outdated
+    plugin or configuration. - Compare the **Outdated Version** and **Latest
+    Version** to understand necessary changes.
+  </Step>
+  <Step title="Step 3">
+    **Apply Fixes and Updates** - Update the **Live Template** or **Private
+    Plugin** to reflect the latest standards. - Apply version updates directly
+    within the affected service.
+  </Step>
+  <Step title="Step 4">
+    **Monitor and Validate Changes** - Ensure services continue functioning
+    correctly after updates. - Use the **Platform Console** to track progress
+    and resolve any remaining issues.
+  </Step>
+</Steps>
+
+## Benefits of Managing Technical Debt in Amplication
+
+✅ **Consistent Best Practices** – Keep all services aligned with architectural guidelines.  
+✅ **Automated Compliance** – Ensure updates and security patches are applied systematically.  
+✅ **Faster Development Cycles** – Reduce manual maintenance efforts.  
+✅ **Improved Scalability** – Prevent long-term technical debt accumulation.
+
+By leveraging Amplication’s **Tech Debt Alerts Page** and **automated governance tools**, platform teams can proactively manage technical debt and ensure a maintainable, scalable infrastructure.

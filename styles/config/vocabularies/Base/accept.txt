@@ -12,6 +12,7 @@ ESLint
 (?i)url
 sidebarTitle
 (?i)postgresql
+[pP]ostgres
 jumpstart
 init_after_introspection
 [rR]epo
@@ -63,3 +64,4 @@ gitRepository
 (?i)appUrl
 resourceIds
 __typename
+mv

@@ -22,7 +22,7 @@ Your calls to the Amplication GraphQL API will need to be authenticated. You sho
 
 ```http
 {
-    Authorization: "Bearer <token>"
+    Authorization: "Bearer YOUR_API_TOKEN"
     Content-Type: "application/json"
 }
 ```
@@ -30,6 +30,45 @@ Your calls to the Amplication GraphQL API will need to be authenticated. You sho
 ## Requests
 
 Since we're working with GraphQL, you'll need to make requests to the GraphQL endpoint. The endpoint is `https://server.amplication.com/graphql` and it will accept POST requests for queries and mutations.
+
+This is a sample query:
+
+```js
+const query = `
+  query searchCatalog($where: ResourceWhereInputWithPropertiesFilter) {
+    catalog(where: $where) {
+      totalCount
+      data {
+        id
+        name
+      }
+    }
+  }
+`;
+
+const variables = {
+  take: 100,
+  skip: 0,
+  where: {
+    resourceType: { in: ["ServiceTemplate"] }
+  }
+};
+
+fetch('https://server.amplication.com/graphql', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_TOKEN',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    query,
+    variables
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+```
 
 ### Get Requests
 

@@ -39,7 +39,7 @@ Since we're working with GraphQL, you'll need to make requests to the GraphQL en
 
     <AccordionGroup>
         <Accordion title="Query">
-```graphql Query
+```graphql
 query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, $skip: Int) {
     catalog(where: $where, take: $take, skip: $skip) {
         totalCount
@@ -61,8 +61,9 @@ query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, 
     }
 }
 ```
-
-```json Variables
+        </Accordion>
+        <Accordion title="Variables">
+```json
 {
     "take": 100,
     "skip": 0,
@@ -71,7 +72,7 @@ query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, 
 ```
         </Accordion>
         <Accordion title="Response">
-```json Response
+```json
 {
     data: {
         catalog: {
@@ -108,7 +109,7 @@ query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, 
 
     <AccordionGroup>
     <Accordion title="Query">
-```graphql Query
+```graphql
 query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, $skip: Int) {
     catalog(where: $where, take: $take, skip: $skip) {
         totalCount
@@ -142,8 +143,9 @@ query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, 
     }
 }
 ```
-
-```json Variables
+        </Accordion>
+        <Accordion title="Variables">
+```json
 {
     "take": 100,
     "skip": 0,
@@ -152,7 +154,7 @@ query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, 
 ```
     </Accordion>
     <Accordion title="Response">
-```json Response
+```json
 {
     data: {
         catalog: {
@@ -200,7 +202,7 @@ query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, 
 
     <AccordionGroup>
     <Accordion title="Query">
-```graphql Query
+```graphql
 fragment OutdatedVersionAlertFields on OutdatedVersionAlert {
     id
     createdAt
@@ -234,7 +236,10 @@ query getOutdatedVersionAlerts(
         count
     }
 }
-```json Variables
+```
+        </Accordion>
+        <Accordion title="Variables">
+```json
 {
     "take": 100,
     "skip": 0,
@@ -243,7 +248,7 @@ query getOutdatedVersionAlerts(
 ```
     </Accordion>
     <Accordion title="Response">
-```json Response
+```json
 {
     data: {
         outdatedVersionAlerts: {
@@ -283,7 +288,7 @@ query getOutdatedVersionAlerts(
 
     <AccordionGroup>
     <Accordion title="Query">
-```graphql Query
+```graphql
 mutation createServiceFromTemplate($data: ResourceFromTemplateCreateInput!) {
   createResourceFromTemplate(data: $data) {
     id
@@ -293,8 +298,9 @@ mutation createServiceFromTemplate($data: ResourceFromTemplateCreateInput!) {
   }
 }
 ```
-
-```json Variables
+        </Accordion>
+        <Accordion title="Variables">
+```json
 {
   "data": {
     "name": "Resource Name",
@@ -312,7 +318,7 @@ mutation createServiceFromTemplate($data: ResourceFromTemplateCreateInput!) {
 ```
     </Accordion>
     <Accordion title="Response">
-```json Response
+```json
 {
   "data": {
     "createResourceFromTemplate": {
@@ -332,7 +338,7 @@ mutation createServiceFromTemplate($data: ResourceFromTemplateCreateInput!) {
 
     <AccordionGroup>
     <Accordion title="Query">
-```graphql Query
+```graphql
 mutation commit($data: CommitCreateInput!) {
     commit(data: $data) {
         id
@@ -346,8 +352,9 @@ mutation commit($data: CommitCreateInput!) {
     }
 }
 ```
-
-```json Variables
+        </Accordion>
+        <Accordion title="Variables">
+```json
 {
   "data": {
     "message": "feat(server): work in progress",
@@ -367,7 +374,7 @@ mutation commit($data: CommitCreateInput!) {
 ```
     </Accordion>
     <Accordion title="Response">
-```json Response
+```json
 {
   "data": {
     "commit": {

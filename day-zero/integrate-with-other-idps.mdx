@@ -21,20 +21,25 @@ Amplication is built with GraphQL in mind. This means that you can easily integr
 Your calls to the Amplication GraphQL API will need to be authenticated. You should use the [API token](/day-zero/api-token-generation) to authenticate your calls. This is done by sending the token in the `Authorization` header of your request:
 
 ```http
-Authorization: "Bearer <token>"
-Content-Type: "application/json"
+{
+    Authorization: "Bearer <token>"
+    Content-Type: "application/json"
+}
 ```
 
 ## Requests
 
-Since we're working with GraphQL, we'll need to make requests to the GraphQL endpoint. The endpoint is `https://server.amplication.com/graphql` and it will accept POST requests for queries and mutations:
+Since we're working with GraphQL, you'll need to make requests to the GraphQL endpoint. The endpoint is `https://server.amplication.com/graphql` and it will accept POST requests for queries and mutations.
 
-### Templates
+### Get Requests
 
-The following request will return all the templates available in the Amplication server:
+<Tabs>
+    <Tab title="Templates">
+    This is how you fetch [templates](/day-zero/live-templates).
 
-<RequestExample>
-```json Request
+    <AccordionGroup>
+        <Accordion title="Query">
+```graphql Query
 query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, $skip: Int) {
     catalog(where: $where, take: $take, skip: $skip) {
         totalCount
@@ -56,122 +61,324 @@ query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, 
     }
 }
 ```
+
 ```json Variables
 {
-  "take": 100,
-  "skip": 0,
-  "where": { "resourceType": { "in": ["ServiceTemplate"] } }
+    "take": 100,
+    "skip": 0,
+    "where": {"resourceType": {"in": ["ServiceTemplate"]}},
 }
 ```
-
+        </Accordion>
+        <Accordion title="Response">
 ```json Response
 {
-  "data": {
-    "catalog": {
-      "totalCount": 1,
-      "data": [
-        {
-          "id": "1",
-          "name": "Service Template 1",
-          "description": "Service Template 1 Description",
-          "resourceType": "ServiceTemplate",
-          "project": {
-            "id": "1",
-            "name": "Project 1"
-          },
-          "blueprint": {
-            "id": "1",
-            "name": "Blueprint 1"
-          }
+    data: {
+        catalog: {
+            data: {
+                {
+                    "id": "cm6zln01a0209utjtlorazri1",
+                    "name": "Node.js Template",
+                    "description": "Template created from an existing resource",
+                    "resourceType": "ServiceTemplate",
+                    "project": {
+                        "id": "cm6zlfk2o01liutjtdw8xj7f0",
+                        "name": "Base Project"
+                    },
+                    "blueprint": {
+                        "id": "cm6gb3j00000p14gz2n11otq4",
+                        "name": "Node.js Service (Amplication's Standard)"
+                    }
+                },
+                {
+                    "id": "u1z6ijno0lrzmlra1ta9c200t",
+                    "name": ".Net Template",
+                    ...
+                }
+            }
         }
-      ],
-      "__typename": "ResourceConnection"
     }
-  }
 }
 ```
-</RequestExample>
+        </Accordion>
+    </AccordionGroup>
+    </Tab>
+    <Tab title="Resources">
+    This is how you fetch [resources](/day-one/create-resource-from-template).
 
-### Let's see
+    <AccordionGroup>
+    <Accordion title="Query">
+```graphql Query
+query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, $skip: Int) {
+    catalog(where: $where, take: $take, skip: $skip) {
+        totalCount
+        data {
+            id
+            name
+            description
+            resourceType
+            project {
+                id
+                name
+            }
+            blueprint {
+                id
+                name
+            }
+            serviceTemplate {
+                id
+                name
+                projectId
+            }
+            gitRepository {
+                name
+                gitOrganization {
+                    name
+                    provider
+                }
+            }
+        }
+        __typename
+    }
+}
+```
 
-```graphql
-query GetTemplates {
-  templates {
+```json Variables
+{
+    "take": 100,
+    "skip": 0,
+    "where": {"resourceType": {"in": ["Service", "Component"]}},
+}
+```
+    </Accordion>
+    <Accordion title="Response">
+```json Response
+{
+    data: {
+        catalog: {
+            data: {
+                "id": "cm6gr9t4s0000jx5t8l8prvik",
+                "name": "Sample Resource Name",
+                "description": "General description for the resource",
+                "resourceType": "Service",
+                "project": {
+                    "id": "cm6gb3j0a000q14gzlq9m7h1o",
+                    "name": "Sample Project"
+                },
+                "blueprint": {
+                    "id": "cm6gb3j00000p14gz2n11otq4",
+                    "name": ".Net Service (Amplication's Standard)"
+                },
+                "serviceTemplate": null,
+                "gitRepository": {
+                    "name": "examplerepo",
+                    "gitOrganization": {
+                    "name": "examplecompany",
+                    "provider": "Github"
+                    }
+                },
+                {
+                    "id": "9i0rc6km088vr0j0gt4lst5xp",
+                    "name": "Another Sample Resource",
+                    ...
+                }
+            }
+        }
+    }
+}
+```
+    </Accordion>
+    </AccordionGroup>
+    </Tab>
+    <Tab title="Alerts">
+    This is how to fetch **outdated version alerts**
+
+    The returned `type` could be one of the three:
+    - CodeEngineVersion
+    - PluginVersion
+    - TemplateVersion
+
+    <AccordionGroup>
+    <Accordion title="Query">
+```graphql Query
+fragment OutdatedVersionAlertFields on OutdatedVersionAlert {
+    id
+    createdAt
+    updatedAt
+    resourceId
+    blockId
+    block {
+        id
+        displayName
+    }
+    type
+    outdatedVersion
+    latestVersion
+    status
+}
+query getOutdatedVersionAlerts(
+    $where: OutdatedVersionAlertWhereInput
+    $orderBy: OutdatedVersionAlertOrderByInput
+    $take: Int
+    $skip: Int
+) {
+    outdatedVersionAlerts(
+        where: $where
+        orderBy: $orderBy
+        take: $take
+        skip: $skip
+    ) {
+        ...OutdatedVersionAlertFields
+    }
+    _outdatedVersionAlertsMeta(where: $where) {
+        count
+    }
+}
+```json Variables
+{
+    "take": 100,
+    "skip": 0,
+    "orderBy": {"createdAt": "Desc"}
+}
+```
+    </Accordion>
+    <Accordion title="Response">
+```json Response
+{
+    data: {
+        outdatedVersionAlerts: {
+            {
+                "id": "cm71nzqfh00lftp1dh9bslk0n",
+                "createdAt": "2025-02-18T10:07:00.022Z",
+                "updatedAt": "2025-02-18T10:07:00.022Z",
+                "resourceId": "cm71nzdyn00kltp1dyoe4abpu",
+                "blockId": "cm67mln9k004k55uul3j4ywww",
+                "block": {
+                    "id": "cm67mln9k004k55uul3j4ywww",
+                    "displayName": "Resource Template Version"
+                },
+                "type": "TemplateVersion",
+                "outdatedVersion": "0.1.0",
+                "latestVersion": "0.2.0",
+                "status": "New"
+            },
+            {
+                "id": "90pdh0t1fmk0lqnsh7nblcz1f",
+                ...
+            }
+        }
+    }
+}
+```
+    </Accordion>
+    </AccordionGroup>
+    </Tab>
+</Tabs>
+
+### Post Requests
+
+<Tabs>
+    <Tab title="Scaffold Resource">
+    Scaffolding a resource from an existing template is something we can do often.
+
+    <AccordionGroup>
+    <Accordion title="Query">
+```graphql Query
+mutation createServiceFromTemplate($data: ResourceFromTemplateCreateInput!) {
+  createResourceFromTemplate(data: $data) {
     id
     name
+    description
+    __typename
   }
 }
 ```
 
-### Let's see 2
+```json Variables
+{
+  "data": {
+    "name": "Resource Name",
+    "description": "Resource Description",
+    "project": {
+      "connect": {
+        "id": "cm6zlfk2o01liutjtdw8xj7f0"
+      }
+    },
+    "serviceTemplate": {
+      "id": "cm6zln01a0209utjtlorazri1"
+    }
+  }
+}
+```
+    </Accordion>
+    <Accordion title="Response">
+```json Response
+{
+  "data": {
+    "createResourceFromTemplate": {
+      "id": "cm7hf6bd20000r00ucwlkads3",
+      "name": "Resource Name",
+      "description": "Resource Description",
+      "__typename": "Resource"
+    }
+  }
+}
+```
+    </Accordion>
+    </AccordionGroup>
+    </Tab>
+    <Tab title="Code Re-build">
+    Trigger a resource to re-build and [commit](/day-one/commits) its code to git.
 
-<AccordionGroup>
-  <Accordion title="Templates">
-    ```json Request
-query searchCatalog($where: ResourceWhereInputWithPropertiesFilter, $take: Int, $skip: Int) {
-    catalog(where: $where, take: $take, skip: $skip) {
-        totalCount
-        data {
+    <AccordionGroup>
+    <Accordion title="Query">
+```graphql Query
+mutation commit($data: CommitCreateInput!) {
+    commit(data: $data) {
+        id
+        builds {
             id
-            name
-            description
-            resourceType
-            project {
-                id
-                name
-            }
-            blueprint {
-                id
-                name
-            }
+            resourceId
+            status
+            __typename
         }
         __typename
     }
 }
 ```
+
 ```json Variables
 {
-  "take": 100,
-  "skip": 0,
-  "where": { "resourceType": { "in": ["ServiceTemplate"] } }
+  "data": {
+    "message": "feat(server): work in progress",
+    "project": {
+      "connect": {
+        "id": "cm6zlfk2o01liutjtdw8xj7f0"
+      }
+    },
+    "resourceIds": [
+      "cm7hf6bd20000r00ucwlkads3"
+    ],
+    "bypassLimitations": true,
+    "commitStrategy": "Specific",
+    "resourceTypeGroup": "Services"
+  }
 }
 ```
-
+    </Accordion>
+    <Accordion title="Response">
 ```json Response
 {
   "data": {
-    "catalog": {
-      "totalCount": 1,
-      "data": [
-        {
-          "id": "1",
-          "name": "Service Template 1",
-          "description": "Service Template 1 Description",
-          "resourceType": "ServiceTemplate",
-          "project": {
-            "id": "1",
-            "name": "Project 1"
-          },
-          "blueprint": {
-            "id": "1",
-            "name": "Blueprint 1"
-          }
-        }
-      ],
-      "__typename": "ResourceConnection"
+    "commit": {
+      "id": "cm7hfbv0g000nr00u61tlp735",
+      "builds": null,
+      "__typename": "Commit"
     }
   }
 }
 ```
-  </Accordion>
-  <Accordion title="Resources">
-    ```http
-    POST https://server.amplication.com/graphql
-    ```
-  </Accordion>
-  <Accordion title="Alerts">
-    ```http
-    POST https://server.amplication.com/graphql
-    ```
-  </Accordion>
-</AccordionGroup>
+    </Accordion>
+    </AccordionGroup>
+    </Tab>
+</Tabs>

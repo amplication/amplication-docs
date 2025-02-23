@@ -1,0 +1,51 @@
+---
+title: "Integrate with Port"
+description: "Port is an Internal Developer Portal (IDP) that helps engineering teams manage their software catalog and accelerate development."
+icon: "sitemap"
+---
+
+<Frame>
+  <img src="/images/day-zero/idp-integration-with-port-blueprints.png" />
+</Frame>
+
+## Integrating Amplication with Internal Developer Platforms (IDPs)
+
+Amplication provides a powerful way to standardize and accelerate backend development, and integrating it with Internal Developer Platforms (IDPs) unlocks even greater efficiency. Whether you're using Backstage, Port, or another IDP, Amplication seamlessly fits into your platform to streamline service creation, enforce best practices, and maintain consistency across your engineering organization. This guide outlines how to connect Amplication with any IDP using its GraphQL API, allowing you to synchronize templates, automate service scaffolding, and enhance your development workflow with a fully integrated experience.
+
+## Setup Process
+
+To integrate Port with Amplication, you'll need an active Port account. Afterwards, follow these steps:
+
+<Steps>
+  <Step title="Navigate to Data Sources Page">
+    Go to Port's [Data Sources](https://app.getport.io/settings/data-sources) page.
+  </Step>
+  <Step title="Click on the '+ Data Source' button">
+    Click the "+ Data Source" button in the navigation bar.
+  </Step>
+  <Step title="Look for Amplication">
+    Find and select Amplication under "Scaffolding".
+  </Step>
+  <Step title="Fill the New Data Source Form">
+	  Configure the connection:
+    - Host: Use the default `"https://server.amplication.com/graphql"`
+    - Token: Enter your [Amplication workspace token](/day-zero/api-token-generation)
+  </Step>
+  <Step title="Connect">
+    After clicking "Connect", it will take a few minutes for the connection to fetch all the data from Amplication to Port.
+  </Step>
+</Steps>
+
+## Features
+
+Once connected, you'll have access to three main areas:
+
+- **Builder View**: Access to Amplication blueprints including Template, Resource, and Version Alert
+- **Catalog Section**: View all synced data through:
+    - Amplication Templates
+    - Amplication Resources
+    - Amplication Version Alerts
+    - Amplication Dashboard (comprehensive overview)
+- **Self-service Actions**:
+    - Scaffold a Service: Create new services from templates
+    - Code Re-build: Trigger rebuilds for specific resources

@@ -1,0 +1,133 @@
+---
+title: "Use Amplication to Generate the Boilerplate Needed for New Amplication Plugins"
+sidebarTitle: "Build New Plugins Using Amplication"
+description: "Amplication simplifies plugin development by providing a boilerplate template that serves as a starting point. This guide walks you through the process of setting up the boilerplate needed for Amplication plugins using a predefined plugin template."
+icon: "plug"
+---
+
+## Prerequisites
+
+Before proceeding, ensure you have the following:
+
+1. An Amplication workspace with a project that is connected to a Git organization and has a plugin repository configured as explained [here](/plugin-development/plugin-folder-structure).
+
+---
+
+## Download and Register the "Blueprint Plugin Template" Plugin
+
+<Steps>
+<Step title="Download the Plugin Template">
+Download the Amplication **Blueprint Plugin Template**, which provides the foundational structure for plugin development.
+
+You can find the template in the official Amplication plugins repository:  
+[Blueprint Plugin Template Repository](https://github.com/amplication/plugins/tree/master/blueprint-plugins/blueprint-plugin-template).
+
+To download the folder, use the [GitHub Directory Downloader](https://download-directory.github.io/) or download it directly:  
+[Download Plugin Template](https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2Famplication%2Fplugins%2Ftree%2Fmaster%2Fblueprint-plugins%2Fblueprint-plugin-template).
+
+</Step>
+
+<Step title="Copy the Template into the Plugin Repository">
+  After downloading the ZIP file, extract its contents and copy them into your
+  plugin repository under a folder named **`blueprint-plugin-template`**.
+
+  <Frame caption="blueprint-plugin-template folder">
+  <img src="/images/plugin-development/amplication-plugin-code.png" />
+</Frame>
+</Step>
+
+<Step title="Install Dependencies and Build the Plugin">
+Execute the following commands to install dependencies and build the plugin
+
+```sh
+cd blueprint-plugin-template
+npm i
+npm run build
+```
+
+</Step>
+
+<Step title="Commit and Push the Changes">
+Commit the copied template files to Git and push them to the repository:
+
+```sh
+git add blueprint-plugin-template
+git commit -m "Added blueprint plugin template"
+git push origin main
+```
+
+</Step>
+
+<Step title="Create a New Blueprint in Amplication">
+  In **Amplication**, create a new blueprint named **"Amplication Plugin"**.
+  This blueprint will serve as a foundation for generating new plugins.
+</Step>
+
+<Step title="Register the Plugin in the Private Plugins List">
+Register the newly created plugin in the private plugins list and associate it with the **"Amplication Plugin"** blueprint.
+
+Then, either add a [new version](/plugin-development/publish-a-plugin#step-1-add-a-new-plugin-version-in-amplication) of the plugin, or enable the `@dev` version - and publish the plugin.
+
+</Step>
+</Steps>
+
+---
+
+## **Create New Plugins Using the Registered Plugin**
+
+Follow these steps to create a new plugin using the registered **Blueprint Plugin Template**.
+
+<Steps>
+<Step title="Navigate to the Catalog">
+Go to the **Catalog** in Amplication.
+</Step>
+
+<Step title="Create a New Resource">
+  [Create a new resource](/day-one/create-resource-from-blueprint) using the
+  **"Amplication Plugin"** blueprint.
+
+  <Frame caption="Create Amplication Plugin">
+  <img src="/images/plugin-development/create-amplication-plugin.png" />
+</Frame>
+</Step>
+
+<Step title="Name Your Plugin and create the resource">
+  Provide a name for the new plugin, e.g., `Java Redis`.
+
+Click on `Create Resource`
+
+  <Note>
+    The plugin name can include spaces and will be automatically formatted
+    appropriately during the generation process.
+  </Note>
+</Step>
+
+<Step title="Install the Required Plugin">
+  Go to the **Plugins** tab in the new resource and install the **Blueprint
+  Plugin Template** plugin.
+</Step>
+
+<Step title="Generate the Code">
+  Click **Generate Code** to have Amplication generate the boilerplate for your
+  new plugin in your plugin repository.
+</Step>
+
+<Step title="Customize Your Plugin">
+After merging the Pull Request into your repository, fetch the latest version from your IDE and start working on your new plugin.
+
+Happy coding 👩‍💻!
+
+</Step>
+</Steps>
+
+<Note>
+  To simplify plugin creation, you can create a **template** using the
+  `Amplication Plugin` blueprint that includes the `Blueprint Plugin Template`
+  plugin.
+</Note>
+
+---
+
+## **Conclusion**
+
+By following these steps, you can efficiently generate the required boilerplate for new Amplication plugins, ensuring consistency and reducing development time.

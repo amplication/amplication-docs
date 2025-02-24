@@ -199,6 +199,12 @@
       ]
     },
     {
+      "group": "Guides & Tutorials",
+      "pages": [
+        "plugin-development/guides/use-amplication-to-generate-new-plugins"
+      ]
+    },
+    {
       "group": "Plugin Event Reference",
       "pages": [
         {

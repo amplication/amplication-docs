@@ -74,8 +74,8 @@ git push
 Use sparse checkout to copy the .NET Postgres Database plugin as a template:
 
 ```bash
-cd plugins
 git clone --no-checkout https://github.com/amplication/plugins
+cd plugins
 git sparse-checkout set plugins/dotnet-db-postgres
 git checkout
 mv plugins/dotnet-db-postgres your-plugin-id

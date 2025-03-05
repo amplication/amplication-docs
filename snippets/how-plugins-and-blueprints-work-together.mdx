@@ -1,0 +1,30 @@
+## How Plugins and Blueprints work together
+
+Blueprints and plugins each serve a distinct purpose.
+Together, they transform high-level specifications into production-ready code.
+
+**Blueprints are declarative**.
+They define the structure and relationships of your software ecosystem.
+For example. Blueprints answers the questions "What I want to build". a blueprint might specify:
+
+- Which microservices and APIs your system needs (e.g. Java API, Java Worker, GO API)
+- What message queues and event streams to use (e.g. Kafka, Storage)
+- Which storage solutions (databases, caches) to implement
+- Deployment options like K8s cluster, cloud services, etc
+
+**Plugins are imperative**.
+They contain the specific logic that transforms blueprint definitions into actual code.
+Plugins answer the question "How I want to build it", and they are the tools that generate the actual code used for the resource.
+When a blueprint defines a customer data service, your plugin determines:
+
+- Which ORM library to use
+- How to build API endpoints
+- How to implement caching
+- How to structure the generated code
+
+<Note>
+  **Example**: A Blueprint might specify, "We need a Spring Boot API". A plugin
+  knows *how* to scaffold the Java classes, set up Spring Security
+  configurations, implement JWT authentication, configure Spring AOP for
+  logging, and set up Maven/Gradle build pipelines.
+</Note>

@@ -1,15 +1,8 @@
 ---
-title: 'Concepts'
-description: 'Understand the fundamental concepts that power Amplication to standardize, govern, and automate your software ecosystem.'
-icon: 'lightbulb'
+title: "Concepts"
+description: "Understand the fundamental concepts that power Amplication to standardize, govern, and automate your software ecosystem."
+icon: "lightbulb"
 ---
-
-<video
-  autoPlay
-  loop
-  className="w-full aspect-video"
-  src="https://amplication.com/_next/static/media/amplication-how-to.096e75f6e507eae452b8981dbc198e12.mp4"
-></video>
 
 Amplication provides a powerful set of features that work together to help you achieve your goals as a platform team.
 This page provides a high-level overview of the core concepts behind these features.
@@ -19,11 +12,21 @@ This page provides a high-level overview of the core concepts behind these featu
 Blueprints are standardized templates that define the structure and configuration of your organization's resources, from microservices to infrastructure, acting as a single source of truth for your architectural standards. They also incorporate properties and relations to define connections between resources, ensuring consistency and reducing technical drift across all your projects while enabling complex, interconnected systems.
 
 <CardGroup cols={2}>
-  <Card title="Learn more about Blueprints" href="/day-zero/blueprints" icon="diagram-lean-canvas">
-    Explore how Blueprints enable you to define and enforce organizational standards for all your resources.
+  <Card
+    title="Learn more about Blueprints"
+    href="/day-zero/blueprints"
+    icon="diagram-lean-canvas"
+  >
+    Explore how Blueprints enable you to define and enforce organizational
+    standards for all your resources.
   </Card>
-  <Card title="Learn about Blueprint Properties & Relations" href="/day-zero/blueprint-properties-relations" icon="diagram-project">
-    Discover how to use Properties and Relations to model sophisticated architectures and ensure consistency across your ecosystem.
+  <Card
+    title="Learn about Blueprint Properties & Relations"
+    href="/day-zero/blueprint-properties-relations"
+    icon="diagram-project"
+  >
+    Discover how to use Properties and Relations to model sophisticated
+    architectures and ensure consistency across your ecosystem.
   </Card>
 </CardGroup>
 
@@ -31,9 +34,23 @@ Blueprints are standardized templates that define the structure and configuratio
 
 Plugins are custom code extensions that hook into Amplication's code generation engine, allowing you to tailor the generated code to your organization's specific needs and technology choices. They enable you to codify your internal best practices and enforce architectural standards directly within the generated code, ensuring every resource adheres to your guidelines.
 
-<CardGroup cols={1}>
-  <Card title="Learn more about Private Plugins" href="/day-zero/private-plugins" icon="plug">
-    Understand how Private Plugins empower you to customize code generation and enforce organizational standards programmatically.
+<CardGroup cols={2}>
+  <Card
+    title="How Plugins and Blueprints work together"
+    href="/day-zero/private-plugins#how-plugins-and-blueprints-work-together"
+    icon="diagram-lean-canvas"
+  >
+    Discover how Blueprints define the core structure of a service, while
+    Plugins extend their functionality by adding custom logic, integrations, and
+    configurations.
+  </Card>
+  <Card
+    title="Learn more about Private Plugins"
+    href="/day-zero/private-plugins"
+    icon="plug"
+  >
+    Understand how Private Plugins empower you to customize code generation and
+    enforce organizational standards programmatically.
   </Card>
 </CardGroup>
 
@@ -42,8 +59,13 @@ Plugins are custom code extensions that hook into Amplication's code generation 
 The Software Catalog provides a centralized view of all your Amplication resources, offering comprehensive visibility and governance capabilities. It enables you to track, manage, and monitor your entire ecosystem through an intuitive interface, helping you maintain oversight of your architectural landscape and ensure compliance with organizational standards.
 
 <CardGroup cols={1}>
-  <Card title="Learn more about the Software Catalog" href="/day-two/software-catalog" icon="book">
-    Discover how the Software Catalog helps you manage and govern all your Amplication resources effectively.
+  <Card
+    title="Learn more about the Software Catalog"
+    href="/day-two/software-catalog"
+    icon="book"
+  >
+    Discover how the Software Catalog helps you manage and govern all your
+    Amplication resources effectively.
   </Card>
 </CardGroup>
 
@@ -52,8 +74,13 @@ The Software Catalog provides a centralized view of all your Amplication resourc
 Smart Git Sync automates the synchronization of changes between Amplication and your Git repositories, ensuring that all updates to your resources are systematically tracked and version-controlled. By automatically creating branches and pull requests for Amplication-driven changes, Smart Git Sync streamlines your workflow, facilitates collaboration, and maintains a clear audit trail of all modifications to your codebase.
 
 <CardGroup cols={1}>
-  <Card title="Learn more about Smart Git Sync" href="/day-zero/smart-git-sync" icon="git-alt">
-    Learn how Smart Git Sync automates Git integration and ensures seamless version control for all your Amplication resources.
+  <Card
+    title="Learn more about Smart Git Sync"
+    href="/day-zero/smart-git-sync"
+    icon="git-alt"
+  >
+    Learn how Smart Git Sync automates Git integration and ensures seamless
+    version control for all your Amplication resources.
   </Card>
 </CardGroup>
 
@@ -64,10 +91,18 @@ They represent actual software components like services, SDKs, deployment repos,
 Each resource is customizable while maintaining the standards defined by its blueprint, including properties, relations, and plugin configurations. Resources must be connected to a Git repository, either directly or inherited from their project.
 
 <CardGroup cols={2}>
-  <Card title="Create Resource from Blueprint" href="/day-one/create-resource-from-blueprint" icon="square-plus">
+  <Card
+    title="Create Resource from Blueprint"
+    href="/day-one/create-resource-from-blueprint"
+    icon="square-plus"
+  >
     Learn how to create new resources using blueprints.
   </Card>
-  <Card title="Create Resource from Template" href="/day-one/create-resource-from-template" icon="copy">
+  <Card
+    title="Create Resource from Template"
+    href="/day-one/create-resource-from-template"
+    icon="copy"
+  >
     Discover how to quickly create resources using pre-configured templates.
   </Card>
 </CardGroup>
@@ -77,8 +112,13 @@ Each resource is customizable while maintaining the standards defined by its blu
 Live Templates are pre-configured blueprints with specific plugin sets and settings, enabling rapid and consistent resource creation. They serve as golden paths for your organization, ensuring standardization while accelerating development.
 
 <CardGroup cols={1}>
-  <Card title="Learn more about Live Templates" href="/day-zero/live-templates" icon="wand-magic-sparkles">
-    Explore how Live Templates streamline resource creation and maintain organizational standards.
+  <Card
+    title="Learn more about Live Templates"
+    href="/day-zero/live-templates"
+    icon="wand-magic-sparkles"
+  >
+    Explore how Live Templates streamline resource creation and maintain
+    organizational standards.
   </Card>
 </CardGroup>
 
@@ -87,10 +127,18 @@ Live Templates are pre-configured blueprints with specific plugin sets and setti
 Projects organize your resources, templates, and plugins into logical groups. They provide a structured way to manage your ecosystem and control access to resources. Projects help you visualize relationships between resources and maintain clear ownership structures.
 
 <CardGroup cols={2}>
-  <Card title="Architecture Graph" href="/day-two/architecture-graph" icon="diagram-project">
+  <Card
+    title="Architecture Graph"
+    href="/day-two/architecture-graph"
+    icon="diagram-project"
+  >
     Visualize relationships between resources in your projects.
   </Card>
-  <Card title="Software Catalog" href="/day-two/software-catalog" icon="table-list">
+  <Card
+    title="Software Catalog"
+    href="/day-two/software-catalog"
+    icon="table-list"
+  >
     Learn how to filter and manage resources across projects.
   </Card>
 </CardGroup>
@@ -113,7 +161,11 @@ Entities are data models that define the structure of your application's databas
 APIs are automatically generated endpoints that provide access to your entity data. They enable secure interaction with your application's database while following REST principles. APIs can be customized to meet specific business requirements.
 
 <CardGroup cols={1}>
-  <Card title="Custom Types & Actions" href="/day-one/custom-types-actions" icon="code">
+  <Card
+    title="Custom Types & Actions"
+    href="/day-one/custom-types-actions"
+    icon="code"
+  >
     Learn how to customize your API endpoints and data types.
   </Card>
 </CardGroup>

@@ -4,6 +4,8 @@ description: "Codify organizational standards using Amplication's Private Plugin
 icon: "plug"
 ---
 
+import BlueprintsAndPlugins from "/snippets/how-plugins-and-blueprints-work-together.mdx";
+
 <Frame>
   <img src="/images/day-zero/plugins.png" />
 </Frame>
@@ -36,36 +38,7 @@ By combining the Blueprint Plugin events with various property access levels, yo
   [Plugin Development Guide](/plugin-development/overview).
 </Note>
 
-## How Plugins and Blueprints work together
-
-Blueprints and plugins each serve a distinct purpose.
-Together, they transform high-level specifications into production-ready code.
-
-**Blueprints are declarative**.
-They define the structure and relationships of your software ecosystem.
-For example, a blueprint might specify:
-
-- Which microservices and APIs your system needs
-- What message queues and event streams to use
-- Which storage solutions (databases, caches) to implement
-- What authentication and authorization patterns to follow
-
-**Plugins are imperative**.
-They contain the specific logic that transforms blueprint definitions into actual code.
-When a blueprint defines a customer data service, your plugin determines:
-
-- Which ORM library to use
-- How to build API endpoints
-- How to do caching
-- How to structure the generated code
-
-<Note>
-  **Example**: A Blueprint might specify, "We need a standard Spring Boot
-  resource with a user authentication module." A plugin knows *how* to scaffold
-  the Java classes, set up Spring Security configurations, implement JWT
-  authentication, configure Spring AOP for logging, and set up Maven/Gradle
-  build pipelines.
-</Note>
+<BlueprintsAndPlugins />
 
 ## How Private Plugins Solve Drift & Maintenance Challenges
 

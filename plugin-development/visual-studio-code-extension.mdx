@@ -1,0 +1,87 @@
+---
+title: 'Amplication Visual Studio Code Extension'
+description: 'Learn how to install and use the Amplication VS Code extension to streamline plugin development.'
+sidebarTitle: 'VS Code Extension'
+icon: 'keyboard'
+---
+
+The Amplication VS Code extension provides a streamlined way to develop and manage plugins for Amplication directly from your IDE. This extension offers features to download plugin templates, manage dependencies, build, push, and publish new plugin versions effortlessly.
+
+## Features
+
+- **Download Plugin Templates**: Select and download pre-existing templates from Amplication’s GitHub repositories.
+- **Manage Dependencies**: Automatically install dependencies for downloaded templates.
+- **Build and Push**: Build your plugin and push updates to your repository.
+- **Version Publishing**: Automate version bumping and publishing directly from VS Code.
+- **Seamless Integration**: Works directly with Amplication’s plugin development workflow.
+
+## Installation
+
+To install the Amplication VS Code extension:
+
+1. Open VS Code.
+2. Go to the Extensions Marketplace (`Ctrl+Shift+X` or `Cmd+Shift+X` on macOS).
+3. Search for `Amplication`.
+4. Click **Install**.
+
+Alternatively, install it via the command line:
+
+```sh
+code --install-extension amplication.amplication
+```
+
+## Usage
+
+### Download a Plugin Template
+
+Use the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS) and run:
+
+```
+Amplication Plugin: Download Blueprint Template Plugin
+```
+
+Select the desired template from the available options.
+
+### Install Dependencies
+
+Use the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS) and run:
+
+```
+Amplication Plugin: Install Dependencies
+```
+
+This command will install the plugin's dependencies, specified in the package.json file within the plugin's directory.
+
+## Build
+
+While development, you can run this command:
+
+```
+Amplication Plugin: Build
+```
+
+This command will build the plugin's code and assets, allowing you to publish it.
+
+### Build and Push a Plugin
+
+Run the following command from the command palette when you want to push your code:
+
+```
+Amplication Plugin: Build and Push
+```
+
+This will build the plugin and push changes to your repository.
+
+### Publish a New Plugin Version
+
+To publish a new version of your plugin, run:
+
+```
+Amplication Plugin: Publish Version
+```
+
+This will automatically bump the version and publish it.
+
+---
+
+Happy coding with Amplication! 🚀

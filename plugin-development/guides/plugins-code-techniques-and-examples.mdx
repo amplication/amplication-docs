@@ -12,6 +12,7 @@ import FunctionReferenceImportStaticFilesWithReplacements from "/snippets/functi
 import CodeRelatedResources from "/snippets/plugin-code-examples/code-related-resources.mdx";
 import CodePluginSettings from "/snippets/plugin-code-examples/code-plugin-settings.mdx";
 import CodeGetFile from "/snippets/plugin-code-examples/code-get-file.mdx";
+import ReferenceFileMap from "/snippets/function-reference/file-map.mdx";
 
 Amplication plugins allow developers to extend and customize the code generation process. This guide provides detailed explanations and practical code examples to help you build plugins effectively.
 
@@ -46,44 +47,12 @@ Plugins can define configurable settings that affect how they function.
 <CodePluginSettings/>
 
 
-## Finding an Existing File in the Context
+## Using the FileMap class to manage files
 
-When modifying generated code, it’s important to locate existing files.
+The `FileMap` class is a utility class that helps manage files in the context.
+it is a map of files that can be used to replace, add, remove or get files from the context.
+
+<ReferenceFileMap/>
 
 <CodeGetFile/>
 
-## Adding a File into the Context
-
-A plugin may need to generate and add new files.
-
-**Example:** Creating and adding a new file.
-
-```typescript
-// Placeholder for code example
-```
-
-## Replacing a File in the Context
-
-Replacing an existing file ensures customization while preserving structure.
-
-**Example:** Overwriting a generated file.
-
-```typescript
-// Placeholder for code example
-```
-
-## Removing a File from the Context
-
-In some cases, plugins may need to exclude files from the final output.
-
-**Example:** Deleting a file from the generation context.
-
-```typescript
-// Placeholder for code example
-```
-
-## Conclusion
-
-With these techniques, you can create powerful Amplication plugins that customize and enhance generated applications. Use the placeholders to add your implementation-specific code examples.
-
-For further reference, check out the [Amplication Plugin API Documentation](https://docs.amplication.com/plugin-development/).

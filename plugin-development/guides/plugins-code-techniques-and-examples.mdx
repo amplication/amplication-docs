@@ -10,7 +10,8 @@ import CodeCopyStaticFiles from "/snippets/plugin-code-examples/code-copy-static
 import FunctionReferenceImportStaticFiles from "/snippets/function-reference/import-static-files.mdx";
 import FunctionReferenceImportStaticFilesWithReplacements from "/snippets/function-reference/import-static-files-with-replacements.mdx";
 import CodeRelatedResources from "/snippets/plugin-code-examples/code-related-resources.mdx";
-
+import CodePluginSettings from "/snippets/plugin-code-examples/code-plugin-settings.mdx";
+import CodeGetFile from "/snippets/plugin-code-examples/code-get-file.mdx";
 
 Amplication plugins allow developers to extend and customize the code generation process. This guide provides detailed explanations and practical code examples to help you build plugins effectively.
 
@@ -37,41 +38,19 @@ Entities in Amplication can have relationships. Accessing these relationships is
 
 <CodeRelatedResources/>
 
-**Example:** Retrieving related entities.
-
-```typescript
-// Placeholder for code example
-````
 
 ## Reading Plugin Settings
 
 Plugins can define configurable settings that affect how they function.
 
-**Example:** Accessing user-defined plugin settings.
+<CodePluginSettings/>
 
-```typescript
-// Placeholder for code example
-```
-
-## Using AST (Abstract Syntax Tree)
-
-AST enables plugins to modify existing code structures dynamically.
-
-**Example:** Parsing and modifying an AST to inject a new method.
-
-```typescript
-// Placeholder for code example
-```
 
 ## Finding an Existing File in the Context
 
 When modifying generated code, it’s important to locate existing files.
 
-**Example:** Searching for a file in the generation context.
-
-```typescript
-// Placeholder for code example
-```
+<CodeGetFile/>
 
 ## Adding a File into the Context
 

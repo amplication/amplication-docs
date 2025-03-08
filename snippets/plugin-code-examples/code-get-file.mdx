@@ -1,0 +1,23 @@
+```typescript Get a file from the context
+
+  const path = `./src/${serviceName}.sln`;
+
+  //get the file from the context
+  const slnFile = context.files.get(path);
+
+  if (!slnFile) {
+    throw new Error(`File ${path} not found`);
+  }
+
+  const slnFileContent = slnFile.code.toString();
+  
+  //parse the solution file into an AST
+  const solution = new Solution();
+  solution.parse(slnFileContent);
+
+  slnFile.code = solution;
+
+  //overwrite the existing file with the updated AST
+  context.files.set(slnFile);
+
+```

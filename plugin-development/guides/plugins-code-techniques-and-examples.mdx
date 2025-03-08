@@ -14,21 +14,19 @@ import CodePluginSettings from "/snippets/plugin-code-examples/code-plugin-setti
 import CodeGetFile from "/snippets/plugin-code-examples/code-get-file.mdx";
 import ReferenceFileMap from "/snippets/function-reference/file-map.mdx";
 
-Amplication plugins allow developers to extend and customize the code generation process. This guide provides detailed explanations and practical code examples to help you build plugins effectively.
+Amplication plugins allow developers to extend and customize the code generation process to fit specific application requirements. By creating plugins, developers can modify generated code, introduce new functionalities, and streamline development workflows. This guide provides detailed explanations of essential plugin development techniques, along with practical code examples, to help you build effective Amplication plugins.
 
 ## Reading Resource Information and Properties
 
-Plugins often need to access resource metadata, such as entity definitions, properties, and settings.
-All the data is available throught the `context` object
+Plugins often need to access resource metadata, such as entity definitions, properties, and settings. This information is essential for making informed modifications to the generated code. The context object provides access to all relevant resource data, enabling plugins to dynamically adapt based on project configurations.
 
 <CodeResourceInfo />
 
 ## Copy the content of a folder and replace placeholders
 
-Plugins can generate files dynamically by using placeholders in static template files.
+Amplication plugins can generate files dynamically by leveraging static template files and replacing placeholders with project-specific values. This approach ensures consistency and reduces manual code duplication.
 
-The function `importStaticFilesWithReplacements` or `importStaticFiles` from `context.utils` can be used to load an entire content of a folder into the generated code.
-
+The functions `importStaticFilesWithReplacements` and `importStaticFiles` from `context.utils` allow developers to import entire directories of template files into the generated code. Placeholders within these files can be replaced with dynamic values, making it easy to customize the generated output.
 <FunctionReferenceImportStaticFiles/>
 <FunctionReferenceImportStaticFilesWithReplacements/>
 <CodeCopyStaticFiles />

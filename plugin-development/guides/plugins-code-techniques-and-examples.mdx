@@ -1,0 +1,106 @@
+---
+title: Building Amplication Plugins - Techniques and Examples
+description: Learn how to develop Amplication plugins with practical techniques and code examples.
+sidebarTitle: "Techniques and Examples"
+icon: "code"
+---
+
+import CodeResourceInfo from "/snippets/plugin-code-examples/code-resource-information.mdx";
+import CodeCopyStaticFiles from "/snippets/plugin-code-examples/code-copy-static-files.mdx";
+import FunctionReferenceImportStaticFiles from "/snippets/function-reference/import-static-files.mdx";
+import FunctionReferenceImportStaticFilesWithReplacements from "/snippets/function-reference/import-static-files-with-replacements.mdx";
+
+Amplication plugins allow developers to extend and customize the code generation process. This guide provides detailed explanations and practical code examples to help you build plugins effectively.
+
+## Reading Resource Information and Properties
+
+Plugins often need to access resource metadata, such as entity definitions, properties, and settings.
+All the data is available throught the `context` object
+
+<CodeResourceInfo />
+
+## Copy the content of a folder and replace placeholders
+
+Plugins can generate files dynamically by using placeholders in static template files.
+
+The function `importStaticFilesWithReplacements` or `importStaticFiles` from `context.utils` can be used to load an entire content of a folder into the generated code.
+
+<FunctionReferenceImportStaticFiles/>
+<FunctionReferenceImportStaticFilesWithReplacements/>
+<CodeCopyStaticFiles />
+
+## Reading Relations Data and Related Resources
+
+Entities in Amplication can have relationships. Accessing these relationships is crucial for generating correct code.
+
+**Example:** Retrieving related entities.
+
+```typescript
+// Placeholder for code example
+````
+
+## Reading Plugin Settings
+
+Plugins can define configurable settings that affect how they function.
+
+**Example:** Accessing user-defined plugin settings.
+
+```typescript
+// Placeholder for code example
+```
+
+## Using AST (Abstract Syntax Tree)
+
+AST enables plugins to modify existing code structures dynamically.
+
+**Example:** Parsing and modifying an AST to inject a new method.
+
+```typescript
+// Placeholder for code example
+```
+
+## Finding an Existing File in the Context
+
+When modifying generated code, it’s important to locate existing files.
+
+**Example:** Searching for a file in the generation context.
+
+```typescript
+// Placeholder for code example
+```
+
+## Adding a File into the Context
+
+A plugin may need to generate and add new files.
+
+**Example:** Creating and adding a new file.
+
+```typescript
+// Placeholder for code example
+```
+
+## Replacing a File in the Context
+
+Replacing an existing file ensures customization while preserving structure.
+
+**Example:** Overwriting a generated file.
+
+```typescript
+// Placeholder for code example
+```
+
+## Removing a File from the Context
+
+In some cases, plugins may need to exclude files from the final output.
+
+**Example:** Deleting a file from the generation context.
+
+```typescript
+// Placeholder for code example
+```
+
+## Conclusion
+
+With these techniques, you can create powerful Amplication plugins that customize and enhance generated applications. Use the placeholders to add your implementation-specific code examples.
+
+For further reference, check out the [Amplication Plugin API Documentation](https://docs.amplication.com/plugin-development/).

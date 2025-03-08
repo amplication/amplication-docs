@@ -1,0 +1,43 @@
+<ParamField body="FileMap" type="FileMap<T> implements IFileMap<T>">
+
+  <Expandable title="Class methods">
+
+    <ParamField body="merge" type="Promise<FileMap<T>">
+      Merge another map into this map
+    </ParamField>
+
+    <ParamField body="mergeMany" type="Promise<FileMap<T>">
+      Merge many maps into this map
+    </ParamField>
+
+    <ParamField body="set" type="Promise<void>">
+      Set a file in the map. If the file already exists, it will be overwritten and a log message will be printed.
+    </ParamField>
+
+    <ParamField body="get" type="IFile<T>">
+      Get a file for the given path, or undefined if no file exists for the path
+    </ParamField>
+
+    <ParamField body="replace" type="void">
+      Replace a file in the map. If the file does not exist, it will be added to the set.
+    </ParamField>
+
+    <ParamField body="replaceFilesPath" type="void">
+      Replace all files paths using a function
+    </ParamField>
+
+    <ParamField body="removeMany" type="void">
+      Remove files from the map
+    </ParamField>
+
+    <ParamField body="replaceFilesCode" type="Promise<void>">
+      Replace all files code using a function
+    </ParamField>
+
+    <ParamField body="getAll" type="IterableIterator<IFile<T>>">
+      Get an iterator for all files in the map
+    </ParamField>
+
+    
+  </Expandable >
+</ParamField>

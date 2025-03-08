@@ -1,0 +1,63 @@
+---
+title: Building Amplication Plugins - Techniques and Examples
+description: Learn how to develop Amplication plugins with practical techniques and code examples.
+sidebarTitle: "Techniques and Examples"
+icon: "code"
+---
+
+import CodeResourceInfo from "/snippets/plugin-code-examples/code-resource-information.mdx";
+import CodeCopyStaticFiles from "/snippets/plugin-code-examples/code-copy-static-files.mdx";
+import FunctionReferenceImportStaticFiles from "/snippets/function-reference/import-static-files.mdx";
+import FunctionReferenceImportStaticFilesWithReplacements from "/snippets/function-reference/import-static-files-with-replacements.mdx";
+import CodeRelatedResources from "/snippets/plugin-code-examples/code-related-resources.mdx";
+import CodePluginSettings from "/snippets/plugin-code-examples/code-plugin-settings.mdx";
+import CodeGetFile from "/snippets/plugin-code-examples/code-get-file.mdx";
+import ReferenceFileMap from "/snippets/function-reference/file-map.mdx";
+
+Amplication plugins allow developers to extend and customize the code generation process to fit specific application requirements. By creating plugins, developers can modify generated code, introduce new functionalities, and streamline development workflows. This guide provides detailed explanations of essential plugin development techniques, along with practical code examples, to help you build effective Amplication plugins.
+
+## Reading Resource Information and Properties
+
+Plugins often need to access resource metadata, such as entity definitions, properties, and settings. This information is essential for making informed modifications to the generated code. The context object provides access to all relevant resource data, enabling plugins to dynamically adapt based on project configurations.
+
+<CodeResourceInfo />
+
+## Copy the content of a folder and replace placeholders
+
+Amplication plugins can generate files dynamically by leveraging static template files and replacing placeholders with project-specific values. This approach ensures consistency and reduces manual code duplication.
+
+The functions `importStaticFilesWithReplacements` and `importStaticFiles` from `context.utils` allow developers to import entire directories of template files into the generated code. Placeholders within these files can be replaced with dynamic values, making it easy to customize the generated output.
+<FunctionReferenceImportStaticFiles/>
+<FunctionReferenceImportStaticFilesWithReplacements/>
+<CodeCopyStaticFiles />
+
+## Reading Relations Data and Related Resources
+
+Resources in Amplication can be linked to other related resources. Accessing and managing these relationships is essential for generating code that takes into account dependencies between different resources.
+
+For example, when generating deployment files for a Kubernetes cluster, a plugin might need to retrieve information from all related services to correctly configure the deployment specifications. By accessing related resources, plugins can ensure that generated files reflect the entire system architecture and include all necessary dependencies.
+
+<CodeRelatedResources/>
+
+
+## Reading Plugin Settings
+
+Plugins can define configurable settings that influence their behavior. These settings allow users to customize how the plugin functions without modifying its core code.
+
+By reading and applying plugin settings, developers can create more flexible and reusable plugins that adapt to different project requirements.
+
+<CodePluginSettings/>
+
+
+## Using the FileMap class to manage files
+
+The FileMap class is the primary interface for managing files within a plugin. It allows plugin developers to add, edit, or remove files from the generated code. Any modifications made through FileMap directly impact the final generated output.
+
+The FileMap is also a shared resource across different events and plugins. Files that were added in previous events or by other plugins are available in the map and can be read or altered. This enables collaboration between multiple plugins and ensures consistency in the generated project structure.
+
+To make any changes to the generated code, plugin developers must use FileMap, ensuring a structured and maintainable approach to file management.
+
+<ReferenceFileMap/>
+
+<CodeGetFile/>
+

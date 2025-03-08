@@ -33,22 +33,29 @@ The functions `importStaticFilesWithReplacements` and `importStaticFiles` from `
 
 ## Reading Relations Data and Related Resources
 
-Entities in Amplication can have relationships. Accessing these relationships is crucial for generating correct code.
+Resources in Amplication can be linked to other related resources. Accessing and managing these relationships is essential for generating code that takes into account dependencies between different resources.
+
+For example, when generating deployment files for a Kubernetes cluster, a plugin might need to retrieve information from all related services to correctly configure the deployment specifications. By accessing related resources, plugins can ensure that generated files reflect the entire system architecture and include all necessary dependencies.
 
 <CodeRelatedResources/>
 
 
 ## Reading Plugin Settings
 
-Plugins can define configurable settings that affect how they function.
+Plugins can define configurable settings that influence their behavior. These settings allow users to customize how the plugin functions without modifying its core code.
+
+By reading and applying plugin settings, developers can create more flexible and reusable plugins that adapt to different project requirements.
 
 <CodePluginSettings/>
 
 
 ## Using the FileMap class to manage files
 
-The `FileMap` class is a utility class that helps manage files in the context.
-it is a map of files that can be used to replace, add, remove or get files from the context.
+The FileMap class is the primary interface for managing files within a plugin. It allows plugin developers to add, edit, or remove files from the generated code. Any modifications made through FileMap directly impact the final generated output.
+
+The FileMap is also a shared resource across different events and plugins. Files that were added in previous events or by other plugins are available in the map and can be read or altered. This enables collaboration between multiple plugins and ensures consistency in the generated project structure.
+
+To make any changes to the generated code, plugin developers must use FileMap, ensuring a structured and maintainable approach to file management.
 
 <ReferenceFileMap/>
 

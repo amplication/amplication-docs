@@ -201,72 +201,69 @@
     {
       "group": "Guides & Tutorials",
       "pages": [
+        "plugin-development/guides/plugins-code-techniques-and-examples",
         "plugin-development/guides/use-amplication-to-generate-new-plugins"
       ]
     },
+
     {
-      "group": "Plugin Event Reference",
+      "group": "Blueprint Plugin Events",
+      "icon": "code",
       "pages": [
-        {
-          "group": "Blueprint Plugin Events",
-          "icon": "code",
-          "pages": [
-            "plugin-development/blueprint-plugin-events/create-blueprint",
-            "plugin-development/blueprint-plugin-events/create-modules",
-            "plugin-development/blueprint-plugin-events/create-module"
-          ]
-        },
-        {
-          "group": "Node.js Plugin Events",
-          "icon": "node-js",
-          "pages": [
-            "plugin-development/node-plugin-events/create-server",
-            "plugin-development/node-plugin-events/create-server-docker-compose",
-            "plugin-development/node-plugin-events/create-server-docker-compose-dev",
-            "plugin-development/node-plugin-events/create-server-dot-env",
-            "plugin-development/node-plugin-events/create-server-auth",
-            "plugin-development/node-plugin-events/create-package-json",
-            "plugin-development/node-plugin-events/create-entity-service",
-            "plugin-development/node-plugin-events/create-entity-service-base",
-            "plugin-development/node-plugin-events/create-entity-controller",
-            "plugin-development/node-plugin-events/create-entity-controller-base",
-            "plugin-development/node-plugin-events/create-entity-resolver",
-            "plugin-development/node-plugin-events/create-entity-resolver-base",
-            "plugin-development/node-plugin-events/create-message-broker-service",
-            "plugin-development/node-plugin-events/create-message-broker-service-base",
-            "plugin-development/node-plugin-events/create-message-broker-nestjs-module",
-            "plugin-development/node-plugin-events/create-message-broker-client-options-factory",
-            "plugin-development/node-plugin-events/create-message-broker-topics-enum",
-            "plugin-development/node-plugin-events/create-prisma-schema"
-          ]
-        },
-        {
-          "group": ".NET Plugin Events",
-          "icon": "microsoft",
-          "pages": [
-            "plugin-development/dotnet-plugin-events/create-server",
-            "plugin-development/dotnet-plugin-events/create-server-appsettings",
-            "plugin-development/dotnet-plugin-events/create-server-auth",
-            "plugin-development/dotnet-plugin-events/create-program-file",
-            "plugin-development/dotnet-plugin-events/create-server-csproj",
-            "plugin-development/dotnet-plugin-events/create-server-docker-compose",
-            "plugin-development/dotnet-plugin-events/create-server-git-ignore",
-            "plugin-development/dotnet-plugin-events/create-entity-model",
-            "plugin-development/dotnet-plugin-events/create-resource-db-context-file",
-            "plugin-development/dotnet-plugin-events/create-message-broker",
-            "plugin-development/dotnet-plugin-events/create-message-broker-client-options-factory",
-            "plugin-development/dotnet-plugin-events/create-message-broker-service",
-            "plugin-development/dotnet-plugin-events/create-entity-controller",
-            "plugin-development/dotnet-plugin-events/create-entity-controller-base",
-            "plugin-development/dotnet-plugin-events/create-dtos",
-            "plugin-development/dotnet-plugin-events/create-entity-extensions",
-            "plugin-development/dotnet-plugin-events/create-entity-interface",
-            "plugin-development/dotnet-plugin-events/create-entity-service",
-            "plugin-development/dotnet-plugin-events/create-entity-service-base",
-            "plugin-development/dotnet-plugin-events/create-seed-development-data-file",
-            "plugin-development/dotnet-plugin-events/load-static-files"
-          ]
-        }
+        "plugin-development/blueprint-plugin-events/create-blueprint",
+        "plugin-development/blueprint-plugin-events/create-modules",
+        "plugin-development/blueprint-plugin-events/create-module"
+      ]
+    },
+    {
+      "group": "Node.js Plugin Events",
+      "icon": "node-js",
+      "pages": [
+        "plugin-development/node-plugin-events/create-server",
+        "plugin-development/node-plugin-events/create-server-docker-compose",
+        "plugin-development/node-plugin-events/create-server-docker-compose-dev",
+        "plugin-development/node-plugin-events/create-server-dot-env",
+        "plugin-development/node-plugin-events/create-server-auth",
+        "plugin-development/node-plugin-events/create-package-json",
+        "plugin-development/node-plugin-events/create-entity-service",
+        "plugin-development/node-plugin-events/create-entity-service-base",
+        "plugin-development/node-plugin-events/create-entity-controller",
+        "plugin-development/node-plugin-events/create-entity-controller-base",
+        "plugin-development/node-plugin-events/create-entity-resolver",
+        "plugin-development/node-plugin-events/create-entity-resolver-base",
+        "plugin-development/node-plugin-events/create-message-broker-service",
+        "plugin-development/node-plugin-events/create-message-broker-service-base",
+        "plugin-development/node-plugin-events/create-message-broker-nestjs-module",
+        "plugin-development/node-plugin-events/create-message-broker-client-options-factory",
+        "plugin-development/node-plugin-events/create-message-broker-topics-enum",
+        "plugin-development/node-plugin-events/create-prisma-schema"
+      ]
+    },
+    {
+      "group": ".NET Plugin Events",
+      "icon": "microsoft",
+      "pages": [
+        "plugin-development/dotnet-plugin-events/create-server",
+        "plugin-development/dotnet-plugin-events/create-server-appsettings",
+        "plugin-development/dotnet-plugin-events/create-server-auth",
+        "plugin-development/dotnet-plugin-events/create-program-file",
+        "plugin-development/dotnet-plugin-events/create-server-csproj",
+        "plugin-development/dotnet-plugin-events/create-server-docker-compose",
+        "plugin-development/dotnet-plugin-events/create-server-git-ignore",
+        "plugin-development/dotnet-plugin-events/create-entity-model",
+        "plugin-development/dotnet-plugin-events/create-resource-db-context-file",
+        "plugin-development/dotnet-plugin-events/create-message-broker",
+        "plugin-development/dotnet-plugin-events/create-message-broker-client-options-factory",
+        "plugin-development/dotnet-plugin-events/create-message-broker-service",
+        "plugin-development/dotnet-plugin-events/create-entity-controller",
+        "plugin-development/dotnet-plugin-events/create-entity-controller-base",
+        "plugin-development/dotnet-plugin-events/create-dtos",
+        "plugin-development/dotnet-plugin-events/create-entity-extensions",
+        "plugin-development/dotnet-plugin-events/create-entity-interface",
+        "plugin-development/dotnet-plugin-events/create-entity-service",
+        "plugin-development/dotnet-plugin-events/create-entity-service-base",
+        "plugin-development/dotnet-plugin-events/create-seed-development-data-file",
+        "plugin-development/dotnet-plugin-events/load-static-files"
       ]
     }
   ],

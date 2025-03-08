@@ -1,0 +1,29 @@
+```typescript Retrieving resource properties.
+const resourceInfo = context.resourceInfo;
+
+//Check if resource info is available - this should always be available
+if (!resourceInfo) {
+  throw new Error("Resource info is not available");
+}
+
+//Get the name of the resource
+const resourceName = resourceInfo.name;
+
+//resource catalog properties
+const resourceCatalogProperties = (resourceInfo.properties || {}) as Record<
+  string,
+  string
+>;
+
+//Get the value of a property with the key DOMAIN
+const domain = resourceCatalogProperties["DOMAIN"];
+
+//Resource blueprint properties
+const resourceSetting = (context.resourceSettings?.properties || {}) as Record<
+  string,
+  string
+>;
+
+//Get the value of a property with the key REGION
+const region = resourceSetting["REGION"];
+```

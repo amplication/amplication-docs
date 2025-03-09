@@ -87,3 +87,4 @@ Atlassian's
 serverless
 config
 interdependencies
+spotify

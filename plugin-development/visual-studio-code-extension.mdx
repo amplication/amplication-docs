@@ -32,55 +32,46 @@ code --install-extension amplication.amplication
 
 ## Usage
 
-### Download a Plugin Template
+The commands are accesible from the **command palette** (Ctrl+Shift+P or Cmd+Shift+P on macOS).
 
-Use the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS) and run:
+<Steps>
 
+<Step title="Download a Plugin Template">
 ```
 Amplication Plugin: Download Blueprint Template Plugin
 ```
+Select the desired template from the available options. Currently available .Net, Node.js and Blueprint.
+</Step>
 
-Select the desired template from the available options.
+</Steps>
 
-### Install Dependencies
-
-Use the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS) and run:
-
+<Step title="Install Dependencies">
 ```
 Amplication Plugin: Install Dependencies
 ```
+After downloading a template plugin, you should run this command to install the plugin's dependencies, specified in the package.json file within the plugin's directory.
+</Step>
 
-This command will install the plugin's dependencies, specified in the package.json file within the plugin's directory.
-
-### Build
-
-While development, you can run this command:
-
+<Step title="Build">
 ```
 Amplication Plugin: Build
 ```
-
 This command will build the plugin's code and assets, allowing you to publish it.
+</Step>
 
-### Build and Push a Plugin
-
-Run the following command from the command palette when you want to push your code:
-
+<Step title="Build and Push a Plugin">
 ```
 Amplication Plugin: Build and Push
 ```
+Like the **Build**, this command will build the plugin's code. In addition, it will git commit and push the changes to your git repository.
+</Step>
 
-This will build the plugin and push changes to your repository.
-
-### Publish a New Plugin Version
-
-To publish a new version of your plugin, run:
-
+<Step title="Publish a New Plugin Version">
 ```
 Amplication Plugin: Publish Version
 ```
-
-This will automatically bump the version and publish it.
+This command will automatically bump the plugin's version (patch, minor or major) and tag the plugin with the new version.
+</Step>
 
 ---
 

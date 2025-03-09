@@ -65,3 +65,4 @@ gitRepository
 resourceIds
 __typename
 mv
+spotify

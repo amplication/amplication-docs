@@ -1,0 +1,41 @@
+```typescript Retrieving related resources
+import { blueprintTypes, DSGResourceData } from "@amplication/code-gen-types";
+
+// Relation keys for the related resources based on the blueprint relation configuration
+export enum EnumRelationKey {
+  ProjectMetadata = "PROJECT_METADATA",
+  Deployment = "DEPLOYMENT",
+  Service = "SERVICE",
+}
+
+export function getRelatedResources(
+  context: blueprintTypes.DsgContext,
+  relationKey: EnumRelationKey,
+): DSGResourceData[] {
+  const relation = context.relations?.find(
+    (relation) => relation.relationKey === relationKey,
+  );
+
+  if (!relation) {
+    context.logger.error(
+      `Related resource not found for relation key: ${relationKey}`,
+    );
+    return [];
+  }
+
+  const relatedResources = context.otherResources?.filter(
+    (resource) =>
+      resource.resourceInfo &&
+      relation.relatedResources.includes(resource.resourceInfo.id),
+  );
+
+  if (!relatedResources) {
+    context.logger.error(
+      `Related resources not found for relation key: ${relationKey}`,
+    );
+    return [];
+  }
+
+  return relatedResources;
+}
+```

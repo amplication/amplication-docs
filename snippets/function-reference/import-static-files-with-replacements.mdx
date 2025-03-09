@@ -1,0 +1,28 @@
+<ParamField body="context.utils.importStaticFilesWithReplacements" >
+
+  <Expandable title="function parameters">
+
+    <ParamField body="source" type="string">
+      The path to the source folder with the static files to be copied. 
+      For example,
+      
+      ```typescript
+        const staticPath = resolve(__dirname, "./static");
+      ```
+    </ParamField>
+
+    <ParamField body="basePath" type="string">
+    The base path of the target folder where the static files will be copied.
+    </ParamField>
+
+    <ParamField body="placeholders" type="Record<string, string>">
+    A list of text values that will be used to replace placeholders in the files
+    and file paths, in a format of a `{{ PLACEHOLDER_KEY }}`.
+    </ParamField>
+
+    <ParamField body="stringReplacements" type="Record<string, string>">
+    A list of text values that will be used to replace simple text in the files
+    and file paths of the loaded files.
+    </ParamField>
+  </Expandable >
+</ParamField>

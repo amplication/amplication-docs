@@ -1,0 +1,67 @@
+```typescript Import Static Files With Replacements
+import { IFile, blueprintTypes } from "@amplication/code-gen-types";
+import { pascalCase } from "pascal-case";
+import { resolve } from "path";
+import { CodeBlock } from "@amplication/csharp-ast";
+
+//convert the solution file to a AST so it can be used on other plugins as AST
+export async function copyStaticFiles(
+  context: blueprintTypes.DsgContext
+): Promise<void> {
+  const params = {} as Record<string, string>;
+
+  //prepare some placeholders for the static files
+  params.SERVICE_DISPLAY_NAME = context.resourceInfo?.name || "Service Name";
+  params.SERVICE_NAME = pascalCase(params.SERVICE_DISPLAY_NAME);
+
+  const resourceInfo = context.resourceInfo;
+
+  if (!resourceInfo) {
+    throw new Error("Resource info is not available");
+  }
+
+  //resource catalog properties
+  const resourceCatalogProperties = (resourceInfo.properties || {}) as Record<
+    string,
+    string
+  >;
+
+  //Resource blueprint properties
+  const resourceSetting = (context.resourceSettings?.properties ||
+    {}) as Record<string, string>;
+
+  //Add all catalog and resource settings to the placeholders
+  //replacement is done on all files and paths in a format {{key}}
+  const placeholders = {
+    ...params,
+    ...resourceCatalogProperties,
+    ...resourceSetting,
+  };
+
+  //Add the service name to the placeholders
+  //replacement is done on all files and paths as a simple string replacement
+  const stringReplacements = {
+    TemplateServiceName: params.SERVICE_NAME,
+  };
+
+  // read the static files from the static folder
+  const staticPath = resolve(__dirname, "./static");
+  const files = await context.utils.importStaticFilesWithReplacements(
+    staticPath,
+    ".",
+    placeholders,
+    stringReplacements
+  );
+
+  //convert all files to CodeBlock and add them to the context
+  for (const file of files.getAll()) {
+    const codeBlock: IFile<CodeBlock> = {
+      path: file.path,
+      code: new CodeBlock({
+        code: file.code,
+      }),
+    };
+    context.files.set(codeBlock);
+  }
+}
+```

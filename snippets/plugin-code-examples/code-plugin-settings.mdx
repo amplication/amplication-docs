@@ -1,0 +1,32 @@
+```typescript Read Plugin Settings
+import { blueprintTypes } from "@amplication/code-gen-types";
+import defaultSettings from "../.amplicationrc.json";
+
+export const PLUGIN_ID = "my-plugin-id";
+
+export interface Settings {
+  param1: string;
+  param2: string;
+  array: string[];
+}
+
+export const getPluginSettings = (
+  context: blueprintTypes.DsgContext,
+): Settings => {
+  const pluginInstallations = context.pluginInstallations;
+
+  const plugin = pluginInstallations.find(
+    (plugin) => plugin.pluginId === PLUGIN_ID,
+  );
+
+  const userSettings = plugin?.settings ?? {};
+
+  const settings: Settings = {
+    ...defaultSettings.settings,
+    ...userSettings,
+  };
+
+  return settings;
+};
+
+```

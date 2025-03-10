@@ -191,6 +191,7 @@
     {
       "group": "Developing a Plugin",
       "pages": [
+        "plugin-development/visual-studio-code-extension",
         "plugin-development/plugin-folder-structure",
         "plugin-development/configure-plugin",
         "plugin-development/define-plugin-settings",

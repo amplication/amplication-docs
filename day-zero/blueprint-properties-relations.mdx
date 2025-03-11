@@ -72,7 +72,12 @@ Let's explore how **relations** work in the Blueprint system.
     Within your Blueprint configuration, add a relation that references the target Blueprint. This can be one-to-one or one-to-many, depending on how many resources typically interact.
   </Accordion>
 
-  <Accordion icon="circle-3" title="Generate Dynamic Code with Plugins">
+  <Accordion icon="circle-3" title="Set the Relation Scope">
+    When defining a relationship field, you can enable the “Limit selection to the same project” option. When checked, this setting restricts the selection of related resources to those within the same project as the parent resource. This ensures that relationships are confined to the project’s scope, maintaining organizational integrity and preventing cross-project dependencies.
+  </Accordion>
+  
+
+  <Accordion icon="circle-4" title="Generate Dynamic Code with Plugins">
     Amplication uses these relationships during code generation via private plugins. For example, if a service has a "database" relation, the generated code includes connection strings, schema references, or environment variables automatically.
   </Accordion>
 </AccordionGroup>

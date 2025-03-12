@@ -88,3 +88,5 @@ serverless
 config
 interdependencies
 spotify
+[Ww]ebpack
+(?i)NPM

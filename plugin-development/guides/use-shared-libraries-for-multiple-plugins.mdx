@@ -1,6 +1,6 @@
 ---
 title: Using a Shared Library in Amplication Plugins
-description: Learn how to create and use a shared library across multiple Amplication plugins using NPM and Webpack configuration.
+description: Learn how to create and use a shared library across multiple Amplication plugins using npm and Webpack configuration.
 icon: "share-from-square"
 ---
 
@@ -8,14 +8,14 @@ icon: "share-from-square"
 
 Amplication plugins are built using Webpack, which bundles all dependencies into the `dist` folder. This ensures that plugins can run independently without requiring external dependencies at runtime. However, when developing multiple plugins that share common utilities or logic, duplicating code is inefficient. Instead, you can create a shared library that can be locally imported into your plugins using the method described below.
 
-This guide explains how to create a shared library and integrate it into Amplication plugins using NPM dependencies and Webpack configuration.
+This guide explains how to create a shared library and integrate it into Amplication plugins using npm dependencies and Webpack configuration.
 
 ## Creating the Shared Library
 
 1. **Create a new folder for the shared library**
    - Inside your plugin repository, create a new directory under root called `lib`.
    
-2. **Initialize an NPM package**
+2. **Initialize an npm package**
    - Navigate to `lib` and create a new package:
      ```sh
      cd lib

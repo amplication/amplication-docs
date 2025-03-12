@@ -88,3 +88,4 @@ serverless
 config
 interdependencies
 spotify
+[Ww]ebpack

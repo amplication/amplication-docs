@@ -203,6 +203,7 @@
       "group": "Guides & Tutorials",
       "pages": [
         "plugin-development/guides/plugins-code-techniques-and-examples",
+        "plugin-development/guides/use-shared-libraries-for-multiple-plugins",
         "plugin-development/guides/use-amplication-to-generate-new-plugins"
       ]
     },

@@ -1,0 +1,90 @@
+---
+title: Using a Shared Library in Amplication Plugins
+description: Learn how to create and use a shared library across multiple Amplication plugins using npm and Webpack configuration.
+icon: "share-from-square"
+---
+
+## Overview
+
+Amplication plugins are built using Webpack, which bundles all dependencies into the `dist` folder. This ensures that plugins can run independently without requiring external dependencies at runtime. However, when developing multiple plugins that share common utilities or logic, duplicating code is inefficient. Instead, you can create a shared library that can be locally imported into your plugins using the method described below.
+
+This guide explains how to create a shared library and integrate it into Amplication plugins using npm dependencies and Webpack configuration.
+
+## Creating the Shared Library
+
+1. **Create a new folder for the shared library**
+   - Inside your plugin repository, create a new directory under root called `lib`.
+   
+2. **Initialize an npm package**
+   - Navigate to `lib` and create a new package:
+     ```sh
+     cd lib
+     mkdir shared
+     cd shared
+     npm init -y
+     ```
+   - This creates a `package.json` file with the package name `shared`.
+
+3. **Add utility functions**
+   - Inside the `shared` directory, create an `index.ts` file and add a utility function:
+     ```ts
+     export const toCamelCase = (str: string): string => {
+       return str.replace(/([-_][a-z])/g, (group) => group.toUpperCase().replace('-', '').replace('_', ''));
+     };
+     ```
+
+## Using the Shared Library in a Plugin
+
+1. **Add the shared library as a dependency**
+   - Inside the `package.json` of the target plugin, add a local dependency:
+     ```json
+     "dependencies": {
+       "@my-org/shared": "file:../../lib/shared"
+     }
+     ```
+   - Replace `@my-org` with your package scope if needed.
+   
+2. **Update Webpack Configuration**
+   - Open `webpack.config.js` in your plugin directory and add an alias for the shared package:
+     ```js
+     const path = require('path');
+     
+     module.exports = {
+       resolve: {
+         alias: {
+           '@my-org/shared': path.resolve(__dirname, '../../lib/shared')
+         }
+       }
+     };
+     ```
+
+3. **Import and Use the Shared Library**
+   - Inside your plugin, import and use the shared utility function:
+     ```ts
+     import { toCamelCase } from '@my-org/shared';
+     
+     const testString = "my test string";
+     const result = toCamelCase(testString);
+     context.logger.info(`Shared utility function result: ${result}`);
+     ```
+
+## Running and Testing
+
+1. Install dependencies and build the shared package:
+   ```sh
+   cd lib/shared
+   npm install
+   npm run build
+   ```
+2. Install dependencies in your plugin and run it:
+   ```sh
+   cd ../plugins/my-plugin
+   npm install
+   npm run build
+   ```
+3. Execute the plugin to verify that the shared function is correctly used.
+
+## Conclusion
+
+Using a shared library in Amplication plugins allows you to centralize reusable utilities, improving maintainability and consistency across multiple plugins. By setting up local dependencies and Webpack aliases, you can seamlessly integrate shared functions into your development workflow.
+

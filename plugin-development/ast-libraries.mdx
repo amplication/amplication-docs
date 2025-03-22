@@ -19,6 +19,26 @@ Amplication AST libraries provide functionality for generating Abstract Syntax T
 * Common interfaces and types across language implementations
 * Extensible architecture for adding new language support
 
+## Scope and Purpose
+
+The AST libraries are not intended to cover all language functionality. Instead, they focus on the elements needed to create the foundation and boilerplate code with Amplication plugins. These libraries provide the essential building blocks for generating well-structured code across different languages.
+
+When more specialized or custom code is needed, the `CodeBlock` can be used as a generic node that can include any code as a string. This flexibility allows you to generate both structured AST-based code and custom code blocks when necessary.
+
+```typescript
+import { CodeBlock } from '@amplication/java-ast'; // or '@amplication/csharp-ast'
+
+// Create a custom code block when needed
+const customLogic = new CodeBlock(`
+  // Custom implementation that may not be supported by the AST library directly
+  if (condition) {
+    specialFunction();
+    return customResult;
+  }
+`);
+
+```
+
 ## Available Libraries
 
 Amplication provides several AST libraries:

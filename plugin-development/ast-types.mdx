@@ -19,6 +19,12 @@ The AST Types library provides common interfaces and types used across different
 * Shared utilities and helpers
 * Type system abstractions
 
+## Scope and Purpose
+
+The AST Types library is not intended to cover all language functionality. It provides the core interfaces and types needed to create foundation and boilerplate code with Amplication plugins. The library focuses on essential abstractions that can be implemented by language-specific AST libraries.
+
+The `IAstNode` interface is a fundamental part of this design, allowing code to be represented as structured objects while also supporting generic code blocks when needed for more specialized implementations.
+
 ## Installation
 
 ```bash

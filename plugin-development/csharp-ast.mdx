@@ -1,0 +1,51 @@
+---
+title: C# AST
+description: Library for generating C# code through an abstract syntax tree
+---
+
+# C# AST Library
+
+The C# AST library provides functionality for generating C# code through an abstract syntax tree in the Amplication platform. It enables the creation of type-safe, well-structured C# code for .NET applications.
+
+## Key Features
+
+* Class and interface generation
+* Method and property declarations
+* Type system with generics
+* Attributes and documentation
+* Namespace management
+
+## Installation
+
+```bash
+npm install @amplication/csharp-ast
+```
+
+## Usage
+
+The C# AST library allows you to build C# code programmatically:
+
+```typescript
+import { Class, ClassReference, CodeBlock } from "@amplication/csharp-ast";
+
+// Create a class
+const myClass = new Class({
+    name: "MyService",
+    access: "public",
+    namespace: "MyNamespace",
+    interfaceReferences: [
+    new ClassReference({
+        name: "IMyService",
+        namespace: "MyNamespace",
+    }),
+    ],
+});
+
+// Add methods and properties
+// ...
+```
+
+## Documentation
+
+For detailed API documentation, visit:
+[https://amplication.github.io/ast-types/](https://amplication.github.io/ast-types/) 

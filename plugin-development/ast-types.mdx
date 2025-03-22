@@ -1,0 +1,75 @@
+---
+title: AST Types
+description: Common interfaces and types for AST generation
+---
+
+# AST Types Library
+
+The AST Types library provides common interfaces and types used across different language implementations in the Amplication platform. It serves as the foundation for language-specific AST libraries like Java AST and C# AST.
+
+## Key Features
+
+* Base interfaces for AST nodes
+* Common type definitions
+* Shared utilities and helpers
+* Type system abstractions
+
+## Installation
+
+```bash
+npm install @amplication/ast-types
+```
+
+## Usage
+
+AST Types is typically used as a dependency by language-specific AST libraries. However, you can also use it directly in your projects if you need to access common AST interfaces and types.
+
+```typescript
+import { Module, ClassDeclaration } from '@amplication/ast-types';
+```
+
+## The IAstNode Interface
+
+The `IAstNode` interface is a cornerstone of Amplication's code generation system. It defines the common contract that all AST nodes must implement, regardless of the target language.
+
+### Key Aspects of IAstNode
+
+- Acts as the base interface for all language-specific AST nodes
+- Enables language-agnostic code transformations
+- Facilitates integration between different AST implementations
+- Allows plugins to use a common type when manipulating code
+
+### Using IAstNode in Plugins
+
+In Amplication plugins, you'll work extensively with the `IAstNode` interface:
+
+```typescript
+import { IAstNode } from "@amplication/ast-types";
+import { IFile } from "@amplication/code-gen-types";
+
+// Create language-specific AST nodes that implement IAstNode
+// ...
+
+// Create a file referencing the AST node
+const file: IFile<IAstNode> = {
+  path: "path/to/file",
+  code: astNode, // Your AST node implementing IAstNode
+};
+
+// Add the file to the context
+context.files.set(file);
+```
+
+When developing plugins, you'll typically follow this pattern:
+
+1. Import `IAstNode` from "@amplication/ast-types"
+2. Create language-specific AST nodes using a library like @amplication/java-ast or @amplication/csharp-ast
+3. Create an `IFile<IAstNode>` that references your AST node
+4. Add the file to the generation context using `context.files.set()`
+
+This approach ensures your generated code integrates seamlessly with Amplication's code generation pipeline.
+
+## Documentation
+
+For detailed API documentation, visit:
+[https://amplication.github.io/ast-types/](https://amplication.github.io/ast-types/) 

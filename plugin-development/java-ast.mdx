@@ -1,0 +1,56 @@
+---
+title: Java AST
+description: Library for generating Java code through an abstract syntax tree
+---
+
+# Java AST Library
+
+The Java AST library provides functionality for generating Java code through an abstract syntax tree in the Amplication platform. It enables the creation of type-safe, well-structured Java code.
+
+## Key Features
+
+* Class and interface generation
+* Method and field declarations
+* Type system with generics
+* Annotations and documentation
+* Package management
+
+## Installation
+
+```bash
+npm install @amplication/java-ast
+```
+
+## Usage
+
+The Java AST library allows you to build Java code programmatically:
+
+```typescript
+import { 
+  Class, 
+  ClassReference,
+  Method, 
+  Field 
+} from '@amplication/java-ast';
+
+// Create a class
+const myClass = new Class({
+    name: "MyService",
+    packageName: "com.example.service",
+    access: Access.Public,
+    implements_: [
+    new ClassReference({
+        name: "IMyService",
+        packageName: "com.example.service",
+    }),
+    ],
+});
+
+// Add methods and fields
+// ...
+```
+
+## Documentation
+
+For detailed API documentation, visit:
+[https://amplication.github.io/ast-types/](https://amplication.github.io/ast-types/) 

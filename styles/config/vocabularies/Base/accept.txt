@@ -89,3 +89,5 @@ config
 interdependencies
 spotify
 [Ww]ebpack
+[Nn]amespace
+[Nn]amespaces

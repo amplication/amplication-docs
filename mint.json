@@ -207,7 +207,16 @@
         "plugin-development/guides/use-amplication-to-generate-new-plugins"
       ]
     },
-
+    {
+      "group": "AST Libraries",
+      "icon": "code",
+      "pages": [
+        "plugin-development/ast-libraries",
+        "plugin-development/ast-types",
+        "plugin-development/csharp-ast",
+        "plugin-development/java-ast"
+      ]
+    },
     {
       "group": "Blueprint Plugin Events",
       "icon": "code",

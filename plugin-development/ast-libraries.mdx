@@ -1,0 +1,171 @@
+---
+title: AST Libraries
+description: Overview of Amplication's AST libraries for code generation
+icon: 'cubes'
+---
+
+# Amplication AST Libraries
+
+<Note>
+These AST libraries are used by Blueprint and .NET engines. Node.js plugins use different methods for code generation as detailed in the Node.js Plugin Events documentation.
+</Note>
+
+Amplication AST libraries provide functionality for generating Abstract Syntax Trees (AST) for different programming languages in the Amplication platform. These libraries are used to generate type-safe, well-structured code for various programming languages.
+
+## Key Features
+
+* Type-safe AST generation
+* Support for multiple programming languages
+* Common interfaces and types across language implementations
+* Extensible architecture for adding new language support
+
+## Available Libraries
+
+Amplication provides several AST libraries:
+
+- [AST Types](/plugin-development/ast-types) - Common interfaces and types used across different language implementations
+- [C# AST](/plugin-development/csharp-ast) - Library for generating C# code through an abstract syntax tree
+- [Java AST](/plugin-development/java-ast) - Library for generating Java code through an abstract syntax tree
+
+## Installation
+
+To install the libraries:
+
+```bash
+# For AST Types
+npm install @amplication/ast-types
+
+# For C# AST
+npm install @amplication/csharp-ast
+
+# For Java AST
+npm install @amplication/java-ast
+```
+
+## Getting Started
+
+To use these libraries in your project:
+
+```typescript
+// For Java AST
+import { Class, Interface, Method } from '@amplication/java-ast';
+
+// or for C# AST
+import { Class, Interface, Method } from '@amplication/csharp-ast';
+```
+
+## Documentation
+
+<Card horizontal title="AST Libraries API Documentation" icon="link" href="https://amplication.github.io/ast-types/">
+  Complete API reference for all AST libraries. Explore class definitions, method signatures, type hierarchies, and usage examples to help you build powerful code generation plugins.
+</Card>
+
+## Using AST Libraries in Plugins
+
+Amplication's plugin architecture is built around the AST libraries. When developing plugins, you can leverage these libraries to generate code that integrates seamlessly with Amplication's code generation process.
+
+### Plugin Integration
+
+All Amplication plugins work with objects of type `IAstNode` from the AST libraries. Plugins typically:
+
+1. Create AST nodes using the appropriate library (Java, C#, etc.)
+2. Create an `IFile<IAstNode>` object that references the AST node
+3. Add the file to the context using `context.files.set()`
+
+This approach allows plugins to generate code that's properly integrated into Amplication's code generation pipeline.
+
+### Example: Using AST in a Plugin
+
+Here's an example of how a plugin might use the Java AST library to create a class:
+
+```typescript
+import { IAstNode } from "@amplication/ast-types";
+import {
+  blueprintPluginEventsParams as blueprint,
+  blueprintPluginEventsTypes,
+  blueprintTypes,
+  IFile,
+} from "@amplication/code-gen-types";
+import {
+  Access,
+  Class,
+  Field,
+  Method,
+  MethodType,
+  Type,
+} from "@amplication/java-ast";
+import { pascalCase } from "pascal-case";
+
+class JavaTestPlugin implements blueprintTypes.AmplicationPlugin {
+  register(): blueprintPluginEventsTypes.BlueprintEvents {
+    return {
+      createBlueprint: {
+        before: this.beforeCreateBlueprint,
+      },
+    };
+  }
+  async beforeCreateBlueprint(
+    context: blueprintTypes.DsgContext,
+    eventParams: blueprint.CreateBlueprintParams,
+  ): Promise<blueprint.CreateBlueprintParams> {
+    context.logger.info("Generating Java test classes...");
+
+    const params = {} as Record<string, string>;
+
+    params.SERVICE_DISPLAY_NAME = context.resourceInfo?.name || "User";
+    params.SERVICE_NAME = pascalCase(params.SERVICE_DISPLAY_NAME);
+
+    const testClass = new Class({
+      name: "MyJavaTestClass",
+      packageName: "com.example.test",
+      access: Access.Public,
+    });
+
+    testClass.addField(
+      new Field({
+        name: "myMockField",
+        type: Type.string(),
+        access: Access.Private,
+      }),
+    );
+
+    testClass.addField(
+      new Field({
+        name: "myServiceField",
+        type: Type.string(),
+        access: Access.Private,
+      }),
+    );
+
+    testClass.addMethod(
+      new Method({
+        name: "myTestMethod1",
+        type: MethodType.INSTANCE,
+        access: Access.Public,
+      }),
+    );
+
+    testClass.addMethod(
+      new Method({
+        name: "myTestMethod2",
+        type: MethodType.INSTANCE,
+        access: Access.Public,
+      }),
+    );
+
+    const javaFile: IFile<IAstNode> = {
+      path: "MyJavaTestClass.java",
+      code: testClass,
+    };
+
+    context.files.set(javaFile);
+
+    return eventParams;
+  }
+}
+
+export default JavaTestPlugin;
+
+```
+
+Using the AST libraries gives you fine-grained control over code generation while ensuring the generated code integrates correctly with the rest of the Amplication-generated codebase. 

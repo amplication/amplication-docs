@@ -91,3 +91,4 @@ spotify
 [Ww]ebpack
 [Nn]amespace
 [Nn]amespaces
+Async

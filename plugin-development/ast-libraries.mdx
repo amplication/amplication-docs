@@ -46,6 +46,7 @@ Amplication provides several AST libraries:
 - [AST Types](/plugin-development/ast-types) - Common interfaces and types used across different language implementations
 - [C# AST](/plugin-development/csharp-ast) - Library for generating C# code through an abstract syntax tree
 - [Java AST](/plugin-development/java-ast) - Library for generating Java code through an abstract syntax tree
+- [Python AST](/plugin-development/python-ast) - Library for generating Python code through an abstract syntax tree
 
 ## Installation
 
@@ -60,6 +61,9 @@ npm install @amplication/csharp-ast
 
 # For Java AST
 npm install @amplication/java-ast
+
+# For Python AST
+npm install @amplication/python-ast
 ```
 
 ## Getting Started
@@ -70,8 +74,11 @@ To use these libraries in your project:
 // For Java AST
 import { Class, Interface, Method } from '@amplication/java-ast';
 
-// or for C# AST
+// For C# AST
 import { Class, Interface, Method } from '@amplication/csharp-ast';
+
+// For Python AST
+import { Class, Interface, Method } from '@amplication/python-ast';
 ```
 
 ## Documentation

@@ -1,0 +1,113 @@
+---
+title: Python AST
+description: Library for generating Python code through an abstract syntax tree
+icon: 'python'
+---
+
+# Python AST Library
+
+<Note>
+The Python AST library is used by Blueprint engine plugins. Node.js plugins use different methods for code generation as detailed in the Node.js Plugin Events documentation.
+</Note>
+
+The Python AST library provides functionality for generating Python code through an abstract syntax tree in the Amplication platform. It enables the creation of type-safe, well-structured Python code.
+
+## Key Features
+
+* Core Python language constructs (modules, classes, functions)
+* Import management and type annotations
+* Generic code block for unsupported language features
+* Clean and consistent API that matches other Amplication AST libraries
+* Support for static and class methods
+* Async function support
+* Type hints and annotations
+
+## Scope and Purpose
+
+The Python AST library is not intended to cover all Python language functionality. Instead, it focuses on the elements needed to create foundation and boilerplate code with Amplication plugins. The library provides building blocks for generating well-structured Python code for common patterns and use cases.
+
+When more specialized or custom code is needed, the `CodeBlock` class can be used as a generic node that can include any code as a string:
+
+```typescript
+import { CodeBlock } from '@amplication/python-ast';
+
+// Create a custom code block for specialized logic
+const customLogic = new CodeBlock({
+  code: `
+try:
+    result = process_data()
+    return result
+except ValueError as e:
+    logger.error(f"Invalid data: {e}")
+    raise
+finally:
+    cleanup_resources()
+  `,
+  references: [
+    new ClassReference({ name: 'ValueError' }),
+    new ClassReference({ name: 'logger', moduleName: 'logging' })
+  ]
+});
+```
+
+This flexibility allows you to generate both structured AST-based code and custom code blocks when necessary.
+
+## Installation
+
+```bash
+npm install @amplication/python-ast
+```
+
+## Usage
+
+The Python AST library allows you to build Python code programmatically:
+
+```typescript
+import { 
+  Module, 
+  ClassDef,
+  FunctionDef,
+  Parameter,
+  ClassReference,
+  CodeBlock
+} from '@amplication/python-ast';
+
+// Create a module
+const module = new Module({
+  name: 'example_service'
+});
+
+// Create a class
+const myClass = new ClassDef({
+  name: 'MyService',
+  moduleName: 'example.service',
+  docstring: 'Service class for handling business logic'
+});
+
+// Add a method
+const myMethod = new FunctionDef({
+  name: 'process_data',
+  parameters: [
+    new Parameter({ name: 'self' }),
+    new Parameter({ 
+      name: 'data',
+      type: new ClassReference({ name: 'dict' })
+    })
+  ],
+  returnType: new ClassReference({ name: 'dict' }),
+  docstring: 'Process the input data'
+});
+
+myMethod.addStatement(new CodeBlock({
+  code: 'return {"processed": data}'
+}));
+
+myClass.addMethod(myMethod);
+module.addClass(myClass);
+```
+
+## Documentation
+
+<Card horizontal title="Python AST API Documentation" icon="link" href="https://amplication.github.io/ast-types/modules/_amplication_python-ast.html">
+  Complete reference for the Python AST library. Explore class generation, method declarations, type hints, and other Python-specific code generation features.
+</Card> 

@@ -214,7 +214,8 @@
         "plugin-development/ast-libraries",
         "plugin-development/ast-types",
         "plugin-development/csharp-ast",
-        "plugin-development/java-ast"
+        "plugin-development/java-ast",
+        "plugin-development/python-ast"
       ]
     },
     {
